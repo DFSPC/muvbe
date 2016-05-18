@@ -1,23 +1,28 @@
 var muvbe = angular.module('muvbe', ['ngRoute']);
 
+//ROUTING
 muvbe.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     // Home
     .when("/", {templateUrl: "partials/home.html"})
-    // Pages
+    // SignUp
+    .when("/signup", {templateUrl: "partials/signup.html", controller: "muvbeController"})
+    // User
     .when("/user", {templateUrl: "partials/user.html", controller: "muvbeController"})
 }]);
 
+//FACTORY
 muvbe.factory("user",function(){
   return {};
 });
 
+//CONTROLLER
 muvbe.controller('muvbeController', function ($scope, user){
   var scope = this;
   scope.user = user;
   (function validateSession(){
     if (!scope.user.successLogin){
-      window.location = "#/";
+      //window.location = "#/";
     }
   })();
 
@@ -32,5 +37,14 @@ muvbe.controller('muvbeController', function ($scope, user){
       scope.successLogin = false;
       scope.messageLogin = 'Error al ingresar, intenta con el usuario: daniel y la contraseña: 123456';
     }
+  }
+
+  scope.createUser = function(userName, userEmail, userPassword){
+    scope.user.successLogin = true;
+    scope.user.userName = userName;
+    scope.user.userPassword = userPassword;
+    scope.user.userEmail = userEmail;
+    scope.messageLogin = 'Gracias por Ingresar';
+    window.location = "#/user";
   }
 });

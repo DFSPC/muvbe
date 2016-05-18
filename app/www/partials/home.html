@@ -1,0 +1,12 @@
+<h1>MUVBE</h1>
+<p>Ingresa a MUVBE</p>
+<form>
+  <p>Usuario</p>
+  <input type="text" ng-model="mv.userName"></input>
+  <p>Contraseña</p>
+  <input type="password" ng-model="mv.userPassword"></input>
+  <br>
+  <br>
+  <input type="button" ng-click="mv.showMessage='true'; mv.validateLogin(mv.userName, mv.userPassword);" value="Ingresar"></input>
+</form>
+<p ng-show="mv.showMessage">{{mv.messageLogin}}</div>

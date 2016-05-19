@@ -2,14 +2,13 @@
 <p>Registrate en MUVBE</p>
 <form name="formSignUp">
   <p>Usuario</p>
-  <input type="text" ng-model="mv.user.userName" required></input>
+  <input type="text" ng-model="msuc.user.userName" required></input>
   <p>Email</p>
-  <input type="text" ng-model="mv.user.userEmail" required></input>
+  <input type="text" ng-model="msuc.user.userEmail" required></input>
   <p>Contraseña</p>
-  <input type="password" ng-model="mv.user.userPassword" required></input>
+  <input type="password" ng-model="msuc.user.userPassword" required></input>
   <br>
   <br>
-  <input type="button" ng-click="mv.createUser(mv.user.userName, mv.user.userEmail, mv.user.userPassword);" value="Registrar"></input>
+  <input type="button" ng-click="msuc.createUser(msuc.user.userName, msuc.user.userEmail, msuc.user.userPassword);" value="Registrar"></input>
   <br>
 </form>
-<p ng-show="mv.showMessage">{{mv.messageRegistro}}</p>

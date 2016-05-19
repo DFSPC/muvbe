@@ -4,11 +4,11 @@ var muvbe = angular.module('muvbe', ['ngRoute']);
 muvbe.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     // Home
-    .when("/", {templateUrl: "partials/home.html"})
+    .when("/", {templateUrl: "partials/home.html", controller: "muvbeHomeController as mhc"})
     // SignUp
-    .when("/signup", {templateUrl: "partials/signup.html", controller: "muvbeController"})
+    .when("/signup", {templateUrl: "partials/signup.html", controller: "muvbeSignUpController as msuc"})
     // User
-    .when("/user", {templateUrl: "partials/user.html", controller: "muvbeController"})
+    .when("/user", {templateUrl: "partials/user.html", controller: "muvbeUserController as muc"})
 }]);
 
 //FACTORY
@@ -16,16 +16,18 @@ muvbe.factory("user",function(){
   return {};
 });
 
-//CONTROLLER
+//CONTROLLERS
 muvbe.controller('muvbeController', function ($scope, user){
+  console.log('muvbeController');
   var scope = this;
   scope.user = user;
-  (function validateSession(){
-    if (!scope.user.successLogin){
-      //window.location = "#/";
-    }
-  })();
+});
 
+muvbe.controller('muvbeHomeController', function ($scope, user){
+  console.log('muvbeHomeController');
+  var scope = this;
+  scope.user = user;
+  validateSession(scope.user.successLogin);
   scope.validateLogin = function(userName, userPassword){
     if (userName == 'daniel' && userPassword == '123456'){
       scope.user.successLogin = true;
@@ -38,7 +40,12 @@ muvbe.controller('muvbeController', function ($scope, user){
       scope.messageLogin = 'Error al ingresar, intenta con el usuario: daniel y la contraseña: 123456';
     }
   }
+});
 
+muvbe.controller('muvbeSignUpController', function ($scope, user){
+  console.log('muvbeSignUpController');
+  var scope = this;
+  scope.user = user;
   scope.createUser = function(userName, userEmail, userPassword){
     scope.user.successLogin = true;
     scope.user.userName = userName;
@@ -48,3 +55,17 @@ muvbe.controller('muvbeController', function ($scope, user){
     window.location = "#/user";
   }
 });
+
+muvbe.controller('muvbeUserController', function ($scope, user){
+  console.log('muvbeUserController');
+  var scope = this;
+  scope.user = user;
+  validateSession(scope.user.successLogin);
+});
+
+//HELPERS
+function validateSession(successLogin){
+  if (!successLogin){
+    window.location = "#/";
+  }
+}

@@ -9,6 +9,8 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     .when("/signup", {templateUrl: "partials/signup.html", controller: "muvbeSignUpController as msuc"})
     // User
     .when("/user", {templateUrl: "partials/user.html", controller: "muvbeUserController as muc"})
+    // Exit
+    .when("/exit", {templateUrl: "partials/exit.html", controller: "muvbeExitController as mec"})
 }]);
 
 //FACTORY
@@ -27,6 +29,7 @@ muvbe.controller('muvbeHomeController', function ($scope, user){
   console.log('muvbeHomeController');
   var scope = this;
   scope.user = user;
+  console.log(scope.user);
   validateSession(scope.user.successLogin);
   scope.validateLogin = function(userName, userPassword){
     if (userName == 'daniel' && userPassword == '123456'){
@@ -63,9 +66,24 @@ muvbe.controller('muvbeUserController', function ($scope, user){
   validateSession(scope.user.successLogin);
 });
 
+muvbe.controller('muvbeExitController', function ($scope, user){
+  console.log('muvbeExitController');
+  var scope = this;
+  scope.user = user;
+  killSession(scope.user);
+  window.location = "#/";
+});
+
 //HELPERS
 function validateSession(successLogin){
   if (!successLogin){
     window.location = "#/";
   }
+}
+
+function killSession(scopeUser){
+  scopeUser.userName = '';
+  scopeUser.userEmail = '';
+  scopeUser.userPassword = '';
+  scopeUser.successLogin = false;
 }

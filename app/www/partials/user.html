@@ -1,2 +1,12 @@
 <h1>Bienvenido(a) a MUVBE {{muc.user.userName}}</h1>
+
+<h2>Ultimo post:</h2>
+
+<h2>Titulo</h2>
+<p>{{muc.title}}</p>
+<h2>Contenido</h2>
+<p ng-bind-html="muc.content | to_trusted"></hp>
+<h2>Fecha</h2>
+<p>{{muc.date}}</p>
+
 <a href="#/exit">Salir</a>

@@ -27,8 +27,12 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
       templateUrl: "partials/login/exit.html",
       controller: "muvbeExitController as mec"
     })
+    .when("/get", {
+      templateUrl: "partials/post/get.html",
+      controller: "posts as muc"
+    })
     .when("/post", {
-      templateUrl: "partials/post/init.html",
+      templateUrl: "partials/post/post.html",
       controller: "posts as muc"
     })
     //default url

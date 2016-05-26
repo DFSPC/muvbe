@@ -1,19 +1,6 @@
-var muvbe = angular.module('muvbe', ['ngRoute']);
+var  muvbe = angular.module('peopleController', []);
 
-//ROUTING
-muvbe.config(['$routeProvider', function ($routeProvider) {
-  $routeProvider
-    // Home
-    .when("/", {templateUrl: "partials/home.html", controller: "muvbeHomeController as mhc"})
-    // SignUp
-    .when("/signup", {templateUrl: "partials/signup.html", controller: "muvbeSignUpController as msuc"})
-    // User
-    .when("/user", {templateUrl: "partials/user.html", controller: "muvbeUserController as muc"})
-    // Exit
-    .when("/exit", {templateUrl: "partials/exit.html", controller: "muvbeExitController as mec"})
-}]);
-
-//FACTORY
+// FACTORY
 muvbe.factory("user",function(){
   return {};
 });
@@ -58,20 +45,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, user){
   }
 });
 
-muvbe.controller('muvbeUserController', function ($scope, $http, user){
-  console.log('muvbeUserController');
-  $http.get("http://local.muvbe.com/?rest_route=/wp/v2/posts/1").success(function(data){
-    //scope.listaMisComidas = respuesta.listaComidas;
-    console.log(data);
-    scope.title = data.title.rendered;
-    scope.content = data.content.rendered;
-    scope.date = data.date;
-  });
-  var scope = this;
-  scope.user = user;
 
-  //validateSession(scope.user.successLogin);
-});
 
 muvbe.controller('muvbeExitController', function ($scope, user){
   console.log('muvbeExitController');
@@ -83,8 +57,10 @@ muvbe.controller('muvbeExitController', function ($scope, user){
 
 //HELPERS
 function validateSession(successLogin){
+
   if (!successLogin){
     window.location = "#/";
+    console.log('no login');
   }
 }
 
@@ -95,7 +71,7 @@ function killSession(scopeUser){
   scopeUser.successLogin = false;
 }
 
-//Html content filter
+// Html content filter
 muvbe.filter('to_trusted', ['$sce',function($sce) {
   return function(text){
     return $sce.trustAsHtml(text);

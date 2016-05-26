@@ -2,38 +2,33 @@
 	<h1>MUVBE</h1>
 	<p>Ingresa a MUVBE</p>
 	<div class="wraper-content">
-		<div class="persona" ng-repeat="item in people " >
+		<div class="persona" ng-repeat="item in posts " >
 
-			<a href="#/details/{{people.indexOf(item)}}">
-				<div class="name"><p>{{item.muc.content  }} </p> </div>
+			<a href="#/details/{{posts.indexOf(item)}}">
 
-				<p ng-bind-html="item.content | to_trusted"></p>
+				<div class="name"><p> {{item.title.rendered  }} </p> </div>
+
+
+
+				<!-- <div class="name"> {{item.content.rendered | to_trusted  }} </div> -->
+				<p ng-bind-html="muc.content | to_trusted"></p>
+
+				<p ng-bind-html="item.content "></p>
 
 			</a>
 		</div>
 
-		<div class="name"><p>{{muc.content | to_trusted }} </p> </div>
+		<!-- <div class="name"><p>{{muc.content | to_trusted }} </p> </div>
 
 
 		<p ng-bind-html="muc.content | to_trusted"></p>
 
-		<p>{{muc.date}}</p>
+		<p>{{muc.date}}</p> -->
 	</div>
 </div>
 
 
 
-<h1>de otra forma {{muc.user.userName}}</h1>
 
-<h2>Ultimo post:</h2>
-
-<h2>Titulo</h2>
-<p>{{muc.title}}</p>
-<h2>Contenido</h2>
-<p ng-bind-html="muc.content | to_trusted"></hp>
-<h2>Fecha</h2>
-<p>{{muc.date}}</p>
-
-<a href="#/exit">Salir</a>
 
 

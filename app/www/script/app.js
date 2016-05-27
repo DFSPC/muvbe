@@ -29,11 +29,11 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     })
     .when("/get", {
       templateUrl: "partials/post/get.html",
-      controller: "posts as muc"
+      controller: "get as muc"
     })
     .when("/post", {
       templateUrl: "partials/post/post.html",
-      controller: "posts as muc"
+      controller: "post as muc"
     })
     //default url
     .otherwise({redirectTo: "/" });

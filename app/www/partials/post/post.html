@@ -1,0 +1,28 @@
+<div class="form-post">
+	<form action="">
+		<div class="title">
+			<label for=""> Titulo </label>
+			<input type="text">
+		</div>
+		<div class="content">
+			<label for=""> Contenido </label>
+			<input type="text">
+		</div>
+		<div class="image">
+			<label for=""> img </label>
+		</div>
+	</form>
+</div>
+
+
+<!--Formulario para insertar nuevos Todo-->
+<div id="todo-form" class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control input-lg text-center" placeholder="Inserta una tarea nueva" ng-model="formData.text">
+            </div>
+            <button class="btn btn-primary btn-lg" ng-click="createTodo()">Añadir</button>
+        </form>
+    </div>
+</div>

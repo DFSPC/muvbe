@@ -1,7 +1,7 @@
 var muvbe = angular.module('muvbe', [
   'ngRoute',
   'peopleController',
-  'posts'
+  'posts',
 ]);
 
 //ROUTING

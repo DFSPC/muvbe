@@ -38,17 +38,38 @@ muvbe.controller('muvbeHomeController', function ($scope, $http, user){
   }
 });
 
-muvbe.controller('muvbeSignUpController', function ($scope, user){
+muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
   console.log('muvbeSignUpController');
   var scope = this;
   scope.user = user;
   scope.createUser = function(userName, userEmail, userPassword){
-    scope.user.successLogin = true;
-    scope.user.userName = userName;
-    scope.user.userPassword = userPassword;
-    scope.user.userEmail = userEmail;
-    scope.messageLogin = 'Gracias por Ingresar';
-    window.location = "#/user";
+    $http({
+      method: 'POST',
+      url: 'http://local.muvbe.com/wp-json/wp/v2/users',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic YWRtaW46YWRtaW4='
+      },
+      transformRequest: function(obj) {
+          var str = [];
+          for(var p in obj)
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          return str.join("&");
+      },
+      data: {
+        username : userName,
+        name : userName,
+        email : userEmail,
+        password : userPassword,
+       },
+    }).success(function (data) {
+      scope.user.successLogin = true;
+      scope.user.userName = userName;
+      scope.user.userPassword = userPassword;
+      scope.user.userEmail = userEmail;
+      scope.messageLogin = 'Gracias por Ingresar';
+      window.location = "#/user";
+    });
   }
 });
 

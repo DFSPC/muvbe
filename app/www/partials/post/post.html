@@ -1,28 +1,24 @@
+<!--Formulario para insertar nuevos Todo-->
+
 <div class="form-post">
 	<form action="">
 		<div class="title">
 			<label for=""> Titulo </label>
-			<input type="text">
+			 <input type="text" class="class" placeholder="insert you title" ng-model="post.title">
 		</div>
 		<div class="content">
 			<label for=""> Contenido </label>
-			<input type="text">
+			<textarea class="area" placeholder="Insert you content" ng-model="post.content" ></textarea>
 		</div>
 		<div class="image">
 			<label for=""> img </label>
+		</div>
+		<div class="bottom">
+			<button class="btn btn-primary btn-lg"  ng-click="muc.createPost(post)">Añadir</button>
 		</div>
 	</form>
 </div>
 
 
-<!--Formulario para insertar nuevos Todo-->
-<div id="todo-form" class="row">
-    <div class="col-sm-8 col-sm-offset-2 text-center">
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control input-lg text-center" placeholder="Inserta una tarea nueva" ng-model="item.titulo">
-            </div>
-            <button class="btn btn-primary btn-lg"  ng-click="createPost(item.titulo)">Añadir</button>
-        </form>
-    </div>
-</div>
+
+

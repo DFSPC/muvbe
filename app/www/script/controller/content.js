@@ -24,33 +24,42 @@ muvbe.controller('get', function ($scope, $http, user ){
 muvbe.controller('post', function ($scope, $http, user ){
 
   var scope = this;
+  scope.user = user;
 
-  scope.createPost = function(postTtlle){
 
-    console.log(postTtlle)
-  }
+  console.log(scope.user);
 
-  $http({
-      method: 'POST',
-      url: 'http://local.muvbe.com/wp-json/wp/v2/posts',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic YWRtaW46YWRtaW4='
-      },
-      transformRequest: function(obj) {
-        var str = [];
-        for(var p in obj)
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-        return str.join("&");
-      },
-      data: {
-        title : 'test 2',
-        content : ' test test test test ',
+   var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
+
+   console.log(userHash);
+
+
+  scope.createPost = function(post){
+
+    var env = {
+        title : post.title,
+        content : post.content,
         excerpt : 'excerpt'
-       },
-    }).success(function (data) {
-      console.log(data);
-    });
+       };
+
+    $http({
+        method: 'POST',
+        url: 'http://local.muvbe.com/wp-json/wp/v2/posts',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': 'Basic ' + userHash ,
+        },
+        transformRequest: function(obj) {
+          var str = [];
+          for(var p in obj)
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          return str.join("&");
+        },
+        data: env,
+      }).success(function (data) {
+        console.log(data);
+      });
+  }
 });
 
 

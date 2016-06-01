@@ -1,8 +1,5 @@
 var  muvbe = angular.module('posts', []);
 
-
-
-
 /* Metodo get
 *****************************************************/
 
@@ -25,23 +22,14 @@ muvbe.controller('get', function ($scope, $http, user ){
 
 /* Metodo Post
 *****************************************************/
-<<<<<<< HEAD
 muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
   console.log("muvbeCreatePostController");
-=======
-
-muvbe.controller('post', function ($scope, $http, user ){
->>>>>>> 4beb9a11a020bfa72fca24c2d117d84614b066c5
   // variables
   var scope = this;
   scope.user = user;
   var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
 
   scope.createPost = function(title, content, file){
-
-    console.log(title);
-    console.log(content);
-    console.log(file);
 
     data = JSON.stringify({
         "title" : title,
@@ -54,12 +42,32 @@ muvbe.controller('post', function ($scope, $http, user ){
     $http.post('http://local.muvbe.com/wp-json/wp/v2/media', fd, {
       transformRequest: angular.identity,
       headers: {
-        "authorization": 'Basic YWRtaW46YWRtaW4=',
+        "authorization": 'Basic ' + userHash,
         'content-type': undefined,
         "content-disposition": "attachment; filename=" + file.name,
       }
     }).success(function (data) {
+      var imagePost = data.id;
+      if (imagePost){
+        data = JSON.stringify({
+          "title" : title,
+          "content" : content,
+          "featured_media" : imagePost,
+        });
+
         console.log(data);
+        $http({
+          method: 'POST',
+          url: 'http://local.muvbe.com/wp-json/wp/v2/posts',
+          headers: {
+            'authorization': 'Basic ' + userHash,
+            'content-type': 'application/json',
+          },
+          data: data,
+        }).success(function (data) {
+          console.log("Creo Post");
+        });
+      }
     });
   }
 });
@@ -80,16 +88,3 @@ muvbe.directive('muvbeFileModel', ['$parse', function ($parse) {
     }
   };
 }]);
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 4beb9a11a020bfa72fca24c2d117d84614b066c5

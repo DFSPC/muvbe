@@ -62,8 +62,8 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
       url: 'http://local.muvbe.com/wp-json/wp/v2/users',
       crossDomain: true,
       headers: {
-        'Authorization': 'Basic YWRtaW46YWRtaW4=',
-        'Content-Type': 'application/json',
+        'authorization': 'Basic YWRtaW46YWRtaW4=',
+        'content-type': 'application/json',
       },
       data: data,
     }).success(function (data) {
@@ -79,12 +79,25 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
 
 muvbe.controller('muvbeUserController', function ($scope, $http, user){
   console.log('muvbeUserController');
-  $http.get("http://local.muvbe.com/wp-json/wp/v2/posts/1").success(function(data){
-    scope.title = data.title.rendered;
-    scope.content = data.content.rendered;
-    scope.date = data.date;
-  });
   var scope = this;
+  var posts = new Array();
+  $http.get("http://local.muvbe.com/wp-json/wp/v2/posts").success(function(data){
+    for(var post_data in data) {
+      var post = new Array();
+      console.log(data[post_data].id);
+      post['id'] = data[post_data].id;
+      post['title'] = data[post_data].title.rendered;
+      post['content'] = data[post_data].content.rendered;
+      post['date'] = data[post_data].date;
+      console.log(data[post_data]._links['wp:featuredmedia'][0].href);
+      $http.get(data[post_data]._links['wp:featuredmedia'][0].href).success(function(data_image){
+        console.log(data_image);
+        post['urlFeaturedImage'] = data_image.media_details.sizes.medium.source_url;
+        posts.push(post);
+      });
+    }
+  });
+  scope.posts = posts;
   scope.user = user;
 });
 

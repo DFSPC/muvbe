@@ -10,13 +10,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 
-<<<<<<< HEAD
-Header set Access-Control-Allow-Origin "http://appmuvbe.com"
+Header add Access-Control-Allow-Origin "*"
 Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
-=======
-Header set Access-Control-Allow-Origin "http://local.muvbeapp.com"
-Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type, content-disposition"
->>>>>>> 7b4a4e4eb8653035e49777b948c2a486aa1adaf4
 Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
 
 </IfModule>

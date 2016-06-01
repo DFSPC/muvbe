@@ -1,31 +1,29 @@
 <!--Formulario para insertar nuevos Todo-->
-
 <div class="form-post">
 	<form action="">
 		<div class="title">
-			<label for=""> Crea un Titulo </label>
-			 <input type="text" class="class" placeholder="insert you title" ng-model="post.title">
+			<label for="">Titulo de la Imagen</label>
+			<br>
+			<br>
+			<input type="text" ng-model="mcpc.title">
 		</div>
+		<br>
 		<div class="content">
-			<label for=""> Crea tu Contenido </label>
-			<textarea class="area" placeholder="Insert you content" ng-model="post.content" ></textarea>
+			<label for="">Describe tu Imagen</label>
+			<br>
+			<br>
+			<textarea class="area" ng-model="mcpc.content" ></textarea>
 		</div>
+		<br>
 		<div class="image">
-			<label for=""> sube tu imagen </label>
-			<!-- <input name="uploadedfile" type="file" ng-model="post.image" > -->
-			 <input type="file" name="file" uploader-model="file" />
+			<label for="">Sube tu Imagen</label>
+			<br>
+			<br>
+			<input type="file" name="file" muvbe-file-model="mcpc.file" ng-file-upload/>
 		</div>
+		<br>
 		<div class="bottom">
-			<button class="btn btn-primary btn-lg"  ng-click="muc.createPost(post)">Añadir</button>
+			<input type="button" ng-click="mcpc.createPost(mcpc.title, mcpc.content, mcpc.file)" value ="Añadir"></input>
 		</div>
 	</form>
 </div>
-
-
-
-
-<form name="upload" ng-submit="muc.createPost()">
-    <input type="text" ng-model="name" /><br>
-    <input type="file" name="file" uploader-model="file" /> <br>
-    <input type="submit" value="Enviar">
-</form>

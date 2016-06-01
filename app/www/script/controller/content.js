@@ -25,86 +25,53 @@ muvbe.controller('get', function ($scope, $http, user ){
 
 /* Metodo Post
 *****************************************************/
-muvbe.controller('post', function ($scope, $http, user ){
+muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
+  console.log("muvbeCreatePostController");
   // variables
   var scope = this;
   scope.user = user;
   var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
 
-  // creamos el objeto con las variables
-  scope.createPost = function(post){
+  scope.createPost = function(title, content, file){
 
-
-
-    var name = $scope.name;
-    var file = $scope.file;
-
-
-
-    console.log(name);
+    console.log(title);
+    console.log(content);
     console.log(file);
 
+    data = JSON.stringify({
+        "title" : title,
+        "description" : content,
+        "file": file,
+    });
 
-    // var env = {
-    //       title : post.title,
-    //       content : post.content,
-    //       excerpt : 'excerpt',
-    //     };
-
-    // console.log(post.image);
-
-  $http({
-      method: 'POST',
-      url: 'http://local.muvbe.com/wp-json/wp/v2/posts',
+    var fd = new FormData();
+    fd.append('file', file);
+    $http.post('http://local.muvbe.com/wp-json/wp/v2/media', fd, {
+      transformRequest: angular.identity,
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + userHash ,
-      },
-      transformRequest: function(obj) {
-        var str = [];
-        for(var p in obj)
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-        return str.join("&");
-      },
-      data: {
-          title : name,
-          content : ' fdfdfdf',
-          file:  file,
-          excerpt : 'excerpt',
-        },
+        "authorization": 'Basic YWRtaW46YWRtaW4=',
+        'content-type': undefined,
+        "content-disposition": "attachment; filename=" + file.name,
+      }
     }).success(function (data) {
         console.log(data);
     });
   }
-
-
-
-
-
-
 });
 
-
-
-
-muvbe.directive('uploaderModel', ["$parse", function ($parse) {
+muvbe.directive('muvbeFileModel', ['$parse', function ($parse) {
+  console.log("muvbeFileModel");
   return {
     restrict: 'A',
-    link: function (scope, iElement, iAttrs)
-    {
-      iElement.on("change", function(e)
-      {
-        $parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
+    link: function(scope, element, attrs) {
+      var model = $parse(attrs.muvbeFileModel);
+      var modelSetter = model.assign;
+
+      element.bind('change', function(){
+        scope.$apply(function(){
+          modelSetter(scope, element[0].files[0]);
+        });
       });
     }
   };
-}])
-
-
-
-
-
-
-
-
-
+}]);

@@ -58,8 +58,8 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
       method: 'POST',
       url: 'http://local.muvbe.com/wp-json/wp/v2/users',
       headers: {
-        'Authorization': 'Basic YWRtaW46YWRtaW4=',
-        'Content-Type': 'application/json',
+        'authorization': 'Basic YWRtaW46YWRtaW4=',
+        'content-type': 'application/json',
       },
       data: data,
     }).success(function (data) {

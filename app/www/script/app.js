@@ -34,9 +34,8 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     })
     .when("/post", {
       templateUrl: "partials/post/post.html",
-      controller: "post as muc"
+      controller: "muvbeCreatePostController as mcpc"
     })
     //default url
     .otherwise({redirectTo: "/" });
 }]);
-

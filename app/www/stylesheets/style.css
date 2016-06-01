@@ -381,4 +381,17 @@ input {
   width: 90%;
   height: 50px; }
 
+textarea {
+  width: 90%;
+  height: 100px; }
+
+.custom-file-input,
+.custom-bottom-input {
+  width: 90%;
+  display: block;
+  position: relative;
+  background: rgba(171, 39, 97, 0.56);
+  margin: 0 auto;
+  height: 64px; }
+
 /*# sourceMappingURL=../sass */

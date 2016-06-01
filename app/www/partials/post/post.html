@@ -3,15 +3,17 @@
 <div class="form-post">
 	<form action="">
 		<div class="title">
-			<label for=""> Titulo </label>
+			<label for=""> Crea un Titulo </label>
 			 <input type="text" class="class" placeholder="insert you title" ng-model="post.title">
 		</div>
 		<div class="content">
-			<label for=""> Contenido </label>
+			<label for=""> Crea tu Contenido </label>
 			<textarea class="area" placeholder="Insert you content" ng-model="post.content" ></textarea>
 		</div>
 		<div class="image">
-			<label for=""> img </label>
+			<label for=""> sube tu imagen </label>
+			<!-- <input name="uploadedfile" type="file" ng-model="post.image" > -->
+			 <input type="file" name="file" uploader-model="file" />
 		</div>
 		<div class="bottom">
 			<button class="btn btn-primary btn-lg"  ng-click="muc.createPost(post)">Añadir</button>
@@ -22,3 +24,8 @@
 
 
 
+<form name="upload" ng-submit="muc.createPost()">
+    <input type="text" ng-model="name" /><br>
+    <input type="file" name="file" uploader-model="file" /> <br>
+    <input type="submit" value="Enviar">
+</form>

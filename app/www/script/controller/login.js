@@ -43,25 +43,25 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
   var scope = this;
   scope.user = user;
   scope.createUser = function(userName, userEmail, userPassword){
+
+    data = JSON.stringify({
+        "username" : userName,
+        "name" : userName,
+        "email" : userEmail,
+        "password" : userPassword,
+        "roles" : ['author'],
+    });
+
+    console.log(data);
+
     $http({
       method: 'POST',
       url: 'http://local.muvbe.com/wp-json/wp/v2/users',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic YWRtaW46YWRtaW4='
+        'Authorization': 'Basic YWRtaW46YWRtaW4=',
+        'Content-Type': 'application/json',
       },
-      transformRequest: function(obj) {
-          var str = [];
-          for(var p in obj)
-          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-          return str.join("&");
-      },
-      data: {
-        username : userName,
-        name : userName,
-        email : userEmail,
-        password : userPassword,
-       },
+      data: data,
     }).success(function (data) {
       scope.user.successLogin = true;
       scope.user.userName = userName;

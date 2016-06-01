@@ -65,7 +65,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
           },
           data: data,
         }).success(function (data) {
-          console.log("Creo Post");
+          window.location = "#/user";
         });
       }
     });

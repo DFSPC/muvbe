@@ -25,6 +25,7 @@ muvbe.controller('get', function ($scope, $http, user ){
 
 /* Metodo Post
 *****************************************************/
+
 muvbe.controller('post', function ($scope, $http, user ){
   // variables
   var scope = this;
@@ -68,7 +69,7 @@ muvbe.controller('post', function ($scope, $http, user ){
       },
       data: {
           title : name,
-          content : ' fdfdfdf',
+          content : ' titulo de  priueba  img',
           file:  file,
           excerpt : 'excerpt',
         },
@@ -77,6 +78,21 @@ muvbe.controller('post', function ($scope, $http, user ){
     });
   }
 
+  $scope.data = 'none';
+  scope.add = function(){
+    console.log('success');
+
+    var f = document.getElementById('file').files[0],
+        r = new FileReader();
+    r.onloadend = function(e){
+      var data = e.target.result;
+      console.log(data);
+
+      // $scope.data = e.target.result;
+      //send you binary data via $http or $resource or do anything else with it
+    }
+    r.readAsBinaryString(f);
+  }
 
 
 
@@ -99,6 +115,9 @@ muvbe.directive('uploaderModel', ["$parse", function ($parse) {
     }
   };
 }])
+
+
+
 
 
 

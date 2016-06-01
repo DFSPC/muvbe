@@ -1,3 +1,4 @@
 .DS_Store
 web/wp-config.php
+app/www/node_modules
 web/wp-content

@@ -38,6 +38,9 @@ muvbe.controller('muvbeHomeController', function ($scope, $http, user){
   }
 });
 
+
+/* Crea New User
+************************************************/
 muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
   console.log('muvbeSignUpController');
   var scope = this;
@@ -52,11 +55,12 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
         "roles" : ['author'],
     });
 
-    console.log(data);
+    console.log("prueba" + data);
 
     $http({
       method: 'POST',
       url: 'http://local.muvbe.com/wp-json/wp/v2/users',
+      crossDomain: true,
       headers: {
         'authorization': 'Basic YWRtaW46YWRtaW4=',
         'content-type': 'application/json',

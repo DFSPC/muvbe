@@ -80,19 +80,24 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
   $http.get("http://local.muvbe.com/wp-json/wp/v2/posts").success(function(data){
     for(var post_data in data) {
       var post = new Array();
-      console.log(data[post_data].id);
       post['id'] = data[post_data].id;
       post['title'] = data[post_data].title.rendered;
       post['content'] = data[post_data].content.rendered;
       post['date'] = data[post_data].date;
-      console.log(data[post_data]._links['wp:featuredmedia'][0].href);
-      $http.get(data[post_data]._links['wp:featuredmedia'][0].href).success(function(data_image){
-        console.log(data_image);
-        post['urlFeaturedImage'] = data_image.media_details.sizes.medium.source_url;
-        posts.push(post);
-      });
+      getImageUrlByPost(data[post_data].id, data[post_data].featured_media);
+      posts.push(post);
     }
   });
+
+  function getImageUrlByPost(postId, fileId){
+    $http.get("http://local.muvbe.com/wp-json/wp/v2/media/" + fileId).success(function(data_image){
+      posts.forEach(function(value) {
+        if (value['id'] == postId){
+          value['urlFeaturedImage'] = data_image.media_details.sizes.medium.source_url;
+        }
+      });
+    });
+  }
   scope.posts = posts;
   scope.user = user;
 });
@@ -161,4 +166,4 @@ muvbe.filter('to_trusted', ['$sce',function($sce) {
   return function(text){
     return $sce.trustAsHtml(text);
   }
-}])
+}]);

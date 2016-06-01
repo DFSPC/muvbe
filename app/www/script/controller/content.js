@@ -25,8 +25,13 @@ muvbe.controller('get', function ($scope, $http, user ){
 
 /* Metodo Post
 *****************************************************/
+<<<<<<< HEAD
 muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
   console.log("muvbeCreatePostController");
+=======
+
+muvbe.controller('post', function ($scope, $http, user ){
+>>>>>>> 4beb9a11a020bfa72fca24c2d117d84614b066c5
   // variables
   var scope = this;
   scope.user = user;
@@ -75,3 +80,16 @@ muvbe.directive('muvbeFileModel', ['$parse', function ($parse) {
     }
   };
 }]);
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 4beb9a11a020bfa72fca24c2d117d84614b066c5

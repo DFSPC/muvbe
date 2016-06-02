@@ -17,7 +17,6 @@ muvbe.controller('muvbeHomeController', function ($scope, $http, user){
   var scope = this;
   //scope.user = user;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
-  console.log(scope.user);
   if (scope.user){
     window.location = "#/user";
   }

@@ -29,6 +29,7 @@ muvbe.controller('muvbeHomeController', function ($scope, $http, user){
     $http.get('http://local.muvbe.com/wp-json/wp/v2/users/me?_envelope').success(function(data){
       if (data.body.id){
         scope.user.successLogin = true;
+        scope.user.id = data.body.id;
         scope.user.userName = userName;
         scope.user.userPassword = userPassword;
         scope.messageLogin = 'Gracias por Ingresar';
@@ -59,8 +60,6 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
         "roles" : ['author'],
     });
 
-    console.log("prueba" + data);
-
     $http({
       method: 'POST',
       url: 'http://local.muvbe.com/wp-json/wp/v2/users',
@@ -71,11 +70,13 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
       },
       data: data,
     }).success(function (data) {
+      scope.user.id = data.id;
       scope.user.successLogin = true;
       scope.user.userName = userName;
       scope.user.userPassword = userPassword;
       scope.user.userEmail = userEmail;
       scope.messageLogin = 'Gracias por Ingresar';
+      localStorage.setItem("userSession", JSON.stringify(scope.user));
       window.location = "#/user";
     });
   }
@@ -85,18 +86,18 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
   console.log('muvbeUserController');
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
-  console.log(scope.user);
   if (!scope.user){
     window.location = "#/";
   }
   var posts = new Array();
   $http.get("http://local.muvbe.com/wp-json/wp/v2/posts").success(function(data){
     for(var post_data in data) {
-      var post = new Array();
-      post['id'] = data[post_data].id;
-      post['title'] = data[post_data].title.rendered;
-      post['content'] = data[post_data].content.rendered;
-      post['date'] = data[post_data].date;
+      var post = new Object();
+      post.id = data[post_data].id;
+      post.title = data[post_data].title.rendered;
+      post.content = data[post_data].content.rendered;
+      post.author = data[post_data].author;
+      post.date = data[post_data].date;
       getImageUrlByPost(data[post_data].id, data[post_data].featured_media);
       posts.push(post);
     }
@@ -105,8 +106,8 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
   function getImageUrlByPost(postId, fileId){
     $http.get("http://local.muvbe.com/wp-json/wp/v2/media/" + fileId).success(function(data_image){
       posts.forEach(function(value) {
-        if (value['id'] == postId){
-          value['urlFeaturedImage'] = data_image.media_details.sizes.full.source_url;
+        if (value.id == postId){
+          value.urlFeaturedImage = data_image.media_details.sizes.full.source_url;
         }
       });
     });

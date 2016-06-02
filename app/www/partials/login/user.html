@@ -2,7 +2,7 @@
 
 <button ng-click="filterPosts = {}">Ultimos posts</button>
 <button ng-click="filterPosts = {author:muc.user.id}">Mis posts</button>
-<div ng-repeat="post in muc.posts | filter:filterPosts:true track by $index">
+<div ng-repeat="post in numberPostFilter = (muc.posts | filter:filterPosts:true) track by $index">
 <br>
 <h2>Titulo</h2>
 <p>{{post.title}}</p>
@@ -14,5 +14,6 @@
 <img ng-src="{{post.urlFeaturedImage}}"</img>
 <br>
 </div>
+<p ng-show="!numberPostFilter.length">No hay posts aprobados a tu nombre</p>
 <a href="#/post">Crea tu post</a>
 <a href="#/exit">Salir</a>

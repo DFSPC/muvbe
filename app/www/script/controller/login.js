@@ -15,8 +15,12 @@ muvbe.controller('muvbeController', function ($scope, user){
 muvbe.controller('muvbeHomeController', function ($scope, $http, user){
   console.log('muvbeHomeController');
   var scope = this;
-  scope.user = user;
-  validateSession(scope.user.successLogin);
+  //scope.user = user;
+  scope.user = JSON.parse(localStorage.getItem("userSession"));
+  console.log(scope.user);
+  if (scope.user){
+    window.location = "#/user";
+  }
 
   scope.validateLogin = function(userName, userPassword){
 
@@ -29,6 +33,7 @@ muvbe.controller('muvbeHomeController', function ($scope, $http, user){
         scope.user.userName = userName;
         scope.user.userPassword = userPassword;
         scope.messageLogin = 'Gracias por Ingresar';
+        localStorage.setItem("userSession", JSON.stringify(scope.user));
         window.location = "#/user";
       }else{
         scope.successLogin = false;
@@ -80,6 +85,11 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
 muvbe.controller('muvbeUserController', function ($scope, $http, user){
   console.log('muvbeUserController');
   var scope = this;
+  scope.user = JSON.parse(localStorage.getItem("userSession"));
+  console.log(scope.user);
+  if (!scope.user){
+    window.location = "#/";
+  }
   var posts = new Array();
   $http.get("http://local.muvbe.com/wp-json/wp/v2/posts").success(function(data){
     for(var post_data in data) {
@@ -97,13 +107,12 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     $http.get("http://local.muvbe.com/wp-json/wp/v2/media/" + fileId).success(function(data_image){
       posts.forEach(function(value) {
         if (value['id'] == postId){
-          value['urlFeaturedImage'] = data_image.media_details.sizes.medium.source_url;
+          value['urlFeaturedImage'] = data_image.media_details.sizes.full.source_url;
         }
       });
     });
   }
   scope.posts = posts;
-  scope.user = user;
 });
 
 muvbe.controller('muvbeExitController', function ($scope, user){
@@ -163,6 +172,7 @@ function killSession(scopeUser){
   scopeUser.userEmail = '';
   scopeUser.userPassword = '';
   scopeUser.successLogin = false;
+  localStorage.clear();
 }
 
 // Html content filter

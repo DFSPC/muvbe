@@ -26,7 +26,11 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
   console.log("muvbeCreatePostController");
   // variables
   var scope = this;
-  scope.user = user;
+  scope.user = JSON.parse(localStorage.getItem("userSession"));
+  console.log(scope.user);
+  if (!scope.user){
+    window.location = "#/";
+  }
   var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
 
   scope.createPost = function(title, content, file){

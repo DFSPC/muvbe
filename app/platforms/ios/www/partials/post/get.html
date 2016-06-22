@@ -1,0 +1,23 @@
+<div>
+	<h1>MUVBE</h1>
+	<p>Ingresa a MUVBE</p>
+	<div class="wraper-content">
+		<div class="persona" ng-repeat="item in posts " >
+			<a href="#/details/{{posts.indexOf(item)}}">
+				<div class="name"><p> {{item.title.rendered  }} </p> </div>
+				<div class="name"> {{item.content.rendered | to_trusted  }} </div>
+				<!-- <p ng-bind-html="muc.content | to_trusted"></p>
+				<p ng-bind-html="item.content | to_trusted"></p> -->
+			</a>
+		</div>
+		<!-- <div class="name"><p>{{muc.content | to_trusted }} </p> </div>
+		<p ng-bind-html="muc.content | to_trusted"></p>
+		<p>{{muc.date}}</p> -->
+	</div>
+</div>
+
+
+
+
+
+

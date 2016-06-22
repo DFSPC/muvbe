@@ -33,14 +33,14 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
   }
   var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
 
-  scope.createPost = function(title, content, file){
 
-    data = JSON.stringify({
-        "title" : title,
-        "description" : content,
-        "file": file,
+  scope.getCategories = function(){
+    $http.get(urlAppServer + "/categories").success(function(data){
+      scope.categories = data;
     });
+  }
 
+  scope.createPost = function(title, content, file, category){
     var fd = new FormData();
     fd.append('file', file);
     $http.post(urlAppServer + '/media', fd, {
@@ -57,6 +57,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
           "title" : title,
           "content" : content,
           "featured_media" : imagePost,
+          "categories" : [category],
         });
 
         console.log(data);
@@ -69,11 +70,13 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
           },
           data: data,
         }).success(function (data) {
-          window.location = "#/user";
+          window.location = "#/validate";
         });
       }
     });
   }
+
+  scope.getCategories();
 });
 
 muvbe.directive('muvbeFileModel', ['$parse', function ($parse) {

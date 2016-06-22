@@ -16,6 +16,14 @@
 			<textarea class="area" ng-model="mcpc.content" ></textarea>
 		</div>
 		<br>
+		<div class="category">
+			<label for="">Elije la Categoria</label>
+			<br>
+			<br>
+			<select class="custom-file-input" ng-model="mcpc.category" ng-options="category.id as category.name for category in mcpc.categories track by category.id">
+			</select>
+		</div>
+		<br>
 		<div class="image">
 			<label for="">Sube tu Imagen</label>
 			<br>
@@ -24,7 +32,7 @@
 		</div>
 		<br>
 		<div class="bottom">
-			<input type="button" class="custom-bottom-input" ng-click="mcpc.createPost(mcpc.title, mcpc.content, mcpc.file)" value ="Añadir"></input>
+			<input type="button" class="custom-bottom-input" ng-click="mcpc.createPost(mcpc.title, mcpc.content, mcpc.file, mcpc.category)" value ="Añadir"></input>
 		</div>
 	</form>
 </div>

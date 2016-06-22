@@ -5,7 +5,7 @@ var  muvbe = angular.module('posts', []);
 
 muvbe.controller('get', function ($scope, $http, user ){
   console.log('posts');
-  $http.get("http://londonojp.com/muvbe/web/wp-json/wp/v2/posts").success(function(data){
+  $http.get(urlAppServer + "/posts").success(function(data){
     //scope.listaMisComidas = respuesta.listaComidas;
     console.log(data);
     // scope.title = data.title.rendered;
@@ -43,7 +43,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
 
     var fd = new FormData();
     fd.append('file', file);
-    $http.post('http://londonojp.com/muvbe/web/wp-json/wp/v2/media', fd, {
+    $http.post(urlAppServer + '/media', fd, {
       transformRequest: angular.identity,
       headers: {
         "authorization": 'Basic ' + userHash,
@@ -62,7 +62,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
         console.log(data);
         $http({
           method: 'POST',
-          url: 'http://londonojp.com/muvbe/web/wp-json/wp/v2/posts',
+          url: urlAppServer + '/posts',
           headers: {
             'authorization': 'Basic ' + userHash,
             'content-type': 'application/json',

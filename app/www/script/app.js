@@ -2,8 +2,9 @@ var muvbe = angular.module('muvbe', [
   'ngRoute',
   'peopleController',
   'posts',
-]),
-url = 'http://londonojp.com/muvbe/web/wp-json';
+]);
+
+var urlAppServer = 'http://local.muvbe.com//wp-json/wp/v2'
 
 //ROUTING
 muvbe.config(['$routeProvider', function ($routeProvider) {

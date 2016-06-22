@@ -26,7 +26,7 @@ muvbe.controller('muvbeHomeController', function ($scope, $http, user){
     var userHash = decodeUserData(userName + ':' + userPassword);
 
     $http.defaults.headers.common.Authorization = 'Basic ' + userHash;
-    $http.get('http://londonojp.com/muvbe/web/wp-json/wp/v2/users/me?_envelope').success(function(data){
+    $http.get(urlAppServer + '/users/me?_envelope').success(function(data){
       if (data.body.id){
         scope.user.successLogin = true;
         scope.user.id = data.body.id;
@@ -62,7 +62,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
 
     $http({
       method: 'POST',
-      url: 'http://londonojp.com/muvbe/web//wp-json/wp/v2/users',
+      url: urlAppServer + '/users',
       crossDomain: true,
       headers: {
         'authorization': 'Basic YWRtaW46YWRtaW4=',
@@ -90,7 +90,7 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     window.location = "#/";
   }
   var posts = new Array();
-  $http.get("http://londonojp.com/muvbe/web/wp-json/wp/v2/posts").success(function(data){
+  $http.get(urlAppServer + "/posts").success(function(data){
     for(var post_data in data) {
       var post = new Object();
       post.id = data[post_data].id;
@@ -104,7 +104,7 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
   });
 
   function getImageUrlByPost(postId, fileId){
-    $http.get("http://londonojp.com/muvbe/web/wp-json/wp/v2/media/" + fileId).success(function(data_image){
+    $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
       posts.forEach(function(value) {
         if (value.id == postId){
           value.urlFeaturedImage = data_image.media_details.sizes.full.source_url;

@@ -4,7 +4,7 @@ var muvbe = angular.module('muvbe', [
   'posts',
 ]);
 
-var urlAppServer = 'http://local.muvbe.com//wp-json/wp/v2'
+var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2'
 
 //ROUTING
 muvbe.config(['$routeProvider', function ($routeProvider) {

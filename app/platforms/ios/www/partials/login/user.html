@@ -1,7 +1,10 @@
 <h1>Bienvenido(a) a MUVBE {{muc.user.userName}}</h1>
 
-<button ng-click="filterPosts = {}">Ultimos posts</button>
-<button ng-click="filterPosts = {author:muc.user.id}">Mis posts</button>
+<button ng-click="muc.getPosts(); filterPosts = {}; muc.category = ''";>Ultimos posts</button>
+<button ng-click="filterPosts = {author:muc.user.id}; muc.category = ''">Mis posts</button>
+<h2>Elije Categoria</h2>
+<select ng-model="muc.category" ng-options="category.id as category.name for category in muc.categories track by category.id" ng-change="filterPosts = {categoryId:muc.category}">
+<option value="">--Elige opcion--</option></select>
 <div ng-repeat="post in numberPostFilter = (muc.posts | filter:filterPosts:true) track by $index">
 <br>
 <h2>Titulo</h2>
@@ -10,10 +13,12 @@
 <p ng-bind-html="post.content | to_trusted"></p>
 <h2>Fecha</h2>
 <p>{{post.date}}</p>
+<h2>Categoria</h2>
+<p>{{post.categoryName}}</p>
 <h2>Imagen</h2>
 <img ng-src="{{post.urlFeaturedImage}}"</img>
 <br>
 </div>
-<p ng-show="!numberPostFilter.length">No hay posts aprobados a tu nombre</p>
+<p ng-show="!numberPostFilter.length">No se encontaron posts</p>
 <a href="#/post">Crea tu post</a>
 <a href="#/exit">Salir</a>

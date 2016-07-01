@@ -2,8 +2,9 @@ var muvbe = angular.module('muvbe', [
   'ngRoute',
   'peopleController',
   'posts',
-]),
-url = 'http://londonojp.com/muvbe/web/wp-json';
+]);
+
+var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2'
 
 //ROUTING
 muvbe.config(['$routeProvider', function ($routeProvider) {
@@ -34,6 +35,10 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     })
     .when("/post", {
       templateUrl: "partials/post/post.html",
+      controller: "muvbeCreatePostController as mcpc"
+    })
+    .when("/validate", {
+      templateUrl: "partials/post/validate.html",
       controller: "muvbeCreatePostController as mcpc"
     })
     //default url

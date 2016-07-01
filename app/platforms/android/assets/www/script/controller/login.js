@@ -26,7 +26,7 @@ muvbe.controller('muvbeHomeController', function ($scope, $http, user){
     var userHash = decodeUserData(userName + ':' + userPassword);
 
     $http.defaults.headers.common.Authorization = 'Basic ' + userHash;
-    $http.get('http://londonojp.com/muvbe/web/wp-json/wp/v2/users/me?_envelope').success(function(data){
+    $http.get(urlAppServer + '/users/me?_envelope').success(function(data){
       if (data.body.id){
         scope.user.successLogin = true;
         scope.user.id = data.body.id;
@@ -62,7 +62,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
 
     $http({
       method: 'POST',
-      url: 'http://londonojp.com/muvbe/web//wp-json/wp/v2/users',
+      url: urlAppServer + '/users',
       crossDomain: true,
       headers: {
         'authorization': 'Basic YWRtaW46YWRtaW4=',
@@ -89,22 +89,38 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
   if (!scope.user){
     window.location = "#/";
   }
+
+  scope.getCategories = function(){
+    $http.get(urlAppServer + "/categories").success(function(data){
+      scope.categories = data;
+    });
+  }
+
   var posts = new Array();
-  $http.get("http://londonojp.com/muvbe/web/wp-json/wp/v2/posts").success(function(data){
-    for(var post_data in data) {
-      var post = new Object();
-      post.id = data[post_data].id;
-      post.title = data[post_data].title.rendered;
-      post.content = data[post_data].content.rendered;
-      post.author = data[post_data].author;
-      post.date = data[post_data].date;
-      getImageUrlByPost(data[post_data].id, data[post_data].featured_media);
-      posts.push(post);
-    }
-  });
+  scope.getPosts = function(){
+    posts = new Array();
+    $http.get(urlAppServer + "/posts").success(function(data){
+      for(var post_data in data) {
+        var post = new Object();
+        post.id = data[post_data].id;
+        post.title = data[post_data].title.rendered;
+        post.content = data[post_data].content.rendered;
+        post.author = data[post_data].author;
+        post.date = data[post_data].date;
+        post.categoryId = data[post_data].categories[0];
+        post.categoryName = getCategoryName(data[post_data].categories[0]);
+        getImageUrlByPost(data[post_data].id, data[post_data].featured_media);
+        posts.push(post);
+        scope.posts = posts;
+      }
+    });
+  }
+
+  scope.getCategories();
+  scope.getPosts();
 
   function getImageUrlByPost(postId, fileId){
-    $http.get("http://londonojp.com/muvbe/web/wp-json/wp/v2/media/" + fileId).success(function(data_image){
+    $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
       posts.forEach(function(value) {
         if (value.id == postId){
           value.urlFeaturedImage = data_image.media_details.sizes.full.source_url;
@@ -112,7 +128,19 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
       });
     });
   }
-  scope.posts = posts;
+
+  function getCategoryName(categoryId){
+    if(!scope.categories){
+      scope.getCategories();
+    }else{
+      categories = scope.categories;
+      for(var category in scope.categories) {
+        if (categories[category].id == categoryId){
+          return categories[category].name;
+        }
+      }
+    }
+  }
 });
 
 muvbe.controller('muvbeExitController', function ($scope, user){

@@ -52,12 +52,14 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       }
     }).success(function (data) {
       var imagePost = data.id;
+      var status =  "publish";
       if (imagePost){
         data = JSON.stringify({
           "title" : title,
           "content" : content,
           "featured_media" : imagePost,
           "categories" : [category],
+          "status" : status
         });
 
         console.log(data);

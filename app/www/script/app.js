@@ -1,3 +1,12 @@
+function onload()
+{
+    document.addEventListener("deviceready",onDR,false);
+}
+function onDR()
+{
+alert("device ready");
+}
+
 var muvbe = angular.module('muvbe', [
   'ngRoute',
   'peopleController',

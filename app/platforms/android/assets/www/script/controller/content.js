@@ -33,6 +33,50 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
   }
   var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
 
+  //Take FILE_URL
+  scope.takephotoURL = function(){
+    navigator.camera.getPicture(onURLSuccess, onURLFail,
+    { quality : 75,
+      destinationType : Camera.DestinationType.FILE_URI,
+      sourceType : Camera.PictureSourceType.CAMERA,
+      allowEdit : true,
+      encodingType: Camera.EncodingType.PNG,
+      targetWidth: 100,
+      targetHeight: 100,
+      saveToPhotoAlbum: true }
+    );
+  }
+  function onURLSuccess(imageURI) {
+      var image = document.getElementById('myImage');
+      image.src = imageURI;
+      document.getElementById("text2").innerHTML = imageURI;
+  }
+  function onURLFail(message) {
+      alert('Failed because: ' + message);
+  }
+
+  //From Library
+  scope.choosePhoto = function(){
+    navigator.camera.getPicture(onlibSuccess, onlibFail,
+    { quality : 75,
+      destinationType : Camera.DestinationType.FILE_URI,
+      sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit : true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 100,
+      targetHeight: 100,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false }
+    );
+  }
+  function onlibSuccess(imageURI) {
+      var image = document.getElementById('myImage');
+      image.src = imageURI;
+  }
+  function onlibFail(message) {
+      alert('Failed because: ' + message);
+  }
+
 
   scope.getCategories = function(){
     $http.get(urlAppServer + "/categories").success(function(data){

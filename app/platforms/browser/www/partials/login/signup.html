@@ -1,0 +1,15 @@
+<h1>MUVBE</h1>
+<p>Registrate en MUVBE</p>
+<form name="formSignUp">
+  <p>Usuario</p>
+  <input type="text" ng-model="msuc.user.userName" required></input>
+  <p>Email</p>
+  <input type="text" ng-model="msuc.user.userEmail" required></input>
+  <p>Contraseña</p>
+  <input type="password" ng-model="msuc.user.userPassword" required></input>
+  <br>
+  <br>
+  <input type="button" ng-click="msuc.createUser(msuc.user.userName, msuc.user.userEmail, msuc.user.userPassword);" value="Registrar"></input>
+  <br>
+</form>
+<a href="#/">Inicio</a>

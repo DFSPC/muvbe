@@ -29,7 +29,10 @@
 			<label for="">Sube tu Imagen</label>
 			<br>
 			<br>
-			<input type="file" class="custom-file-input"  name="file" muvbe-file-model="mcpc.file" ng-file-upload/>
+			<input type="button" ng-click="mcpc.takephotoURL()" value="Tomar Foto"/>
+			<input type="button" ng-click="mcpc.choosePhoto()" value="Escoger Foto"/>
+      <img src="" id="myImageUrl" height="200px" width="200px">
+      <img src="" id="lib" height="200px" width="200px">
 		</div>
 		<br>
 		<div class="bottom">

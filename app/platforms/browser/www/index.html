@@ -1,12 +1,15 @@
 <head>
   <title>MUVBE</title>
   <meta charset="UTF-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script type="text/javascript" src="misComidas.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/style.css">
 </head>
-<html ng-app>
-  <h1>MUVBE</h1>
-  <h2>Prueba de AngularJS en MUVBE, escribe en el textbox y a aparecera el texto aqui: {{muvbeNombreUsuario}}</h2>
-  <input type="text" ng-model="muvbeNombreUsuario"></input>
-</html>
+<body ng-app="muvbe" ng-controller="muvbeController as mv">
+  <div ng-view></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+<script type="text/javascript" src="script/controller/login.js"></script>
+<script type="text/javascript" src="script/controller/content.js"></script>
+<script type="text/javascript" src="script/app.js"></script>

@@ -83,6 +83,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
     });
   }
 
+  //Convert URI to Blob to post in API
   function dataURItoBlob(dataURI) {
     // convert base64/URLEncoded data component to raw binary data held in a string
     var byteString;
@@ -102,20 +103,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
     return new Blob([ia], {type:mimeString});
   }
 
-  function toDataUrl(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function() {
-      var reader = new FileReader();
-      reader.onloadend = function() {
-        callback(reader.result);
-      }
-      reader.readAsDataURL(xhr.response);
-    };
-    xhr.open('GET', url);
-    xhr.send();
-  }
-
+  //Get Image in Base64
   function getBase64Image(img) {
     // Create an empty canvas element
     var canvas = document.createElement("canvas");
@@ -135,7 +123,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
     return dataURL;
   }
 
-
+  //Create Post
   scope.createPost = function(title, content, file, category){
     var fd = new FormData();
     imageBase = getBase64Image(document.getElementById("myImage"))

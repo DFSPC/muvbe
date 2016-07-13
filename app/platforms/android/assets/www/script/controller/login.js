@@ -123,7 +123,7 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
       posts.forEach(function(value) {
         if (value.id == postId){
-          value.urlFeaturedImage = data_image.media_details.sizes.full.source_url;
+          value.urlFeaturedImage = data_image.source_url;
         }
       });
     });

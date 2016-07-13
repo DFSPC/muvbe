@@ -36,47 +36,46 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
   //Take FILE_URL
   scope.takephotoURL = function(){
     navigator.camera.getPicture(onURLSuccess, onURLFail,
-    { quality : 75,
+    { quality : 100,
       destinationType : Camera.DestinationType.FILE_URI,
       sourceType : Camera.PictureSourceType.CAMERA,
       allowEdit : true,
       encodingType: Camera.EncodingType.PNG,
-      targetWidth: 100,
-      targetHeight: 100,
+      targetWidth: 500,
+      targetHeight: 500,
       saveToPhotoAlbum: true }
     );
   }
   function onURLSuccess(imageURI) {
-      var image = document.getElementById('myImage');
-      image.src = imageURI;
-      document.getElementById("text2").innerHTML = imageURI;
+    var image = document.getElementById('myImage');
+    image.src = imageURI;
   }
+
   function onURLFail(message) {
-      alert('Failed because: ' + message);
+    alert('No tomaste una foto!');
   }
 
   //From Library
   scope.choosePhoto = function(){
     navigator.camera.getPicture(onlibSuccess, onlibFail,
-    { quality : 75,
+    { quality : 100,
       destinationType : Camera.DestinationType.FILE_URI,
       sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit : true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 100,
-      targetHeight: 100,
+      targetWidth: 500,
+      targetHeight: 500,
       popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false }
     );
   }
   function onlibSuccess(imageURI) {
-      var image = document.getElementById('myImage');
-      image.src = imageURI;
+    var image = document.getElementById('myImage');
+    image.src = imageURI;
   }
   function onlibFail(message) {
-      alert('Failed because: ' + message);
+    alert('No seleccionaste una foto!');
   }
-
 
   scope.getCategories = function(){
     $http.get(urlAppServer + "/categories").success(function(data){
@@ -84,15 +83,71 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
     });
   }
 
+  function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ia], {type:mimeString});
+  }
+
+  function toDataUrl(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function() {
+      var reader = new FileReader();
+      reader.onloadend = function() {
+        callback(reader.result);
+      }
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.send();
+  }
+
+  function getBase64Image(img) {
+    // Create an empty canvas element
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    // Copy the image contents to the canvas
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    // Get the data-URL formatted image
+    // Firefox supports PNG and JPEG. You could check img.src to
+    // guess the original format, but be aware the using "image/jpg"
+    // will re-encode the image.
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL;
+  }
+
+
   scope.createPost = function(title, content, file, category){
     var fd = new FormData();
-    fd.append('file', file);
+    imageBase = getBase64Image(document.getElementById("myImage"))
+    var blob = dataURItoBlob(imageBase);
+    var fd = new FormData();
+    fd.append("file", blob, "image.png");
     $http.post(urlAppServer + '/media', fd, {
       transformRequest: angular.identity,
       headers: {
         "authorization": 'Basic ' + userHash,
         'content-type': undefined,
-        "content-disposition": "attachment; filename=" + file.src,
+        "content-disposition": "attachment; filename=image.png",
       }
     }).success(function (data) {
       var imagePost = data.id;
@@ -124,20 +179,3 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
 
   scope.getCategories();
 });
-
-muvbe.directive('muvbeFileModel', ['$parse', function ($parse) {
-  console.log("muvbeFileModel");
-  return {
-    restrict: 'A',
-    link: function(scope, element, attrs) {
-      var model = $parse(attrs.muvbeFileModel);
-      var modelSetter = model.assign;
-
-      element.bind('change', function(){
-        scope.$apply(function(){
-          modelSetter(scope, element[0].files[0]);
-        });
-      });
-    }
-  };
-}]);

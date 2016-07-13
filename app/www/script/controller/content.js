@@ -33,20 +33,26 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
   }
   var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
 
-  //Data URL base64
-  function takephoto(){
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-      destinationType: Camera.DestinationType.DATA_URL
-    });
+  //Take FILE_URL
+  scope.takephotoURL = function(){
+    navigator.camera.getPicture(onURLSuccess, onURLFail,
+    { quality : 100,
+      destinationType : Camera.DestinationType.FILE_URI,
+      sourceType : Camera.PictureSourceType.CAMERA,
+      allowEdit : true,
+      encodingType: Camera.EncodingType.PNG,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: true }
+    );
   }
-  function onSuccess(imageData) {
+  function onURLSuccess(imageURI) {
     var image = document.getElementById('myImage');
-    image.src = "data:image/jpeg;base64," + imageData;
-    document.getElementById("text1").innerHTML = imageData;
+    image.src = imageURI;
   }
 
-  function onFail(message) {
-    alert('Failed because: ' + message);
+  function onURLFail(message) {
+    alert('No tomaste una foto!');
   }
 
   //From Library
@@ -57,20 +63,19 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit : true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 100,
-      targetHeight: 100,
+      targetWidth: 500,
+      targetHeight: 500,
       popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false }
     );
   }
   function onlibSuccess(imageURI) {
-      var image = document.getElementById('myImage');
-      image.src = imageURI;
+    var image = document.getElementById('myImage');
+    image.src = imageURI;
   }
   function onlibFail(message) {
-      alert('Failed because: ' + message);
+    alert('No seleccionaste una foto!');
   }
-
 
   scope.getCategories = function(){
     $http.get(urlAppServer + "/categories").success(function(data){

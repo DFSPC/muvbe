@@ -92,7 +92,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       headers: {
         "authorization": 'Basic ' + userHash,
         'content-type': undefined,
-        "content-disposition": "attachment; filename=" + file.name,
+        "content-disposition": "attachment; filename=" + file.src,
       }
     }).success(function (data) {
       var imagePost = data.id;

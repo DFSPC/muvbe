@@ -38,9 +38,9 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
       templateUrl: "partials/login/exit.html",
       controller: "muvbeExitController as mec"
     })
-    .when("/get", {
+    .when("/post-info/:postId", {
       templateUrl: "partials/post/get.html",
-      controller: "get as muc"
+      controller: "muvbePostInfoController as mpic"
     })
     .when("/post", {
       templateUrl: "partials/post/post.html",

@@ -1,5 +1,4 @@
 <h1>Bienvenido(a) a MUVBE {{mpic.user.userName}}</h1>
-texto
 <div ng-repeat="post in numberPostFilter = (mpic.posts | filter:{id:$routeParams.postId}:true) track by $index">
 <h2>{{post.title}}</h2>
 <img ng-src="{{post.urlFeaturedImage}}"</img>

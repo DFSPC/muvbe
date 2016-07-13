@@ -52,12 +52,11 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   function getCategoryName(categoryId){
     if(!scope.categories){
       scope.getCategories();
-    }else{
-      categories = scope.categories;
-      for(var category in scope.categories) {
-        if (categories[category].id == categoryId){
-          return categories[category].name;
-        }
+    }
+    categories = scope.categories;
+    for(var category in scope.categories) {
+      if (categories[category].id == categoryId){
+        return categories[category].name;
       }
     }
   }

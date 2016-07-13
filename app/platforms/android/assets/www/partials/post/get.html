@@ -1,23 +1,13 @@
-<div>
-	<h1>MUVBE</h1>
-	<p>Ingresa a MUVBE</p>
-	<div class="wraper-content">
-		<div class="persona" ng-repeat="item in posts " >
-			<a href="#/details/{{posts.indexOf(item)}}">
-				<div class="name"><p> {{item.title.rendered  }} </p> </div>
-				<div class="name"> {{item.content.rendered | to_trusted  }} </div>
-				<!-- <p ng-bind-html="muc.content | to_trusted"></p>
-				<p ng-bind-html="item.content | to_trusted"></p> -->
-			</a>
-		</div>
-		<!-- <div class="name"><p>{{muc.content | to_trusted }} </p> </div>
-		<p ng-bind-html="muc.content | to_trusted"></p>
-		<p>{{muc.date}}</p> -->
-	</div>
+<h1>Bienvenido(a) a MUVBE {{mpic.user.userName}}</h1>
+<div ng-repeat="post in numberPostFilter = (mpic.posts | filter:{id:$routeParams.postId}:true) track by $index">
+<h2>{{post.title}}</h2>
+<img ng-src="{{post.urlFeaturedImage}}"</img>
+<p ng-bind-html="post.content | to_trusted"></p>
+<p>{{post.date}}</p>
+<h2>Categoria</h2>
+<p>{{post.categoryName}}</p>
+<br>
 </div>
-
-
-
-
-
-
+<a href="#/user">Volver</a>
+<a href="#/post">Crea tu post</a>
+<a href="#/exit">Salir</a>

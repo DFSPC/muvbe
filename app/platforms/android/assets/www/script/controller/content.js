@@ -1,24 +1,66 @@
 var  muvbe = angular.module('posts', []);
 
-/* Metodo get
+/* Metodo Get
 *****************************************************/
 
-muvbe.controller('get', function ($scope, $http, user ){
-  console.log('posts');
-  $http.get(urlAppServer + "/posts").success(function(data){
-    //scope.listaMisComidas = respuesta.listaComidas;
-    console.log(data);
-    // scope.title = data.title.rendered;
-    scope.content = data.content.rendered;
-    // scope.date = data.date;
-  });
+muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParams, user ){
+  console.log("muvbePostInfoController");
   var scope = this;
-  scope.user = user;
+  scope.user = JSON.parse(localStorage.getItem("userSession"));
+  if (!scope.user){
+    window.location = "#/";
+  }
 
-  //validateSession(scope.user.successLogin);
+  scope.getCategories = function(){
+    $http.get(urlAppServer + "/categories").success(function(data){
+      scope.categories = data;
+    });
+  }
+
+  var posts = new Array();
+  scope.getPostData = function(){
+    posts = new Array();
+    $http.get(urlAppServer + "/posts/" + $routeParams.postId).success(function(data){
+      console.log(data);
+      var post = new Object();
+      post.id = data.id;
+      post.title = data.title.rendered;
+      post.content = data.content.rendered;
+      post.author = data.author;
+      post.date = data.date;
+      post.categoryId = data.categories[0];
+      post.categoryName = getCategoryName(data.categories[0]);
+      getImageUrlByPost(data.id, data.featured_media);
+      posts.push(post);
+      scope.posts = posts;
+    });
+  }
+
+  scope.getCategories();
+  scope.getPostData();
+
+  function getImageUrlByPost(postId, fileId){
+    $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
+      posts.forEach(function(value) {
+        if (value.id == postId){
+          value.urlFeaturedImage = data_image.source_url;
+        }
+      });
+    });
+  }
+
+  function getCategoryName(categoryId){
+    if(!scope.categories){
+      scope.getCategories();
+    }
+    categories = scope.categories;
+    for(var category in scope.categories) {
+      if (categories[category].id == categoryId){
+        return categories[category].name;
+      }
+    }
+  }
 });
-
-
 
 /* Metodo Post
 *****************************************************/

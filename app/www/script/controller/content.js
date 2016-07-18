@@ -89,8 +89,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       sourceType : Camera.PictureSourceType.CAMERA,
       allowEdit : true,
       encodingType: Camera.EncodingType.PNG,
-      targetWidth: 500,
-      targetHeight: 500,
       saveToPhotoAlbum: true }
     );
   }
@@ -111,8 +109,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit : true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 500,
-      targetHeight: 500,
       popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false }
     );

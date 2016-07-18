@@ -1,6 +1,5 @@
-<h1>Bienvenido(a) a MUVBE {{mpic.user.userName}}</h1>
 <div ng-repeat="post in numberPostFilter = (mpic.posts | filter:{id:$routeParams.postId}:true) track by $index">
-<h2>{{post.title}}</h2>
+<h1>{{post.title}}</h1>
 <img ng-src="{{post.urlFeaturedImage}}"</img>
 <p ng-bind-html="post.content | to_trusted"></p>
 <p>{{post.date}}</p>

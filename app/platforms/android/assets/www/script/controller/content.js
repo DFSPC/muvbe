@@ -36,8 +36,14 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
     });
   }
 
-  scope.getCategories();
-  scope.getPostData();
+  scope.getPostDataAndCategories = function(){
+    $http.get(urlAppServer + "/categories").success(function(data){
+      scope.categories = data;
+      scope.getPostData();
+    });
+  }
+
+  scope.getPostDataAndCategories();
 
   function getImageUrlByPost(postId, fileId){
     $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
@@ -83,8 +89,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       sourceType : Camera.PictureSourceType.CAMERA,
       allowEdit : true,
       encodingType: Camera.EncodingType.PNG,
-      targetWidth: 500,
-      targetHeight: 500,
       saveToPhotoAlbum: true }
     );
   }
@@ -105,8 +109,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit : true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 500,
-      targetHeight: 500,
       popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false }
     );

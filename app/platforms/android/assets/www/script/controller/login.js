@@ -116,8 +116,14 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     });
   }
 
-  scope.getCategories();
-  scope.getPosts();
+  scope.getPostsAndCategories = function(){
+    $http.get(urlAppServer + "/categories").success(function(data){
+      scope.categories = data;
+      scope.getPosts();
+    });
+  }
+
+  scope.getPostsAndCategories();
 
   function getImageUrlByPost(postId, fileId){
     $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){

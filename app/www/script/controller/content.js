@@ -36,8 +36,14 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
     });
   }
 
-  scope.getCategories();
-  scope.getPostData();
+  scope.getPostDataAndCategories = function(){
+    $http.get(urlAppServer + "/categories").success(function(data){
+      scope.categories = data;
+      scope.getPostData();
+    });
+  }
+
+  scope.getPostDataAndCategories();
 
   function getImageUrlByPost(postId, fileId){
     $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){

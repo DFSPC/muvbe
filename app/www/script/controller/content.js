@@ -21,10 +21,11 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];
 
+  scope.postId = $routeParams.postId;
   var posts = new Array();
   scope.getPostData = function(){
     posts = new Array();
-    $http.get(urlAppServer + "/posts/" + $routeParams.postId).success(function(data){
+    $http.get(urlAppServer + "/posts/" + scope.postId).success(function(data){
       console.log(data);
       var post = new Object();
       post.id = data.id;
@@ -48,7 +49,11 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
     });
   }
 
-  scope.getPostDataAndCategories();
+  if (localStorage.getItem("posts")){
+    scope.posts = JSON.parse(localStorage.getItem("posts"));
+  }else{
+    scope.getPostDataAndCategories();
+  }
 
   function getImageUrlByPost(postId, fileId){
     $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){

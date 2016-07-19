@@ -5,11 +5,21 @@
 <h2>Elije Categoria</h2>
 <select ng-model="muc.category" ng-options="category.id as category.name for category in muc.categories track by category.id" ng-change="filterPosts = {categoryId:muc.category}">
 <option value="">--Elige opcion--</option></select>
-<div ng-repeat="post in numberPostFilter = (muc.posts | filter:filterPosts:true) track by $index">
-<br>
-<a href="#/post-info/{{post.id}}"> <img ng-src="{{post.urlFeaturedImage}}"</img></a>
-<br>
+
+<div class="content-time">
+	<div ng-repeat="post in numberPostFilter = (muc.posts | filter:filterPosts:true) track by $index">
+		<div class="item-box">
+			<a href="#/post-info/{{post.id}}">
+				<img ng-src="{{post.urlFeaturedImage}}"></img>
+			</a>
+		</div>
+	</div>
 </div>
+
 <p ng-show="!numberPostFilter.length">No se encontaron posts</p>
-<a href="#/post">Crea tu post</a>
-<a href="#/exit">Salir</a>
+
+<div class="nav-aux">
+	<a href="#/post">Crea tu post</a>
+	<a href="#/exit">Salir</a>
+</div>
+

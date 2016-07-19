@@ -17,6 +17,10 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
     });
   }
 
+  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
+
   var posts = new Array();
   scope.getPostData = function(){
     posts = new Array();
@@ -27,7 +31,8 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       post.title = data.title.rendered;
       post.content = data.content.rendered;
       post.author = data.author;
-      post.date = data.date;
+      var datePost = new Date(data.date);
+      post.date = datePost.getDay() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
       post.categoryId = data.categories[0];
       post.categoryName = getCategoryName(data.categories[0]);
       getImageUrlByPost(data.id, data.featured_media);
@@ -89,8 +94,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       sourceType : Camera.PictureSourceType.CAMERA,
       allowEdit : true,
       encodingType: Camera.EncodingType.PNG,
-      targetWidth: 500,
-      targetHeight: 500,
+      targetWidth: 640,
+      targetHeight: 640,
       saveToPhotoAlbum: true }
     );
   }
@@ -111,8 +116,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit : true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 500,
-      targetHeight: 500,
+      targetWidth: 640,
+      targetHeight: 640,
       popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false }
     );
@@ -155,8 +160,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
   function getBase64Image(img) {
     // Create an empty canvas element
     var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
+    canvas.width = 640;
+    canvas.height = 640;
 
     // Copy the image contents to the canvas
     var ctx = canvas.getContext("2d");

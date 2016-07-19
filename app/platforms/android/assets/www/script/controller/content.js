@@ -89,8 +89,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       sourceType : Camera.PictureSourceType.CAMERA,
       allowEdit : true,
       encodingType: Camera.EncodingType.PNG,
-      targetWidth: 500,
-      targetHeight: 500,
+      targetWidth: 640,
+      targetHeight: 640,
       saveToPhotoAlbum: true }
     );
   }
@@ -111,8 +111,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit : true,
       encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 500,
-      targetHeight: 500,
+      targetWidth: 640,
+      targetHeight: 640,
       popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false }
     );
@@ -155,8 +155,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
   function getBase64Image(img) {
     // Create an empty canvas element
     var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
+    canvas.width = 640;
+    canvas.height = 640;
 
     // Copy the image contents to the canvas
     var ctx = canvas.getContext("2d");

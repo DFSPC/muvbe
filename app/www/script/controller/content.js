@@ -32,7 +32,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       post.content = data.content.rendered;
       post.author = data.author;
       var datePost = new Date(data.date);
-      post.date = datePost.getDay() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
+      post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
       post.categoryId = data.categories[0];
       post.categoryName = getCategoryName(data.categories[0]);
       getImageUrlByPost(data.id, data.featured_media);

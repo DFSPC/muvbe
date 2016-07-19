@@ -96,10 +96,14 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     });
   }
 
+  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
+
   var posts = new Array();
   scope.getPosts = function(){
     posts = new Array();
-    $http.get(urlAppServer + "/posts").success(function(data){
+    $http.get(urlAppServer + "/posts?per_page=100").success(function(data){
       for(var post_data in data) {
         var post = new Object();
         post.id = data[post_data].id;
@@ -107,6 +111,8 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
         post.content = data[post_data].content.rendered;
         post.author = data[post_data].author;
         post.date = data[post_data].date;
+        var datePost = new Date(data[post_data].date);
+        post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
         post.categoryId = data[post_data].categories[0];
         post.categoryName = getCategoryName(data[post_data].categories[0]);
         getImageUrlByPost(data[post_data].id, data[post_data].featured_media);
@@ -123,7 +129,11 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     });
   }
 
-  scope.getPostsAndCategories();
+  if (localStorage.getItem("posts")){
+    scope.posts = JSON.parse(localStorage.getItem("posts"));
+  }else{
+    scope.getPostsAndCategories();
+  }
 
   function getImageUrlByPost(postId, fileId){
     $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
@@ -132,6 +142,7 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
           value.urlFeaturedImage = data_image.source_url;
         }
       });
+      localStorage.setItem("posts", JSON.stringify(scope.posts));
     });
   }
 

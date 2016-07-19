@@ -398,4 +398,28 @@ img {
   height: auto;
   max-width: 100%; }
 
+.item-box {
+  float: left;
+  width: 31.3333%;
+  margin: 1%; }
+
+.nav-aux {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.55); }
+  .nav-aux a {
+    color: white;
+    text-decoration: none;
+    width: 50%;
+    float: left;
+    padding: 5px  0; }
+
+.aux-2 a {
+  width: 33%; }
+
+.content-time {
+  display: table;
+  margin-bottom: 35px; }
+
 /*# sourceMappingURL=../sass */

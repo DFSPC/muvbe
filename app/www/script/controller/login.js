@@ -99,7 +99,7 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
   var posts = new Array();
   scope.getPosts = function(){
     posts = new Array();
-    $http.get(urlAppServer + "/posts").success(function(data){
+    $http.get(urlAppServer + "/posts?per_page=100").success(function(data){
       for(var post_data in data) {
         var post = new Object();
         post.id = data[post_data].id;

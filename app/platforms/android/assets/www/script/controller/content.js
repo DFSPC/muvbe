@@ -17,6 +17,10 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
     });
   }
 
+  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
+
   var posts = new Array();
   scope.getPostData = function(){
     posts = new Array();
@@ -27,7 +31,8 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       post.title = data.title.rendered;
       post.content = data.content.rendered;
       post.author = data.author;
-      post.date = data.date;
+      var datePost = new Date(data.date);
+      post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
       post.categoryId = data.categories[0];
       post.categoryName = getCategoryName(data.categories[0]);
       getImageUrlByPost(data.id, data.featured_media);

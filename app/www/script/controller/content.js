@@ -4,7 +4,6 @@ var  muvbe = angular.module('posts', []);
 *****************************************************/
 
 muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParams, user ){
-  console.log("muvbePostInfoController");
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
   if (!scope.user){
@@ -26,7 +25,6 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   scope.getPostData = function(){
     posts = new Array();
     $http.get(urlAppServer + "/posts/" + scope.postId).success(function(data){
-      console.log(data);
       var post = new Object();
       post.id = data.id;
       post.title = data.title.rendered;
@@ -81,11 +79,9 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
 /* Metodo Post
 *****************************************************/
 muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
-  console.log("muvbeCreatePostController");
   // variables
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
-  console.log(scope.user);
   if (!scope.user){
     window.location = "#/";
   }
@@ -207,7 +203,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
           "status" : status
         });
 
-        console.log(data);
         $http({
           method: 'POST',
           url: urlAppServer + '/posts',

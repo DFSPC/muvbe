@@ -7,13 +7,11 @@ muvbe.factory("user",function(){
 
 //CONTROLLERS
 muvbe.controller('muvbeController', function ($scope, user){
-  console.log('muvbeController');
   var scope = this;
   scope.user = user;
 });
 
 muvbe.controller('muvbeHomeController', function ($scope, $http, user){
-  console.log('muvbeHomeController');
   var scope = this;
   //scope.user = user;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
@@ -47,7 +45,6 @@ muvbe.controller('muvbeHomeController', function ($scope, $http, user){
 /* Crea New User
 ************************************************/
 muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
-  console.log('muvbeSignUpController');
   var scope = this;
   scope.user = user;
   scope.createUser = function(userName, userEmail, userPassword){
@@ -83,7 +80,6 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
 });
 
 muvbe.controller('muvbeUserController', function ($scope, $http, user){
-  console.log('muvbeUserController');
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
   if (!scope.user){
@@ -164,7 +160,6 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
 });
 
 muvbe.controller('muvbeExitController', function ($scope, user){
-  console.log('muvbeExitController');
   var scope = this;
   scope.user = user;
   killSession(scope.user);
@@ -176,7 +171,6 @@ function validateSession(successLogin){
 
   if (!successLogin){
     window.location = "#/";
-    console.log('no login');
   }
 }
 

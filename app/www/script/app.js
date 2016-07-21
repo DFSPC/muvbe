@@ -11,6 +11,7 @@ var muvbe = angular.module('muvbe', [
   'ngRoute',
   'peopleController',
   'posts',
+  'listcategory',
 ]);
 
 var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2'
@@ -49,6 +50,17 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     .when("/validate", {
       templateUrl: "partials/post/validate.html",
       controller: "muvbeCreatePostController as mcpc"
+    })
+    /*
+    **  Categorys
+    **********************************************/
+    .when("/categories", {
+      templateUrl: "partials/categoria/list.html",
+      controller: "muvbeListCategotyController as mlc"
+    })
+    .when("/categories/:categoryId", {
+      templateUrl: "partials/categoria/detail.html",
+      controller: "muvbeDetailCategotyController as mdc"
     })
     //default url
     .otherwise({redirectTo: "/" });

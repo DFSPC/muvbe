@@ -1,0 +1,14 @@
+<div class="wrapper">
+	<div class="info">Categorias</div>
+	<div ng-repeat="category in mlc.categories | filter:{ id: '!1'} track by category.id">
+	<div class="wrapper">
+		<a href="#/categories/{{ category.id }}" class="link link-category">
+			<div class="name-category" > {{ category.name }} </div>
+		</a>
+	</div>
+	<div class="nav-aux aux-2">
+		<a href="javascript:history.back(1)">Volver</a>
+		<a href="#/post">Crea tu post</a>
+		<a href="#/exit">Salir</a>
+	</div>
+</div>

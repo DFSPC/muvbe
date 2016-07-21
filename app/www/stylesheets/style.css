@@ -420,6 +420,7 @@ img {
 
 .content-time {
   display: table;
-  margin-bottom: 35px; }
+  margin-bottom: 35px;
+  width: 100%; }
 
 /*# sourceMappingURL=../sass */

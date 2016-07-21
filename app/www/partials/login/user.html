@@ -4,7 +4,7 @@
 <button ng-click="filterPosts = {author:muc.user.id}; muc.category = ''">Mis posts</button>
 
 <h2>Elije Categoria</h2>
-div
+
 
 <select ng-model="muc.category" ng-options="category.id as category.name for category in muc.categories | filter:{ id: '!1'} track by category.id" ng-change="filterPosts = {categoryId:muc.category}">
 <option value="">--Elige opcion--</option></select>

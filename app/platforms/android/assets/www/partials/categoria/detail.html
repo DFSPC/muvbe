@@ -1,0 +1,22 @@
+<div class="wrapper">
+
+	<h1 class="info">{{mdc.categoryName}}</h1>
+
+
+	<div class="content-time">
+		<div ng-repeat="post in mdc.posts | filter:{ categoryId:mdc.categoryId} track by $index">
+
+			<div class="item-box">
+				<a href="#/post-info/{{post.id}}">
+					<img ng-src="{{post.urlFeaturedImage}}"></img>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-aux aux-2">
+			<a href="javascript:history.back(1)">Volver</a>
+			<a href="#/post">Crea tu post</a>
+			<a href="#/exit">Salir</a>
+	</div>
+</div>
+

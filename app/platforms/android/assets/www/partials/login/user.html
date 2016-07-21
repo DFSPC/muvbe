@@ -2,7 +2,10 @@
 
 <button ng-click="muc.getPostsAndCategories(); filterPosts = {}; muc.category = ''";>Ultimos posts</button>
 <button ng-click="filterPosts = {author:muc.user.id}; muc.category = ''">Mis posts</button>
+
 <h2>Elije Categoria</h2>
+
+
 <select ng-model="muc.category" ng-options="category.id as category.name for category in muc.categories | filter:{ id: '!1'} track by category.id" ng-change="filterPosts = {categoryId:muc.category}">
 <option value="">--Elige opcion--</option></select>
 
@@ -20,6 +23,8 @@
 
 <div class="nav-aux">
 	<a href="#/post">Crea tu post</a>
+	<a href="#/categories">Categorias</a>
 	<a href="#/exit">Salir</a>
 </div>
+
 

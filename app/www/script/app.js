@@ -47,10 +47,6 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
       templateUrl: "partials/post/post.html",
       controller: "muvbeCreatePostController as mcpc"
     })
-    .when("/validate", {
-      templateUrl: "partials/post/validate.html",
-      controller: "muvbeCreatePostController as mcpc"
-    })
     /*
     **  Categorys
     **********************************************/

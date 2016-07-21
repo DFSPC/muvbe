@@ -93,6 +93,7 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
   scope.getCategories = function(){
     $http.get(urlAppServer + "/categories").success(function(data){
       scope.categories = data;
+      localStorage.setItem("categories", JSON.stringify(scope.categories));
     });
   }
 
@@ -125,12 +126,14 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
   scope.getPostsAndCategories = function(){
     $http.get(urlAppServer + "/categories").success(function(data){
       scope.categories = data;
+      localStorage.setItem("categories", JSON.stringify(scope.categories));
       scope.getPosts();
     });
   }
 
-  if (localStorage.getItem("posts")){
+  if (localStorage.getItem("posts") && localStorage.getItem("categories")){
     scope.posts = JSON.parse(localStorage.getItem("posts"));
+    scope.categories = JSON.parse(localStorage.getItem("categories"));
   }else{
     scope.getPostsAndCategories();
   }

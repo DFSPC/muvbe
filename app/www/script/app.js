@@ -12,6 +12,7 @@ var muvbe = angular.module('muvbe', [
   'peopleController',
   'posts',
   'listcategory',
+  'listAuthor',
 ]);
 
 var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2'
@@ -57,6 +58,14 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     .when("/categories/:categoryId", {
       templateUrl: "partials/categoria/detail.html",
       controller: "muvbeDetailCategotyController as mdc"
+    })
+     /*
+    **  User
+    **********************************************/
+   
+    .when("/author/:authorId", {
+      templateUrl: "partials/author/detail.html",
+      controller: "muvbeDetailAuthorController as mda"
     })
     //default url
     .otherwise({redirectTo: "/" });

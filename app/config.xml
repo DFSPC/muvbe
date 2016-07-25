@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.brandinasty.muvbe" version="0.2.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MUVBE</name>
+    <name>Bogotá Efimera</name>
     <description>
-        Museo Urbano Virtual Bogota Efimera.
+        Museo Urbano Virtual Bogotá Efimera.
     </description>
     <author email="kmilo.vanegas@gmail.com" href="http://brandinasty.com/">
         MUVBE Team

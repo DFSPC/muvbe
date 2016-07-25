@@ -93,6 +93,13 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     });
   }
 
+  scope.getUsers = function(){
+    $http.get(urlAppServer + "/users").success(function(data){
+      scope.users = data;
+      localStorage.setItem("users", JSON.stringify(scope.users));
+    });
+  }
+
   var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];

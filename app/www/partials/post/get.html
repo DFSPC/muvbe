@@ -2,16 +2,12 @@
 <h1>{{post.title}}</h1>
 <img ng-src="{{post.urlFeaturedImage}}"</img>
 <p ng-bind-html="post.content | to_trusted"></p>
-<p>{{post.date}}</p>
-<h2>Categoria</h2>
-<p>{{post.categoryName}}</p>
+<p>Añadido el dia: {{post.date}}</p>
+<p>Categoria: <a href="#/categories/{{post.categoryId}}">{{post.categoryName}}</a></p>
 <br>
 </div>
 <div class="nav-aux aux-2">
-
 	<a href="javascript:history.back(1)">Volver</a>
-
 	<a href="#/post">Crea tu post</a>
 	<a href="#/exit">Salir</a>
 </div>
-

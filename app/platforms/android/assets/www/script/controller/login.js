@@ -93,6 +93,13 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     });
   }
 
+  scope.getUsers = function(){
+    $http.get(urlAppServer + "/users").success(function(data){
+      scope.users = data;
+      localStorage.setItem("users", JSON.stringify(scope.users));
+    });
+  }
+
   var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];
@@ -107,6 +114,7 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
         post.title = data[post_data].title.rendered;
         post.content = data[post_data].content.rendered;
         post.author = data[post_data].author;
+        post.authorName = getAuthorName(data[post_data].author);
         post.date = data[post_data].date;
         var datePost = new Date(data[post_data].date);
         post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
@@ -119,19 +127,24 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     });
   }
 
-  scope.getPostsAndCategories = function(){
+  scope.getPostsAndUsersAndCategories = function(){
     $http.get(urlAppServer + "/categories").success(function(data){
       scope.categories = data;
       localStorage.setItem("categories", JSON.stringify(scope.categories));
-      scope.getPosts();
+      $http.get(urlAppServer + "/users").success(function(dataUsers){
+        scope.users = dataUsers;
+        localStorage.setItem("users", JSON.stringify(scope.users));
+        scope.getPosts();
+      });
     });
   }
 
-  if (localStorage.getItem("posts") && localStorage.getItem("categories")){
+  if (localStorage.getItem("posts") && localStorage.getItem("categories") && localStorage.getItem("users")){
     scope.posts = JSON.parse(localStorage.getItem("posts"));
     scope.categories = JSON.parse(localStorage.getItem("categories"));
+    scope.users = JSON.parse(localStorage.getItem("users"));
   }else{
-    scope.getPostsAndCategories();
+    scope.getPostsAndUsersAndCategories();
   }
 
   function getImageUrlByPost(postId, fileId){
@@ -153,6 +166,19 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
       for(var category in scope.categories) {
         if (categories[category].id == categoryId){
           return categories[category].name;
+        }
+      }
+    }
+  }
+
+  function getAuthorName(authorId){
+    if(!scope.users){
+      scope.getUsers();
+    }else{
+      users = scope.users;
+      for(var user in scope.users) {
+        if (users[user].id == authorId){
+          return users[user].name;
         }
       }
     }

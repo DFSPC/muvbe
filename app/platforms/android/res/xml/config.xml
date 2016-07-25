@@ -9,9 +9,9 @@
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
     <allow-intent href="market:*" />
-    <name>MUVBE</name>
+    <name>Bogotá Efimera</name>
     <description>
-        Museo Urbano Virtual Bogota Efimera.
+        Museo Urbano Virtual Bogotá Efimera.
     </description>
     <author email="kmilo.vanegas@gmail.com" href="http://brandinasty.com/">
         MUVBE Team

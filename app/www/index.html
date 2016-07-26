@@ -10,7 +10,9 @@
   <div ng-if='mv.user.successLogin' ng-include="'partials/elements/header.html'"></div>
 
   <!-- render -->
-  <div ng-view autoscroll></div>
+  <div class="content">
+  	<div ng-view autoscroll></div>
+  </div>
 
 	<!-- footer -->
   <div ng-if='mv.user.successLogin' ng-include="'partials/elements/footer.html'"></div>

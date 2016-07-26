@@ -1,9 +1,8 @@
-var  muvbe = angular.module('posts', []);
 
 /* Metodo Get
 *****************************************************/
 
-muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParams, user ){
+muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParams){
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
   if (!scope.user){
@@ -53,7 +52,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
 
 /* Metodo Post
 *****************************************************/
-muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
+muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
   // variables
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
@@ -219,7 +218,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       });
       scope.posts = posts;
       localStorage.setItem("posts", JSON.stringify(scope.posts));
-      window.location = "#/user";
     });
   }
 

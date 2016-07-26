@@ -1,9 +1,8 @@
-var  muvbe = angular.module('listAuthor', []);
 
 /* Metodo Get Detail
 *****************************************************/
 
-muvbe.controller('muvbeDetailAuthorController', function ($scope, $http, $routeParams, user ){
+muvbe.controller('muvbeDetailAuthorController', function ($scope, $http, $routeParams ){
 
 	var scope = this;
 
@@ -21,10 +20,6 @@ muvbe.controller('muvbeDetailAuthorController', function ($scope, $http, $routeP
     });
   }
 
-
-
-
-
 	if (localStorage.getItem("categories")){
 		scope.categories = JSON.parse(localStorage.getItem("categories"));
 	}else{
@@ -37,9 +32,6 @@ muvbe.controller('muvbeDetailAuthorController', function ($scope, $http, $routeP
 	}else{
 		scope.getUsers();
 	}
-
-
-
 
 	scope.authorId = $routeParams.authorId;
 	scope.authorName = getAuthorName(scope.authorId);

@@ -13,6 +13,42 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   if (localStorage.getItem("posts")){
     scope.posts = JSON.parse(localStorage.getItem("posts"));
   }
+  var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
+
+  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
+
+  scope.addComment = function(content){
+    var data = JSON.stringify({
+      "content" : content,
+      "post" : scope.postId,
+    });
+
+    $http({
+      method: 'POST',
+      url: urlAppServer + '/comments',
+      headers: {
+        'authorization': 'Basic ' + userHash,
+        'content-type': 'application/json',
+      },
+      data: data,
+    }).success(function (data) {
+      posts = scope.posts;
+      posts.forEach(function(value) {
+        if (value.id == scope.postId){
+          var commentInfo = new Object();
+          commentInfo.user = data.author_name;
+          var dateComment = new Date(data.date);
+          commentInfo.date = dateComment.getDate() + " de " + monthNames[dateComment.getMonth()] + " del " + dateComment.getFullYear();
+          commentInfo.content = data.content.rendered;
+          value.comments.push(commentInfo);
+        }
+      });
+      scope.posts = posts;
+      localStorage.setItem("posts", JSON.stringify(scope.posts));
+    });
+  }
 });
 
 /* Metodo Post

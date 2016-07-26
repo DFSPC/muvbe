@@ -11,6 +11,12 @@ var muvbe = angular.module('muvbe', [
   'ngRoute',
 ]);
 
+muvbe.controller('muvbeController', function ($scope){
+  var scope = this;
+  scope.user = JSON.parse(localStorage.getItem("userSession"));
+});
+
+
 var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2'
 
 //ROUTING

@@ -16,8 +16,10 @@ muvbe.controller('muvbeHomeController', function ($scope, $http){
         scope.user.id = data.body.id;
         scope.user.userName = userName;
         scope.user.userPassword = userPassword;
+        scope.user.avatar = data.body.avatar_urls['96'];
         scope.messageLogin = 'Gracias por Ingresar';
         localStorage.setItem("userSession", JSON.stringify(scope.user));
+        $scope.mv.user = scope.user;
         window.location = "#/user";
       }else{
         scope.successLogin = false;
@@ -60,6 +62,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
       scope.user.userEmail = userEmail;
       scope.messageLogin = 'Gracias por Ingresar';
       localStorage.setItem("userSession", JSON.stringify(scope.user));
+      $scope.mv.user = scope.user;
       window.location = "#/user";
     });
   }
@@ -67,10 +70,11 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
 
 
 
-muvbe.controller('muvbeExitController', function ($scope, user){
+muvbe.controller('muvbeExitController', function ($scope){
   var scope = this;
-  scope.user = user;
+  scope.user = JSON.parse(localStorage.getItem("userSession"));
   killSession(scope.user);
+  killSession($scope.mv.user);
   window.location = "#/";
 });
 

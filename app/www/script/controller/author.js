@@ -6,6 +6,11 @@ muvbe.controller('muvbeDetailAuthorController', function ($scope, $http, $routeP
 
 	var scope = this;
 
+	scope.user = JSON.parse(localStorage.getItem("userSession"));
+	if (!scope.user){
+    window.location = "#/";
+  }
+
 	scope.getCategories = function(){
     $http.get(urlAppServer + "/categories").success(function(data){
       scope.categories = data;

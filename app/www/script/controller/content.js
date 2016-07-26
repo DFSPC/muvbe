@@ -218,6 +218,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
       });
       scope.posts = posts;
       localStorage.setItem("posts", JSON.stringify(scope.posts));
+      window.location = "#/home";
     });
   }
 

@@ -86,17 +86,31 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     window.location = "#/";
   }
 
+  scope.getMedia = function(){
+    $http.get(urlAppServer + "/media?per_page=100").success(function(data){
+      scope.media = data;
+      localStorage.setItem("media", JSON.stringify(scope.media));
+    });
+  }
+
   scope.getCategories = function(){
-    $http.get(urlAppServer + "/categories").success(function(data){
+    $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
       scope.categories = data;
       localStorage.setItem("categories", JSON.stringify(scope.categories));
     });
   }
 
   scope.getUsers = function(){
-    $http.get(urlAppServer + "/users").success(function(data){
+    $http.get(urlAppServer + "/users?per_page=100").success(function(data){
       scope.users = data;
       localStorage.setItem("users", JSON.stringify(scope.users));
+    });
+  }
+
+  scope.getComments = function(){
+    $http.get(urlAppServer + "/comments?per_page=100").success(function(data){
+      scope.comments = data;
+      localStorage.setItem("comments", JSON.stringify(scope.comments));
     });
   }
 
@@ -120,42 +134,58 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
         post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
         post.categoryId = data[post_data].categories[0];
         post.categoryName = getCategoryName(data[post_data].categories[0]);
-        getImageUrlByPost(data[post_data].id, data[post_data].featured_media);
+        post.mediaId = data[post_data].featured_media;
+        getImageUrlByMediaId();
         posts.push(post);
         scope.posts = posts;
       }
     });
   }
 
-  scope.getPostsAndUsersAndCategories = function(){
-    $http.get(urlAppServer + "/categories").success(function(data){
+  scope.getAllData = function(){
+    $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
       scope.categories = data;
       localStorage.setItem("categories", JSON.stringify(scope.categories));
-      $http.get(urlAppServer + "/users").success(function(dataUsers){
+      $http.get(urlAppServer + "/users?per_page=100").success(function(dataUsers){
         scope.users = dataUsers;
         localStorage.setItem("users", JSON.stringify(scope.users));
-        scope.getPosts();
+        $http.get(urlAppServer + "/comments?per_page=100").success(function(dataComments){
+          scope.comments = dataComments;
+          localStorage.setItem("comments", JSON.stringify(scope.comments));
+          $http.get(urlAppServer + "/media?per_page=100").success(function(dataMedia){
+            scope.media = dataMedia;
+            localStorage.setItem("media", JSON.stringify(scope.media));
+            scope.getPosts();
+          });
+        });
       });
     });
   }
 
   if (localStorage.getItem("posts") && localStorage.getItem("categories") && localStorage.getItem("users")){
+    scope.media = JSON.parse(localStorage.getItem("media"));
+    scope.comments = JSON.parse(localStorage.getItem("comments"));
     scope.posts = JSON.parse(localStorage.getItem("posts"));
     scope.categories = JSON.parse(localStorage.getItem("categories"));
     scope.users = JSON.parse(localStorage.getItem("users"));
   }else{
-    scope.getPostsAndUsersAndCategories();
+    scope.getAllData();
   }
 
-  function getImageUrlByPost(postId, fileId){
-    $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
+  function getImageUrlByMediaId(){
+    if(!scope.media){
+      scope.getMedia();
+    }else{
+      var media = scope.media;
       posts.forEach(function(value) {
-        if (value.id == postId){
-          value.urlFeaturedImage = data_image.source_url;
+        for(var media_data in media) {
+          if (value.mediaId == media[media_data].id){
+            value.urlFeaturedImage = media[media_data].source_url;
+          }
         }
       });
       localStorage.setItem("posts", JSON.stringify(scope.posts));
-    });
+    }
   }
 
   function getCategoryName(categoryId){
@@ -181,6 +211,20 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
           return users[user].name;
         }
       }
+    }
+  }
+
+  function getCommentsByPost(postId){
+    if(!scope.comments){
+      scope.getComments();
+    }else{
+      var comments = scope.comments;
+      posts.forEach(function(value) {
+        if (value.id == postId){
+          value.comments = data_image.source_url;
+        }
+      });
+      localStorage.setItem("posts", JSON.stringify(scope.posts));
     }
   }
 });

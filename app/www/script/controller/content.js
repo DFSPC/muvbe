@@ -9,70 +9,9 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   if (!scope.user){
     window.location = "#/";
   }
-
-  scope.getCategories = function(){
-    $http.get(urlAppServer + "/categories").success(function(data){
-      scope.categories = data;
-    });
-  }
-
-  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-  ];
-
   scope.postId = $routeParams.postId;
-  var posts = new Array();
-  scope.getPostData = function(){
-    posts = new Array();
-    $http.get(urlAppServer + "/posts/" + scope.postId).success(function(data){
-      var post = new Object();
-      post.id = data.id;
-      post.title = data.title.rendered;
-      post.content = data.content.rendered;
-      post.author = data.author;
-      var datePost = new Date(data.date);
-      post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
-      post.categoryId = data.categories[0];
-      post.categoryName = getCategoryName(data.categories[0]);
-      getImageUrlByPost(data.id, data.featured_media);
-      posts.push(post);
-      scope.posts = posts;
-    });
-  }
-
-  scope.getPostDataAndCategories = function(){
-    $http.get(urlAppServer + "/categories").success(function(data){
-      scope.categories = data;
-      scope.getPostData();
-    });
-  }
-
   if (localStorage.getItem("posts")){
     scope.posts = JSON.parse(localStorage.getItem("posts"));
-  }else{
-    scope.getPostDataAndCategories();
-  }
-
-  function getImageUrlByPost(postId, fileId){
-    $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
-      posts.forEach(function(value) {
-        if (value.id == postId){
-          value.urlFeaturedImage = data_image.source_url;
-        }
-      });
-    });
-  }
-
-  function getCategoryName(categoryId){
-    if(!scope.categories){
-      scope.getCategories();
-    }
-    categories = scope.categories;
-    for(var category in scope.categories) {
-      if (categories[category].id == categoryId){
-        return categories[category].name;
-      }
-    }
   }
 });
 

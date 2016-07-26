@@ -135,10 +135,12 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
         post.categoryId = data[post_data].categories[0];
         post.categoryName = getCategoryName(data[post_data].categories[0]);
         post.mediaId = data[post_data].featured_media;
-        getImageUrlByMediaId();
+        getImageUrlByPost(post, data[post_data].featured_media);
+        getCommentsByPost(post);
         posts.push(post);
         scope.posts = posts;
       }
+      localStorage.setItem("posts", JSON.stringify(scope.posts));
     });
   }
 
@@ -172,19 +174,35 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     scope.getAllData();
   }
 
-  function getImageUrlByMediaId(){
+  function getImageUrlByPost(post, mediaId){
     if(!scope.media){
       scope.getMedia();
     }else{
       var media = scope.media;
-      posts.forEach(function(value) {
-        for(var media_data in media) {
-          if (value.mediaId == media[media_data].id){
-            value.urlFeaturedImage = media[media_data].source_url;
-          }
+      for(var media_data in media) {
+        if (mediaId == media[media_data].id){
+          post.urlFeaturedImage = media[media_data].source_url;
         }
-      });
-      localStorage.setItem("posts", JSON.stringify(scope.posts));
+      }
+    }
+  }
+
+  function getCommentsByPost(post){
+    if(!scope.comments){
+      scope.comments();
+    }else{
+      var comments = scope.comments;
+      post.comments = Array();
+      for(var comments_data in comments) {
+        if (post.id == comments[comments_data].post){
+          var commentInfo = new Object();
+          commentInfo.user = comments[comments_data].author_name;
+          var dateComment = new Date(comments[comments_data].date);
+          commentInfo.date = dateComment.getDate() + " de " + monthNames[dateComment.getMonth()] + " del " + dateComment.getFullYear();
+          commentInfo.content = comments[comments_data].content.rendered;
+          post.comments.push(commentInfo);
+        }
+      }
     }
   }
 
@@ -214,19 +232,6 @@ muvbe.controller('muvbeUserController', function ($scope, $http, user){
     }
   }
 
-  function getCommentsByPost(postId){
-    if(!scope.comments){
-      scope.getComments();
-    }else{
-      var comments = scope.comments;
-      posts.forEach(function(value) {
-        if (value.id == postId){
-          value.comments = data_image.source_url;
-        }
-      });
-      localStorage.setItem("posts", JSON.stringify(scope.posts));
-    }
-  }
 });
 
 muvbe.controller('muvbeExitController', function ($scope, user){

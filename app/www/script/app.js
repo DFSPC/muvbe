@@ -28,7 +28,7 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     **********************************************/
     .when("/", {
       templateUrl: "partials/login/login.html",
-      controller: "muvbeHomeController as mhc"
+      controller: "muvbeLoginController as mlc"
     })
     .when("/signup", {
       templateUrl: "partials/login/signup.html",
@@ -44,7 +44,7 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     **********************************************/
     .when("/home", {
       templateUrl: "partials/home/home.html",
-      controller: "muvbeUserController as muc"
+      controller: "muvbeHomeController as mhc"
     })
 
     /*

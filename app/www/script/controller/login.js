@@ -1,4 +1,4 @@
-muvbe.controller('muvbeHomeController', function ($scope, $http){
+muvbe.controller('muvbeLoginController', function ($scope, $http){
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
   if (scope.user){
@@ -20,7 +20,7 @@ muvbe.controller('muvbeHomeController', function ($scope, $http){
         scope.messageLogin = 'Gracias por Ingresar';
         localStorage.setItem("userSession", JSON.stringify(scope.user));
         $scope.mv.user = scope.user;
-        window.location = "#/user";
+        window.location = "#/home";
       }else{
         scope.successLogin = false;
         scope.messageLogin = 'Error al ingresar, verifique sus credenciales';

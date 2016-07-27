@@ -1,12 +1,15 @@
-var  muvbe = angular.module('listcategory', []);
 
 
 /* Metodo Get List
 *****************************************************/
-muvbe.controller('muvbeListCategotyController', function ($scope, $http, user ){
+muvbe.controller('muvbeListCategotyController', function ($scope, $http ){
 
 	var scope = this;
 
+	scope.user = JSON.parse(localStorage.getItem("userSession"));
+  if (!scope.user){
+    window.location = "#/";
+  }
 	scope.getCategories = function(){
 	    $http.get(urlAppServer + "/categories").success(function(data){
 	      scope.categories = data;
@@ -21,8 +24,6 @@ muvbe.controller('muvbeListCategotyController', function ($scope, $http, user ){
 		scope.getCategories();
 	}
 
-
-
 });
 
 
@@ -30,7 +31,7 @@ muvbe.controller('muvbeListCategotyController', function ($scope, $http, user ){
 /* Metodo Get Detail
 *****************************************************/
 
-muvbe.controller('muvbeDetailCategotyController', function ($scope, $http, $routeParams, user ){
+muvbe.controller('muvbeDetailCategotyController', function ($scope, $http, $routeParams ){
 
 	var scope = this;
 
@@ -39,10 +40,6 @@ muvbe.controller('muvbeDetailCategotyController', function ($scope, $http, $rout
 	      scope.categories = data;
 	    });
   	};
-
-
-
-
 
 	if (localStorage.getItem("categories")){
 		scope.categories = JSON.parse(localStorage.getItem("categories"));

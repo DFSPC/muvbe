@@ -1,15 +1,24 @@
-<h1>Museo Urbano Virtual Bopotá Efimera</h1>
-<p>Ingresa a nuestra plataforma</p>
-<form>
-  <p>Usuario</p>
-  <input type="text" ng-model="mhc.user.userName" required></input>
-  <p>Contraseña</p>
-  <input type="password" ng-model="mhc.user.userPassword" required></input>
-  <br>
-  <br>
-  <input type="button" ng-click="mhc.showMessage='true'; mhc.validateLogin(mhc.user.userName, mhc.user.userPassword);" value="Ingresar"></input>
-  <br>
-  <br>
-  <a href="#/signup">Crea tu Cuenta</a>
-</form>
-<p ng-show="mhc.showMessage">{{mhc.messageLogin}}</p>
+<h1>Bienvenido(a) a Bogotá Efimera {{muc.user.userName}}</h1>
+
+<button ng-click="muc.getAllData(); filterPosts = {}; muc.category = ''";>Ultimos posts</button>
+<button ng-click="filterPosts = {author:muc.user.id}; muc.category = ''">Mis posts</button>
+
+<h2>Elije Categoria</h2>
+
+
+<select ng-model="muc.category" ng-options="category.id as category.name for category in muc.categories | filter:{ id: '!1'} track by category.id" ng-change="filterPosts = {categoryId:muc.category}">
+<option value="">--Elige opcion--</option></select>
+
+<div class="content-time">
+	<div ng-repeat="post in numberPostFilter = (muc.posts | filter:filterPosts:true) track by $index">
+		<div class="item-box">
+			<a href="#/post-info/{{post.id}}">
+				<img ng-src="{{post.urlFeaturedImage}}"></img>
+			</a>
+		</div>
+	</div>
+</div>
+
+<p ng-show="!numberPostFilter.length">No se encontaron posts</p>
+
+

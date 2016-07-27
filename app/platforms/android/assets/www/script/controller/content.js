@@ -1,84 +1,58 @@
-var  muvbe = angular.module('posts', []);
 
 /* Metodo Get
 *****************************************************/
 
-muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParams, user ){
+muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParams){
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
   if (!scope.user){
     window.location = "#/";
   }
-
-  scope.getCategories = function(){
-    $http.get(urlAppServer + "/categories").success(function(data){
-      scope.categories = data;
-    });
+  scope.postId = $routeParams.postId;
+  if (localStorage.getItem("posts")){
+    scope.posts = JSON.parse(localStorage.getItem("posts"));
   }
+  var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
 
   var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];
 
-  scope.postId = $routeParams.postId;
-  var posts = new Array();
-  scope.getPostData = function(){
-    posts = new Array();
-    $http.get(urlAppServer + "/posts/" + scope.postId).success(function(data){
-      var post = new Object();
-      post.id = data.id;
-      post.title = data.title.rendered;
-      post.content = data.content.rendered;
-      post.author = data.author;
-      var datePost = new Date(data.date);
-      post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
-      post.categoryId = data.categories[0];
-      post.categoryName = getCategoryName(data.categories[0]);
-      getImageUrlByPost(data.id, data.featured_media);
-      posts.push(post);
-      scope.posts = posts;
+  scope.addComment = function(content){
+    var data = JSON.stringify({
+      "content" : content,
+      "post" : scope.postId,
     });
-  }
 
-  scope.getPostDataAndCategories = function(){
-    $http.get(urlAppServer + "/categories").success(function(data){
-      scope.categories = data;
-      scope.getPostData();
-    });
-  }
-
-  if (localStorage.getItem("posts")){
-    scope.posts = JSON.parse(localStorage.getItem("posts"));
-  }else{
-    scope.getPostDataAndCategories();
-  }
-
-  function getImageUrlByPost(postId, fileId){
-    $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
+    $http({
+      method: 'POST',
+      url: urlAppServer + '/comments',
+      headers: {
+        'authorization': 'Basic ' + userHash,
+        'content-type': 'application/json',
+      },
+      data: data,
+    }).success(function (data) {
+      posts = scope.posts;
       posts.forEach(function(value) {
-        if (value.id == postId){
-          value.urlFeaturedImage = data_image.source_url;
+        if (value.id == scope.postId){
+          var commentInfo = new Object();
+          commentInfo.user = data.author_name;
+          var dateComment = new Date(data.date);
+          commentInfo.date = dateComment.getDate() + " de " + monthNames[dateComment.getMonth()] + " del " + dateComment.getFullYear();
+          commentInfo.content = data.content.rendered;
+          value.comments.push(commentInfo);
         }
       });
+      scope.posts = posts;
+      localStorage.setItem("posts", JSON.stringify(scope.posts));
     });
-  }
-
-  function getCategoryName(categoryId){
-    if(!scope.categories){
-      scope.getCategories();
-    }
-    categories = scope.categories;
-    for(var category in scope.categories) {
-      if (categories[category].id == categoryId){
-        return categories[category].name;
-      }
-    }
   }
 });
 
 /* Metodo Post
 *****************************************************/
-muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
+muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
   // variables
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
@@ -244,7 +218,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http, user ){
       });
       scope.posts = posts;
       localStorage.setItem("posts", JSON.stringify(scope.posts));
-      window.location = "#/user";
+      window.location = "#/home";
     });
   }
 

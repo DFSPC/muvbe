@@ -1,22 +1,8 @@
-var  muvbe = angular.module('peopleController', []);
-
-// FACTORY
-muvbe.factory("user",function(){
-  return {};
-});
-
-//CONTROLLERS
-muvbe.controller('muvbeController', function ($scope, user){
+muvbe.controller('muvbeHomeController', function ($scope, $http){
   var scope = this;
-  scope.user = user;
-});
-
-muvbe.controller('muvbeHomeController', function ($scope, $http, user){
-  var scope = this;
-  //scope.user = user;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
   if (scope.user){
-    window.location = "#/user";
+    window.location = "#/home";
   }
 
   scope.validateLogin = function(userName, userPassword){
@@ -30,8 +16,10 @@ muvbe.controller('muvbeHomeController', function ($scope, $http, user){
         scope.user.id = data.body.id;
         scope.user.userName = userName;
         scope.user.userPassword = userPassword;
+        scope.user.avatar = data.body.avatar_urls['48'];
         scope.messageLogin = 'Gracias por Ingresar';
         localStorage.setItem("userSession", JSON.stringify(scope.user));
+        $scope.mv.user = scope.user;
         window.location = "#/user";
       }else{
         scope.successLogin = false;
@@ -44,9 +32,8 @@ muvbe.controller('muvbeHomeController', function ($scope, $http, user){
 
 /* Crea New User
 ************************************************/
-muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
+muvbe.controller('muvbeSignUpController', function ($scope, $http){
   var scope = this;
-  scope.user = user;
   scope.createUser = function(userName, userEmail, userPassword){
 
     data = JSON.stringify({
@@ -72,123 +59,22 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http, user){
       scope.user.userName = userName;
       scope.user.userPassword = userPassword;
       scope.user.userEmail = userEmail;
+      scope.user.avatar = data.avatar_urls[48];
       scope.messageLogin = 'Gracias por Ingresar';
       localStorage.setItem("userSession", JSON.stringify(scope.user));
-      window.location = "#/user";
+      $scope.mv.user = scope.user;
+      window.location = "#/home";
     });
   }
 });
 
-muvbe.controller('muvbeUserController', function ($scope, $http, user){
+
+
+muvbe.controller('muvbeExitController', function ($scope){
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
-  if (!scope.user){
-    window.location = "#/";
-  }
-
-  scope.getCategories = function(){
-    $http.get(urlAppServer + "/categories").success(function(data){
-      scope.categories = data;
-      localStorage.setItem("categories", JSON.stringify(scope.categories));
-    });
-  }
-
-  scope.getUsers = function(){
-    $http.get(urlAppServer + "/users").success(function(data){
-      scope.users = data;
-      localStorage.setItem("users", JSON.stringify(scope.users));
-    });
-  }
-
-  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-  ];
-
-  var posts = new Array();
-  scope.getPosts = function(){
-    posts = new Array();
-    $http.get(urlAppServer + "/posts?per_page=100").success(function(data){
-      for(var post_data in data) {
-        var post = new Object();
-        post.id = data[post_data].id;
-        post.title = data[post_data].title.rendered;
-        post.content = data[post_data].content.rendered;
-        post.author = data[post_data].author;
-        post.authorName = getAuthorName(data[post_data].author);
-        post.date = data[post_data].date;
-        var datePost = new Date(data[post_data].date);
-        post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
-        post.categoryId = data[post_data].categories[0];
-        post.categoryName = getCategoryName(data[post_data].categories[0]);
-        getImageUrlByPost(data[post_data].id, data[post_data].featured_media);
-        posts.push(post);
-        scope.posts = posts;
-      }
-    });
-  }
-
-  scope.getPostsAndUsersAndCategories = function(){
-    $http.get(urlAppServer + "/categories").success(function(data){
-      scope.categories = data;
-      localStorage.setItem("categories", JSON.stringify(scope.categories));
-      $http.get(urlAppServer + "/users").success(function(dataUsers){
-        scope.users = dataUsers;
-        localStorage.setItem("users", JSON.stringify(scope.users));
-        scope.getPosts();
-      });
-    });
-  }
-
-  if (localStorage.getItem("posts") && localStorage.getItem("categories") && localStorage.getItem("users")){
-    scope.posts = JSON.parse(localStorage.getItem("posts"));
-    scope.categories = JSON.parse(localStorage.getItem("categories"));
-    scope.users = JSON.parse(localStorage.getItem("users"));
-  }else{
-    scope.getPostsAndUsersAndCategories();
-  }
-
-  function getImageUrlByPost(postId, fileId){
-    $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
-      posts.forEach(function(value) {
-        if (value.id == postId){
-          value.urlFeaturedImage = data_image.source_url;
-        }
-      });
-      localStorage.setItem("posts", JSON.stringify(scope.posts));
-    });
-  }
-
-  function getCategoryName(categoryId){
-    if(!scope.categories){
-      scope.getCategories();
-    }else{
-      categories = scope.categories;
-      for(var category in scope.categories) {
-        if (categories[category].id == categoryId){
-          return categories[category].name;
-        }
-      }
-    }
-  }
-
-  function getAuthorName(authorId){
-    if(!scope.users){
-      scope.getUsers();
-    }else{
-      users = scope.users;
-      for(var user in scope.users) {
-        if (users[user].id == authorId){
-          return users[user].name;
-        }
-      }
-    }
-  }
-});
-
-muvbe.controller('muvbeExitController', function ($scope, user){
-  var scope = this;
-  scope.user = user;
   killSession(scope.user);
+  killSession($scope.mv.user);
   window.location = "#/";
 });
 

@@ -1,0 +1,41 @@
+<div ng-repeat="post in numberPostFilter = mpic.posts | filter:{id:mpic.postId} track by $index">
+<h1>{{post.title}}</h1>
+<img ng-src="{{post.urlFeaturedImage}}"</img>
+<p ng-bind-html="post.content | to_trusted"></p>
+<p>Añadido el dia: {{post.date}}</p>
+<p>Añadido por:
+	<a href="#/author/{{post.author}}">
+		{{post.authorName}}
+	</a>
+</p>
+<p>Categoria:
+	<a href="#/categories/{{post.categoryId}}">
+		{{post.categoryName}}
+	</a>
+</p>
+<br>
+<p>Comentarios:</p>
+<div ng-repeat="comment in post.comments track by $index">
+  <p>El dia {{comment.date}} <a href="#/author/{{post.author}}">{{comment.user}}</a> comento:</p>
+  <p ng-bind-html="comment.content | to_trusted"></p>
+  <p></p>
+</div>
+<br>
+<div class="form-post">
+  <form action="">
+
+    <div class="content">
+      <label for="">Añade tu comentario</label>
+      <br>
+      <br>
+      <textarea class="area" ng-model="mpic.content" ></textarea>
+    </div>
+    <br>
+    <div class="bottom">
+      <input type="button" class="custom-bottom-input" ng-click="mpic.addComment(mpic.content); mpic.content='' " value ="Añadir"></input>
+    </div>
+  </form>
+</div>
+<br>
+</div>
+

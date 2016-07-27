@@ -1,7 +1,5 @@
-
 /* Metodo Get
 *****************************************************/
-
 muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParams){
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));

@@ -1,3 +1,5 @@
+/* Metodo Login
+*****************************************************/
 muvbe.controller('muvbeLoginController', function ($scope, $http){
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
@@ -29,19 +31,17 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
   }
 });
 
-
-/* Crea New User
+/* Create New User
 ************************************************/
 muvbe.controller('muvbeSignUpController', function ($scope, $http){
   var scope = this;
   scope.createUser = function(userName, userEmail, userPassword){
-
     data = JSON.stringify({
-        "username" : userName,
-        "name" : userName,
-        "email" : userEmail,
-        "password" : userPassword,
-        "roles" : ['author'],
+      "username" : userName,
+      "name" : userName,
+      "email" : userEmail,
+      "password" : userPassword,
+      "roles" : ['author'],
     });
 
     $http({

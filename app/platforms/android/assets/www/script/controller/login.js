@@ -1,4 +1,6 @@
-muvbe.controller('muvbeHomeController', function ($scope, $http){
+/* Metodo Login
+*****************************************************/
+muvbe.controller('muvbeLoginController', function ($scope, $http){
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
   if (scope.user){
@@ -20,7 +22,7 @@ muvbe.controller('muvbeHomeController', function ($scope, $http){
         scope.messageLogin = 'Gracias por Ingresar';
         localStorage.setItem("userSession", JSON.stringify(scope.user));
         $scope.mv.user = scope.user;
-        window.location = "#/user";
+        window.location = "#/home";
       }else{
         scope.successLogin = false;
         scope.messageLogin = 'Error al ingresar, verifique sus credenciales';
@@ -29,19 +31,17 @@ muvbe.controller('muvbeHomeController', function ($scope, $http){
   }
 });
 
-
-/* Crea New User
+/* Create New User
 ************************************************/
 muvbe.controller('muvbeSignUpController', function ($scope, $http){
   var scope = this;
   scope.createUser = function(userName, userEmail, userPassword){
-
     data = JSON.stringify({
-        "username" : userName,
-        "name" : userName,
-        "email" : userEmail,
-        "password" : userPassword,
-        "roles" : ['author'],
+      "username" : userName,
+      "name" : userName,
+      "email" : userEmail,
+      "password" : userPassword,
+      "roles" : ['author'],
     });
 
     $http({

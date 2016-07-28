@@ -1,4 +1,7 @@
-muvbe.controller('muvbeUserController', function ($scope, $http){
+/* Metodo Get Home Data
+*****************************************************/
+
+muvbe.controller('muvbeHomeController', function ($scope, $http){
   var scope = this;
   scope.user = JSON.parse(localStorage.getItem("userSession"));
   if (!scope.user){

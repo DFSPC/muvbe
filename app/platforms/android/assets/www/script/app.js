@@ -17,7 +17,8 @@ muvbe.controller('muvbeController', function ($scope){
 });
 
 
-var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2'
+var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2';
+var userHashAdmin = 'YWRtaW46YWRtaW4=';
 
 //ROUTING
 muvbe.config(['$routeProvider', function ($routeProvider) {

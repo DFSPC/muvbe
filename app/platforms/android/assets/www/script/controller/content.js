@@ -35,11 +35,39 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       posts.forEach(function(value) {
         if (value.id == scope.postId){
           var commentInfo = new Object();
-          commentInfo.user = data.author_name;
+          commentInfo.id = data.id;
+          commentInfo.authorId = data.author;
+          commentInfo.authorName = data.author_name;
           var dateComment = new Date(data.date);
           commentInfo.date = dateComment.getDate() + " de " + monthNames[dateComment.getMonth()] + " del " + dateComment.getFullYear();
           commentInfo.content = data.content.rendered;
           value.comments.push(commentInfo);
+        }
+      });
+      scope.posts = posts;
+      localStorage.setItem("posts", JSON.stringify(scope.posts));
+    });
+  }
+
+  scope.deleteComment = function(id){
+    $http({
+      method: 'DELETE',
+      url: urlAppServer + '/comments/' + id,
+      headers: {
+        'authorization': 'Basic ' + userHashAdmin,
+        'content-type': 'application/json',
+      },
+    }).success(function (data) {
+      posts = scope.posts;
+      posts.forEach(function(value) {
+        if (value.id == scope.postId){
+          newCommmets = Array();
+          value.comments.forEach(function(valueComment) {
+            if (valueComment.id != id){
+              newCommmets.push(valueComment);
+            }
+          });
+          value.comments = newCommmets;
         }
       });
       scope.posts = posts;

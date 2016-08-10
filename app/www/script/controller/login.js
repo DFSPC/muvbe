@@ -49,7 +49,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
       url: urlAppServer + '/users',
       crossDomain: true,
       headers: {
-        'authorization': 'Basic YWRtaW46YWRtaW4=',
+        'authorization': 'Basic ' + userHashAdmin,
         'content-type': 'application/json',
       },
       data: data,

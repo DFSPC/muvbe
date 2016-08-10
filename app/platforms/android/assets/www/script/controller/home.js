@@ -120,7 +120,9 @@ muvbe.controller('muvbeHomeController', function ($scope, $http){
       for(var comments_data in comments) {
         if (post.id == comments[comments_data].post){
           var commentInfo = new Object();
-          commentInfo.user = comments[comments_data].author_name;
+          commentInfo.id = comments[comments_data].id;
+          commentInfo.authorId = comments[comments_data].author;
+          commentInfo.authorName = comments[comments_data].author_name;
           var dateComment = new Date(comments[comments_data].date);
           commentInfo.date = dateComment.getDate() + " de " + monthNames[dateComment.getMonth()] + " del " + dateComment.getFullYear();
           commentInfo.content = comments[comments_data].content.rendered;

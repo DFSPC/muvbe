@@ -20,9 +20,11 @@
 <br>
 <p>Comentarios:</p>
 <div ng-repeat="comment in post.comments track by $index">
-  <p>El dia {{comment.date}} <a href="#/author/{{post.author}}">{{comment.user}}</a> comento:</p>
+  <p>El dia {{comment.date}} <a href="#/author/{{post.author}}">{{comment.authorName}}</a> comento:</p>
   <p ng-bind-html="comment.content | to_trusted"></p>
-  <p></p>
+  <div class="bottom" ng-show="mv.user.id == comment.authorId">
+    <input type="button" class="custom-bottom-input" ng-click="mpic.deleteComment(comment.id);" value ="Eliminar Comentario"></input>
+  </div>
 </div>
 <br>
 <div class="form-post">

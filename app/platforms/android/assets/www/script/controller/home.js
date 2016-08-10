@@ -67,6 +67,8 @@ muvbe.controller('muvbeHomeController', function ($scope, $http){
   }
 
   scope.getAllData = function(){
+    scope.messageData = "Cargando...";
+    scope.posts = new Array();
     $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
       scope.categories = data;
       localStorage.setItem("categories", JSON.stringify(scope.categories));

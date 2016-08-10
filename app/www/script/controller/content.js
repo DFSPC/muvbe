@@ -46,6 +46,28 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       localStorage.setItem("posts", JSON.stringify(scope.posts));
     });
   }
+
+  scope.deletePost = function(id){
+    $http({
+      method: 'DELETE',
+      url: urlAppServer + '/posts/' + id,
+      headers: {
+        'authorization': 'Basic ' + userHash,
+        'content-type': 'application/json',
+      },
+    }).success(function (data) {
+      posts = scope.posts;
+      newPosts = Array();
+      posts.forEach(function(value) {
+        if (value.id != scope.postId){
+          newPosts.push(value);
+        }
+      });
+      scope.posts = newPosts;
+      localStorage.setItem("posts", JSON.stringify(scope.posts));
+      window.location = "#/home";
+    });
+  }
 });
 
 /* Metodo Post

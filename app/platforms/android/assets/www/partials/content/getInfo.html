@@ -14,6 +14,10 @@
 	</a>
 </p>
 <br>
+<div class="bottom" ng-show="mv.user.id == post.author">
+  <input type="button" class="custom-bottom-input" ng-click="mpic.deletePost(mpic.postId);" value ="Eliminar Post"></input>
+</div>
+<br>
 <p>Comentarios:</p>
 <div ng-repeat="comment in post.comments track by $index">
   <p>El dia {{comment.date}} <a href="#/author/{{post.author}}">{{comment.user}}</a> comento:</p>

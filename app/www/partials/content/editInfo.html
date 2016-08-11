@@ -1,0 +1,33 @@
+<h1>Edita tu imagen de Bogotá Efimera </h1>
+<!--Formulario para insertar nuevos Todo-->
+<div class="form-post">
+	<form action="">
+		<div class="title">
+			<label for="">Titulo de la Imagen</label>
+			<br>
+			<br>
+			<input type="text" ng-model="mepc.postEdit.title">
+		</div>
+		<br>
+		<div class="content">
+			<label for="">Describe tu Imagen</label>
+			<br>
+			<br>
+			<textarea class="area" ng-model="mepc.postEdit.plainContent"></textarea>
+		</div>
+		<br>
+		<div class="category">
+			<label for="">Elije la Categoria</label>
+			<br>
+			<select class="custom-file-input" ng-options="category.id as category.name for category in mv.categories | filter:{ id: '!1'} track by category.id" ng-model="mepc.selectedCategory">
+				<option value="">--Elige opcion--</option>
+			</select>
+		</div>
+		<br>
+		<br>
+		<div class="bottom">
+			<input type="button" class="custom-bottom-input" ng-click="mepc.editPost(mepc.postEdit.title, mepc.postEdit.plainContent, mepc.selectedCategory)" value ="Editar"></input>
+		</div>
+	</form>
+</div>
+<a href="#/exit">Salir</a>

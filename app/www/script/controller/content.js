@@ -242,3 +242,28 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
     });
   }
 });
+
+/* Metodo Put
+*****************************************************/
+muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParams){
+  // variables
+  var scope = this;
+  var userHash = decodeUserData($scope.mv.user.userName + ':' + $scope.mv.user.userPassword);
+  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
+
+  scope.postId = $routeParams.postId;
+  posts = $scope.mv.posts;
+  posts.forEach(function(value) {
+    if (value.id == scope.postId){
+      scope.postEdit = value;
+    }
+  });
+  categories = $scope.mv.categories;
+  for(var categories_data in categories) {
+    if (categories[categories_data].id == scope.postEdit.categoryId){
+      scope.selectedCategory = categories[categories_data]
+    }
+  }
+});

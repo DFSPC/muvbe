@@ -70,6 +70,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
         post.id = data[post_data].id;
         post.title = data[post_data].title.rendered;
         post.content = data[post_data].content.rendered;
+        post.plainContent = $(data[post_data].content.rendered).text();
         post.author = data[post_data].author;
         post.authorName = scope.getAuthorName(data[post_data].author);
         var datePost = new Date(data[post_data].date);
@@ -204,6 +205,10 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     .when("/post-info/:postId", {
       templateUrl: "partials/content/getInfo.html",
       controller: "muvbePostInfoController as mpic"
+    })
+    .when("/edit-post/:postId", {
+      templateUrl: "partials/content/editInfo.html",
+      controller: "muvbeEditPostController as mepc"
     })
     .when("/post", {
       templateUrl: "partials/content/postInfo.html",

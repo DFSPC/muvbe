@@ -266,4 +266,26 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
       scope.selectedCategory = categories[categories_data]
     }
   }
+
+  //Create Post
+  scope.editPost = function(postId, title, content, category){
+    var status =  "publish";
+    data = JSON.stringify({
+      "title" : title,
+      "content" : content,
+      "categories" : [category],
+      "status" : status
+    });
+    $http({
+      method: 'POST',
+      url: urlAppServer + '/posts/' + postId,
+      headers: {
+        'authorization': 'Basic ' + userHash,
+        'content-type': 'application/json',
+      },
+      data: data,
+    }).success(function (dataPost) {
+      window.location = "#/home";
+    });
+  };
 });

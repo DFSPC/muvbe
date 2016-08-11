@@ -38,7 +38,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
         }
       });
       $scope.mv.posts = posts;
-      localStorage.setItem("posts", JSON.stringify(scope.posts));
+      localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
     });
   }
 
@@ -64,7 +64,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
         }
       });
       $scope.mv.posts = posts;
-      localStorage.setItem("posts", JSON.stringify(scope.posts));
+      localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
     });
   }
 
@@ -85,7 +85,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
         }
       });
       $scope.mv.posts = newPosts;
-      localStorage.setItem("posts", JSON.stringify(scope.posts));
+      localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
       window.location = "#/home";
     });
   }
@@ -234,6 +234,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
           post.mediaId = dataPost.featured_media;
           post.urlFeaturedImage = dataMedia.source_url;
           posts.unshift(post);
+          $scope.mv.posts = posts;
+          localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
           window.location = "#/home";
         });
       }

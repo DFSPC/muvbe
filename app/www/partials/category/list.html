@@ -1,6 +1,6 @@
 <div class="wrapper">
 	<h1 class="info">Categorias</h1>
-	<div ng-repeat="category in mlc.categories | filter:{ id: '!1'} track by category.id">
+	<div ng-repeat="category in mv.categories | filter:{ id: '!1'} track by category.id">
 	<div class="wrapper">
 		<a href="#/categories/{{ category.id }}" class="link link-category">
 			<div class="name-category" > {{ category.name }} </div>

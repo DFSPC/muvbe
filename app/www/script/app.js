@@ -18,7 +18,6 @@ var userHashAdmin = 'YWRtaW46YWRtaW4=';
 //App controller
 muvbe.controller('muvbeController', function ($scope, $http){
   var scope = this;
-
   scope.user = JSON.parse(localStorage.getItem("userSession"));
   scope.media = JSON.parse(localStorage.getItem("media"));
   scope.comments = JSON.parse(localStorage.getItem("comments"));

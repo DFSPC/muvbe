@@ -1,14 +1,13 @@
-<button ng-click="mhc.getAllData(); filterPosts = {}; mhc.category = ''";>Ultimos posts</button>
-<button ng-click="filterPosts = {author:mhc.user.id}; mhc.category = ''">Mis posts</button>
+<button ng-click="mv.getAllData(); filterPosts = {}; mv.category = ''";>Ultimos posts</button>
+<button ng-click="filterPosts = {author:mv.user.id}; mv.category = ''">Mis posts</button>
 
 <h2>Elije Categoria</h2>
 
-
-<select ng-model="mhc.category" ng-options="category.id as category.name for category in mhc.categories | filter:{ id: '!1'} track by category.id" ng-change="filterPosts = {categoryId:mhc.category}">
+<select ng-model="mv.category" ng-options="category.id as category.name for category in mv.categories | filter:{ id: '!1'} track by category.id" ng-change="filterPosts = {categoryId:mv.category}">
 <option value="">--Elige opcion--</option></select>
 
 <div class="content-time">
-	<div ng-repeat="post in numberPostFilter = (mhc.posts | filter:filterPosts:true) track by $index">
+	<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index">
 		<div class="item-box">
 			<a href="#/post-info/{{post.id}}">
 				<img ng-src="{{post.urlFeaturedImage}}"></img>
@@ -17,7 +16,7 @@
 	</div>
 </div>
 
-<p ng-show="!numberPostFilter.length">{{mhc.messageData}}</p>
+<p ng-show="!numberPostFilter.length">{{mv.messageData}}</p>
 
 
 

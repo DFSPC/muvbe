@@ -2,19 +2,12 @@
 *****************************************************/
 muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParams){
   var scope = this;
-  scope.user = JSON.parse(localStorage.getItem("userSession"));
-  if (!scope.user){
-    window.location = "#/";
-  }
-  scope.postId = $routeParams.postId;
-  if (localStorage.getItem("posts")){
-    scope.posts = JSON.parse(localStorage.getItem("posts"));
-  }
-  var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
-
+  var userHash = decodeUserData($scope.mv.user.userName + ':' + $scope.mv.user.userPassword);
   var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];
+
+  scope.postId = $routeParams.postId;
 
   scope.addComment = function(content){
     var data = JSON.stringify({
@@ -31,7 +24,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       },
       data: data,
     }).success(function (data) {
-      posts = scope.posts;
+      posts = $scope.mv.posts;
       posts.forEach(function(value) {
         if (value.id == scope.postId){
           var commentInfo = new Object();
@@ -44,7 +37,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
           value.comments.push(commentInfo);
         }
       });
-      scope.posts = posts;
+      $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify(scope.posts));
     });
   }
@@ -58,7 +51,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
         'content-type': 'application/json',
       },
     }).success(function (data) {
-      posts = scope.posts;
+      posts = $scope.mv.posts;
       posts.forEach(function(value) {
         if (value.id == scope.postId){
           newCommmets = Array();
@@ -70,7 +63,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
           value.comments = newCommmets;
         }
       });
-      scope.posts = posts;
+      $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify(scope.posts));
     });
   }
@@ -84,14 +77,14 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
         'content-type': 'application/json',
       },
     }).success(function (data) {
-      posts = scope.posts;
+      posts = $scope.mv.posts;
       newPosts = Array();
       posts.forEach(function(value) {
         if (value.id != scope.postId){
           newPosts.push(value);
         }
       });
-      scope.posts = newPosts;
+      $scope.mv.posts = newPosts;
       localStorage.setItem("posts", JSON.stringify(scope.posts));
       window.location = "#/home";
     });
@@ -103,12 +96,10 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
 muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
   // variables
   var scope = this;
-  scope.user = JSON.parse(localStorage.getItem("userSession"));
-  if (!scope.user){
-    window.location = "#/";
-  }
-  var userHash = decodeUserData(scope.user.userName + ':' + scope.user.userPassword);
-  var posts = JSON.parse(localStorage.getItem("posts"));
+  var userHash = decodeUserData($scope.mv.user.userName + ':' + $scope.mv.user.userPassword);
+  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
 
   //Take FILE_URL
   scope.takephotoURL = function(){
@@ -154,23 +145,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
     alert('No seleccionaste una foto!');
   }
 
-  scope.getCategories = function(){
-    $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
-      scope.categories = data;
-      localStorage.setItem("categories", JSON.stringify(scope.categories));
-    });
-  }
-
-  scope.getUsers = function(){
-    $http.get(urlAppServer + "/users?per_page=100").success(function(data){
-      scope.users = data;
-      localStorage.setItem("users", JSON.stringify(scope.users));
-    });
-  }
-
-  scope.getCategories();
-  scope.getUsers();
-
   //Convert URI to Blob to post in API
   function dataURItoBlob(dataURI) {
     // convert base64/URLEncoded data component to raw binary data held in a string
@@ -211,11 +185,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
     return dataURL;
   }
 
-  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-  ];
   //Create Post
-
   scope.createPost = function(title, content, file, category){
     var fd = new FormData();
     imageBase = getBase64Image(document.getElementById("myImage"))
@@ -229,8 +199,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
         'content-type': undefined,
         "content-disposition": "attachment; filename=image.png",
       }
-    }).success(function (data) {
-      var imagePost = data.id;
+    }).success(function (dataMedia) {
+      var imagePost = dataMedia.id;
       var status =  "publish";
       if (imagePost){
         data = JSON.stringify({
@@ -249,60 +219,24 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
             'content-type': 'application/json',
           },
           data: data,
-        }).success(function (data) {
+        }).success(function (dataPost) {
+          posts = $scope.mv.posts;
           var post = new Object();
-          post.id = data.id;
-          post.title = data.title.rendered;
-          post.content = data.content.rendered;
-          post.author = data.author;
-          post.authorName = getAuthorName(data.author);
-          var datePost = new Date(data.date);
+          post.id = dataPost.id;
+          post.title = dataPost.title.rendered;
+          post.content = dataPost.content.rendered;
+          post.author = dataPost.author;
+          post.authorName = $scope.mv.getAuthorName(dataPost.author);
+          var datePost = new Date(dataPost.date);
           post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
-          post.categoryId = data.categories[0];
-          post.categoryName = getCategoryName(data.categories[0]);
-          post.mediaId = data.featured_media;
-          getImageUrlByPost(data.id, data.featured_media);
+          post.categoryId = dataPost.categories[0];
+          post.categoryName = $scope.mv.getCategoryName(dataPost.categories[0]);
+          post.mediaId = dataPost.featured_media;
+          post.urlFeaturedImage = dataMedia.source_url;
           posts.unshift(post);
+          window.location = "#/home";
         });
       }
     });
-  }
-
-  function getImageUrlByPost(postId, fileId){
-    $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
-      posts.forEach(function(value) {
-        if (value.id == postId){
-          value.urlFeaturedImage = data_image.source_url;
-        }
-      });
-      scope.posts = posts;
-      localStorage.setItem("posts", JSON.stringify(scope.posts));
-      window.location = "#/home";
-    });
-  }
-
-  function getCategoryName(categoryId){
-    if(!scope.categories){
-      scope.getCategories();
-    }
-    categories = scope.categories;
-    for(var category in scope.categories) {
-      if (categories[category].id == categoryId){
-        return categories[category].name;
-      }
-    }
-  }
-
-  function getAuthorName(authorId){
-    if(!scope.users){
-      scope.getUsers();
-    }else{
-      users = scope.users;
-      for(var user in scope.users) {
-        if (users[user].id == authorId){
-          return users[user].name;
-        }
-      }
-    }
   }
 });

@@ -155,10 +155,21 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
   }
 
   scope.getCategories = function(){
-    $http.get(urlAppServer + "/categories").success(function(data){
+    $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
       scope.categories = data;
+      localStorage.setItem("categories", JSON.stringify(scope.categories));
     });
   }
+
+  scope.getUsers = function(){
+    $http.get(urlAppServer + "/users?per_page=100").success(function(data){
+      scope.users = data;
+      localStorage.setItem("users", JSON.stringify(scope.users));
+    });
+  }
+
+  scope.getCategories();
+  scope.getUsers();
 
   //Convert URI to Blob to post in API
   function dataURItoBlob(dataURI) {
@@ -244,18 +255,18 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
           post.title = data.title.rendered;
           post.content = data.content.rendered;
           post.author = data.author;
+          post.authorName = getAuthorName(data.author);
           var datePost = new Date(data.date);
           post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
           post.categoryId = data.categories[0];
           post.categoryName = getCategoryName(data.categories[0]);
+          post.mediaId = data.featured_media;
           getImageUrlByPost(data.id, data.featured_media);
           posts.unshift(post);
         });
       }
     });
   }
-
-  scope.getCategories();
 
   function getImageUrlByPost(postId, fileId){
     $http.get(urlAppServer + "/media/" + fileId).success(function(data_image){
@@ -278,6 +289,19 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
     for(var category in scope.categories) {
       if (categories[category].id == categoryId){
         return categories[category].name;
+      }
+    }
+  }
+
+  function getAuthorName(authorId){
+    if(!scope.users){
+      scope.getUsers();
+    }else{
+      users = scope.users;
+      for(var user in scope.users) {
+        if (users[user].id == authorId){
+          return users[user].name;
+        }
       }
     }
   }

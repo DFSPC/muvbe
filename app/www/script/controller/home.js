@@ -51,7 +51,6 @@ muvbe.controller('muvbeHomeController', function ($scope, $http){
         post.content = data[post_data].content.rendered;
         post.author = data[post_data].author;
         post.authorName = getAuthorName(data[post_data].author);
-        post.date = data[post_data].date;
         var datePost = new Date(data[post_data].date);
         post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
         post.categoryId = data[post_data].categories[0];

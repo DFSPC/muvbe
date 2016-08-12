@@ -25,6 +25,7 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
         window.location = "#/home";
       }else{
         scope.successLogin = false;
+        scope.showMessage = true
         scope.messageLogin = 'Error al ingresar, verifique sus credenciales';
       }
     });

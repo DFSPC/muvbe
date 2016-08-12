@@ -3,6 +3,10 @@
 
 muvbe.controller('muvbeHomeController', function ($scope, $http){
   var scope = this;
+  scope.user = JSON.parse(localStorage.getItem("userSession"));
+  if (!scope.user){
+    window.location = "#/";
+  }
   if ($scope.mv.media
     && $scope.mv.comments
     && $scope.mv.posts

@@ -7,9 +7,9 @@
   <input type="password" ng-model="mlc.user.userPassword" required></input>
   <br>
   <br>
+  <p ng-show="mlc.showMessage">{{mlc.messageLogin}}</p>
   <input type="button" ng-click="mlc.showMessage='true'; mlc.validateLogin(mlc.user.userName, mlc.user.userPassword);" value="Ingresar"></input>
   <br>
   <br>
   <a href="#/signup">Crea tu Cuenta</a>
 </form>
-<p ng-show="mlc.showMessage">{{mlc.messageLogin}}</p>

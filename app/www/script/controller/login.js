@@ -68,14 +68,10 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
   }
 });
 
-
-
 muvbe.controller('muvbeExitController', function ($scope){
   var scope = this;
-  scope.user = JSON.parse(localStorage.getItem("userSession"));
-  killSession(scope.user);
+  $scope.mv.user = JSON.parse(localStorage.getItem("userSession"));
   killSession($scope.mv.user);
-  window.location = "#/";
 });
 
 //HELPERS
@@ -122,10 +118,12 @@ function decodeUserData(input) {
 }
 
 function killSession(scopeUser){
-  scopeUser.userName = '';
-  scopeUser.userEmail = '';
-  scopeUser.userPassword = '';
-  scopeUser.successLogin = false;
+  if(scopeUser){
+    scopeUser.userName = '';
+    scopeUser.userEmail = '';
+    scopeUser.userPassword = '';
+    scopeUser.successLogin = false;
+  }
   localStorage.clear();
 }
 

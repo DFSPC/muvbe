@@ -2,6 +2,9 @@
 *****************************************************/
 muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParams){
   var scope = this;
+  if (!$scope.mv.user){
+    window.location = "#/";
+  }
   var userHash = decodeUserData($scope.mv.user.userName + ':' + $scope.mv.user.userPassword);
   var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
@@ -96,6 +99,9 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
 muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
   // variables
   var scope = this;
+  if (!$scope.mv.user){
+    window.location = "#/";
+  }
   var userHash = decodeUserData($scope.mv.user.userName + ':' + $scope.mv.user.userPassword);
   var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
@@ -248,6 +254,9 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
 muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParams){
   // variables
   var scope = this;
+  if (!$scope.mv.user){
+    window.location = "#/";
+  }
   var userHash = decodeUserData($scope.mv.user.userName + ':' + $scope.mv.user.userPassword);
   var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"

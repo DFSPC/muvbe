@@ -72,6 +72,7 @@ muvbe.controller('muvbeExitController', function ($scope){
   var scope = this;
   $scope.mv.user = JSON.parse(localStorage.getItem("userSession"));
   killSession($scope.mv.user);
+  window.location = "#/";
 });
 
 //HELPERS

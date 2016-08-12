@@ -243,7 +243,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
   }
 });
 
-/* Metodo Put
+/* Metodo Post Edit
 *****************************************************/
 muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParams){
   // variables
@@ -260,10 +260,10 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
       scope.postEdit = value;
     }
   });
-  categories = $scope.mv.categories;
-  for(var categories_data in categories) {
-    if (categories[categories_data].id == scope.postEdit.categoryId){
-      scope.selectedCategory = categories[categories_data]
+  scope.categories = $scope.mv.categories;
+  for(var categories_data in scope.categories) {
+    if (scope.categories[categories_data].id == scope.postEdit.categoryId){
+      scope.selectedCategory = scope.categories[categories_data];
     }
   }
 
@@ -285,6 +285,18 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
       },
       data: data,
     }).success(function (dataPost) {
+      posts = $scope.mv.posts;
+      posts.forEach(function(value) {
+        if (value.id == scope.postId){
+          value.title = title;
+          value.content = content;
+          value.plainContent = content;
+          value.categoryId = category;
+          value.categoryName = $scope.mv.getCategoryName(category);
+        }
+      });
+      $scope.mv.posts = posts;
+      localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
       window.location = "#/home";
     });
   };

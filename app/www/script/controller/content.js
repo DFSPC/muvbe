@@ -260,10 +260,10 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
       scope.postEdit = value;
     }
   });
-  categories = $scope.mv.categories;
-  for(var categories_data in categories) {
-    if (categories[categories_data].id == scope.postEdit.categoryId){
-      scope.selectedCategory = categories[categories_data]
+  scope.categories = $scope.mv.categories;
+  for(var categories_data in scope.categories) {
+    if (scope.categories[categories_data].id == scope.postEdit.categoryId){
+      scope.selectedCategory = scope.categories[categories_data];
     }
   }
 

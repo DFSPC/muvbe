@@ -25,10 +25,6 @@ muvbe.controller('muvbeController', function ($scope, $http){
   scope.users = JSON.parse(localStorage.getItem("users"));
   scope.posts = JSON.parse(localStorage.getItem("posts"));
 
-  if (!scope.user){
-    window.location = "#/";
-  }
-
   scope.getMedia = function(){
     $http.get(urlAppServer + "/media?per_page=100").success(function(data){
       scope.media = data;

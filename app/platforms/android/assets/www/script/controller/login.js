@@ -10,6 +10,8 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
   scope.validateLogin = function(userName, userPassword){
 
     var userHash = decodeUserData(userName + ':' + userPassword);
+    scope.showMessage = true
+    scope.messageLogin = 'Validando Usuario...';
 
     $http.defaults.headers.common.Authorization = 'Basic ' + userHash;
     $http.get(urlAppServer + '/users/me?_envelope').success(function(data){
@@ -25,6 +27,7 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
         window.location = "#/home";
       }else{
         scope.successLogin = false;
+        scope.showMessage = true
         scope.messageLogin = 'Error al ingresar, verifique sus credenciales';
       }
     });

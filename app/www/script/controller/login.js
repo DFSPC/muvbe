@@ -10,6 +10,8 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
   scope.validateLogin = function(userName, userPassword){
 
     var userHash = decodeUserData(userName + ':' + userPassword);
+    scope.showMessage = true
+    scope.messageLogin = 'Validando Usuario...';
 
     $http.defaults.headers.common.Authorization = 'Basic ' + userHash;
     $http.get(urlAppServer + '/users/me?_envelope').success(function(data){

@@ -79,6 +79,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
         posts.push(post);
         scope.posts = posts;
       }
+      scope.messageData = "";
       localStorage.setItem("posts", JSON.stringify(scope.posts));
     });
   }

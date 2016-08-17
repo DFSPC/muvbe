@@ -3,44 +3,32 @@
 */
 	var gulp         = require('gulp'),
 			sass         = require( 'gulp-sass' ),
-		  // postcss      = require( 'gulp-postcss' ),
+			scss         = require('gulp-scss'),
+		  postcss      = require( 'gulp-postcss' ),
 			autoprefixer = require('gulp-autoprefixer'),
 			mqpacker     = require( 'css-mqpacker' ),
 		  concat       = require('gulp-concat'),
 			uglify       = require('gulp-uglify'),
-			normalize = require('node-normalize-scss').includePaths,
+			normalize    = require('node-normalize-scss').includePaths,
 			gutil        = require( 'gulp-util' ),
 			plumber      = require( 'gulp-plumber' ),
-			task         = [
-		                  'sass',
-		              ];
+    	livereload   = require('gulp-livereload');
+			// task         = 	[
+		 //                  	'watch',
+		 //              		];
 
-/*
-*  Utilidades de arranque  de arraque
-*/
 
-	// var err = new gutil.PluginError('test', {
-	// 							  message: 'something broke'
-	// 							}),
-	// var err = new gutil.PluginError({
-	// 							  plugin: 'test',
-	// 							  message: 'something broke'
-	// 							}),
-	// var err = new gutil.PluginError('test', 'something broke'),
-	// var err = new gutil.PluginError('test', 'something broke', {showStack: true}),
-	// var existingError = new Error('OMG')
-	// var err = new gutil.PluginError('test', existingError, {showStack: true});
 	gutil.log(
 	    gutil.colors.green('.')
 	    + '\n' +
 	    gutil.colors.green('=========================================')
 	    + '\n' +
-	    gutil.colors.red(' Bienvenido  Muvbe ')
+	    gutil.colors.white(' Bienvenido  Muvbe ')
 	    + '\n' +
 	    gutil.colors.green('=========================================')
   );
 
-	gutil.log(gutil.colors.green('Compilando Muvbe'), gutil.colors.red('------>'));
+	gutil.log(gutil.colors.yellow('Compilando Muvbe'), gutil.colors.yellow('------>'));
 
 /*
 *Tareas de postcss
@@ -51,31 +39,38 @@ function processors() {
         mqpacker,
         // csswring
     ];
-    return gulp.src('./stylesheets/*.css')
+    return gulp.src('./css/*.css')
         // .pipe( postcss(processors) )
-        .pipe( gulp.dest('./stylesheets') );
+        .pipe( gulp.dest('./css') );
 };
 /*
 * Tareas de Sass
 */
 
-gulp.task( 'sass', function(){
-  return gulp.src('./sass/style.sass')
-    .pipe(sass({
-        // indentedSyntax: true,
-        errLogToConsole: true,
-        sourceMap: 'sass',
-        includePaths: [].concat(normalize),
-
-      })
-      .on('error', sass.logError))
-
-    .pipe( gulp.dest('./stylesheets'));
-
+gulp.task('site', function() {
+  return gulp.src('sass/style.scss')
+      .pipe(sass())
+      .pipe(autoprefixer('last 10 version'))
+      //.pipe(sourcemaps.write('.'))
+      //.pipe(sass({outputStyle: 'compressed'}))
+      .pipe(gulp.dest('css'))
 });
 
-gulp.task( 'sass:watch' , function () {
-  gulp.watch('./sass/style.sass', ['sass']);
+
+
+gulp.task('watch', function() {
+
+  // Watch .scss files
+  gulp.watch('sass/*.scss', ['default']);
+
+
+  // Create LiveReload server
+  livereload.listen();
+
+  // Watch any files in dist/, reload on change
+  gulp.watch(['css/**']).on('change', livereload.changed);
+
+
 });
 
 
@@ -99,16 +94,20 @@ gulp.src = function() {
 /*
 *  task default
 */
-gulp.task('default', task,  function () {
 
-	gulp.watch(['./sass/*.sass'], task, processors());
+
+gulp.task('default',  function () {
+
+	gulp.start('site')
+
+	// gulp.watch(['./sass/*.scss'], task, processors());
 
     gutil.log(
 	    gutil.colors.green('.')
 	    + '\n' +
 	    gutil.colors.green('=========================================')
 	    + '\n' +
-	    gutil.colors.red(' Verificando cambios en tus archivos sass')
+	    gutil.colors.white(' Verificando cambios en tus archivos sass')
 	    + '\n' +
 	    gutil.colors.green('=========================================')
   	);

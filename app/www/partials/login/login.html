@@ -1,15 +1,36 @@
-<h1>Museo Urbano Virtual Bopotá Efimera</h1>
-<p>Ingresa a nuestra plataforma</p>
-<form>
-  <p>Usuario</p>
-  <input type="text" ng-model="mlc.user.userName" required></input>
-  <p>Contraseña</p>
-  <input type="password" ng-model="mlc.user.userPassword" required></input>
-  <br>
-  <br>
-  <input type="button" ng-click="mlc.showMessage='true'; mlc.validateLogin(mlc.user.userName, mlc.user.userPassword);" value="Ingresar"></input>
-  <br>
-  <br>
-  <a href="#/signup">Crea tu Cuenta</a>
-</form>
-<p ng-show="mlc.showMessage">{{mlc.messageLogin}}</p>
+<!-- <h1>Museo Urbano Virtual Bopotá Efimera</h1> -->
+<!-- <p>Ingresa a nuestra plataforma</p> -->
+<div class="view-login users">
+  <!-- logo  -->
+  <div class="logo"></div>
+  <!-- formulario de login -->
+  <div class="wraper">
+    <form>
+      <div class="input-login">
+        <input type="text" ng-model="mlc.user.userName" required placeholder="Nombre de usuario"></input>
+      </div>
+      <div class="input-login">
+        <input type="password" ng-model="mlc.user.userPassword" required placeholder="Contraseña"></input>
+      </div>
+      <!-- buttom de login -->
+      <div class="buttom">
+        <input type="button" ng-click="mlc.showMessage='true'; mlc.validateLogin(mlc.user.userName, mlc.user.userPassword);" value="Iniciar sesión"></input>
+      </div>
+    </form>
+     <!-- menseja de error -->
+    <div class="message">
+      <p ng-show="mlc.showMessage" class="error">{{mlc.messageLogin}}</p>
+    </div>
+    <!-- recorda pass -->
+    <div class="message">
+      <div class="text-remeber">
+        <p>¿Olvidaste tus datos de inicio de sesión?</p><a href="">Obtén ayuda.</a>
+      </div>
+    </div>
+  </div>
+  <!-- footer crear usuarios -->
+  <div class="footer-login">
+    <p>¿No tienes una cuenta?</p><a href="#/signup">Regístrate.</a>
+  </div>
+</div>
+

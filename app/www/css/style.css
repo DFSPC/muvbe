@@ -1,0 +1,125 @@
+/*******************************
+*     Ajustes estilos  MUVBE   *
+********************************/
+/*
+*   Colors palette
+********************************/
+/*
+*   Media Query Ranges
+********************************/
+/*******************************
+*    Estilos Globales MUVBE    *
+********************************/
+/*
+*    Etiquetas
+********************************/
+body {
+  background: url("../img/degrade.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  margin: 0 0; }
+
+img {
+  height: auto;
+  max-width: 100%; }
+
+a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: #727277; }
+
+p {
+  color: #727277;
+  font-size: 15px;
+  font-weight: 400; }
+
+form {
+  background: transparent;
+  width: 100%;
+  font-size: 20px; }
+
+input {
+  width: 90%;
+  height: 33px;
+  border: 1px solid #e1e1e3;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 18px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  color: #727277; }
+  input:focus, input:active {
+    border: 2px solid #e1e1e3;
+    outline: 0;
+    outline-style: none;
+    outline-width: 0; }
+
+textarea {
+  width: 90%;
+  height: 100px; }
+
+/*
+*    Clases Globales
+****************************************/
+.content {
+  margin-top: 89px; }
+
+.message {
+  margin-bottom: 15px;
+  text-align: center; }
+  .message a, .message p {
+    font-size: 12px;
+    display: inline; }
+
+.buttom {
+  text-align: center; }
+  .buttom input {
+    text-align: center;
+    background: transparent;
+    border: 2px solid #dd208f;
+    color: #dd208f; }
+
+.error {
+  color: red;
+  font-size: 15px; }
+
+.custom-file-input,
+.custom-bottom-input {
+  width: 90%;
+  display: block;
+  position: relative;
+  background: rgba(171, 39, 97, 0.56);
+  margin: 0 auto;
+  height: 64px; }
+
+.view-login .logo {
+  background: url("../img/logo.png");
+  background-repeat: no-repeat;
+  width: 201px;
+  height: 162px;
+  margin: 0 auto; }
+
+.view-login .wraper .message .text-remeber p {
+  margin-right: 6px; }
+
+.view-login .footer-login {
+  background: #cbcccd;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+  position: absolute; }
+  .view-login .footer-login p {
+    display: inline-block;
+    margin-right: 6px;
+    font-weight: 400;
+    font-size: 15px; }
+
+@media only screen and (orientation: landscape) {
+  .view-login .footer-login {
+    position: relative; } }

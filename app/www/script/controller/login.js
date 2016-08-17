@@ -10,6 +10,8 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
   scope.validateLogin = function(userName, userPassword){
 
     var userHash = decodeUserData(userName + ':' + userPassword);
+    scope.showMessage = true
+    scope.messageLogin = 'Validando Usuario...';
 
     $http.defaults.headers.common.Authorization = 'Basic ' + userHash;
     $http.get(urlAppServer + '/users/me?_envelope').success(function(data){
@@ -25,6 +27,7 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
         window.location = "#/home";
       }else{
         scope.successLogin = false;
+        scope.showMessage = true
         scope.messageLogin = 'Error al ingresar, verifique sus credenciales';
       }
     });
@@ -68,12 +71,9 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
   }
 });
 
-
-
 muvbe.controller('muvbeExitController', function ($scope){
   var scope = this;
-  scope.user = JSON.parse(localStorage.getItem("userSession"));
-  killSession(scope.user);
+  $scope.mv.user = JSON.parse(localStorage.getItem("userSession"));
   killSession($scope.mv.user);
   window.location = "#/";
 });
@@ -122,10 +122,12 @@ function decodeUserData(input) {
 }
 
 function killSession(scopeUser){
-  scopeUser.userName = '';
-  scopeUser.userEmail = '';
-  scopeUser.userPassword = '';
-  scopeUser.successLogin = false;
+  if(scopeUser){
+    scopeUser.userName = '';
+    scopeUser.userEmail = '';
+    scopeUser.userPassword = '';
+    scopeUser.successLogin = false;
+  }
   localStorage.clear();
 }
 

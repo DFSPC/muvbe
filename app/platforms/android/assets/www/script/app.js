@@ -25,10 +25,6 @@ muvbe.controller('muvbeController', function ($scope, $http){
   scope.users = JSON.parse(localStorage.getItem("users"));
   scope.posts = JSON.parse(localStorage.getItem("posts"));
 
-  if (!scope.user){
-    window.location = "#/";
-  }
-
   scope.getMedia = function(){
     $http.get(urlAppServer + "/media?per_page=100").success(function(data){
       scope.media = data;
@@ -88,20 +84,24 @@ muvbe.controller('muvbeController', function ($scope, $http){
   }
 
   scope.getAllData = function(){
-    scope.messageData = "Cargando...";
+    scope.messageData = "Cargando... Categorias";
     scope.posts = new Array();
     $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
       scope.categories = data;
       localStorage.setItem("categories", JSON.stringify(scope.categories));
+      scope.messageData = "Cargando... Usuarios";
       $http.get(urlAppServer + "/users?per_page=100").success(function(dataUsers){
         scope.users = dataUsers;
         localStorage.setItem("users", JSON.stringify(scope.users));
+        scope.messageData = "Cargando... Comentarios";
         $http.get(urlAppServer + "/comments?per_page=100").success(function(dataComments){
           scope.comments = dataComments;
           localStorage.setItem("comments", JSON.stringify(scope.comments));
+          scope.messageData = "Cargando... Media";
           $http.get(urlAppServer + "/media?per_page=100").success(function(dataMedia){
             scope.media = dataMedia;
             localStorage.setItem("media", JSON.stringify(scope.media));
+            scope.messageData = "Cargando... Posts";
             scope.getPosts();
           });
         });

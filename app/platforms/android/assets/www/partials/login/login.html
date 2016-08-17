@@ -1,5 +1,5 @@
-<h1>Museo Urbano Virtual Bopotá Efimera</h1>
-<p>Ingresa a nuestra plataforma</p>
+<h1>Museo Urbano Virtual Bogotá Efimera</h1>
+<a href="#/signup">Crea tu cuenta</a> ó ingresa con tus datos:
 <form>
   <p>Usuario</p>
   <input type="text" ng-model="mlc.user.userName" required></input>
@@ -7,9 +7,9 @@
   <input type="password" ng-model="mlc.user.userPassword" required></input>
   <br>
   <br>
-  <input type="button" ng-click="mlc.showMessage='true'; mlc.validateLogin(mlc.user.userName, mlc.user.userPassword);" value="Ingresar"></input>
+  <p ng-show="mlc.showMessage">{{mlc.messageLogin}}</p>
+  <input type="button" ng-click="mlc.validateLogin(mlc.user.userName, mlc.user.userPassword);" value="Ingresar"></input>
   <br>
   <br>
-  <a href="#/signup">Crea tu Cuenta</a>
+
 </form>
-<p ng-show="mlc.showMessage">{{mlc.messageLogin}}</p>

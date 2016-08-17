@@ -19,8 +19,7 @@
 		<div class="category">
 			<label for="">Elije la Categoria</label>
 			<br>
-			<select class="custom-file-input" ng-options="category.id as category.name for category in mv.categories | filter:{ id: '!1'} track by category.id" ng-model="mepc.selectedCategory">
-				<option value="">--Elige opcion--</option>
+			<select class="custom-file-input" ng-model="mepc.selectedCategory" ng-options="category as category.name for category in mepc.categories | filter:{ id: '!1'} track by category.id" >
 			</select>
 		</div>
 		<div class="image">
@@ -30,7 +29,7 @@
 		<br>
 		<br>
 		<div class="bottom">
-			<input type="button" class="custom-bottom-input" ng-click="mepc.editPost(mepc.postEdit.id, mepc.postEdit.title, mepc.postEdit.plainContent, mepc.selectedCategory)" value ="Editar"></input>
+			<input type="button" class="custom-bottom-input" ng-click="mepc.editPost(mepc.postEdit.id, mepc.postEdit.title, mepc.postEdit.plainContent, mepc.selectedCategory.id)" value ="Editar"></input>
 		</div>
 	</form>
 </div>

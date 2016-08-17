@@ -1,9 +1,9 @@
 <header>
 	<div class="wraper-header">
-		<div class="item logo-user">logo</div>
-		<div class="item name-user">{{mv.user.userName}}</div>
+		<a ng-href="#/home"><div class="item logo-user">logo</div></a>
+		<div class="item name-user"><a ng-href="#/author/{{mv.user.id}}">{{mv.user.userName}}</a></div>
 		<div class="item avatar-user">
-			<img ng-src="{{ mv.user.avatar }}" alt="avatar">
+			<a ng-href="#/author/{{mv.user.id}}"><img ng-src="{{ mv.user.avatar }}" alt="avatar"></a>
 		</div>
 		<div class="item menu-main" >
 			<a ng-href="#/exit">menu</a>

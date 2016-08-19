@@ -1,0 +1,148 @@
+/*******************************
+*    Estilos Globales MUVBE    *
+********************************/
+
+
+/*
+*    Etiquetas
+********************************/
+body {
+	background: url("../img/degrade.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: auto;
+	margin: 0 0;
+}
+img{
+  height: auto;
+  max-width: 100%;
+}
+a{
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: bold;
+	color: $text-gray;
+	display: block;
+}
+p {
+	color: $text-gray;
+	font-size: 15px;
+	font-weight: 400;
+}
+form {
+	background: transparent;
+	width: 100%;
+	font-size: 20px;
+	// padding: 20px 0
+}
+input{
+	width: 90%;
+	height: 33px;
+	border: 1px solid $gray;
+	border-radius:  8px;
+	display: block;
+  margin: 0 auto;
+	margin-bottom: 18px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: 400;
+	color: $text-gray;
+	&:focus,
+	&:active {
+		border: 2px solid $gray;
+		outline: 0;
+    outline-style: none;
+    outline-width: 0;
+	}
+}
+
+textarea{
+	width: 90%;
+	height: 100px;
+}
+
+
+/*
+*    Clases Globales
+****************************************/
+
+.content{
+	margin-top: 89px;
+}
+.message {
+	margin-bottom: 15px;
+	text-align: center;
+	a,p {
+		font-size: 12px;
+		display: inline;
+	}
+}
+.buttom {
+	text-align: center;
+	input{
+		text-align: center;
+		background: transparent;
+		border: 2px solid $pink;
+		color: $pink;
+	}
+}
+.error {
+	color: red;
+	font-size: 15px;
+}
+
+
+
+.custom-file-input,
+.custom-bottom-input{
+	width: 90%;
+	display: block;
+	position: relative;
+	background: rgba(171, 39, 97, 0.56);
+	margin: 0 auto;
+	height: 64px;
+}
+
+
+
+
+// .item-box
+// 	float: left
+// 	width: 31.3333%
+// 	margin: 1%
+// .nav-aux
+// 	position: fixed
+// 	bottom: 0
+// 	width: 100%
+// 	background: rgba(0, 0, 0, 0.55)
+// 	a
+// 		color: white
+// 		text-decoration: none
+// 		width: 50%
+// 		float: left
+// 		padding: 5px  0
+// .aux-2
+// 	a
+// 		width: 33%
+// .content-time
+// 	display: table
+// 	margin-bottom: 35px
+// 	width: 100%
+
+
+
+// .link-category
+// 	padding: 21px 10px
+// 	background: #7818d0
+// 	display: block
+// 	text-decoration: none
+// 	color: white
+// 	margin: 3px auto
+// 	width: 90%
+// .footer-block
+//     clear: both
+//     color: red
+
+
+

@@ -25,4 +25,5 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <icon src="res/icon.png" />
+    <splash src="res/splash.png" />
 </widget>

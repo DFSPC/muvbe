@@ -1,0 +1,227 @@
+/*******************************
+*     Ajustes estilos  MUVBE   *
+********************************/
+/*
+*   Colors palette
+********************************/
+/*
+*   Media Query Ranges
+********************************/
+/*******************************
+*    Estilos Globales MUVBE    *
+********************************/
+/*
+*    Etiquetas
+********************************/
+body {
+  background: url("../img/degrade.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  margin: 0 0; }
+
+img {
+  height: auto;
+  max-width: 100%; }
+
+a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: #727277;
+  display: block; }
+
+p {
+  color: #727277;
+  font-size: 15px;
+  font-weight: 400; }
+
+form {
+  background: transparent;
+  width: 100%;
+  font-size: 20px; }
+
+input {
+  width: 90%;
+  height: 33px;
+  border: 1px solid #e1e1e3;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 18px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  color: #727277; }
+  input:focus, input:active {
+    border: 2px solid #e1e1e3;
+    outline: 0;
+    outline-style: none;
+    outline-width: 0; }
+
+textarea {
+  width: 90%;
+  height: 100px; }
+
+/*
+*    Clases Globales
+****************************************/
+.content {
+  margin-top: 89px; }
+
+.message {
+  margin-bottom: 15px;
+  text-align: center; }
+  .message a, .message p {
+    font-size: 12px;
+    display: inline; }
+
+.buttom {
+  text-align: center; }
+  .buttom input {
+    text-align: center;
+    background: transparent;
+    border: 2px solid #dd208f;
+    color: #dd208f; }
+
+.error {
+  color: red;
+  font-size: 15px; }
+
+.custom-file-input,
+.custom-bottom-input {
+  width: 90%;
+  display: block;
+  position: relative;
+  background: rgba(171, 39, 97, 0.56);
+  margin: 0 auto;
+  height: 64px; }
+
+.view-login .logo {
+  background: url("../img/logo.png");
+  background-repeat: no-repeat;
+  width: 201px;
+  height: 162px;
+  margin: 0 auto; }
+
+.view-login .wraper .message .text-remeber p {
+  margin-right: 6px; }
+
+.view-login .footer-login {
+  background: #cbcccd;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+  position: absolute; }
+  .view-login .footer-login p {
+    display: inline-block;
+    margin-right: 6px;
+    font-weight: 400;
+    font-size: 15px; }
+
+@media only screen and (orientation: landscape) {
+  .view-login .footer-login {
+    position: relative; } }
+
+.nav-aux {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #f6f6f7;
+  height: 57px;
+  border-top: 1px solid #cccccc; }
+  .nav-aux .item {
+    width: 25%;
+    display: block;
+    float: left;
+    height: 100%;
+    background-repeat: no-repeat; }
+    .nav-aux .item a {
+      font-size: 0;
+      background: url("../img/icon-nav-2.png");
+      width: 35px;
+      display: block;
+      height: 35px;
+      overflow: hidden;
+      margin: 12px auto; }
+    .nav-aux .item.item-1 a {
+      background-position: 0px -1px; }
+    .nav-aux .item.item-2 a {
+      background-position: -98px 32px; }
+    .nav-aux .item.item-3 a {
+      background-position: -198px -34px;
+      height: 32px; }
+    .nav-aux .item.item-4 a {
+      background-position: -297px -1px; }
+
+.content-time {
+  display: table;
+  margin-bottom: 35px;
+  width: 100%; }
+
+.link-category {
+  padding: 21px 10px;
+  background: #7818d0;
+  display: block;
+  text-decoration: none;
+  color: white;
+  margin: 3px auto;
+  width: 90%; }
+
+.footer-block {
+  clear: both;
+  color: red; }
+
+.header {
+  background: url("../img/back-header.png");
+  background-color: white;
+  height: 89px;
+  position: fixed;
+  top: 0;
+  width: 100%; }
+  .header .logo-app {
+    float: left;
+    height: 100%; }
+    .header .logo-app span {
+      background: url("../img/logo-header2.png");
+      background-repeat: no-repeat;
+      height: 100%;
+      width: 107px;
+      font-size: 0;
+      display: block; }
+  .header .name-user {
+    width: auto;
+    text-align: right;
+    display: block;
+    float: right;
+    height: 100%; }
+    .header .name-user a {
+      font-size: 18px;
+      margin: 34px 12px 0 0;
+      text-transform: capitalize;
+      font-weight: 400; }
+  .header .avatar-user {
+    float: right;
+    width: 48px;
+    height: 100%; }
+    .header .avatar-user a {
+      margin-top: 19px; }
+      .header .avatar-user a img {
+        -webkit-border-radius: 50%;
+                border-radius: 50%;
+        overflow: hidden; }
+  .header .menu-main {
+    display: block;
+    width: 46px;
+    float: right; }
+    .header .menu-main a {
+      background: url("../img/icon-menu.png");
+      background-repeat: no-repeat;
+      background-position-y: 36px;
+      display: block;
+      width: 24px;
+      margin: 0 auto;
+      height: 100%;
+      font-size: 0; }

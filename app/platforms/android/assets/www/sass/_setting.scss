@@ -1,0 +1,31 @@
+/*******************************
+*     Ajustes estilos  MUVBE   *
+********************************/
+
+/*
+*   Colors palette
+********************************/
+
+$white:  #FFFFFF;
+$gray:   #e1e1e3;
+$pink:   #dd208f;
+$text-gray: #727277;
+
+
+
+
+// $landscape: @media(orientation: landscape);
+/*
+*   Media Query Ranges
+********************************/
+
+
+$screen: "only screen";
+
+$landscape: "#{$screen} and (orientation: landscape)";
+$portrait: "#{$screen} and (orientation: portrait)";
+
+$table:  "#{$screen} and (min-width: 550px)";
+$desktop: "#{$screen} and (min-width: 900px)";
+
+$wide:  "#{$screen} and (min-width: 1400px)";

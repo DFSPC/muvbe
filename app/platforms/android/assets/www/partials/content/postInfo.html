@@ -24,6 +24,14 @@
 			<option value="">--Elige opcion--</option>
 			</select>
 		</div>
+		<div class="ubication">
+			<label for="">Elije la Ubicacion</label>
+			<br>
+			<br>
+			<select class="custom-file-input" ng-model="mcpc.ubication" ng-options="ubication.id as ubication.name for ubication in mv.ubications track by ubication.id">
+			<option value="">--Elige opcion--</option>
+			</select>
+		</div>
 		<br>
 		<div class="image">
 			<label for="">Sube tu Imagen</label>
@@ -36,7 +44,7 @@
 		</div>
 		<br>
 		<div class="bottom">
-			<input type="button" class="custom-bottom-input" ng-click="mcpc.createPost(mcpc.title, mcpc.content, mcpc.file, mcpc.category)" value ="Añadir"></input>
+			<input type="button" class="custom-bottom-input" ng-click="mcpc.createPost(mcpc.title, mcpc.content, mcpc.file, mcpc.category, mcpc.ubication)" value ="Añadir"></input>
 		</div>
 	</form>
 </div>

@@ -192,7 +192,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
   }
 
   //Create Post
-  scope.createPost = function(title, content, file, category){
+  scope.createPost = function(title, content, file, category, ubication){
     var fd = new FormData();
     imageBase = getBase64Image(document.getElementById("myImage"))
     var blob = dataURItoBlob(imageBase);
@@ -214,6 +214,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
           "content" : content,
           "featured_media" : imagePost,
           "categories" : [category],
+          "ubications" : [ubication],
           "status" : status
         });
 
@@ -237,6 +238,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
           post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
           post.categoryId = dataPost.categories[0];
           post.categoryName = $scope.mv.getCategoryName(dataPost.categories[0]);
+          post.ubicationId = dataPost.ubications[0];
+          post.ubicationName = $scope.mv.getUbicationName(dataPost.ubications[0]);
           post.mediaId = dataPost.featured_media;
           post.urlFeaturedImage = dataMedia.source_url;
           posts.unshift(post);
@@ -275,14 +278,21 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
       scope.selectedCategory = scope.categories[categories_data];
     }
   }
+  scope.ubications = $scope.mv.ubications;
+  for(var ubications_data in scope.ubications) {
+    if (scope.ubications[ubications_data].id == scope.postEdit.ubicationId){
+      scope.selectedUbication = scope.ubications[ubications_data];
+    }
+  }
 
   //Create Post
-  scope.editPost = function(postId, title, content, category){
+  scope.editPost = function(postId, title, content, category, ubication){
     var status =  "publish";
     data = JSON.stringify({
       "title" : title,
       "content" : content,
       "categories" : [category],
+      "ubications" : [ubication],
       "status" : status
     });
     $http({
@@ -302,6 +312,8 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
           value.plainContent = content;
           value.categoryId = category;
           value.categoryName = $scope.mv.getCategoryName(category);
+          value.ubicationId = ubication;
+          value.ubicationName = $scope.mv.getUbicationName(ubication);
         }
       });
       $scope.mv.posts = posts;

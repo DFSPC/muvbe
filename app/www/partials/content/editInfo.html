@@ -22,6 +22,12 @@
 			<select class="custom-file-input" ng-model="mepc.selectedCategory" ng-options="category as category.name for category in mepc.categories | filter:{ id: '!1'} track by category.id" >
 			</select>
 		</div>
+		<div class="ubication">
+			<label for="">Elije la Ubicacion</label>
+			<br>
+			<select class="custom-file-input" ng-model="mepc.selectedUbication" ng-options="ubication as ubication.name for ubication in mepc.ubications track by ubication.id" >
+			</select>
+		</div>
 		<div class="image">
       <img id="myImage" ng-src="{{mepc.postEdit.urlFeaturedImage}}">
       <p id="text2"></p>
@@ -29,7 +35,7 @@
 		<br>
 		<br>
 		<div class="bottom">
-			<input type="button" class="custom-bottom-input" ng-click="mepc.editPost(mepc.postEdit.id, mepc.postEdit.title, mepc.postEdit.plainContent, mepc.selectedCategory.id)" value ="Editar"></input>
+			<input type="button" class="custom-bottom-input" ng-click="mepc.editPost(mepc.postEdit.id, mepc.postEdit.title, mepc.postEdit.plainContent, mepc.selectedCategory.id, mepc.selectedUbication.id)" value ="Editar"></input>
 		</div>
 	</form>
 </div>

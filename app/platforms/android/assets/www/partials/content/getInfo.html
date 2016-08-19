@@ -13,6 +13,11 @@
 		{{post.categoryName}}
 	</a>
 </p>
+<p>Ubicacion:
+  <a href="#/ubications/{{post.ubicationId}}">
+    {{post.ubicationName}}
+  </a>
+</p>
 <br>
 <div ng-show="mv.user.id == post.author">
   <a ng-href = "#/edit-post/{{post.id}}">Editar Post</a>

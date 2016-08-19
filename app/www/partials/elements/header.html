@@ -1,12 +1,14 @@
-<header>
-	<div class="wraper-header">
-		<a ng-href="#/home"><div class="item logo-user">logo</div></a>
-		<div class="item name-user"><a ng-href="#/author/{{mv.user.id}}">{{mv.user.userName}}</a></div>
-		<div class="item avatar-user">
-			<a ng-href="#/author/{{mv.user.id}}"><img ng-src="{{ mv.user.avatar }}" alt="avatar"></a>
-		</div>
-		<div class="item menu-main" >
-			<a ng-href="#/exit">menu</a>
-		</div>
+<div class="header">
+	<div class="logo-app"">
+		<a ng-href="#/home"><span>logo</span></a>
 	</div>
-</header>
+	<div class="menu-main" >
+		<a ng-href="#/exit">menu</a>
+	</div>
+	<div class="avatar-user">
+		<a ng-href="#/author/{{mv.user.id}}"><img ng-src="{{ mv.user.avatar }}" alt="avatar"></a>
+	</div>
+	<div class="name-user">
+		<a ng-href="#/author/{{mv.user.id}}">{{mv.user.userName}}</a>
+	</div>
+</div>

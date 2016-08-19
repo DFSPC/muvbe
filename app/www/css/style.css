@@ -29,7 +29,8 @@ a {
   text-decoration: none;
   font-size: 15px;
   font-weight: bold;
-  color: #727277; }
+  color: #727277;
+  display: block; }
 
 p {
   color: #727277;
@@ -172,3 +173,55 @@ textarea {
 .footer-block {
   clear: both;
   color: red; }
+
+.header {
+  background: url("../img/back-header.png");
+  background-color: white;
+  height: 89px;
+  position: fixed;
+  top: 0;
+  width: 100%; }
+  .header .logo-app {
+    float: left;
+    height: 100%; }
+    .header .logo-app span {
+      background: url("../img/logo-header2.png");
+      background-repeat: no-repeat;
+      height: 100%;
+      width: 107px;
+      font-size: 0;
+      display: block; }
+  .header .name-user {
+    width: auto;
+    text-align: right;
+    display: block;
+    float: right;
+    height: 100%; }
+    .header .name-user a {
+      font-size: 18px;
+      margin: 34px 12px 0 0;
+      text-transform: capitalize;
+      font-weight: 400; }
+  .header .avatar-user {
+    float: right;
+    width: 48px;
+    height: 100%; }
+    .header .avatar-user a {
+      margin-top: 19px; }
+      .header .avatar-user a img {
+        -webkit-border-radius: 50%;
+                border-radius: 50%;
+        overflow: hidden; }
+  .header .menu-main {
+    display: block;
+    width: 46px;
+    float: right; }
+    .header .menu-main a {
+      background: url("../img/icon-menu.png");
+      background-repeat: no-repeat;
+      background-position-y: 36px;
+      display: block;
+      width: 24px;
+      margin: 0 auto;
+      height: 100%;
+      font-size: 0; }

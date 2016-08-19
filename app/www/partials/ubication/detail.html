@@ -1,0 +1,18 @@
+<div class="wrapper">
+
+  <h1 class="info">{{mdu.ubicationName}}</h1>
+
+
+  <div class="content-time">
+    <div ng-repeat="post in mv.posts | filter:{ ubicationId:mdu.ubicationId} track by $index">
+
+      <div class="item-box">
+        <a href="#/post-info/{{post.id}}">
+          <img ng-src="{{post.urlFeaturedImage}}"></img>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+

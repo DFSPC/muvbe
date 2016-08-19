@@ -22,6 +22,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
   scope.media = JSON.parse(localStorage.getItem("media"));
   scope.comments = JSON.parse(localStorage.getItem("comments"));
   scope.categories = JSON.parse(localStorage.getItem("categories"));
+  scope.ubications = JSON.parse(localStorage.getItem("ubications"));
   scope.users = JSON.parse(localStorage.getItem("users"));
   scope.posts = JSON.parse(localStorage.getItem("posts"));
 
@@ -36,6 +37,13 @@ muvbe.controller('muvbeController', function ($scope, $http){
     $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
       scope.categories = data;
       localStorage.setItem("categories", JSON.stringify(scope.categories));
+    });
+  }
+
+  scope.getUbications = function(){
+    $http.get(urlAppServer + "/ubications?per_page=100").success(function(data){
+      scope.ubications = data;
+      localStorage.setItem("ubications", JSON.stringify(scope.ubications));
     });
   }
 
@@ -71,8 +79,21 @@ muvbe.controller('muvbeController', function ($scope, $http){
         post.authorName = scope.getAuthorName(data[post_data].author);
         var datePost = new Date(data[post_data].date);
         post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
-        post.categoryId = data[post_data].categories[0];
-        post.categoryName = scope.getCategoryName(data[post_data].categories[0]);
+        if (data[post_data].categories){
+          post.categoryName = scope.getCategoryName(data[post_data].categories[0]);
+          post.categoryId = data[post_data].categories[0];
+        }else{
+          post.categoryName = "Sin Categoria";
+          post.categoryId = 0;
+        }
+        if (data[post_data].ubications){
+          post.ubicationId = data[post_data].ubications[0];
+          post.ubicationName = scope.getUbicationName(data[post_data].ubications[0]);
+        }else{
+          post.ubicationId = 0;
+          post.ubicationName = "Sin Ubicacion";
+        }
+
         post.mediaId = data[post_data].featured_media;
         scope.getImageUrlByPost(post, data[post_data].featured_media);
         scope.getCommentsByPost(post);
@@ -90,20 +111,25 @@ muvbe.controller('muvbeController', function ($scope, $http){
     $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
       scope.categories = data;
       localStorage.setItem("categories", JSON.stringify(scope.categories));
-      scope.messageData = "Cargando... Usuarios";
-      $http.get(urlAppServer + "/users?per_page=100").success(function(dataUsers){
-        scope.users = dataUsers;
-        localStorage.setItem("users", JSON.stringify(scope.users));
-        scope.messageData = "Cargando... Comentarios";
-        $http.get(urlAppServer + "/comments?per_page=100").success(function(dataComments){
-          scope.comments = dataComments;
-          localStorage.setItem("comments", JSON.stringify(scope.comments));
-          scope.messageData = "Cargando... Media";
-          $http.get(urlAppServer + "/media?per_page=100").success(function(dataMedia){
-            scope.media = dataMedia;
-            localStorage.setItem("media", JSON.stringify(scope.media));
-            scope.messageData = "Cargando... Posts";
-            scope.getPosts();
+      scope.messageData = "Cargando... Ubicaciones";
+      $http.get(urlAppServer + "/ubications?per_page=100").success(function(data){
+        scope.ubications = data;
+        localStorage.setItem("ubications", JSON.stringify(scope.ubications));
+        scope.messageData = "Cargando... Usuarios";
+        $http.get(urlAppServer + "/users?per_page=100").success(function(dataUsers){
+          scope.users = dataUsers;
+          localStorage.setItem("users", JSON.stringify(scope.users));
+          scope.messageData = "Cargando... Comentarios";
+          $http.get(urlAppServer + "/comments?per_page=100").success(function(dataComments){
+            scope.comments = dataComments;
+            localStorage.setItem("comments", JSON.stringify(scope.comments));
+            scope.messageData = "Cargando... Media";
+            $http.get(urlAppServer + "/media?per_page=100").success(function(dataMedia){
+              scope.media = dataMedia;
+              localStorage.setItem("media", JSON.stringify(scope.media));
+              scope.messageData = "Cargando... Posts";
+              scope.getPosts();
+            });
           });
         });
       });
@@ -152,6 +178,19 @@ muvbe.controller('muvbeController', function ($scope, $http){
       for(var category in scope.categories) {
         if (categories[category].id == categoryId){
           return categories[category].name;
+        }
+      }
+    }
+  }
+
+  scope.getUbicationName = function(ubicationId){
+    if(!scope.ubications){
+      scope.getUbications();
+    }else{
+      ubications = scope.ubications;
+      for(var ubication in scope.ubications) {
+        if (ubications[ubication].id == ubicationId){
+          return ubications[ubication].name;
         }
       }
     }
@@ -217,7 +256,7 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     })
 
     /*
-    **  Categorys
+    **  Categories
     **********************************************/
     .when("/categories", {
       templateUrl: "partials/category/list.html",
@@ -226,6 +265,18 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     .when("/categories/:categoryId", {
       templateUrl: "partials/category/detail.html",
       controller: "muvbeDetailCategotyController as mdc"
+    })
+
+    /*
+    **  Ubications
+    **********************************************/
+    .when("/ubications", {
+      templateUrl: "partials/ubication/list.html",
+      controller: "muvbeListUbicationController as mlu"
+    })
+    .when("/ubications/:ubicationId", {
+      templateUrl: "partials/ubication/detail.html",
+      controller: "muvbeDetailUbicationController as mdu"
     })
 
     /*

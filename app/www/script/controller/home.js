@@ -12,6 +12,7 @@ muvbe.controller('muvbeHomeController', function ($scope, $http){
     && $scope.mv.posts
     && $scope.mv.categories
     && $scope.mv.users
+    && $scope.mv.ubications
     ){
   }else{
     $scope.mv.getAllData();

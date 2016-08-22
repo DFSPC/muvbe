@@ -30,6 +30,9 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       posts = $scope.mv.posts;
       posts.forEach(function(value) {
         if (value.id == scope.postId){
+          if (!value.comments){
+            value.comments = new Array();
+          }
           var commentInfo = new Object();
           commentInfo.id = data.id;
           commentInfo.authorId = data.author;
@@ -232,6 +235,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
           post.id = dataPost.id;
           post.title = dataPost.title.rendered;
           post.content = dataPost.content.rendered;
+          post.plainContent = $(dataPost.content.rendered).text();
           post.author = dataPost.author;
           post.authorName = $scope.mv.getAuthorName(dataPost.author);
           var datePost = new Date(dataPost.date);

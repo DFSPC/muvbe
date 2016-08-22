@@ -1,6 +1,3 @@
-<button ng-click="mv.getAllData(); filterPosts = {}; mv.category = ''";>Ultimos posts</button>
-<button ng-click="filterPosts = {author:mv.user.id}; mv.category = ''">Mis posts</button>
-
 <div class="content-time">
 	<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index">
 		<div class="item-box">

@@ -12,7 +12,6 @@ body {
 	background-size: cover;
 	width: 100%;
 	height: auto;
-	margin: 0 0;
 }
 img{
   height: auto;
@@ -29,6 +28,7 @@ p {
 	color: $text-gray;
 	font-size: 15px;
 	font-weight: 400;
+	margin: 0 0;
 }
 form {
 	background: transparent;
@@ -73,14 +73,15 @@ textarea{
 .message {
 	margin-bottom: 15px;
 	text-align: center;
-	a,p {
+	p {
 		font-size: 12px;
 		display: inline;
 	}
 }
 .buttom {
 	text-align: center;
-	input{
+	input,
+	a{
 		text-align: center;
 		background: transparent;
 		border: 2px solid $pink;

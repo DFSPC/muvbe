@@ -24,11 +24,21 @@
 		width: 100%;
 		bottom: 0;
 		position: absolute;
-		p{
-			display: inline-block;
-			margin-right: 6px;
-			font-weight: 400;
-			font-size: 15px;
+		height: 52px;
+		.wraper {
+			display: block;
+			height: 20px;
+			width: 247px;
+			margin: 17px auto;
+			p{
+				margin-right: 6px;
+				font-weight: 400;
+				font-size: 15px;
+				float: left;
+			}
+			a {
+				float: left;
+			}
 		}
 	}
 

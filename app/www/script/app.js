@@ -223,6 +223,10 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
       templateUrl: "partials/login/login.html",
       controller: "muvbeLoginController as mlc"
     })
+    .when("/terms", {
+      templateUrl: "partials/login/terms.html",
+      controller: "muvbeSignUpController as msuc"
+    })
     .when("/signup", {
       templateUrl: "partials/login/signup.html",
       controller: "muvbeSignUpController as msuc"

@@ -223,6 +223,10 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
       templateUrl: "partials/login/login.html",
       controller: "muvbeLoginController as mlc"
     })
+    .when("/terms", {
+      templateUrl: "partials/login/terms.html",
+      controller: "muvbeSignUpController as msuc"
+    })
     .when("/signup", {
       templateUrl: "partials/login/signup.html",
       controller: "muvbeSignUpController as msuc"
@@ -291,3 +295,20 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     //default url
     .otherwise({redirectTo: "/" });
 }]);
+
+muvbe.filter('unique', function() {
+   return function(collection, keyname) {
+      var output = [],
+          keys = [];
+
+      angular.forEach(collection, function(item) {
+          var key = item[keyname];
+          if(keys.indexOf(key) === -1) {
+              keys.push(key);
+              output.push(item);
+          }
+      });
+
+      return output;
+   };
+});

@@ -1,10 +1,11 @@
 <div class="wrapper">
-	<h1 class="info">Categorias</h1>
-	<div ng-repeat="category in mv.categories | filter:{ id: '!1'} track by category.id">
-	<div class="wrapper">
-		<a href="#/categories/{{ category.id }}" class="link link-category">
-			<div class="name-category" > {{ category.name }} </div>
-		</a>
-	</div>
-
+  <h1 class="info">Categorias</h1>
+  <div ng-repeat="post in mv.posts | filter:{ categoryId: '!!'} | unique:'categoryName' track by post.categoryId">
+    <div class="wrapper">
+      <a href="#/categories/{{ post.categoryId }}" class="link link-category">
+        <div class="name-category" > {{ post.categoryName }} </div>
+        <img ng-src= "{{post.urlFeaturedImage}}"></img>
+      </a>
+    </div>
+  </div>
 </div>

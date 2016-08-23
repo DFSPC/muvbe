@@ -21,14 +21,14 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
         scope.user.userName = userName;
         scope.user.userPassword = userPassword;
 
-        //$http.get(urlAppServer2 + '/user/get_userinfo/?user_id=' + data.body.id + '&insecure=cool').success(function(dataAvatar){
-          //scope.user.avatar = dataAvatar.avatar;
-          scope.user.avatar = data.body.avatar_urls['48'];
+        $http.get(urlAppServer2 + '/user/get_userinfo/?user_id=' + data.body.id + '&insecure=cool').success(function(dataAvatar){
+          scope.user.avatar = dataAvatar.avatar;
+          //scope.user.avatar = data.body.avatar_urls['48'];
           scope.messageLogin = 'Gracias por Ingresar';
           localStorage.setItem("userSession", JSON.stringify(scope.user));
           $scope.mv.user = scope.user;
           window.location = "#/home";
-        //});
+        });
       }else{
         scope.successLogin = false;
         scope.showMessage = true

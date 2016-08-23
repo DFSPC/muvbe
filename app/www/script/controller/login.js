@@ -42,6 +42,92 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
 ************************************************/
 muvbe.controller('muvbeSignUpController', function ($scope, $http){
   var scope = this;
+
+
+  //Take FILE_URL
+  scope.takephotoURL = function(){
+    navigator.camera.getPicture(onURLSuccess, onURLFail,
+    { quality : 100,
+      destinationType : Camera.DestinationType.FILE_URI,
+      sourceType : Camera.PictureSourceType.CAMERA,
+      allowEdit : true,
+      encodingType: Camera.EncodingType.PNG,
+      targetWidth: 640,
+      targetHeight: 640,
+      saveToPhotoAlbum: true }
+    );
+  }
+  function onURLSuccess(imageURI) {
+    var image = document.getElementById('myImageAvatar');
+    image.src = imageURI;
+  }
+
+  function onURLFail(message) {
+    alert('No tomaste una foto!');
+  }
+
+  //From Library
+  scope.choosePhoto = function(){
+    navigator.camera.getPicture(onlibSuccess, onlibFail,
+    { quality : 100,
+      destinationType : Camera.DestinationType.FILE_URI,
+      sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit : true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 640,
+      targetHeight: 640,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false }
+    );
+  }
+  function onlibSuccess(imageURI) {
+    var image = document.getElementById('myImageAvatar');
+    image.src = imageURI;
+  }
+  function onlibFail(message) {
+    alert('No seleccionaste una foto!');
+  }
+
+  //Convert URI to Blob to post in API
+  function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ia], {type:mimeString});
+  }
+
+  //Get Image in Base64
+  function getBase64Image(img) {
+    // Create an empty canvas element
+    var canvas = document.createElement("canvas");
+    canvas.width = 640;
+    canvas.height = 640;
+
+    // Copy the image contents to the canvas
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    // Get the data-URL formatted image
+    // Firefox supports PNG and JPEG. You could check img.src to
+    // guess the original format, but be aware the using "image/jpg"
+    // will re-encode the image.
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL;
+  }
+
   scope.createUser = function(userName, userEmail, userPassword){
     data = JSON.stringify({
       "username" : userName,
@@ -70,7 +156,28 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
       scope.messageLogin = 'Gracias por Ingresar';
       localStorage.setItem("userSession", JSON.stringify(scope.user));
       $scope.mv.user = scope.user;
-      window.location = "#/home";
+
+      var fd = new FormData();
+      imageBase = getBase64Image(document.getElementById("myImageAvatar"))
+      var blob = dataURItoBlob(imageBase);
+      var fd = new FormData();
+      fd.append("file", blob, "image.png");
+      $http.post(urlAppServer + '/media', fd, {
+        transformRequest: angular.identity,
+        headers: {
+          "authorization": 'Basic ' + userHashAdmin,
+          'content-type': undefined,
+          "content-disposition": "attachment; filename=image.png",
+        }
+      }).success(function (dataMedia) {
+        scope.user.avatar = dataMedia.source_url;
+
+        $http.get("http://londonojp.com/muvbe/web/api/user/update_user_meta_vars/?insecure=cool&cookie=admin|1473197852|rDR7kV84qVwOGBNkwABiUR6lV7hH5fBTntbETcbs6wK|710b4647988f24cf49d7a2c0cca1a1558768650ff2795780b651f701f1fabdcf&wp_user_avatar=" + dataMedia.id).success(function(data){
+          console.log("True");
+          window.location = "#/home";
+        });
+        console.log(dataMedia);
+      });
     });
   }
 });

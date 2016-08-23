@@ -1,10 +1,11 @@
 <div class="wrapper">
   <h1 class="info">Ubicaciones</h1>
-  <div ng-repeat="ubication in mv.ubications track by ubication.id">
-  <div class="wrapper">
-    <a href="#/ubications/{{ ubication.id }}" class="link link-ubication">
-      <div class="name-ubication" > {{ ubication.name }} </div>
-    </a>
+  <div ng-repeat="post in mv.posts | filter:{ ubicationId: '!!'} | unique:'ubicationName' track by post.ubicationId">
+    <div class="wrapper">
+      <a href="#/ubications/{{ post.ubicationId }}" class="link link-ubication">
+        <div class="name-ubication" > {{ post.ubicationName }} </div>
+        <img ng-src= "{{post.urlFeaturedImage}}"></img>
+      </a>
+    </div>
   </div>
-
 </div>

@@ -71,6 +71,10 @@ gulp.task('watch', function() {
   gulp.watch(['css/**']).on('change', livereload.changed);
 
 
+
+
+
+
 });
 
 
@@ -98,7 +102,8 @@ gulp.src = function() {
 
 gulp.task('default',  function () {
 
-	gulp.start('site')
+	gulp.start('site');
+
 
 	// gulp.watch(['./sass/*.scss'], task, processors());
 

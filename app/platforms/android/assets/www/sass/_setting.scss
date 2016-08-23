@@ -11,10 +11,18 @@ $gray:   #e1e1e3;
 $pink:   #dd208f;
 $text-gray: #727277;
 
+/*
+*   Media Query Ranges
+********************************/
+
+@mixin center-text($width) {
+	display: block;
+	width: $width;
+	margin: 0 auto;
+}
 
 
 
-// $landscape: @media(orientation: landscape);
 /*
 *   Media Query Ranges
 ********************************/

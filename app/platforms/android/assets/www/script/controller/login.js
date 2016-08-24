@@ -147,16 +147,6 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
       },
       data: data,
     }).success(function (data) {
-      scope.user.id = data.id;
-      scope.user.successLogin = true;
-      scope.user.userName = userName;
-      scope.user.userPassword = userPassword;
-      scope.user.userEmail = userEmail;
-      scope.user.avatar = data.avatar_urls[48];
-      scope.messageLogin = 'Gracias por Ingresar';
-      localStorage.setItem("userSession", JSON.stringify(scope.user));
-      $scope.mv.user = scope.user;
-
       var fd = new FormData();
       imageBase = getBase64Image(document.getElementById("myImageAvatar"))
       var blob = dataURItoBlob(imageBase);
@@ -172,11 +162,21 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
       }).success(function (dataMedia) {
         scope.user.avatar = dataMedia.source_url;
 
-        $http.get("http://londonojp.com/muvbe/web/api/user/update_user_meta_vars/?insecure=cool&cookie=admin|1473197852|rDR7kV84qVwOGBNkwABiUR6lV7hH5fBTntbETcbs6wK|710b4647988f24cf49d7a2c0cca1a1558768650ff2795780b651f701f1fabdcf&wp_user_avatar=" + dataMedia.id).success(function(data){
-          console.log("True");
-          window.location = "#/home";
+        $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + userName + "&password=" + userPassword).success(function(dataCookie){
+          var cookie = dataCookie.cookie;
+          $http.get(urlAppServer2 + "/user/update_user_meta_vars/?insecure=cool&cookie=" + cookie + "&wp_user_avatar=" + dataMedia.id).success(function(data){
+            scope.user.id = data.id;
+            scope.user.successLogin = true;
+            scope.user.userName = userName;
+            scope.user.userPassword = userPassword;
+            scope.user.userEmail = userEmail;
+            $scope.mv.user = scope.user;
+            scope.messageLogin = 'Gracias por Ingresar';
+            localStorage.setItem("userSession", JSON.stringify(scope.user));
+            console.log("True");
+            window.location = "#/home";
+          });
         });
-        console.log(dataMedia);
       });
     });
   }

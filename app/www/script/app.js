@@ -26,6 +26,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
   scope.ubications = JSON.parse(localStorage.getItem("ubications"));
   scope.users = JSON.parse(localStorage.getItem("users"));
   scope.posts = JSON.parse(localStorage.getItem("posts"));
+  scope.favorites = JSON.parse(localStorage.getItem("favorites"));
 
   scope.getMedia = function(){
     $http.get(urlAppServer + "/media?per_page=100").success(function(data){
@@ -62,6 +63,13 @@ muvbe.controller('muvbeController', function ($scope, $http){
     });
   }
 
+  scope.getFavorites = function(){
+    $http.get(urlAppServer2 + "/get_posts/?count=100").success(function(data){
+      scope.favorites = data.posts;
+      localStorage.setItem("favorites", JSON.stringify(scope.favorites));
+    });
+  }
+
   var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];
@@ -94,10 +102,10 @@ muvbe.controller('muvbeController', function ($scope, $http){
           post.ubicationId = 0;
           post.ubicationName = "Sin Ubicacion";
         }
-
         post.mediaId = data[post_data].featured_media;
         scope.getImageUrlByPost(post, data[post_data].featured_media);
         scope.getCommentsByPost(post);
+        scope.getCountFavoritesByPost(post);
         posts.push(post);
         scope.posts = posts;
       }
@@ -128,7 +136,13 @@ muvbe.controller('muvbeController', function ($scope, $http){
             $http.get(urlAppServer + "/media?per_page=100").success(function(dataMedia){
               scope.media = dataMedia;
               localStorage.setItem("media", JSON.stringify(scope.media));
-              scope.messageData = "Cargando... Posts";
+              scope.messageData = "Cargando... Favoritos";
+              $http.get(urlAppServer2 + "/get_posts/?count=100").success(function(dataFavorites){
+                scope.favorites = dataFavorites.posts;
+                localStorage.setItem("favorites", JSON.stringify(scope.favorites));
+                scope.messageData = "Cargando... Posts";
+                scope.getPosts();
+              });
               scope.getPosts();
             });
           });
@@ -147,6 +161,25 @@ muvbe.controller('muvbeController', function ($scope, $http){
           post.urlFeaturedImage = media[media_data].source_url;
         }
       }
+    }
+  }
+
+  scope.getCountFavoritesByPost = function(post){
+    if(!scope.favorites){
+      scope.getFavorites();
+    }else{
+      var favorites = scope.favorites;
+      favorites.forEach(function(value) {
+        if (post.id == value.id){
+          if (value.custom_fields.wpfp_favorites !== undefined){
+            post.countFavorites = value.custom_fields.wpfp_favorites[0];
+            return true;
+          }else{
+            post.countFavorites = "0";
+            return true;
+          }
+        }
+      });
     }
   }
 

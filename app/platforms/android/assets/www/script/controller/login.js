@@ -23,7 +23,6 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
 
         $http.get(urlAppServer2 + '/user/get_userinfo/?user_id=' + data.body.id + '&insecure=cool').success(function(dataAvatar){
           scope.user.avatar = dataAvatar.avatar;
-          //scope.user.avatar = data.body.avatar_urls['48'];
           scope.messageLogin = 'Gracias por Ingresar';
           localStorage.setItem("userSession", JSON.stringify(scope.user));
           $scope.mv.user = scope.user;
@@ -173,7 +172,6 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
             $scope.mv.user = scope.user;
             scope.messageLogin = 'Gracias por Ingresar';
             localStorage.setItem("userSession", JSON.stringify(scope.user));
-            console.log("True");
             window.location = "#/home";
           });
         });

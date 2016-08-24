@@ -1,0 +1,18 @@
+<div class="wrapper">
+
+	<h1 class="info">{{mv.user.userName}}</h1>
+	<p>Tu avatar</p>
+	<img ng-src="{{ mv.user.avatar }}" alt="avatar"></img>
+	<p>Tu posts:</p>
+	<div class="content-time">
+		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:{ 'author' : mv.user.id }: muic.filterUserId) track by $index">
+			<div class="item-box">
+				<a href="#/post-info/{{post.id}}">
+					<img ng-src="{{post.urlFeaturedImage}}"></img>
+				</a>
+			</div>
+		</div>
+	</div>
+	<p ng-show="!numberPostFilter.length">No se encontraron Posts</p>
+</div>
+

@@ -285,12 +285,21 @@ muvbe.config(['$routeProvider', function ($routeProvider) {
     })
 
     /*
-    **  User
+    **  Author
     **********************************************/
 
     .when("/author/:authorId", {
       templateUrl: "partials/author/detail.html",
       controller: "muvbeDetailAuthorController as mda"
+    })
+
+    /*
+    **  User
+    **********************************************/
+
+    .when("/user", {
+      templateUrl: "partials/user/userInfo.html",
+      controller: "muvbeUserInfoController as muic"
     })
     //default url
     .otherwise({redirectTo: "/" });

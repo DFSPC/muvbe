@@ -4,7 +4,7 @@
 
 
 	<div class="content-time">
-		<div ng-repeat="post in mv.posts | filter:{ 'author' : mda.authorId }: mda.filterAuthorId track by $index">
+		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:{ 'author' : mda.authorId }: mda.filterAuthorId) track by $index">
 			<div class="item-box">
 				<a href="#/post-info/{{post.id}}">
 					<img ng-src="{{post.urlFeaturedImage}}"></img>
@@ -12,6 +12,6 @@
 			</div>
 		</div>
 	</div>
-
+	<p ng-show="!numberPostFilter.length">No se encontraron Posts</p>
 </div>
 

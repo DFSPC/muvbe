@@ -1,31 +1,30 @@
 <div class="views-signup">
-
-  <a class="arrow-back" href="#/">vuelve</a>
-  <!-- logo  -->
-  <div class="logo"></div>
-  <div class="title-signup"><p>Registro</p></div>
+  <!-- header  -->
+  <div class="header-signup">
+    <a class="arrow-back" href="#/">vuelve</a>
+    <div class="logo"></div>
+    <div class="title-signup"><p>Registro</p></div>
+  </div>
   <!-- formulario de signup -->
   <form name="formSignUp">
-
-    <input type="text" ng-model="msuc.user.userName" required placeholder="Nombre de usuario"></input>
-
-    <input type="text" ng-model="msuc.user.userEmail" required placeholder="Email"></input>
-
-    <input type="password" ng-model="msuc.user.userPassword" required placeholder="Contraseña"></input>
-
-
+    <input class="textbox" type="text" ng-model="msuc.user.userName" required placeholder="Nombre de usuario"></input>
+    <input  class="textbox"type="text" ng-model="msuc.user.userEmail" required placeholder="Email"></input>
+    <input  class="textbox"type="password" ng-model="msuc.user.userPassword" required placeholder="Contraseña"></input>
+    <!-- buttom icono -->
+    <div class="wraper-up">
+      <a href="">
+        <div class="icon-up"></div>
+        <p>Subir Avatar</p>
+      </a>
+    </div>
+    <!-- forma de subir -->
     <div class="image">
-      <label for="">Sube tu Avatar</label>
-      <br>
-      <br>
       <input type="button" ng-click="msuc.takephotoURL()" value="Tomar Foto"/>
       <input type="button" ng-click="msuc.choosePhoto()" value="Escoger Foto"/>
       <img id="myImageAvatar" ng-model="msuc.file">
       <p id="text2"></p>
-    </div>
-  <!-- button -->
-    <input type="button" ng-click="msuc.createUser(msuc.user.userName, msuc.user.userEmail, msuc.user.userPassword, msuc.file);" value="Registrate"></input>
-
+     </div>
+    <!-- button -->
+    <input type="button" class="button-pink" ng-click="msuc.createUser(msuc.user.userName, msuc.user.userEmail, msuc.user.userPassword, msuc.file);" value="Registrate"></input>
   </form>
-
 </div>

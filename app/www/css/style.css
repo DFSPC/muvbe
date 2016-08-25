@@ -19,7 +19,7 @@
 body,
 html {
   width: 100%;
-  height: 100%;
+  height: auto;
   margin: 0; }
 
 img {
@@ -120,6 +120,13 @@ textarea {
   margin: 0 auto;
   height: 64px; }
 
+.button-pink {
+  width: 300px;
+  background-color: transparent;
+  border: 2px solid #da0080;
+  color: #da0080;
+  height: 36px; }
+
 .view-login {
   background: url("../img/back-login.png");
   background-repeat: no-repeat;
@@ -172,7 +179,8 @@ textarea {
         font-size: 15px;
         float: left; }
       .view-login .footer-login .wraper a {
-        float: left; }
+        float: left;
+        color: red; }
 
 @media only screen and (orientation: landscape) {
   .view-login {
@@ -186,21 +194,71 @@ textarea {
       padding-top: 6px; } }
 
 .views-signup {
-  background-color: #d7d8d9; }
-  .views-signup .logo {
-    background: url("../img/logo-signup.png");
-    background-repeat: no-repeat;
-    width: 85px;
-    height: 52px;
-    margin: 0 auto; }
-  .views-signup .title-signup p {
-    color: #e6007e;
-    font-size: 15px;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 7px; }
-  .views-signup form input {
-    background-color: #FFFFFF; }
+  background-color: #d7d8d9;
+  height: 100%; }
+  .views-signup .header-signup {
+    padding-top: 30px;
+    margin-bottom: 46px; }
+    .views-signup .header-signup .arrow-back {
+      background: url("../img/arrow-back.png");
+      background-repeat: no-repeat;
+      width: 46px;
+      height: 46px;
+      font-size: 0;
+      display: block;
+      float: left;
+      margin-left: 8px; }
+    .views-signup .header-signup .logo {
+      background: url("../img/logo-signup.png");
+      background-repeat: no-repeat;
+      width: 85px;
+      height: 52px;
+      margin: 0 auto;
+      display: block; }
+    .views-signup .header-signup .title-signup p {
+      color: #e6007e;
+      font-size: 15px;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 7px; }
+  .views-signup form {
+    min-height: 418px; }
+    .views-signup form input.textbox {
+      background-color: #FFFFFF;
+      border: 1px solid #cecfd1; }
+      .views-signup form input.textbox::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: #727277; }
+      .views-signup form input.textbox::-moz-placeholder {
+        /* Firefox 19+ */
+        color: #727277; }
+      .views-signup form input.textbox:-ms-input-placeholder {
+        /* IE 10+ */
+        color: #727277; }
+      .views-signup form input.textbox:-moz-placeholder {
+        /* Firefox 18- */
+        color: #727277; }
+    .views-signup form .wraper-up {
+      margin: 27px 0; }
+      .views-signup form .wraper-up .icon-up {
+        background: url("../img/icon-up.png");
+        background-repeat: no-repeat;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto;
+        display: block; }
+      .views-signup form .wraper-up p {
+        margin: 11px auto;
+        display: block;
+        width: 70px;
+        font-weight: bold;
+        font-size: 11px; }
+    .views-signup form .button-pink {
+      margin-bottom: 0; }
+
+@media only screen and (orientation: landscape) {
+  .views-signup {
+    height: auto; } }
 
 .views-terms {
   background-color: #c6c6c7;
@@ -254,12 +312,18 @@ textarea {
       margin: 0; }
     .views-terms form .buttom {
       margin-top: 22px;
-      width: 100%; }
+      width: 100%;
+      min-height: 100px; }
       .views-terms form .buttom input {
         width: 100%;
         background-color: transparent;
         border: 2px solid #da0080;
-        color: #da0080; }
+        color: #da0080;
+        margin: 0; }
+
+@media only screen and (orientation: landscape) {
+  .views-terms {
+    height: auto; } }
 
 .nav-aux {
   position: fixed;

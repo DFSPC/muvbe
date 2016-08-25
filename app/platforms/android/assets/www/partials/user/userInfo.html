@@ -1,11 +1,12 @@
-<div class="wrapper">
+<div class="wrapper" ng-init="filterPosts = {'author': mv.user.id };">
 
 	<h1 class="info">{{mv.user.userName}}</h1>
 	<p>Tu avatar</p>
 	<img ng-src="{{ mv.user.avatar }}" alt="avatar"></img>
-	<p>Tu posts:</p>
+	<button ng-click = "filterPosts = {'author': mv.user.id };">Tus posts</button>
+	<button ng-click = "filterPosts = {isFavorite:true};">Tus favoritos</button>
 	<div class="content-time">
-		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:{ 'author' : mv.user.id }: muic.filterUserId) track by $index">
+		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index">
 			<div class="item-box">
 				<a href="#/post-info/{{post.id}}">
 					<img ng-src="{{post.urlFeaturedImage}}"></img>

@@ -1,0 +1,28 @@
+.views-signup {
+	background-color: $gray;
+	.arrow-back{
+		// @include back-img(arrow-back.png);
+	}
+	.logo {
+		// background: url("../img/logo-signup.png");
+		background-repeat: no-repeat;
+		width: 85px;
+		height: 52px;
+		margin: 0 auto;
+	}
+	.title-signup {
+		p {
+			color: $pink-text;
+			font-size: 15px;
+			text-align: center;
+			font-weight: bold;
+			margin-top: 7px;
+		}
+	}
+	form {
+		input {
+			background-color: $white;
+
+		}
+	}
+}

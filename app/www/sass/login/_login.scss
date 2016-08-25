@@ -5,6 +5,7 @@
 	height: 100%;
 	a,p {
 		color: $white
+
 	}
 	.wraper-content{
 		padding-top: 30%;
@@ -52,9 +53,10 @@
 		position: absolute;
 		height: 52px;
 		.wraper {
-			@include  center-text (237px);
+			@include  center-text (240px);
 			height: 20px;
 			margin: 17px auto;
+
 			p{
 				margin-right: 6px;
 				font-weight: 400;

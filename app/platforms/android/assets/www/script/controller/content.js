@@ -74,6 +74,47 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
     });
   }
 
+  scope.addFavorite = function(postId){
+    $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + $scope.mv.user.userName + "&password=" + $scope.mv.user.userPassword).success(function(dataCookie){
+      var cookie = dataCookie.cookie;
+      $http.get(urlAppServer2 + "/wpfp/add/?postid=" + postId + "&insecure=cool&cookie=" + cookie).success(function(dataFavorites){
+        posts = $scope.mv.posts;
+        posts.forEach(function(value) {
+          if (value.id == scope.postId){
+            $scope.mv.user.favorites.push(postId.toString())
+            value.isFavorite = true;
+            value.countFavorites ++;
+          }
+        });
+        $scope.mv.posts = posts;
+        localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+      });
+    });
+  }
+
+  scope.removeFavorite = function(postId){
+    $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + $scope.mv.user.userName + "&password=" + $scope.mv.user.userPassword).success(function(dataCookie){
+      var cookie = dataCookie.cookie;
+      $http.get(urlAppServer2 + "/wpfp/remove/?postid=" + postId + "&insecure=cool&cookie=" + cookie).success(function(dataFavorites){
+        posts = $scope.mv.posts;
+        posts.forEach(function(value) {
+          if (value.id == scope.postId){
+            var index = $scope.mv.user.favorites.indexOf(postId.toString());
+            if (index > -1) {
+              $scope.mv.user.favorites.splice(index, 1);
+            }
+            value.isFavorite = false;
+            value.countFavorites --;
+          }
+        });
+        $scope.mv.posts = posts;
+        localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+      });
+    });
+  }
+
+
+
   scope.deletePost = function(id){
     $http({
       method: 'DELETE',

@@ -7,6 +7,15 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
     window.location = "#/home";
   }
 
+  scope.user = JSON.parse(localStorage.getItem("userSession"));
+  scope.media = JSON.parse(localStorage.getItem("media"));
+  scope.comments = JSON.parse(localStorage.getItem("comments"));
+  scope.categories = JSON.parse(localStorage.getItem("categories"));
+  scope.ubications = JSON.parse(localStorage.getItem("ubications"));
+  scope.users = JSON.parse(localStorage.getItem("users"));
+  scope.posts = JSON.parse(localStorage.getItem("posts"));
+  scope.favorites = JSON.parse(localStorage.getItem("favorites"));
+
   scope.validateLogin = function(userName, userPassword){
 
     var userHash = decodeUserData(userName + ':' + userPassword);
@@ -186,8 +195,23 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
 
 muvbe.controller('muvbeExitController', function ($scope){
   var scope = this;
-  $scope.mv.user = JSON.parse(localStorage.getItem("userSession"));
-  killSession($scope.mv.user);
+  localStorage.removeItem("userSession");
+  localStorage.removeItem("media");
+  localStorage.removeItem("comments");
+  localStorage.removeItem("categories");
+  localStorage.removeItem("ubications");
+  localStorage.removeItem("users");
+  localStorage.removeItem("posts");
+  localStorage.removeItem("favorites");
+  localStorage.clear();
+  $scope.mv.user = localStorage.getItem("userSession");
+  $scope.mv.media = localStorage.getItem("media");
+  $scope.mv.comments = localStorage.getItem("comments");
+  $scope.mv.categories = localStorage.getItem("categories");
+  $scope.mv.ubications = localStorage.getItem("ubications");
+  $scope.mv.users = localStorage.getItem("users");
+  $scope.mv.posts = localStorage.getItem("posts");
+  $scope.mv.favorites = localStorage.getItem("favorites");
   window.location = "#/";
 });
 
@@ -232,16 +256,6 @@ function decodeUserData(input) {
     enc1 = enc2 = enc3 = enc4 = "";
   }while (i < input.length);
   return output;
-}
-
-function killSession(scopeUser){
-  if(scopeUser){
-    scopeUser.userName = '';
-    scopeUser.userEmail = '';
-    scopeUser.userPassword = '';
-    scopeUser.successLogin = false;
-  }
-  localStorage.clear();
 }
 
 // Html content filter

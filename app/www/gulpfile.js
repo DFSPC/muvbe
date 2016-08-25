@@ -61,6 +61,8 @@ gulp.task('site', function() {
 gulp.task('watch', function() {
 
   // Watch .scss files
+  gulp.watch('sass/**/*.scss', ['default']);
+
   gulp.watch('sass/*.scss', ['default']);
 
 
@@ -69,11 +71,6 @@ gulp.task('watch', function() {
 
   // Watch any files in dist/, reload on change
   gulp.watch(['css/**']).on('change', livereload.changed);
-
-
-
-
-
 
 });
 
@@ -103,7 +100,6 @@ gulp.src = function() {
 gulp.task('default',  function () {
 
 	gulp.start('site');
-
 
 	// gulp.watch(['./sass/*.scss'], task, processors());
 

@@ -6,12 +6,11 @@
 /*
 *    Etiquetas
 ********************************/
-body {
-	background: url("../img/degrade.png");
-	background-repeat: no-repeat;
-	background-size: cover;
+body,
+html {
 	width: 100%;
-	height: auto;
+	height: 100%;
+	margin: 0;
 }
 img{
   height: auto;
@@ -37,9 +36,9 @@ form {
 	// padding: 20px 0
 }
 input{
-	width: 90%;
-	height: 33px;
-	border: 1px solid $gray;
+	width: 300px;
+	height: 50px;
+	border: 2px solid #640137;
 	border-radius:  8px;
 	display: block;
   margin: 0 auto;
@@ -47,13 +46,27 @@ input{
 	text-align: center;
 	font-size: 15px;
 	font-weight: 400;
-	color: $text-gray;
+	color: $white2;
+	background-color: #7e0146;
 	&:focus,
 	&:active {
-		border: 2px solid $gray;
+		// border: 2px solid $gray;
+		border: none;
 		outline: 0;
     outline-style: none;
     outline-width: 0;
+	}
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: $white2;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: $white2;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+	  color: $white2;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	  color: $white2;
 	}
 }
 
@@ -68,14 +81,18 @@ textarea{
 ****************************************/
 
 .content{
-	margin-top: 89px;
+	// margin-top: 89px;
+	height: 100%;
 }
 .message {
 	margin-bottom: 15px;
 	text-align: center;
-	p {
+	p,a {
 		font-size: 12px;
 		display: inline;
+	}
+	a{
+		margin-left: 6px;
 	}
 }
 .buttom {
@@ -83,18 +100,17 @@ textarea{
 	input,
 	a{
 		text-align: center;
-		background: transparent;
-		border: 2px solid $pink;
-		color: $pink;
+		background: $white;
+		border: 2px solid $white;
+		color: $pink-bottum;
+		height: 35px;
+		border-radius: 11px;
 	}
 }
 .error {
 	color: red;
 	font-size: 15px;
 }
-
-
-
 .custom-file-input,
 .custom-bottom-input{
 	width: 90%;

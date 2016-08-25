@@ -16,12 +16,11 @@
 /*
 *    Etiquetas
 ********************************/
-body {
-  background: url("../img/degrade.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+body,
+html {
   width: 100%;
-  height: auto; }
+  height: 100%;
+  margin: 0; }
 
 img {
   height: auto;
@@ -46,9 +45,9 @@ form {
   font-size: 20px; }
 
 input {
-  width: 90%;
-  height: 33px;
-  border: 1px solid #e1e1e3;
+  width: 300px;
+  height: 50px;
+  border: 2px solid #640137;
   -webkit-border-radius: 8px;
           border-radius: 8px;
   display: block;
@@ -57,12 +56,25 @@ input {
   text-align: center;
   font-size: 15px;
   font-weight: 400;
-  color: #727277; }
+  color: #f8f8ff;
+  background-color: #7e0146; }
   input:focus, input:active {
-    border: 2px solid #e1e1e3;
+    border: none;
     outline: 0;
     outline-style: none;
     outline-width: 0; }
+  input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #f8f8ff; }
+  input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #f8f8ff; }
+  input:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #f8f8ff; }
+  input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #f8f8ff; }
 
 textarea {
   width: 90%;
@@ -72,23 +84,28 @@ textarea {
 *    Clases Globales
 ****************************************/
 .content {
-  margin-top: 89px; }
+  height: 100%; }
 
 .message {
   margin-bottom: 15px;
   text-align: center; }
-  .message p {
+  .message p, .message a {
     font-size: 12px;
     display: inline; }
+  .message a {
+    margin-left: 6px; }
 
 .buttom {
   text-align: center; }
   .buttom input,
   .buttom a {
     text-align: center;
-    background: transparent;
-    border: 2px solid #dd208f;
-    color: #dd208f; }
+    background: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    color: #a90b71;
+    height: 35px;
+    -webkit-border-radius: 11px;
+            border-radius: 11px; }
 
 .error {
   color: red;
@@ -103,86 +120,146 @@ textarea {
   margin: 0 auto;
   height: 64px; }
 
-.view-login .logo {
-  background: url("../img/logo.png");
+.view-login {
+  background: url("../img/back-login.png");
   background-repeat: no-repeat;
-  width: 201px;
-  height: 162px;
-  margin: 0 auto; }
-
-.view-login .wraper .message .text-remeber p {
-  margin-right: 6px; }
-
-.view-login .footer-login {
-  background: #cbcccd;
-  text-align: center;
-  width: 100%;
-  bottom: 0;
-  position: absolute;
-  height: 52px; }
-  .view-login .footer-login .wraper {
-    display: block;
-    height: 20px;
-    width: 247px;
-    margin: 17px auto; }
-    .view-login .footer-login .wraper p {
-      margin-right: 6px;
-      font-weight: 400;
-      font-size: 15px;
-      float: left; }
-    .view-login .footer-login .wraper a {
-      float: left; }
+  background-size: cover;
+  height: 100%; }
+  .view-login a, .view-login p {
+    color: #FFFFFF; }
+  .view-login .wraper-content {
+    padding-top: 30%; }
+    .view-login .wraper-content .logo {
+      background: url("../img/logo-login.png");
+      background-repeat: no-repeat;
+      width: 85px;
+      height: 52px;
+      margin: 0 auto;
+      margin-bottom: 42px; }
+    .view-login .wraper-content .wraper .message .text-remeber p {
+      margin-right: 6px; }
+    .view-login .wraper-content .social-media {
+      width: 300px;
+      margin: 0 auto; }
+      .view-login .wraper-content .social-media .line {
+        border-top: 2px solid #9c9aa0;
+        width: 136px;
+        float: left;
+        margin-top: 12px; }
+      .view-login .wraper-content .social-media .centro {
+        float: left;
+        color: #9c9aa0;
+        margin-left: 8px;
+        margin-right: 8px;
+        color: #f8f8ff;
+        font-size: 19px; }
+  .view-login .footer-login {
+    background: #c53082;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    height: 52px; }
+    .view-login .footer-login .wraper {
+      display: block;
+      width: 240px;
+      margin: 0 auto;
+      height: 20px;
+      margin: 17px auto; }
+      .view-login .footer-login .wraper p {
+        margin-right: 6px;
+        font-weight: 400;
+        font-size: 15px;
+        float: left; }
+      .view-login .footer-login .wraper a {
+        float: left; }
 
 @media only screen and (orientation: landscape) {
-  .view-login .footer-login {
-    position: relative; } }
+  .view-login {
+    height: auto; }
+    .view-login .wraper-content {
+      padding-top: 15%;
+      padding-top: 15%;
+      min-height: 389px; }
+    .view-login .footer-login {
+      position: relative;
+      padding-top: 6px; } }
 
-.views-terms .logo-terms span {
-  background: url("../img/sprite.png");
-  height: 114px;
-  display: block;
-  width: 100%;
-  margin-bottom: 12px; }
-
-.views-terms .text-term {
-  display: block;
-  width: 270px;
-  margin: 0 auto; }
-  .views-terms .text-term p {
-    margin-bottom: 15px;
-    font-size: 12px;
-    word-wrap: break-word;
-    word-break: break-all; }
-  .views-terms .text-term p.text-before {
-    margin: 0 3px 0 0;
-    float: left; }
-  .views-terms .text-term a.link-conditions {
-    font-size: 12px;
-    color: #dd208f;
-    float: left; }
-    .views-terms .text-term a.link-conditions.link-2 {
-      margin-right: 5px; }
-
-.views-terms form {
-  display: block;
-  width: 270px;
-  margin: 0 auto;
-  margin-top: 22px; }
-  .views-terms form label {
-    font-size: 11px;
+.views-signup {
+  background-color: #d7d8d9; }
+  .views-signup .logo {
+    background: url("../img/logo-signup.png");
+    background-repeat: no-repeat;
+    width: 85px;
+    height: 52px;
+    margin: 0 auto; }
+  .views-signup .title-signup p {
+    color: #e6007e;
+    font-size: 15px;
+    text-align: center;
     font-weight: bold;
-    color: #727277;
-    margin-left: 11px; }
-  .views-terms form [type="checkbox"] {
-    width: 14px;
-    height: auto;
-    float: left;
-    margin: 0; }
-  .views-terms form .buttom {
-    margin-top: 22px;
-    width: 100%; }
-    .views-terms form .buttom input {
+    margin-top: 7px; }
+  .views-signup form input {
+    background-color: #FFFFFF; }
+
+.views-terms {
+  background-color: #c6c6c7;
+  height: 100%; }
+  .views-terms .logo-terms {
+    padding-top: 74px; }
+    .views-terms .logo-terms span {
+      background: url("../img/logo-terms.png");
+      background-repeat: no-repeat;
+      display: block;
+      width: 311px;
+      height: 142px;
+      margin: 0 auto; }
+  .views-terms .text-term {
+    display: block;
+    width: 240px;
+    margin: 0 auto; }
+    .views-terms .text-term p {
+      margin-bottom: 13px;
+      font-size: 12px;
+      word-wrap: break-word;
+      word-break: break-all;
+      text-align: justify; }
+    .views-terms .text-term p.text-before {
+      margin: 0 3px 0 0;
+      float: left; }
+    .views-terms .text-term .last {
+      word-break: normal;
+      text-align: justify; }
+    .views-terms .text-term a.link-conditions {
+      font-size: 12px;
+      color: #da0080;
+      float: left; }
+      .views-terms .text-term a.link-conditions.link-2 {
+        margin-right: 5px; }
+  .views-terms form {
+    display: block;
+    width: 240px;
+    margin: 0 auto;
+    margin-top: 22px; }
+    .views-terms form label {
+      font-size: 11px;
+      font-weight: bold;
+      color: #727277;
+      margin-left: 11px;
+      vertical-align: top; }
+    .views-terms form [type="checkbox"] {
+      width: 14px;
+      height: auto;
+      float: left;
+      margin: 0; }
+    .views-terms form .buttom {
+      margin-top: 22px;
       width: 100%; }
+      .views-terms form .buttom input {
+        width: 100%;
+        background-color: transparent;
+        border: 2px solid #da0080;
+        color: #da0080; }
 
 .nav-aux {
   position: fixed;
@@ -246,7 +323,7 @@ textarea {
     .header .logo-app span {
       background: url("../img/logo-header2.png");
       background-repeat: no-repeat;
-      height: 100%;
+      height: 89px;
       width: 162px;
       font-size: 0;
       display: block; }
@@ -282,5 +359,5 @@ textarea {
       display: block;
       width: 24px;
       margin: 0 auto;
-      height: 100%;
+      height: 89px;
       font-size: 0; }

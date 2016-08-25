@@ -7,6 +7,15 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
     window.location = "#/home";
   }
 
+  scope.user = JSON.parse(localStorage.getItem("userSession"));
+  scope.media = JSON.parse(localStorage.getItem("media"));
+  scope.comments = JSON.parse(localStorage.getItem("comments"));
+  scope.categories = JSON.parse(localStorage.getItem("categories"));
+  scope.ubications = JSON.parse(localStorage.getItem("ubications"));
+  scope.users = JSON.parse(localStorage.getItem("users"));
+  scope.posts = JSON.parse(localStorage.getItem("posts"));
+  scope.favorites = JSON.parse(localStorage.getItem("favorites"));
+
   scope.validateLogin = function(userName, userPassword){
 
     var userHash = decodeUserData(userName + ':' + userPassword);
@@ -16,18 +25,22 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
     $http.defaults.headers.common.Authorization = 'Basic ' + userHash;
     $http.get(urlAppServer + '/users/me?_envelope').success(function(data){
       if (data.body.id){
-        scope.user.successLogin = true;
-        scope.user.id = data.body.id;
-        scope.user.userName = userName;
-        scope.user.userPassword = userPassword;
-
         $http.get(urlAppServer2 + '/user/get_userinfo/?user_id=' + data.body.id + '&insecure=cool').success(function(dataAvatar){
-          scope.user.avatar = dataAvatar.avatar;
-          //scope.user.avatar = data.body.avatar_urls['48'];
-          scope.messageLogin = 'Gracias por Ingresar';
-          localStorage.setItem("userSession", JSON.stringify(scope.user));
-          $scope.mv.user = scope.user;
-          window.location = "#/home";
+          $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + userName + "&password=" + userPassword).success(function(dataCookie){
+            var cookie = dataCookie.cookie;
+            $http.get(urlAppServer2 + "/wpfp/lists/?insecure=cool&cookie=" + cookie).success(function(dataFavorites){
+              scope.user.successLogin = true;
+              scope.user.id = data.body.id;
+              scope.user.userName = userName;
+              scope.user.userPassword = userPassword;
+              scope.user.avatar = dataAvatar.avatar;
+              scope.user.favorites = dataFavorites.lists;
+              $scope.mv.user = scope.user;
+              localStorage.setItem("userSession", JSON.stringify(scope.user));
+              scope.messageLogin = 'Gracias por Ingresar';
+              window.location = "#/home";
+            });
+          });
         });
       }else{
         scope.successLogin = false;
@@ -147,16 +160,6 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
       },
       data: data,
     }).success(function (data) {
-      scope.user.id = data.id;
-      scope.user.successLogin = true;
-      scope.user.userName = userName;
-      scope.user.userPassword = userPassword;
-      scope.user.userEmail = userEmail;
-      scope.user.avatar = data.avatar_urls[48];
-      scope.messageLogin = 'Gracias por Ingresar';
-      localStorage.setItem("userSession", JSON.stringify(scope.user));
-      $scope.mv.user = scope.user;
-
       var fd = new FormData();
       imageBase = getBase64Image(document.getElementById("myImageAvatar"))
       var blob = dataURItoBlob(imageBase);
@@ -171,12 +174,20 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
         }
       }).success(function (dataMedia) {
         scope.user.avatar = dataMedia.source_url;
-
-        $http.get("http://londonojp.com/muvbe/web/api/user/update_user_meta_vars/?insecure=cool&cookie=admin|1473197852|rDR7kV84qVwOGBNkwABiUR6lV7hH5fBTntbETcbs6wK|710b4647988f24cf49d7a2c0cca1a1558768650ff2795780b651f701f1fabdcf&wp_user_avatar=" + dataMedia.id).success(function(data){
-          console.log("True");
-          window.location = "#/home";
+        $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + userName + "&password=" + userPassword).success(function(dataCookie){
+          var cookie = dataCookie.cookie;
+          $http.get(urlAppServer2 + "/user/update_user_meta_vars/?insecure=cool&cookie=" + cookie + "&wp_user_avatar=" + dataMedia.id).success(function(data){
+            scope.user.id = data.id;
+            scope.user.successLogin = true;
+            scope.user.userName = userName;
+            scope.user.userPassword = userPassword;
+            scope.user.userEmail = userEmail;
+            $scope.mv.user = scope.user;
+            scope.messageLogin = 'Gracias por Ingresar';
+            localStorage.setItem("userSession", JSON.stringify(scope.user));
+            window.location = "#/home";
+          });
         });
-        console.log(dataMedia);
       });
     });
   }
@@ -184,8 +195,23 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
 
 muvbe.controller('muvbeExitController', function ($scope){
   var scope = this;
-  $scope.mv.user = JSON.parse(localStorage.getItem("userSession"));
-  killSession($scope.mv.user);
+  localStorage.removeItem("userSession");
+  localStorage.removeItem("media");
+  localStorage.removeItem("comments");
+  localStorage.removeItem("categories");
+  localStorage.removeItem("ubications");
+  localStorage.removeItem("users");
+  localStorage.removeItem("posts");
+  localStorage.removeItem("favorites");
+  localStorage.clear();
+  $scope.mv.user = localStorage.getItem("userSession");
+  $scope.mv.media = localStorage.getItem("media");
+  $scope.mv.comments = localStorage.getItem("comments");
+  $scope.mv.categories = localStorage.getItem("categories");
+  $scope.mv.ubications = localStorage.getItem("ubications");
+  $scope.mv.users = localStorage.getItem("users");
+  $scope.mv.posts = localStorage.getItem("posts");
+  $scope.mv.favorites = localStorage.getItem("favorites");
   window.location = "#/";
 });
 
@@ -230,16 +256,6 @@ function decodeUserData(input) {
     enc1 = enc2 = enc3 = enc4 = "";
   }while (i < input.length);
   return output;
-}
-
-function killSession(scopeUser){
-  if(scopeUser){
-    scopeUser.userName = '';
-    scopeUser.userEmail = '';
-    scopeUser.userPassword = '';
-    scopeUser.successLogin = false;
-  }
-  localStorage.clear();
 }
 
 // Html content filter

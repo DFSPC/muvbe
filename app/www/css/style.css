@@ -200,7 +200,7 @@ textarea {
     padding-top: 30px;
     margin-bottom: 46px; }
     .views-signup .header-signup .arrow-back {
-      background: url("../img/arrow-back.png");
+      background: url("../img/icons/back-icon.svg");
       background-repeat: no-repeat;
       width: 46px;
       height: 46px;
@@ -238,23 +238,34 @@ textarea {
       .views-signup form input.textbox:-moz-placeholder {
         /* Firefox 18- */
         color: #727277; }
-    .views-signup form .wraper-up {
-      margin: 27px 0; }
-      .views-signup form .wraper-up .icon-up {
-        background: url("../img/icon-up.png");
+    .views-signup form .menu-upphote {
+      margin: 27px auto;
+      width: 260px;
+      display: table; }
+      .views-signup form .menu-upphote .take-phote,
+      .views-signup form .menu-upphote .up-phote {
+        width: 49%;
+        float: left; }
+      .views-signup form .menu-upphote .icon-phote,
+      .views-signup form .menu-upphote .icon-phote {
+        background: url("../img/icons/camera-icon.svg");
         background-repeat: no-repeat;
-        width: 70px;
-        height: 70px;
+        width: 69px;
+        height: 69px;
         margin: 0 auto;
         display: block; }
-      .views-signup form .wraper-up p {
+      .views-signup form .menu-upphote .icon-phote {
+        background: url("../img/icons/upload-icon.svg");
+        background-repeat: no-repeat; }
+      .views-signup form .menu-upphote p {
         margin: 11px auto;
         display: block;
-        width: 70px;
+        width: 67px;
         font-weight: bold;
         font-size: 11px; }
     .views-signup form .button-pink {
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      font-weight: bold; }
 
 @media only screen and (orientation: landscape) {
   .views-signup {

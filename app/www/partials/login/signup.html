@@ -10,21 +10,20 @@
     <input class="textbox" type="text" ng-model="msuc.user.userName" required placeholder="Nombre de usuario"></input>
     <input  class="textbox"type="text" ng-model="msuc.user.userEmail" required placeholder="Email"></input>
     <input  class="textbox"type="password" ng-model="msuc.user.userPassword" required placeholder="Contraseña"></input>
-    <!-- buttom icono -->
-    <div class="wraper-up">
-      <a href="">
-        <div class="icon-up"></div>
-        <p>Subir Avatar</p>
-      </a>
-    </div>
     <!-- forma de subir -->
-    <div class="image">
-      <input type="button" ng-click="msuc.takephotoURL()" value="Tomar Foto"/>
-      <input type="button" ng-click="msuc.choosePhoto()" value="Escoger Foto"/>
+    <div class="menu-upphote">
+      <div class="take-phote" type="button" ng-click="msuc.takephotoURL()">
+          <div class="icon-phote"></div>
+          <p>Tomar foto</p>
+      </div>
+      <div  class="up-phote" type="button" ng-click="msuc.choosePhoto()">
+        <div class="icon-phote" ></div>
+        <p>Subir Archivo</p>
+      </div>
       <img id="myImageAvatar" ng-model="msuc.file">
       <p id="text2"></p>
-     </div>
+    </div>
     <!-- button -->
-    <input type="button" class="button-pink" ng-click="msuc.createUser(msuc.user.userName, msuc.user.userEmail, msuc.user.userPassword, msuc.file);" value="Registrate"></input>
+    <input type="button" class="button-pink" ng-click="msuc.createUser(msuc.user.userName, msuc.user.userEmail, msuc.user.userPassword, msuc.file);" value="Crear Cuenta"></input>
   </form>
 </div>

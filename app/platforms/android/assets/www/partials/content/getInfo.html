@@ -2,6 +2,8 @@
 <h1>{{post.title}}</h1>
 <img ng-src="{{post.urlFeaturedImage}}"</img>
 <p>{{post.plainContent}}</p>
+<div ng-if='post.isFavorite'>Remover de Favoritos</div>
+<div ng-if='!post.isFavorite'>Añadir Favoritos</div>
 <p>Añadido el dia: {{post.date}}</p>
 <p>Añadido por:
 	<a href="#/author/{{post.author}}">

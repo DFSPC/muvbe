@@ -1,31 +1,33 @@
-<head>
-  <title>MUVBE</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body ng-app="muvbe" ng-controller="muvbeController as mv" >
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MUVBE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body ng-app="muvbe" ng-controller="muvbeController as mv" >
+    <!-- Header -->
+    <div ng-if='mv.user.successLogin' ng-include="'partials/elements/header.html'"></div>
 
-  <!-- Header -->
-  <div ng-if='mv.user.successLogin' ng-include="'partials/elements/header.html'"></div>
+    <!-- render -->
+    <div class="content" ng-view autoscroll>
+    </div>
 
-  <!-- render -->
-  <div class="content">
-  	<div ng-view autoscroll></div>
-  </div>
+  	<!-- footer -->
+    <div ng-if='mv.user.successLogin' ng-include="'partials/elements/footer.html'"></div>
 
-	<!-- footer -->
-  <div ng-if='mv.user.successLogin' ng-include="'partials/elements/footer.html'"></div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
-<script type="text/javascript" src="script/app.js"></script>
-<script type="text/javascript" src="script/controller/user.js"></script>
-<script type="text/javascript" src="script/controller/category.js"></script>
-<script type="text/javascript" src="script/controller/login.js"></script>
-<script type="text/javascript" src="script/controller/home.js"></script>
-<script type="text/javascript" src="script/controller/content.js"></script>
-<script type="text/javascript" src="script/controller/author.js"></script>
-<script type="text/javascript" src="script/controller/ubication.js"></script>
-<script type="text/javascript" src="cordova.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script type="text/javascript" src="script/app.js"></script>
+    <script type="text/javascript" src="script/controller/user.js"></script>
+    <script type="text/javascript" src="script/controller/category.js"></script>
+    <script type="text/javascript" src="script/controller/login.js"></script>
+    <script type="text/javascript" src="script/controller/home.js"></script>
+    <script type="text/javascript" src="script/controller/content.js"></script>
+    <script type="text/javascript" src="script/controller/author.js"></script>
+    <script type="text/javascript" src="script/controller/ubication.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+  </body>
+</html>

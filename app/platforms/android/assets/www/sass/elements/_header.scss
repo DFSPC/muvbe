@@ -1,0 +1,60 @@
+.header {
+	background: url("../img/back-header.png");
+	background-color: white;
+	height: 89px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	.logo-app {
+		float: left;
+    height: 100%;
+		span {
+			background: url("../img/logo-header2.png");
+			background-repeat: no-repeat;
+			height: 89px;
+			width: 162px;
+			font-size: 0;
+			display: block;
+	  }
+	}
+	.name-user {
+		width: auto;
+    text-align: right;
+    display: block;
+    float: right;
+    height: 100%;
+    a {
+			font-size: 18px;
+			margin: 34px 12px 0 0;
+			text-transform: capitalize;
+			font-weight: 400;
+    }
+	}
+	.avatar-user {
+		float: right;
+		width: 48px;
+		height: 100%;
+		a {
+			margin-top: 19px;
+		img {
+			border-radius: 50%;
+			overflow: hidden;
+			}
+		}
+	}
+	.menu-main {
+		display: block;
+    width: 46px;
+    float: right;
+		a {
+			background: url("../img/icon-menu.png");
+			background-repeat: no-repeat;
+			background-position-y: 36px;
+			display: block;
+			width: 24px;
+			margin: 0 auto;
+			height: 89px;
+			font-size: 0;
+		}
+	}
+}

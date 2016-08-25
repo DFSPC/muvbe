@@ -16,17 +16,22 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
     $http.defaults.headers.common.Authorization = 'Basic ' + userHash;
     $http.get(urlAppServer + '/users/me?_envelope').success(function(data){
       if (data.body.id){
-        scope.user.successLogin = true;
-        scope.user.id = data.body.id;
-        scope.user.userName = userName;
-        scope.user.userPassword = userPassword;
-
         $http.get(urlAppServer2 + '/user/get_userinfo/?user_id=' + data.body.id + '&insecure=cool').success(function(dataAvatar){
-          scope.user.avatar = dataAvatar.avatar;
-          scope.messageLogin = 'Gracias por Ingresar';
-          localStorage.setItem("userSession", JSON.stringify(scope.user));
-          $scope.mv.user = scope.user;
-          window.location = "#/home";
+          $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + userName + "&password=" + userPassword).success(function(dataCookie){
+            var cookie = dataCookie.cookie;
+            $http.get(urlAppServer2 + "/wpfp/lists/?insecure=cool&cookie=" + cookie).success(function(dataFavorites){
+              scope.user.successLogin = true;
+              scope.user.id = data.body.id;
+              scope.user.userName = userName;
+              scope.user.userPassword = userPassword;
+              scope.user.avatar = dataAvatar.avatar;
+              scope.user.favorites = dataFavorites.lists;
+              $scope.mv.user = scope.user;
+              localStorage.setItem("userSession", JSON.stringify(scope.user));
+              scope.messageLogin = 'Gracias por Ingresar';
+              window.location = "#/home";
+            });
+          });
         });
       }else{
         scope.successLogin = false;
@@ -160,7 +165,6 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
         }
       }).success(function (dataMedia) {
         scope.user.avatar = dataMedia.source_url;
-
         $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + userName + "&password=" + userPassword).success(function(dataCookie){
           var cookie = dataCookie.cookie;
           $http.get(urlAppServer2 + "/user/update_user_meta_vars/?insecure=cool&cookie=" + cookie + "&wp_user_avatar=" + dataMedia.id).success(function(data){

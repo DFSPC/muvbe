@@ -106,6 +106,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
         scope.getImageUrlByPost(post, data[post_data].featured_media);
         scope.getCommentsByPost(post);
         scope.getCountFavoritesByPost(post);
+        scope.getIsFavorite(post);
         posts.push(post);
         scope.posts = posts;
       }
@@ -143,7 +144,6 @@ muvbe.controller('muvbeController', function ($scope, $http){
                 scope.messageData = "Cargando... Posts";
                 scope.getPosts();
               });
-              scope.getPosts();
             });
           });
         });
@@ -180,6 +180,15 @@ muvbe.controller('muvbeController', function ($scope, $http){
           }
         }
       });
+    }
+  }
+
+  scope.getIsFavorite = function(post){
+    var userFavorites = $scope.mv.user.favorites;
+    if (userFavorites.indexOf(post.id.toString()) != -1){
+      post.isFavorite = true;
+    }else{
+      post.isFavorite = false;
     }
   }
 

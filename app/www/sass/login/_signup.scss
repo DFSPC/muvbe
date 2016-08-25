@@ -1,28 +1,83 @@
 .views-signup {
 	background-color: $gray;
-	.arrow-back{
-		// @include back-img(arrow-back.png);
-	}
-	.logo {
-		background: url("../img/logo-signup.png");
-		background-repeat: no-repeat;
-		width: 85px;
-		height: 52px;
-		margin: 0 auto;
-	}
-	.title-signup {
-		p {
-			color: $pink-text;
-			font-size: 15px;
-			text-align: center;
-			font-weight: bold;
-			margin-top: 7px;
+	height: 100%;
+	.header-signup {
+		padding-top: 30px;
+		margin-bottom: 46px;
+		.arrow-back{
+			background: url("../img/arrow-back.png");
+	    background-repeat: no-repeat;
+	    width: 46px;
+	    height: 46px;
+	    font-size: 0;
+			display: block;
+			float: left;
+			margin-left: 8px;
+		}
+		.logo {
+			background: url("../img/logo-signup.png");
+			background-repeat: no-repeat;
+			width: 85px;
+			height: 52px;
+			margin: 0 auto;
+			display: block;
+		}
+		.title-signup {
+			p {
+				color: $pink-text;
+				font-size: 15px;
+				text-align: center;
+				font-weight: bold;
+				margin-top: 7px;
+			}
 		}
 	}
 	form {
-		input {
+		min-height: 418px;
+		input.textbox {
 			background-color: $white;
-
+			border: 1px solid $gray-line;
+			&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+			  color: $text-gray;
+			}
+			&::-moz-placeholder { /* Firefox 19+ */
+			  color: $text-gray;
+			}
+			&:-ms-input-placeholder { /* IE 10+ */
+			  color: $text-gray;
+			}
+			&:-moz-placeholder { /* Firefox 18- */
+			  color: $text-gray;
+			}
 		}
+		.image {
+			// display: none;
+		}
+		.wraper-up {
+			margin: 27px 0;
+			.icon-up {
+				background: url("../img/icon-up.png");
+				background-repeat: no-repeat;
+				width: 70px;
+				height: 70px;
+				margin: 0 auto;
+				display: block;
+			}
+			p {
+				margin: 11px auto;
+				display: block;
+				width: 70px;
+				font-weight: bold;
+				font-size: 11px;
+			}
+		}
+		.button-pink {
+			margin-bottom: 0;
+		}
+	}
+}
+@media #{$landscape} {
+	.views-signup {
+		height: auto;
 	}
 }

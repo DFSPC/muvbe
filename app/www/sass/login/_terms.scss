@@ -58,12 +58,21 @@
 		.buttom {
 			margin-top: 22px;
 			width: 100%;
+			min-height: 100px;
 			input {
 				width: 100%;
 				background-color: transparent;
 				border: 2px solid $pink;
 				color: $pink;
+				margin: 0;
 			}
 		}
 	}
 }
+@media #{$landscape} {
+	.views-terms {
+		height: auto;
+	}
+
+}
+

@@ -1,0 +1,84 @@
+.view-login {
+	background: url("../img/back-login.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	a,p {
+		color: $white
+	}
+	.wraper-content{
+		padding-top: 30%;
+		.logo {
+			background: url("../img/logo-login.png");
+			background-repeat: no-repeat;
+			width: 85px;
+			height: 52px;
+			margin: 0 auto;
+			margin-bottom: 42px;
+		}
+		.wraper {
+			.message {
+				.text-remeber{
+					p {
+						margin-right: 6px;
+					}
+				}
+			}
+		}
+		.social-media {
+			width: 300px;
+			margin: 0 auto;
+			.line {
+				border-top: 2px solid #9c9aa0;
+				width: 136px;
+				float: left;
+				margin-top: 12px;
+			}
+			.centro {
+				float: left;
+				color: #9c9aa0;
+				margin-left: 8px;
+				margin-right: 8px;
+				color: $white2;
+				font-size: 19px;
+			}
+		}
+	}
+	.footer-login {
+  	background: #c53082;
+  	text-align: center;
+		width: 100%;
+		bottom: 0;
+		position: absolute;
+		height: 52px;
+		.wraper {
+			@include  center-text (233px);
+			height: 20px;
+			margin: 17px auto;
+
+			p{
+				margin-right: 6px;
+				font-weight: 400;
+				font-size: 15px;
+				float: left;
+			}
+			a {
+				float: left;
+			}
+		}
+	}
+}
+@media #{$landscape} {
+	.view-login {
+		height: auto;
+		.wraper-content{
+			padding-top: 15%;
+			padding-top: 15%;
+			min-height: 389px;
+		}
+		.footer-login {
+			position: relative;
+			padding-top: 6px;
+		}
+	}
+}

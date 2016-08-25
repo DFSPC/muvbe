@@ -1,24 +1,30 @@
 .views-terms {
+	background-color: $gray-back;
 	.logo-terms {
+		padding-top: 74px;
 		span {
-			background: url("../img/sprite.png");
-			height: 114px;
+			background: url("../img/logo-terms.png");
 			display: block;
 			width: 100%;
-			margin-bottom: 12px;
+			height: 142px;
 		}
 	}
 	.text-term {
-		@include  center-text (270px);
+		@include  center-text (240px);
 		p {
-			margin-bottom: 15px;
+			margin-bottom: 13px;
 			font-size: 12px;
 			word-wrap: break-word;
 			word-break: break-all;
+			text-align: justify;
 		}
 		p.text-before{
 			margin: 0 3px 0 0;
 			float: left;
+		}
+		.last{
+			word-break: normal;
+    	text-align: justify;
 		}
 		a.link-conditions{
 			font-size: 12px;
@@ -31,13 +37,14 @@
 
 	}
 	form {
-		@include  center-text (270px);
+		@include  center-text (240px);
 		margin-top: 22px;
 		label {
 			font-size: 11px;
 			font-weight: bold;
 			color: $text-gray;
 			margin-left: 11px;
+			vertical-align: top;
 		}
 		[type="checkbox"]{
 			width: 14px;
@@ -50,6 +57,9 @@
 			width: 100%;
 			input {
 				width: 100%;
+				background-color: transparent;
+				border: 2px solid $pink;
+				color: $pink;
 			}
 		}
 	}

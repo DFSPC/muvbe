@@ -188,6 +188,7 @@ textarea {
 .views-signup {
   background-color: #d7d8d9; }
   .views-signup .logo {
+    background: url("../img/logo-signup.png");
     background-repeat: no-repeat;
     width: 85px;
     height: 52px;
@@ -202,14 +203,17 @@ textarea {
     background-color: #FFFFFF; }
 
 .views-terms {
-  background-color: #c6c6c7; }
+  background-color: #c6c6c7;
+  height: 100%; }
   .views-terms .logo-terms {
     padding-top: 74px; }
     .views-terms .logo-terms span {
       background: url("../img/logo-terms.png");
+      background-repeat: no-repeat;
       display: block;
-      width: 100%;
-      height: 142px; }
+      width: 311px;
+      height: 142px;
+      margin: 0 auto; }
   .views-terms .text-term {
     display: block;
     width: 240px;
@@ -319,7 +323,7 @@ textarea {
     .header .logo-app span {
       background: url("../img/logo-header2.png");
       background-repeat: no-repeat;
-      height: 100%;
+      height: 89px;
       width: 162px;
       font-size: 0;
       display: block; }

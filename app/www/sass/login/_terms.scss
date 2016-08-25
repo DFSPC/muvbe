@@ -1,12 +1,15 @@
 .views-terms {
 	background-color: $gray-back;
+	height: 100%;
 	.logo-terms {
 		padding-top: 74px;
 		span {
 			background: url("../img/logo-terms.png");
+			background-repeat: no-repeat;
 			display: block;
-			width: 100%;
+			width: 311px;
 			height: 142px;
+			margin: 0 auto;
 		}
 	}
 	.text-term {

@@ -19,7 +19,7 @@
 body,
 html {
   width: 100%;
-  height: auto;
+  height: 100%;
   margin: 0; }
 
 img {
@@ -179,8 +179,7 @@ textarea {
         font-size: 15px;
         float: left; }
       .view-login .footer-login .wraper a {
-        float: left;
-        color: red; }
+        float: left; }
 
 @media only screen and (orientation: landscape) {
   .view-login {
@@ -340,32 +339,33 @@ textarea {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #f6f6f7;
+  background: #f8f8ff;
   height: 57px;
   border-top: 1px solid #cccccc; }
   .nav-aux .item {
-    width: 25%;
+    width: 20%;
     display: block;
     float: left;
     height: 100%;
     background-repeat: no-repeat; }
     .nav-aux .item a {
       font-size: 0;
-      background: url("../img/icon-nav-2.png");
       width: 35px;
+      background-repeat: no-repeat;
       display: block;
       height: 35px;
       overflow: hidden;
       margin: 12px auto; }
     .nav-aux .item.item-1 a {
-      background-position: 0px -1px; }
+      background: url("../img/icons/eye-inactive.svg"); }
     .nav-aux .item.item-2 a {
-      background-position: -98px 32px; }
+      background: url("../img/icons/glass-inactive.svg"); }
     .nav-aux .item.item-3 a {
-      background-position: -198px -34px;
-      height: 32px; }
+      background: url("../img/icons/camera-inactive.svg"); }
     .nav-aux .item.item-4 a {
-      background-position: -297px -1px; }
+      background: url("../img/icons/pointer-inactive.svg"); }
+    .nav-aux .item.item-5 a {
+      background: url("../img/icons/user-inactive.svg"); }
 
 .content-time {
   display: table;
@@ -391,7 +391,8 @@ textarea {
   height: 89px;
   position: fixed;
   top: 0;
-  width: 100%; }
+  width: 100%;
+  z-index: 3; }
   .header .logo-app {
     float: left;
     height: 100%; }
@@ -436,3 +437,75 @@ textarea {
       margin: 0 auto;
       height: 89px;
       font-size: 0; }
+
+.content-time {
+  margin-top: 90px; }
+  .content-time .item-box .info-user {
+    height: 46px;
+    background-color: #fdfbff;
+    position: relative;
+    display: table;
+    width: 100%; }
+    .content-time .item-box .info-user span {
+      display: block;
+      float: left;
+      background: rebeccapurple;
+      height: 46px;
+      width: 55px; }
+    .content-time .item-box .info-user p {
+      color: #da0080;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 19px; }
+  .content-time .item-box .wraper-img {
+    margin: 0 2px; }
+  .content-time .item-box .info-post {
+    height: 50px; }
+    .content-time .item-box .info-post .favorites {
+      width: 70%;
+      height: 50px;
+      float: left; }
+      .content-time .item-box .info-post .favorites .icon-stars {
+        background: url("../img/icon-stars.png");
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+        display: block;
+        float: left;
+        margin-left: 16px;
+        margin-top: 18px; }
+      .content-time .item-box .info-post .favorites p {
+        margin-left: 16px;
+        margin-top: 18px;
+        display: block;
+        float: left;
+        font-size: 12px;
+        font-weight: 400; }
+    .content-time .item-box .info-post .count-comments {
+      width: 15%;
+      height: 50px;
+      float: left; }
+      .content-time .item-box .info-post .count-comments p {
+        float: left;
+        width: 50%; }
+      .content-time .item-box .info-post .count-comments .balloon {
+        background: url("../img/icon-balloon.png");
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 16px;
+        display: block;
+        float: left; }
+    .content-time .item-box .info-post .count-favorites {
+      width: 15%;
+      height: 50px;
+      float: left; }
+      .content-time .item-box .info-post .count-favorites p {
+        float: left;
+        width: 50%; }
+      .content-time .item-box .info-post .count-favorites .stars-pink {
+        background: url("../img/icon-stars-pink.png");
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+        display: block;
+        float: left; }

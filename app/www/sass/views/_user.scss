@@ -1,0 +1,31 @@
+.view-user {
+	margin-top: 91px;
+	margin-bottom: 43px;
+	display: table;
+	.wrapper-user {
+		.menu-post{
+			width: 100%;
+			.link-post {
+				width: 50%;
+				float: left;
+				border-bottom: 1px solid #b80c7b;
+				background: #ad0b74;
+				text-align: center;
+	    	color: $white;
+	    	font-size: 14px;
+	    	font-weight: 400;
+	    	text-transform: uppercase;
+	    	padding: 10px 0;
+	    	&.active{
+					background: #b80c7b;
+	    	}
+			}
+		}
+		.content-time {
+			a {
+				float: left;
+				width: 33%;
+			}
+		}
+	}
+}

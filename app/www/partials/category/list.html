@@ -1,10 +1,10 @@
-<div class="wrapper">
+<div class="wiew-category">
   <h1 class="info">Categorias</h1>
   <div ng-repeat="post in mv.posts | filter:{ categoryId: '!!'} | unique:'categoryName' track by post.categoryId">
-    <div class="wrapper">
+    <div class="wrapper-category">
       <a href="#/categories/{{ post.categoryId }}" class="link link-category">
-        <div class="name-category" > {{ post.categoryName }} </div>
-        <img ng-src= "{{post.urlFeaturedImage}}"></img>
+    	<div class="name-category" > {{ post.categoryName }} </div>
+      <img ng-src= "{{post.urlFeaturedImage}}"></img>
       </a>
     </div>
   </div>

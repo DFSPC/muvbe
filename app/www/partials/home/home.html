@@ -1,29 +1,30 @@
 <div class="content-time">
 	<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index">
 		<div class="item-box">
-			<a href="#/post-info/{{post.id}}">
-				<div class="info-user">
-					<span></span>
-					<p>GallinaAstuta</p>
-				</div>
-				<div class="wraper-img">
+			<div class="info-user">
+				<span></span>
+				<p>{{post.authorName}}</p>
+			</div>
+			<div class="wraper-img">
+				<a href="#/post-info/{{post.id}}">
 					<img ng-src="{{post.urlFeaturedImage}}"></img>
+				</a>
+			</div>
+			<div class="info-post">
+				<div class="favorites">
+					<span class="icon-stars"></span>
+					<p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">GUARDAR EN FAVORITOS</p>
+					<p ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)">REMOVER DE FAVORITOS</p>
 				</div>
-				<div class="info-post">
-					<div class="favorites">
-						<span class="icon-stars"></span>
-						<p>GUARDAR EN FAVORITOS</p>
-					</div>
-					<div class="count-comments">
-						<p>{{post.comments.length}}</p>
-						<span class="balloon"></span>
-					</div>
-					<div class="count-favorites">
-	        	<p>{{post.countFavorites}} </p>
-	        	<sapn class="stars-pink"></sapn>
-					</div>
+				<div class="count-comments">
+					<p>{{post.comments.length}}</p>
+					<span class="balloon"></span>
 				</div>
-			</a>
+				<div class="count-favorites">
+        	<p>{{post.countFavorites}} </p>
+        	<sapn class="stars-pink"></sapn>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -184,7 +184,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
   }
 
   scope.getIsFavorite = function(post){
-    var userFavorites = $scope.mv.user.favorites;
+    var userFavorites = scope.user.favorites;
     if (userFavorites.indexOf(post.id.toString()) != -1){
       post.isFavorite = true;
     }else{
@@ -250,6 +250,45 @@ muvbe.controller('muvbeController', function ($scope, $http){
         }
       }
     }
+  }
+
+  scope.addFavorite = function(postId){
+    $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + scope.user.userName + "&password=" + scope.user.userPassword).success(function(dataCookie){
+      var cookie = dataCookie.cookie;
+      $http.get(urlAppServer2 + "/wpfp/add/?postid=" + postId + "&insecure=cool&cookie=" + cookie).success(function(dataFavorites){
+        posts = scope.posts;
+        posts.forEach(function(value) {
+          if (value.id == postId){
+            $scope.mv.user.favorites.push(postId.toString())
+            value.isFavorite = true;
+            value.countFavorites ++;
+          }
+        });
+        scope.posts = posts;
+        localStorage.setItem("posts", JSON.stringify(scope.posts));
+      });
+    });
+  }
+
+  scope.removeFavorite = function(postId){
+    $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + scope.user.userName + "&password=" + scope.user.userPassword).success(function(dataCookie){
+      var cookie = dataCookie.cookie;
+      $http.get(urlAppServer2 + "/wpfp/remove/?postid=" + postId + "&insecure=cool&cookie=" + cookie).success(function(dataFavorites){
+        posts = scope.posts;
+        posts.forEach(function(value) {
+          if (value.id == postId){
+            var index = scope.user.favorites.indexOf(postId.toString());
+            if (index > -1) {
+              scope.user.favorites.splice(index, 1);
+            }
+            value.isFavorite = false;
+            value.countFavorites --;
+          }
+        });
+        scope.posts = posts;
+        localStorage.setItem("posts", JSON.stringify(scope.posts));
+      });
+    });
   }
 });
 

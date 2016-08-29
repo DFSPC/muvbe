@@ -1,0 +1,89 @@
+.content-time {
+	margin-top: 90px;
+	.item-box {
+		.info-user{
+			height: 46px;
+			background-color: #fdfbff;
+			position: relative;
+    	display: table;
+    	width: 100%;
+    	span {
+				display: block;
+				float: left;
+				background: rebeccapurple;
+				height: 46px;
+				width: 55px;
+    	}
+			p{
+				color: $pink;
+				font-size: 14px;
+				font-weight: bold;
+				margin-top: 19px;
+			}
+		}
+		.wraper-img {
+			margin: 0 2px;
+
+		}
+		.info-post {
+			height: 50px;
+			.favorites {
+				width: 70%;
+				height: 50px;
+				float: left;
+				.icon-stars {
+					background: url("../img/icon-stars.png");
+			    background-repeat: no-repeat;
+			    width: 16px;
+			    height: 16px;
+			    display: block;
+			    float: left;
+					margin-left: 16px;
+					margin-top: 18px;
+				}
+				p {
+					margin-left: 16px;
+					margin-top: 18px;
+					display: block;
+    			float: left;
+    			font-size: 12px;
+    			font-weight: 400;
+				}
+			}
+			.count-comments {
+				width: 15%;
+				height: 50px;
+				float: left;
+				p {
+					float: left;
+					width: 50%;
+				}
+				.balloon{
+					background: url("../img/icon-balloon.png");
+			    background-repeat: no-repeat;
+			    width: 20px;
+			    height: 16px;
+			    display: block;
+			    float: left;
+				}
+			}
+			.count-favorites {
+				width: 15%;
+				height: 50px;
+				float: left;
+				p {
+					float: left;
+					width: 50%;
+				}
+				.stars-pink {
+					background: url("../img/icon-stars-pink.png");
+			    background-repeat: no-repeat;
+			    width: 16px;
+			    height: 16px;
+			    display: block;
+			    float: left;
+				}
+			}
+		}
+	}
+}

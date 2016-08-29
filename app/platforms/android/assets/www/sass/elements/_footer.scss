@@ -1,25 +1,20 @@
-// .item-box {
-// 	float: left;
-// 	width: 31.3333%;
-// 	margin: 1%;
-// 	}
 .nav-aux{
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	background: #f6f6f7;
+	background: $white2;
 	height: 57px;
 	border-top: 1px solid #cccccc;
 	.item{
-		width: 25%;
+		width: 20%;
     display: block;
     float: left;
     height: 100%;
 		background-repeat: no-repeat;
 		a {
 			font-size: 0;
-			background: url("../img/icon-nav-2.png");
 			width: 35px;
+			background-repeat: no-repeat;
 			display: block;
 			height: 35px;
 			overflow: hidden;
@@ -27,23 +22,30 @@
 	  }
 	  &.item-1 {
 	  	a {
-    		background-position: 0px -1px;
+				background: url("../img/icons/eye-inactive.svg");
 	  	}
     }
     &.item-2 {
     	a {
-    		background-position: -98px 32px;
+				background: url("../img/icons/glass-inactive.svg");
+
     	}
     }
     &.item-3 {
     	a {
-    		background-position: -198px -34px;
-    		height: 32px;
+				background: url("../img/icons/camera-inactive.svg");
+
     	}
     }
     &.item-4 {
     	a {
-    		background-position: -297px -1px;
+				background: url("../img/icons/pointer-inactive.svg");
+    	}
+    }
+    &.item-5 {
+    	a {
+				background: url("../img/icons/user-inactive.svg");
+
     	}
     }
 	}

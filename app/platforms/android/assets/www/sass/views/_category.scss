@@ -1,0 +1,30 @@
+.wiew-category {
+	margin-top: 79px;
+	display: table;
+	margin-bottom: 60px;
+	.link-category {
+		width: 48%;
+		float: left;
+		background-color: black;
+		position: relative;
+		margin: 1%;
+	}
+	.name-category {
+		position: absolute;
+		opacity: 1;
+		top: 35%;
+		z-index: 9;
+		color: white;
+		margin-left: auto;
+		margin-right: auto;
+		left: 0;
+		right: 0;
+		display: block;
+		width: 78%;
+		font-size: 23px;
+		text-align: center;
+	}
+	img {
+		opacity: .5
+	}
+}

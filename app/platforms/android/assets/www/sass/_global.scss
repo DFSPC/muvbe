@@ -8,6 +8,7 @@
 ********************************/
 body,
 html {
+	font-family: $Myanmar-Sangam-MN;
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -24,6 +25,7 @@ a{
 	display: block;
 }
 p {
+	font-family: $Myanmar-Sangam-MN;
 	color: $text-gray;
 	font-size: 15px;
 	font-weight: 400;
@@ -42,7 +44,7 @@ input{
 	border-radius:  8px;
 	display: block;
   margin: 0 auto;
-	margin-bottom: 18px;
+	margin-bottom: 15px;
 	text-align: center;
 	font-size: 15px;
 	font-weight: 400;
@@ -69,10 +71,61 @@ input{
 	  color: $white2;
 	}
 }
-
+select {
+	background-color: $white;
+	border: 1px solid $gray-line;
+	width: 300px;
+	height: 50px;
+	border-radius: 8px;
+	display: block;
+	margin: 8px auto;
+	margin-bottom: 18px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: 400;
+	color: $text-gray;
+	-webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-left: 5px;
+	&:focus,
+	&:active {
+		// border: 2px solid $gray;
+		border: none;
+		outline: 0;
+    outline-style: none;
+    outline-width: 0;
+	}
+}
 textarea{
-	width: 90%;
 	height: 100px;
+	width: 293px;
+	margin: 0 auto;
+	display: block;
+	margin-top: 8px;
+	border-radius: 8px;
+	margin-bottom: 15px;
+	font-size: 15px;
+	color: $text-gray;
+	border: none;
+	padding-left: 5px;
+	&:focus,
+	&:active {
+		// border: 2px solid $gray;
+		border: none;
+		outline: 0;
+    outline-style: none;
+    outline-width: 0;
+	}
+}
+
+label {
+	font-family: $Myanmar-Sangam-MN;
+	color: $text-gray;
+	width: 100%;
+	font-weight: 600;
+	font-size: 15px;
+
 }
 
 
@@ -127,45 +180,40 @@ textarea{
 	color: $pink;
 	height: 36px
 }
+input.textbox {
+	background-color: $white;
+	border: 1px solid $gray-line;
+	margin-top: 8px;
+	color: $text-gray;
+	text-align: left;
+	padding-left: 5px;
+	width: 292px;
 
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: $text-gray;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: $text-gray;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+	  color: $text-gray;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	  color: $text-gray;
+	}
+}
 
-
-// .item-box
-// 	float: left
-// 	width: 31.3333%
-// 	margin: 1%
-// .nav-aux
-// 	position: fixed
-// 	bottom: 0
-// 	width: 100%
-// 	background: rgba(0, 0, 0, 0.55)
-// 	a
-// 		color: white
-// 		text-decoration: none
-// 		width: 50%
-// 		float: left
-// 		padding: 5px  0
-// .aux-2
-// 	a
-// 		width: 33%
-// .content-time
-// 	display: table
-// 	margin-bottom: 35px
-// 	width: 100%
-
-
-
-// .link-category
-// 	padding: 21px 10px
-// 	background: #7818d0
-// 	display: block
-// 	text-decoration: none
-// 	color: white
-// 	margin: 3px auto
-// 	width: 90%
-// .footer-block
-//     clear: both
-//     color: red
-
-
+.select {
+	position: relative;
+	&::after {
+		content: " ";
+		display: block;
+		background: url("../img/arrow-down.png") no-repeat 0 0;
+		width: 12px;
+		height: 8px;
+		position: absolute;
+		top: 23px;
+		right: 14px;
+  }
+}
 

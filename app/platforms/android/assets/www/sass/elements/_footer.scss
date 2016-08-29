@@ -28,13 +28,11 @@
     &.item-2 {
     	a {
 				background: url("../img/icons/glass-inactive.svg");
-
     	}
     }
     &.item-3 {
     	a {
 				background: url("../img/icons/camera-inactive.svg");
-
     	}
     }
     &.item-4 {
@@ -51,21 +49,4 @@
 	}
 }
 
-.content-time {
-	display: table;
-	margin-bottom: 35px;
-	width: 100%;
-}
-.link-category {
-	padding: 21px 10px;
-	background: #7818d0;
-	display: block;
-	text-decoration: none;
-	color: white;
-	margin: 3px auto;
-	width: 90%;
-}
-.footer-block {
-  clear: both;
-  color: red;
-}
+

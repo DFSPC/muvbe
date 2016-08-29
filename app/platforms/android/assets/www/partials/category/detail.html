@@ -1,18 +1,31 @@
-<div class="wrapper">
-
-	<h1 class="info">{{mdc.categoryName}}</h1>
-
-
-	<div class="content-time">
-		<div ng-repeat="post in mv.posts | filter:{ categoryId:mdc.categoryId} track by $index">
-
-			<div class="item-box">
-				<a href="#/post-info/{{post.id}}">
+<div class="content-time">
+	<div ng-repeat="post in mv.posts | filter:{ categoryId:mdc.categoryId} track by $index">
+		<div class="item-box">
+			<a href="#/post-info/{{post.id}}">
+				<div class="info-user">
+					<span></span>
+					<p>GallinaAstuta</p>
+				</div>
+				<div class="wraper-img">
 					<img ng-src="{{post.urlFeaturedImage}}"></img>
-				</a>
-			</div>
+				</div>
+				<div class="info-post">
+					<div class="favorites">
+						<span class="icon-stars"></span>
+						<p>GUARDAR EN FAVORITOS</p>
+					</div>
+					<div class="count-comments">
+						<p>{{post.comments.length}}</p>
+						<span class="balloon"></span>
+					</div>
+					<div class="count-favorites">
+	        	<p>{{post.countFavorites}} </p>
+	        	<sapn class="stars-pink"></sapn>
+					</div>
+				</div>
+			</a>
 		</div>
 	</div>
-
 </div>
 
+<p ng-show="!numberPostFilter.length">{{mv.messageData}}</p>

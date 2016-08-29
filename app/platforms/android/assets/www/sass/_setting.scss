@@ -37,6 +37,80 @@ $text-gray: #727277;
 
 
 
+
+/*
+*   fonts
+********************************/
+
+@font-face {
+    font-family: 'Myanmar-Sangam-MN';
+    // src: url('../../fonts/olivier_demo-webfont.woff2') format('woff2'),
+    src: url('../fonts/Myanmar-Sangam-MN.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+
+}
+// @font-face {
+//     font-family: 'exo_2.0bold';
+//     src: url('../../fonts/exo2.0-bold_0-webfont.woff2') format('woff2'),
+//          url('../../fonts/exo2.0-bold_0-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
+
+// }
+
+
+// @font-face {
+//     font-family: 'exo_2.0regular';
+//     src: url('../../fonts/exo2.0-regular_0-webfont.woff2') format('woff2'),
+//          url('../../fonts/exo2.0-regular_0-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
+
+// }
+
+// @font-face {
+//     font-family: 'exo_2.0light';
+//     src: url('../../fonts/exo2.0-light_0-webfont.woff2') format('woff2'),
+//          url('../../fonts/exo2.0-light_0-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
+
+// }
+
+
+// @font-face {
+//     font-family: 'exo_2.0medium';
+//     src: url('../../fonts/exo2.0-medium_0-webfont.woff2') format('woff2'),
+//          url('../../fonts/exo2.0-medium_0-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
+
+// }
+
+// @font-face {
+//     font-family: 'exo_2.0thin';
+//     src: url('../../fonts/exo2.0-thin_0-webfont.woff2') format('woff2'),
+//          url('../../fonts/exo2.0-thin_0-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
+
+// }
+
+
+
+$Myanmar-Sangam-MN:   'Myanmar-Sangam-MN';
+$exo-thin:     'exo_2.0thin';
+$exo-bold:     'exo_2.0bold';
+$exo-regular:  'exo_2.0regular';
+$exo-ligth:    'exo_2.0light' ;
+$exo-medio:    'exo_2.0medium';
+
+
+
+
+
+
 /*
 *   Media Query Ranges
 ********************************/

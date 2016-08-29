@@ -120,7 +120,13 @@ textarea{
 	margin: 0 auto;
 	height: 64px;
 }
-
+.button-pink{
+	width: 300px;
+	background-color: transparent;
+	border: 2px solid $pink;
+	color: $pink;
+	height: 36px
+}
 
 
 

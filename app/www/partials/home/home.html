@@ -5,15 +5,18 @@
 				<a href="#/post-info/{{post.id}}">
 					<div class="info-user">
 						<span></span>
-						<p>GallinaAstuta</p>
+						<p>{{post.authorName}}</p>
 					</div>
 					<div class="wraper-img">
-						<img ng-src="{{post.urlFeaturedImage}}"></img>
+						<a href="#/post-info/{{post.id}}">
+							<img ng-src="{{post.urlFeaturedImage}}"></img>
+						</a>
 					</div>
 					<div class="info-post">
 						<div class="favorites">
 							<span class="icon-stars"></span>
-							<p>GUARDAR EN FAVORITOS</p>
+							<p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">GUARDAR EN FAVORITOS</p>
+							<p ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)">REMOVER DE FAVORITOS</p>
 						</div>
 						<div class="count-comments">
 							<p>{{post.comments.length}}</p>
@@ -28,7 +31,6 @@
 			</div>
 		</div>
 	</div>
-
 	<p ng-show="!numberPostFilter.length">{{mv.messageData}}</p>
 </div>
 

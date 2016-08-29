@@ -62,9 +62,7 @@ gulp.task('watch', function() {
 
   // Watch .scss files
   gulp.watch('sass/**/*.scss', ['default']);
-
   gulp.watch('sass/*.scss', ['default']);
-
 
   // Create LiveReload server
   livereload.listen();

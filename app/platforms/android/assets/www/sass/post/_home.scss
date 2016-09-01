@@ -1,87 +1,90 @@
-.content-time {
+.view-timeline {
 	margin-top: 90px;
-	.item-box {
-		.info-user{
-			height: 46px;
-			background-color: #fdfbff;
-			position: relative;
-    	display: table;
-    	width: 100%;
-    	span {
-				display: block;
-				float: left;
-				background: rebeccapurple;
-				height: 46px;
-				width: 55px;
-    	}
-			p{
-				color: $pink;
-				font-size: 14px;
-				font-weight: bold;
-				margin-top: 19px;
-			}
-		}
-		.wraper-img {
-			margin: 0 2px;
+	margin-bottom: 58px;
+	.content-time {
 
-		}
-		.info-post {
-			height: 50px;
-			.favorites {
-				width: 70%;
-				height: 50px;
-				float: left;
-				.icon-stars {
-					background: url("../img/icon-stars.png");
-			    background-repeat: no-repeat;
-			    width: 16px;
-			    height: 16px;
-			    display: block;
-			    float: left;
-					margin-left: 16px;
-					margin-top: 18px;
-				}
-				p {
-					margin-left: 16px;
-					margin-top: 18px;
+		.item-box {
+			.info-user{
+				height: 46px;
+				background-color: #fdfbff;
+				position: relative;
+	    	display: table;
+	    	width: 100%;
+	    	span {
 					display: block;
-    			float: left;
-    			font-size: 12px;
-    			font-weight: 400;
+					float: left;
+					background: rebeccapurple;
+					height: 46px;
+					width: 55px;
+	    	}
+				p{
+					color: $pink;
+					font-size: 14px;
+					font-weight: bold;
+					margin-top: 16px;
 				}
 			}
-			.count-comments {
-				width: 15%;
-				height: 50px;
-				float: left;
-				p {
-					float: left;
-					width: 50%;
-				}
-				.balloon{
-					background: url("../img/icon-balloon.png");
-			    background-repeat: no-repeat;
-			    width: 20px;
-			    height: 16px;
-			    display: block;
-			    float: left;
-				}
+			.wraper-img {
+				margin: 0 2px;
+
 			}
-			.count-favorites {
-				width: 15%;
+			.info-post {
 				height: 50px;
-				float: left;
-				p {
+				border-bottom: 2px solid $gray;
+				.favorites {
+					width: 66%;
+					height: 50px;
 					float: left;
-					width: 50%;
+					.icon-stars {
+						background: url("../img/icon-stars.png");
+				    background-repeat: no-repeat;
+				    width: 16px;
+				    height: 16px;
+				    display: block;
+				    float: left;
+						margin-left: 16px;
+						margin-top: 18px;
+					}
+					p {
+						margin-left: 16px;
+						margin-top: 18px;
+						display: block;
+	    			float: left;
+	    			font-size: 12px;
+	    			font-weight: 400;
+					}
 				}
-				.stars-pink {
-					background: url("../img/icon-stars-pink.png");
-			    background-repeat: no-repeat;
-			    width: 16px;
-			    height: 16px;
-			    display: block;
-			    float: left;
+				.count-comments,
+				.count-favorites {
+					width: 17%;
+					height: auto;
+					float: left;
+					margin-top: 17px;
+					p {
+						float: left;
+						width: 50%;
+						text-align: right;
+	    			width: 35%;
+	        	padding-right: 5px;
+					}
+					.balloon{
+						background: url("../img/icon-balloon.png");
+				    background-repeat: no-repeat;
+				    width: 20px;
+				    height: 16px;
+				    display: block;
+				    float: left;
+					}
+				}
+				.count-favorites {
+					.stars-pink {
+						background: url("../img/icon-stars-pink.png");
+				    background-repeat: no-repeat;
+				    width: 16px;
+				    height: 16px;
+				    display: block;
+				    float: left;
+					}
 				}
 			}
 		}

@@ -1,51 +1,74 @@
-<h1>Sube tu imagen a Bogotá Efimera </h1>
-<!--Formulario para insertar nuevos Todo-->
-<div class="form-post">
-	<form action="">
+<div class="view-getpost">
+	<div class="title-header">
+		<div class="wraper-header">
+		  <div class="icon-camera"></div>
+			<p>HACER TOMA</p>
+		</div>
+	</div>
+	<!--Formulario para insertar nuevos Todo-->
+	<form >
 		<div class="title">
-			<label for="">Titulo de la Imagen</label>
-			<br>
-			<br>
-			<input type="text" ng-model="mcpc.title">
+			<div class="wraper">
+				<label for="">Nombre de Toma</label>
+				<input class="textbox" type="text" ng-model="mcpc.title">
+			</div>
 		</div>
-		<br>
 		<div class="content">
-			<label for="">Describe tu Imagen</label>
-			<br>
-			<br>
-			<textarea class="area" ng-model="mcpc.content" ></textarea>
+			<div class="wraper">
+					<label for="">Descripción</label>
+					<textarea class="area" ng-model="mcpc.content" ></textarea>
+			</div>
 		</div>
-		<br>
 		<div class="category">
-			<label for="">Elije la Categoria</label>
-			<br>
-			<br>
-			<select class="custom-file-input" ng-model="mcpc.category" ng-options="category.id as category.name for category in mv.categories | filter:{ id: '!1'} track by category.id">
-			<option value="">--Elige opcion--</option>
-			</select>
+			<div class="wraper">
+				<label for="">Categoría</label>
+				<div class="select">
+					<select class="" ng-model="mcpc.category" ng-options="category.id as category.name for category in mv.categories | filter:{ id: '!1'} track by category.id">
+					<!-- <option value="">--Elige opcion--</option> -->
+				</select>
+				</div>
+			</div>
 		</div>
 		<div class="ubication">
-			<label for="">Elije la Ubicacion</label>
-			<br>
-			<br>
-			<select class="custom-file-input" ng-model="mcpc.ubication" ng-options="ubication.id as ubication.name for ubication in mv.ubications track by ubication.id">
-			<option value="">--Elige opcion--</option>
-			</select>
+			<div class="wraper">
+				<label for="">Elije la Ubicacion</label>
+				<div class="select">
+					<select class="" ng-model="mcpc.ubication" ng-options="ubication.id as ubication.name for ubication in mv.ubications track by ubication.id">
+					<!-- <option value="">--Elige opcion--</option> -->
+				</select>
+				</div>
+			</div>
 		</div>
-		<br>
-		<div class="image">
-			<label for="">Sube tu Imagen</label>
-			<br>
-			<br>
-			<input type="button" ng-click="mcpc.takephotoURL()" value="Tomar Foto"/>
-			<input type="button" ng-click="mcpc.choosePhoto()" value="Escoger Foto"/>
-      <img id="myImage" ng-model="mcpc.file">
+<!-- 	<div class="image">
+				<label for="">Sube tu Imagen</label>
+
+
+				<input type="button" ng-click="mcpc.takephotoURL()" value="Tomar Foto"/>
+				<input type="button" ng-click="mcpc.choosePhoto()" value="Escoger Foto"/>
+	      <img id="myImage" ng-model="mcpc.file">
+	      <p id="text2"></p>
+			</div>
+
+ -->
+
+
+		<!-- forma de subir -->
+    <div class="menu-upphote">
+      <div class="take-phote" type="button" ng-click="mcpc.takephotoURL()"">
+          <div class="icon-phote"></div>
+          <p>Tomar foto</p>
+      </div>
+      <div  class="up-phote" type="button" ng-click="mcpc.choosePhoto()">
+        <div class="icon-phote" ></div>
+        <p>Subir Archivo</p>
+      </div>
+      <img id="myImageAvatar" ng-model="mcpc.file">
       <p id="text2"></p>
-		</div>
-		<br>
-		<div class="bottom">
-			<input type="button" class="custom-bottom-input" ng-click="mcpc.createPost(mcpc.title, mcpc.content, mcpc.file, mcpc.category, mcpc.ubication)" value ="Añadir"></input>
+    </div>
+		<div class="botton-take">
+			<input type="button" class="button-pink" ng-click="mcpc.createPost(mcpc.title, mcpc.content, mcpc.file, mcpc.category, mcpc.ubication)" value ="Añadir"></input>
 		</div>
 	</form>
+	<!-- <a href="#/exit">Salir</a> -->
 </div>
-<a href="#/exit">Salir</a>
+

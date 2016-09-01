@@ -1,6 +1,8 @@
 .views-terms {
 	background-color: $gray-back;
 	height: 100%;
+	display: table;
+    width: 100%;
 	.logo-terms {
 		padding-top: 74px;
 		span {

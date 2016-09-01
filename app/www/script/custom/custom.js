@@ -1,17 +1,7 @@
-$( document ).ready(function() {
-
-
-	$( window ).load(function() {
-	  // Run code
-	   console.log( "ready!" );
-		var $elem =  $(".view-user .menu-post .link-post");
-
-		console.log($elem);
-		$elem.click(function() {
-			/* Act on the event */
-			console.log("sisisis");
-		});
-
-	});
-
+muvbe.controller("muvbeController", function ($scope, $element) {
+	$scope.clickme = function () {
+		var elem = angular.element(document.querySelector('.item-1 '));
+		console.log(elem.val())// console the value of textbox
+	};
 });
+

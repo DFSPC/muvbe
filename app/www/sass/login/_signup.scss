@@ -1,6 +1,8 @@
 .views-signup {
 	background-color: $gray;
 	height: 100%;
+	display: table;
+    width: 100%;
 	.header-signup {
 		padding-top: 30px;
 		margin-bottom: 46px;
@@ -60,7 +62,7 @@
 				float: left;
 			}
 			.icon-phote,
-			.icon-phote {
+			.icon-camera {
 				background: url("../img/icons/camera-icon.svg");
 				background-repeat: no-repeat;
 				width: 69px;

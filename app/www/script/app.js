@@ -293,6 +293,8 @@ muvbe.controller('muvbeController', function ($scope, $http){
 });
 
 
+
+
 //ROUTING
 muvbe.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
@@ -402,3 +404,6 @@ muvbe.filter('unique', function() {
       return output;
    };
 });
+
+
+

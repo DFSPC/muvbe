@@ -3,9 +3,16 @@
 	background-color: white;
 	height: 89px;
 	position: fixed;
-	top: 0;
+	top: -91px;
 	width: 100%;
 	z-index: 3;
+	-webkit-transition: top .8s; /* Safari */
+  transition: top .8s;
+  &.expand {
+    -webkit-transition: top .8s; /* Safari */
+  	transition: top .8s;
+		top: 0;
+  }
 	.logo-app {
 		float: left;
 		height: 100%;
@@ -63,7 +70,7 @@
     &.expand {
     -webkit-transition: left .8s; /* Safari */
   	transition: left .8s;
-    	left: 0;
+    left: 0;
 
     }
 		.transparent-back {

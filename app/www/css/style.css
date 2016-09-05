@@ -413,8 +413,9 @@ input.textbox {
       font-size: 11px;
       font-weight: bold;
       color: #727277;
-      margin-left: 11px;
-      vertical-align: top; }
+      margin-left: 21px;
+      vertical-align: top;
+      display: block; }
     .views-terms form [type="checkbox"] {
       width: 14px;
       height: auto;
@@ -429,7 +430,19 @@ input.textbox {
         background-color: transparent;
         border: 2px solid #da0080;
         color: #da0080;
-        margin: 0; }
+        margin: 0;
+        opacity: 1;
+        -webkit-transition: opacity 1s;
+        /* Safari */
+        transition: opacity 1s; }
+
+.sample-show-hide {
+  -webkit-transition: opacity 1s;
+  /* Safari */
+  transition: opacity 1s; }
+
+.sample-show-hide.ng-hide {
+  opacity: 0; }
 
 @media only screen and (orientation: landscape) {
   .views-terms {
@@ -437,11 +450,19 @@ input.textbox {
 
 .nav-aux {
   position: fixed;
-  bottom: 0;
+  bottom: -60px;
   width: 100%;
   background: #f8f8ff;
   height: 57px;
-  border-top: 1px solid #cccccc; }
+  border-top: 1px solid #cccccc;
+  -webkit-transition: bottom .8s;
+  /* Safari */
+  transition: bottom .8s; }
+  .nav-aux.expand {
+    -webkit-transition: bottom .8s;
+    /* Safari */
+    transition: bottom .8s;
+    bottom: 0; }
   .nav-aux .item {
     width: 20%;
     display: block;
@@ -485,9 +506,17 @@ input.textbox {
   background-color: white;
   height: 89px;
   position: fixed;
-  top: 0;
+  top: -91px;
   width: 100%;
-  z-index: 3; }
+  z-index: 3;
+  -webkit-transition: top .8s;
+  /* Safari */
+  transition: top .8s; }
+  .header.expand {
+    -webkit-transition: top .8s;
+    /* Safari */
+    transition: top .8s;
+    top: 0; }
   .header .logo-app {
     float: left;
     height: 100%; }
@@ -608,8 +637,7 @@ input.textbox {
             color: #FFFFFF; }
 
 .view-timeline {
-  margin-top: 90px;
-  margin-bottom: 58px; }
+  margin-top: 90px; }
   .view-timeline .content-time .item-box .info-user {
     height: 46px;
     background-color: #fdfbff;
@@ -684,7 +712,6 @@ input.textbox {
 .view-getpost {
   background-color: #bfbfbf;
   margin-top: 89px;
-  margin-bottom: 50px;
   display: table;
   width: 100%; }
   .view-getpost .title-header {
@@ -755,8 +782,7 @@ input.textbox {
 
 .wiew-category {
   margin-top: 79px;
-  display: table;
-  margin-bottom: 60px; }
+  display: table; }
   .wiew-category .link-category {
     width: 48%;
     float: left;
@@ -782,7 +808,6 @@ input.textbox {
 
 .view-user {
   margin-top: 91px;
-  margin-bottom: 43px;
   display: table;
   width: 100%; }
   .view-user .wrapper-user .menu-post {

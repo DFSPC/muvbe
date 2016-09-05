@@ -1,6 +1,6 @@
 <div class="view-timeline">
-	<div class="content-time view-timeline">
-		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index">
+	<div class="content-time view-timeline" data-ng-hide="hide" ng-animate="{enter: 'animate-enter', hide: 'animate-hide'}">
+		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index" >
 			<div class="item-box">
 				<div class="info-user">
 					<span></span>

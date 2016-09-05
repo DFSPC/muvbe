@@ -1,5 +1,6 @@
 <div class="content-time">
-	<div ng-repeat="post in mv.posts | filter:{ categoryId:mdc.categoryId} track by $index">
+	<div ng-repeat="post in mv.posts | filter:{ categoryId:mdc.categoryId} track by $index"
+	data-ng-animate="'custom'">
 		<div class="item-box">
 			<a href="#/post-info/{{post.id}}">
 				<div class="info-user">

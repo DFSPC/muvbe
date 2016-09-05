@@ -147,15 +147,15 @@ muvbe.directive('scrollEfect', function () {
           console.log("el swipe se genera hacia la izquierda");
           }
 
-          if((touch.pageY < yIni - 10) && (touch.pageX> xIni-5) ){
-            console.log('up')
+          if((touch.pageY < yIni - 2) && (touch.pageX> xIni-5) ){
+            // console.log('up')
             $nav_footer.removeClass('expand');
             $header.removeClass('expand');
 
           }
 
-          if((touch.pageY > yIni + 10) ){
-            console.log('down');
+          if((touch.pageY > yIni + 2) ){
+            // console.log('down');
             $nav_footer.addClass('expand');
             $header.addClass('expand');
           }

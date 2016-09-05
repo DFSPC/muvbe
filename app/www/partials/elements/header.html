@@ -2,6 +2,12 @@
 	<div class="logo-app">
 		<a ng-href="#/home" ng-click="mv.getAllData()"><span>logo</span></a>
 	</div>
+	<div class="name-user">
+		<a ng-href="#/user">{{mv.user.userName}}</a>
+	</div>
+	<div class="avatar-user">
+		<a ng-href="#/user"><img ng-src="{{ mv.user.avatar }}" alt="avatar"></img></a>
+	</div>
 	<menu-main>
 		<div class="menu-main"></div>
 		<div class="wraper-menu ">
@@ -26,11 +32,7 @@
 			</div>
 		</div>
 	</menu-main>
-	<div class="avatar-user">
-		<a ng-href="#/user"><img ng-src="{{ mv.user.avatar }}" alt="avatar"></img></a>
-	</div>
-	<div class="name-user">
-		<a ng-href="#/user">{{mv.user.userName}}</a>
-	</div>
+
+
 </div>
 

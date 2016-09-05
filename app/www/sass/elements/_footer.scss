@@ -6,11 +6,11 @@
 	background: $white2;
 	height: 57px;
 	border-top: 1px solid #cccccc;
-	-webkit-transition: bottom .8s; /* Safari */
-  transition: bottom .8s;
+	-webkit-transition: bottom .4s; /* Safari */
+  transition: bottom .4s;
   &.expand {
-    -webkit-transition: bottom .8s; /* Safari */
-  	transition: bottom .8s;
+    -webkit-transition: bottom .4s; /* Safari */
+  	transition: bottom .4s;
 		bottom: 0;
   }
 	.item{

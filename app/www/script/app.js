@@ -297,9 +297,13 @@ muvbe.controller('muvbeController', function ($scope, $http){
 
 
 //ROUTING
-muvbe.config(['$routeProvider', function ($routeProvider) {
-  $routeProvider
+muvbe.config(['$routeProvider', '$locationProvider' ,
+  function ($routeProvider, $locationProvider) {
 
+// $locationProvider.html5Mode(true).hashPrefix('*');
+// $locationProvider.html5Mode(true);
+
+  $routeProvider
     /*
     **  Login
     **********************************************/

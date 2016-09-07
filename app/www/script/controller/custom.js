@@ -107,7 +107,7 @@ muvbe.directive('menuMain', function () {
 /*
 **  Efectos del scroll
 **********************************************/
-muvbe.directive('scrollEfect', function () {
+muvbe.directive('scrollEfect', function ( $location) {
 
   var navActiveUser;
 
@@ -135,33 +135,50 @@ muvbe.directive('scrollEfect', function () {
       }, false);
 
       window.addEventListener('touchmove', function(e){
-
-
         if (e.targetTouches.length == 1) {
           var
             touch = e.targetTouches[0],
-            $nav_footer = angular.element('.nav-aux');
-            $header = angular.element('.header');
+            $nav_footer = angular.element('.nav-aux'),
+            $header = angular.element('.header'),
+            urls = ["/home", "/categories", "/post", "/ubications", "/user"];
 
+
+          // swipe izquierda
           if((touch.pageX>xIni+20) && (touch.pageY> yIni-5) && (touch.pageY<yIni+5)){
-          console.log("el swipe se genera hacia la izquierda");
-          }
+            var
+              urlnow = $location.path(),
+              posicion = urls.indexOf(urlnow);
+              newUrl = posicion - 1 ;
 
+            if (posicion > 0){
+              console.log(urls[newUrl]);
+              window.location.href = "#" + urls[newUrl] ;
+            }
+          }
+          // swipe derecha
+          if((touch.pageX<xIni-20) && (touch.pageY> yIni-5) && (touch.pageY<yIni+5)){
+             var
+              urlnow = $location.path(),
+              posicion = urls.indexOf(urlnow);
+              newUrl = posicion + 1 ;
+
+            if (posicion < 4){
+              console.log(urls[newUrl]);
+              window.location.href = "#" + urls[newUrl] ;
+            }
+          }
+          // swipe arriba
           if((touch.pageY < yIni - 5) && (touch.pageX> xIni-5) && (touch.pageX<xIni+5)) {
             // console.log('up')
             $nav_footer.removeClass('expand');
             $header.removeClass('expand');
 
           }
-
+          // swipe abajo
           if((touch.pageY > yIni + 5) && (touch.pageX> xIni-5) && (touch.pageX<xIni+5)   ){
             // console.log('down');
             $nav_footer.addClass('expand');
             $header.addClass('expand');
-          }
-
-          if((touch.pageX<xIni-20) && (touch.pageY> yIni-5) && (touch.pageY<yIni+5)){
-          console.log("el swipe se genera hacia la derecha");
           }
         }
       }, false);
@@ -180,24 +197,16 @@ muvbe.directive('scrollEfect', function () {
 **  Sub menu del post
 **********************************************/
 muvbe.directive('subMenu', function () {
-
-  var navActiveUser;
-
   toggleSubmenu = function(scope, element, attrs) {
-
     var $elem = element.find('.sub-menu');
     toggleSub();
     // funciones
     function toggleSub() {
       $elem.click(function(event) {
-        /* Act on the event */
-          console.log('sussee;');
           $( this ).find('ul').toggleClass( "highlight" );
-
       });
     }
   };
-
   // returna el jquery
   return {
       restrict: 'E',

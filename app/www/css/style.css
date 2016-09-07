@@ -16,6 +16,12 @@
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+  font-family: 'helvetica-neue-bold';
+  src: url("../fonts/helvetica-neue-bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal; }
+
 /*
 *   Media Query Ranges
 ********************************/
@@ -222,6 +228,48 @@ input.textbox {
 
 .overflow {
   overflow: hidden; }
+
+/*
+  We're using CSS transitions for when
+  the enter and move events are triggered
+  for the element that has the .repeated-item
+  class
+*/
+.repeated-item.ng-enter, .repeated-item.ng-move {
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  opacity: 0; }
+
+/*
+ The ng-enter-active and ng-move-active
+ are where the transition destination properties
+ are set so that the animation knows what to
+ animate.
+*/
+.repeated-item.ng-enter.ng-enter-active,
+.repeated-item.ng-move.ng-move-active {
+  opacity: 1; }
+
+/*
+  We're using CSS keyframe animations for when
+  the leave event is triggered for the element
+  that has the .repeated-item class
+*/
+.repeated-item.ng-leave {
+  -webkit-animation: 0.5s my_animation;
+          animation: 0.5s my_animation; }
+
+@-webkit-keyframes my_animation {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes my_animation {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
 
 .view-login {
   background: url("../img/back-login.png");
@@ -661,7 +709,9 @@ input.textbox {
       color: #da0080;
       font-size: 14px;
       font-weight: bold;
-      margin-top: 16px; }
+      margin-top: 16px;
+      font-family: "helvetica-neue-bold";
+      text-transform: capitalize; }
   .view-timeline .content-time .item-box .wraper-img {
     margin: 0 2px; }
   .view-timeline .content-time .item-box .info-post {
@@ -786,6 +836,126 @@ input.textbox {
 @media only screen and (orientation: landscape) {
   .views-signup {
     height: auto; } }
+
+.view-timeline .content-time .item-box .info-user .back {
+  background: url("../img/icons/back-icon.svg");
+  background-repeat: no-repeat;
+  width: 44px;
+  height: 44px;
+  display: block;
+  font-size: 0;
+  margin-left: 14px; }
+
+.view-timeline .content-time .item-box .info-user p {
+  float: left;
+  width: 143px; }
+
+.view-timeline .content-time .item-box .info-user .sub-menu {
+  background: url("../img/icon-submenu.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 52px;
+  height: 30px;
+  font-size: 0;
+  margin-top: 7px;
+  float: right; }
+  .view-timeline .content-time .item-box .info-user .sub-menu ul {
+    background: #f6f6f6;
+    position: absolute;
+    right: 24px;
+    top: 39px;
+    z-index: 4;
+    width: 72px;
+    padding: 20px;
+    -webkit-box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    -webkit-transition: opacity .2s;
+    /* Safari */
+    transition: opacity .2s; }
+    .view-timeline .content-time .item-box .info-user .sub-menu ul.highlight {
+      opacity: 1;
+      -webkit-transition: opacity .2s;
+      /* Safari */
+      transition: opacity .2s; }
+    .view-timeline .content-time .item-box .info-user .sub-menu ul li a {
+      font-size: 12px;
+      font-weight: 400;
+      font-family: Arial; }
+    .view-timeline .content-time .item-box .info-user .sub-menu ul li .item-1 {
+      margin-bottom: 16px; }
+
+.view-timeline .content-time .item-box .wraper-img {
+  position: relative;
+  margin: 0; }
+  .view-timeline .content-time .item-box .wraper-img .back {
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    padding-bottom: 15px;
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.65) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.65)));
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.65) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+    /* IE6-9 */ }
+  .view-timeline .content-time .item-box .wraper-img p {
+    text-transform: capitalize;
+    font-family: "helvetica-neue-bold";
+    font-weight: bold;
+    position: absolute;
+    margin-left: 15px;
+    color: #f8f8ff;
+    font-size: 15px;
+    bottom: 12px;
+    letter-spacing: 1px; }
+
+.view-timeline .content-time .item-box .form-detail {
+  position: relative; }
+  .view-timeline .content-time .item-box .form-detail .content textarea {
+    margin-bottom: 0px;
+    font-size: 14px; }
+  .view-timeline .content-time .item-box .form-detail .bottom .add-airplane {
+    background: url("../img/icons/comment-icon.svg");
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    display: block;
+    font-size: 0;
+    position: absolute;
+    top: 7px;
+    right: 5px; }
+
+.view-timeline .content-time .item-box .cometarios {
+  background-color: #f3f3f3;
+  padding: 10px 10px;
+  border-top: 1px solid #d7d8d9;
+  clear: both;
+  position: relative; }
+  .view-timeline .content-time .item-box .cometarios .title a {
+    font-size: 14px;
+    font-weight: bold;
+    color: #da0080;
+    float: left;
+    font-family: "helvetica-neue-bold";
+    margin-bottom: 10px; }
+  .view-timeline .content-time .item-box .cometarios .text {
+    clear: both; }
+    .view-timeline .content-time .item-box .cometarios .text p {
+      word-break: break-word; }
+  .view-timeline .content-time .item-box .cometarios .bottom {
+    height: 46px; }
+    .view-timeline .content-time .item-box .cometarios .bottom .delete-trash {
+      background: url("../img/icons/delete-icon.svg");
+      background-repeat: no-repeat;
+      width: 44px;
+      height: 44px;
+      display: block;
+      font-size: 0;
+      position: absolute;
+      right: 8px; }
 
 .wiew-category {
   margin-top: 79px;

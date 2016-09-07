@@ -1,7 +1,6 @@
 .view-timeline {
 	margin-top: 90px;
 	.content-time {
-
 		.item-box {
 			.info-user{
 				height: 46px;
@@ -21,6 +20,8 @@
 					font-size: 14px;
 					font-weight: bold;
 					margin-top: 16px;
+					font-family: $helvetica;
+					text-transform: capitalize;
 				}
 			}
 			.wraper-img {

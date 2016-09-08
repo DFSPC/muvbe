@@ -1,18 +1,32 @@
-<div class="wrapper">
-
-  <h1 class="info">{{mdu.ubicationName}}</h1>
-
-
-  <div class="content-time">
+<div class="view-timeline">
+  <div class="content-time view-timeline">
     <div ng-repeat="post in mv.posts | filter:{ ubicationId:mdu.ubicationId} track by $index">
-
       <div class="item-box">
         <a href="#/post-info/{{post.id}}">
-          <img ng-src="{{post.urlFeaturedImage}}"></img>
+          <div class="info-user">
+            <span></span>
+            <p>{{post.authorName}}</p>
+          </div>
+          <div class="wraper-img">
+            <img ng-src="{{post.urlFeaturedImage}}"></img>
+          </div>
         </a>
+        <div class="info-post">
+          <div class="favorites">
+            <span class="icon-stars"></span>
+            <p>GUARDAR EN FAVORITOS</p>
+          </div>
+          <div class="count-comments">
+            <p>{{post.comments.length}}</p>
+            <span class="balloon"></span>
+          </div>
+          <div class="count-favorites">
+              <p>{{post.countFavorites}} </p>
+              <span class="stars-pink"></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
-
+<p ng-show="!numberPostFilter.length">{{mv.messageData}}</p>

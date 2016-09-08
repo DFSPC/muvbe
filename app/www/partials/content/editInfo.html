@@ -1,42 +1,52 @@
-<h1>Edita tu imagen de Bogotá Efimera </h1>
-<!--Formulario para insertar nuevos Todo-->
-<div class="form-post">
-	<form action="">
+<div class="view-getpost">
+	<div class="title-header">
+		<div class="wraper-header">
+		  <div class="icon-camera"></div>
+			<p>Edita tu post </p>
+		</div>
+	</div>
+	<!--Formulario para insertar nuevos Todo-->
+	<form >
 		<div class="title">
-			<label for="">Titulo de la Imagen</label>
-			<br>
-			<br>
-			<input type="text" ng-model="mepc.postEdit.title">
+			<div class="wraper">
+				<label for="">Nombre de Toma</label>
+				<input class="textbox" type="text" ng-model="mepc.postEdit.title">
+			</div>
 		</div>
-		<br>
 		<div class="content">
-			<label for="">Describe tu Imagen</label>
-			<br>
-			<br>
-			<textarea class="area" ng-model="mepc.postEdit.plainContent"></textarea>
+			<div class="wraper">
+				<label for="">Descripción</label>
+				<textarea class="area" ng-model="mepc.postEdit.plainContent"></textarea>
+			</div>
 		</div>
-		<br>
 		<div class="category">
-			<label for="">Elije la Categoria</label>
-			<br>
-			<select class="custom-file-input" ng-model="mepc.selectedCategory" ng-options="category as category.name for category in mepc.categories | filter:{ id: '!1'} track by category.id" >
-			</select>
+			<div class="wraper">
+				<label for="">Categoría</label>
+				<div class="select">
+				<select class="" ng-model="mepc.selectedCategory" ng-options="category as category.name for category in mepc.categories | filter:{ id: '!1'} track by category.id" >
+				</select>
+			</div>
 		</div>
 		<div class="ubication">
-			<label for="">Elije la Ubicacion</label>
-			<br>
-			<select class="custom-file-input" ng-model="mepc.selectedUbication" ng-options="ubication as ubication.name for ubication in mepc.ubications track by ubication.id" >
-			</select>
+			<div class="wraper">
+				<label for="">Elije la Ubicacion</label>
+				<div class="select">
+					<select class="" ng-model="mepc.selectedUbication" ng-options="ubication as ubication.name for ubication in mepc.ubications track by ubication.id" >
+					</select>
+				</div>
+			</div>
 		</div>
 		<div class="image">
-      <img id="myImage" ng-src="{{mepc.postEdit.urlFeaturedImage}}">
-      <p id="text2"></p>
+	      	<img id="myImage" ng-src="{{mepc.postEdit.urlFeaturedImage}}">
+	      	<p id="text2"></p>
+	      	<br>
 		</div>
-		<br>
-		<br>
-		<div class="bottom">
-			<input type="button" class="custom-bottom-input" ng-click="mepc.editPost(mepc.postEdit.id, mepc.postEdit.title, mepc.postEdit.plainContent, mepc.selectedCategory.id, mepc.selectedUbication.id)" value ="Editar"></input>
+		<div class="botton-take">
+			<input type="button"  class="button-pink" ng-click="mepc.editPost(mepc.postEdit.id, mepc.postEdit.title, mepc.postEdit.plainContent, mepc.selectedCategory.id, mepc.selectedUbication.id)" value ="Editar"></input>
 		</div>
 	</form>
+<!-- <a href="#/exit">Salir</a> -->
 </div>
-<a href="#/exit">Salir</a>
+
+
+

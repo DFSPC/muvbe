@@ -6,11 +6,11 @@
 	top: -91px;
 	width: 100%;
 	z-index: 3;
-	-webkit-transition: top .4s; /* Safari */
-  transition: top .4s;
+	-webkit-transition: top .2s; /* Safari */
+  transition: top .2s;
   &.expand {
-    -webkit-transition: top .4s; /* Safari */
-  	transition: top .4s;
+    -webkit-transition: top .2s; /* Safari */
+  	transition: top .2s;
 		top: 0;
   }
 	.logo-app {

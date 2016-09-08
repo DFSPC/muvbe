@@ -1,4 +1,3 @@
-
 <div class="view-timeline">
   <div ng-repeat="post in numberPostFilter = mv.posts | filter:{id:mpic.postId} track by $index">
     <!-- <h1>{{post.title}}</h1> -->
@@ -10,7 +9,7 @@
           <span></span>
           <p>{{post.authorName}}</p>
           <sub-menu>
-            <div class="sub-menu" ng-show="mv.user.id == post.author">....
+            <div class="sub-menu" ng-show="mv.user.id == post.author">
               <ul>
                 <li>
                   <a class="item-1" ng-href="#/edit-post/{{post.id}}">Editar Post</a>

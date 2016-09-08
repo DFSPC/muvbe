@@ -503,13 +503,13 @@ input.textbox {
   background: #f8f8ff;
   height: 57px;
   border-top: 1px solid #cccccc;
-  -webkit-transition: bottom .4s;
+  -webkit-transition: bottom .2s;
   /* Safari */
-  transition: bottom .4s; }
+  transition: bottom .2s; }
   .nav-aux.expand {
-    -webkit-transition: bottom .4s;
+    -webkit-transition: bottom .2s;
     /* Safari */
-    transition: bottom .4s;
+    transition: bottom .2s;
     bottom: 0; }
   .nav-aux .item {
     width: 20%;
@@ -557,13 +557,13 @@ input.textbox {
   top: -91px;
   width: 100%;
   z-index: 3;
-  -webkit-transition: top .4s;
+  -webkit-transition: top .2s;
   /* Safari */
-  transition: top .4s; }
+  transition: top .2s; }
   .header.expand {
-    -webkit-transition: top .4s;
+    -webkit-transition: top .2s;
     /* Safari */
-    transition: top .4s;
+    transition: top .2s;
     top: 0; }
   .header .logo-app {
     float: left;

@@ -264,9 +264,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
 
   scope.getAuthorAvatarByComment = function(post, comment, author){
     $http.get(urlAppServer2 + '/user/get_userinfo/?user_id=' + author + '&insecure=cool').success(function(dataAvatar){
-      console.log(author);
       comment.authorAvatar = dataAvatar.avatar;
-      console.log(comment.authorAvatar);
       post.comments.push(comment);
       localStorage.setItem("comments", JSON.stringify(scope.comments));
       localStorage.setItem("posts", JSON.stringify(scope.posts));
@@ -287,6 +285,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
         });
         scope.posts = posts;
         localStorage.setItem("posts", JSON.stringify(scope.posts));
+        localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
       });
     });
   }
@@ -308,6 +307,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
         });
         scope.posts = posts;
         localStorage.setItem("posts", JSON.stringify(scope.posts));
+        localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
       });
     });
   }

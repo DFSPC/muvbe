@@ -9,6 +9,7 @@ function onDR()
 
 var muvbe = angular.module('muvbe', [
   'ngRoute',
+  'ngAnimate',
 ]);
 
 //Variables
@@ -103,6 +104,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
           post.ubicationName = "Sin Ubicacion";
         }
         post.mediaId = data[post_data].featured_media;
+        scope.getAuthorAvatarByPost(post);
         scope.getImageUrlByPost(post, data[post_data].featured_media);
         scope.getCommentsByPost(post);
         scope.getCountFavoritesByPost(post);
@@ -184,6 +186,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
   }
 
   scope.getIsFavorite = function(post){
+    scope.user = JSON.parse(localStorage.getItem("userSession"));
     var userFavorites = scope.user.favorites;
     if (userFavorites.indexOf(post.id.toString()) != -1){
       post.isFavorite = true;
@@ -207,7 +210,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
           var dateComment = new Date(comments[comments_data].date);
           commentInfo.date = dateComment.getDate() + " de " + monthNames[dateComment.getMonth()] + " del " + dateComment.getFullYear();
           commentInfo.content = comments[comments_data].content.rendered;
-          post.comments.push(commentInfo);
+          scope.getAuthorAvatarByComment(post, commentInfo, comments[comments_data].author);;
         }
       }
     }
@@ -252,6 +255,22 @@ muvbe.controller('muvbeController', function ($scope, $http){
     }
   }
 
+  scope.getAuthorAvatarByPost = function(post){
+    $http.get(urlAppServer2 + '/user/get_userinfo/?user_id=' + post.author + '&insecure=cool').success(function(dataAvatar){
+      post.authorAvatar = dataAvatar.avatar;
+      localStorage.setItem("posts", JSON.stringify(scope.posts));
+    });
+  }
+
+  scope.getAuthorAvatarByComment = function(post, comment, author){
+    $http.get(urlAppServer2 + '/user/get_userinfo/?user_id=' + author + '&insecure=cool').success(function(dataAvatar){
+      comment.authorAvatar = dataAvatar.avatar;
+      post.comments.push(comment);
+      localStorage.setItem("comments", JSON.stringify(scope.comments));
+      localStorage.setItem("posts", JSON.stringify(scope.posts));
+    });
+  }
+
   scope.addFavorite = function(postId){
     $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + scope.user.userName + "&password=" + scope.user.userPassword).success(function(dataCookie){
       var cookie = dataCookie.cookie;
@@ -266,6 +285,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
         });
         scope.posts = posts;
         localStorage.setItem("posts", JSON.stringify(scope.posts));
+        localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
       });
     });
   }
@@ -287,16 +307,23 @@ muvbe.controller('muvbeController', function ($scope, $http){
         });
         scope.posts = posts;
         localStorage.setItem("posts", JSON.stringify(scope.posts));
+        localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
       });
     });
   }
 });
 
 
-//ROUTING
-muvbe.config(['$routeProvider', function ($routeProvider) {
-  $routeProvider
 
+
+//ROUTING
+muvbe.config(['$routeProvider', '$locationProvider' ,
+  function ($routeProvider, $locationProvider) {
+
+// $locationProvider.html5Mode(true).hashPrefix('*');
+// $locationProvider.html5Mode(true);
+
+  $routeProvider
     /*
     **  Login
     **********************************************/
@@ -402,3 +429,58 @@ muvbe.filter('unique', function() {
       return output;
    };
 });
+
+muvbe.animation('.repeated-item', function() {
+  return {
+    enter : function(element, done) {
+      element.css('opacity',0);
+      jQuery(element).animate({
+        opacity: 1
+      }, done);
+
+      // optional onDone or onCancel callback
+      // function to handle any post-animation
+      // cleanup operations
+      return function(isCancelled) {
+        if(isCancelled) {
+          jQuery(element).stop();
+        }
+      }
+    },
+    leave : function(element, done) {
+      element.css('opacity', 1);
+      jQuery(element).animate({
+        opacity: 0
+      }, done);
+
+      // optional onDone or onCancel callback
+      // function to handle any post-animation
+      // cleanup operations
+      return function(isCancelled) {
+        if(isCancelled) {
+          jQuery(element).stop();
+        }
+      }
+    },
+    move : function(element, done) {
+      element.css('opacity', 0);
+      jQuery(element).animate({
+        opacity: 1
+      }, done);
+
+      // optional onDone or onCancel callback
+      // function to handle any post-animation
+      // cleanup operations
+      return function(isCancelled) {
+        if(isCancelled) {
+          jQuery(element).stop();
+        }
+      }
+    },
+
+    // you can also capture these animation events
+    addClass : function(element, className, done) {},
+    removeClass : function(element, className, done) {}
+  }
+});
+

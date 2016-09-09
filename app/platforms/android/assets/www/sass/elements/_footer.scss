@@ -1,16 +1,25 @@
 .nav-aux{
 	position: fixed;
-	bottom: 0;
+	// bottom: 0;
+	bottom: -60px;
 	width: 100%;
 	background: $white2;
 	height: 57px;
 	border-top: 1px solid #cccccc;
+	-webkit-transition: bottom .2s; /* Safari */
+  transition: bottom .2s;
+  &.expand {
+    -webkit-transition: bottom .2s; /* Safari */
+  	transition: bottom .2s;
+		bottom: 0;
+  }
 	.item{
 		width: 20%;
     display: block;
     float: left;
     height: 100%;
 		background-repeat: no-repeat;
+
 		a {
 			font-size: 0;
 			width: 35px;
@@ -19,30 +28,47 @@
 			height: 35px;
 			overflow: hidden;
 			margin: 12px auto;
+			-webkit-transition: background 1s; /* Safari */
+    	transition: background 1s;
 	  }
 	  &.item-1 {
 	  	a {
 				background: url("../img/icons/eye-inactive.svg");
+				&.active {
+					background: url("../img/icons/eye-active.svg");
+				}
 	  	}
     }
     &.item-2 {
     	a {
 				background: url("../img/icons/glass-inactive.svg");
+				&.active {
+					background: url("../img/icons/glass-active.svg");
+				}
     	}
     }
     &.item-3 {
     	a {
 				background: url("../img/icons/camera-inactive.svg");
+				&.active {
+					background: url("../img/icons/camera-active.svg");
+				}
     	}
     }
     &.item-4 {
     	a {
 				background: url("../img/icons/pointer-inactive.svg");
+				&.active {
+					background: url("../img/icons/pointer-active.svg");
+				}
     	}
     }
     &.item-5 {
     	a {
 				background: url("../img/icons/user-inactive.svg");
+				&.active {
+					background: url("../img/icons/user-active.svg");
+				}
 
     	}
     }

@@ -1,6 +1,8 @@
 .views-terms {
 	background-color: $gray-back;
 	height: 100%;
+	display: table;
+    width: 100%;
 	.logo-terms {
 		padding-top: 74px;
 		span {
@@ -46,8 +48,9 @@
 			font-size: 11px;
 			font-weight: bold;
 			color: $text-gray;
-			margin-left: 11px;
+			margin-left: 21px;
 			vertical-align: top;
+			display: block;
 		}
 		[type="checkbox"]{
 			width: 14px;
@@ -65,9 +68,19 @@
 				border: 2px solid $pink;
 				color: $pink;
 				margin: 0;
+				opacity: 1;
+				 -webkit-transition: opacity 1s; /* Safari */
+  transition: opacity 1s;
 			}
 		}
 	}
+}
+.sample-show-hide {
+  -webkit-transition: opacity 1s; /* Safari */
+  transition: opacity 1s;
+}
+.sample-show-hide.ng-hide {
+  opacity: 0;
 }
 @media #{$landscape} {
 	.views-terms {

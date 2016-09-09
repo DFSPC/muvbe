@@ -1,57 +1,147 @@
-<div ng-repeat="post in numberPostFilter = mv.posts | filter:{id:mpic.postId} track by $index">
-<h1>{{post.title}}</h1>
-<img ng-src="{{post.urlFeaturedImage}}"</img>
-<p>{{post.plainContent}}</p>
-<div ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)">Remover de Favoritos</div>
-<div ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">Añadir a Favoritos</div>
-<p>Añadido el dia: {{post.date}}</p>
-<p>Añadido por:
-	<a href="#/author/{{post.author}}">
-		{{post.authorName}}
-	</a>
-</p>
-<p>Categoria:
-	<a href="#/categories/{{post.categoryId}}">
-		{{post.categoryName}}
-	</a>
-</p>
-<p>Ubicacion:
-  <a href="#/ubications/{{post.ubicationId}}">
-    {{post.ubicationName}}
-  </a>
-</p>
-<br>
-<div ng-show="mv.user.id == post.author">
-  <a ng-href = "#/edit-post/{{post.id}}">Editar Post</a>
-</div>
-<div class="bottom" ng-show="mv.user.id == post.author">
-  <input type="button" class="custom-bottom-input" ng-click="mpic.deletePost(mpic.postId);" value ="Eliminar Post"></input>
-</div>
-<br>
-<p>Comentarios:</p>
-<div ng-repeat="comment in post.comments track by $index">
-  <p>El dia {{comment.date}} <a href="#/author/{{post.author}}">{{comment.authorName}}</a> comento:</p>
-  <p ng-bind-html="comment.content | to_trusted"></p>
-  <div class="bottom" ng-show="mv.user.id == comment.authorId">
-    <input type="button" class="custom-bottom-input" ng-click="mpic.deleteComment(comment.id);" value ="Eliminar Comentario"></input>
+<div class="view-timeline">
+  <div ng-repeat="post in numberPostFilter = mv.posts | filter:{id:mpic.postId} track by $index">
+    <!-- <h1>{{post.title}}</h1> -->
+    <div class="content-time view-timeline">
+      <!-- Cabecera de  info de user  -->
+      <div class="item-box">
+        <div class="info-user">
+          <a class="back" href="#/home">atras</a>
+          <img ng-src="{{post.authorAvatar}}"</img>
+          <p>{{post.authorName}}</p>
+          <sub-menu>
+            <div class="sub-menu" ng-show="mv.user.id == post.author">
+              <ul>
+                <li>
+                  <a class="item-1" ng-href="#/edit-post/{{post.id}}">Editar Post</a>
+                </li>
+                <!-- Sub menu  de  item   -->
+                <!-- <div ng-show="mv.user.id == post.author">
+                  <a ng-href = "#/edit-post/{{post.id}}">Editar Post</a>
+                </div>
+
+                <div class="bottom" ng-show="mv.user.id == post.author">
+                  <div type="button" class="custom-bottom-input" ng-click="mpic.deletePost(mpic.postId);" value ="Eliminar Post"></div>
+                </div>
+   -->          <li>
+                  <a  class="item-2" ng-click="mpic.deletePost(mpic.postId);" value ="Eliminar Post">Eliminar Post</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </sub-menu>
+        <!-- Imagene del post -->
+        <div class="wraper-img">
+          <img ng-src="{{post.urlFeaturedImage}}"></img>
+          <div class="back"></div>
+          <p>{{post.plainContent}}</p>
+        </div>
+
+        <!-- Barra de informacion de  favoritos y comentarios  -->
+        <div class="info-post">
+          <div class="favorites">
+            <span class="icon-stars"></span>
+            <p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">GUARDAR EN FAVORITOS</p>
+            <p ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)">REMOVER DE FAVORITOS</p>
+          </div>
+          <div class="count-comments">
+            <p>{{post.comments.length}}</p>
+            <span class="balloon"></span>
+          </div>
+          <div class="count-favorites">
+            <p>{{post.countFavorites}} </p>
+            <sapn class="stars-pink"></sapn>
+          </div>
+        </div>
+
+        <!--  <div ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)">REMOVER DE FAVORITOS</div>
+        <div ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">GUARDAR EN FAVORITOS</div> -->
+
+         <!--  <p>Añadido el dia: {{post.date}}</p>
+          <p>Añadido por:
+          	<a href="#/author/{{post.author}}">
+          		{{post.authorName}}
+          	</a>
+          </p>
+          <p>Categoria:
+          	<a href="#/categories/{{post.categoryId}}">
+          		{{post.categoryName}}
+          	</a>
+          </p>
+          <p>Ubicacion:
+            <a href="#/ubications/{{post.ubicationId}}">
+              {{post.ubicationName}}
+            </a>
+          </p> -->
+
+
+
+
+        <!-- Se añade  los comentarios  -->
+        <div class="form-detail">
+          <form >
+            <div class="content">
+              <textarea class="area" ng-model="mpic.content" placeholder="Escribe acá tu comentario..." ></textarea>
+            </div>
+            <div class="bottom">
+             <div class="add-airplane" ng-click="mpic.addComment(mpic.content); mpic.content='' " >send</div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Los comentarios  -->
+        <div  class="cometarios" ng-repeat="comment in post.comments track by $index">
+          <!-- <p>El dia {{comment.date}}  -->
+          <img ng-src="{{comment.authorAvatar}}"></img>
+          <div class="title">
+            <a href="#/author/{{post.author}}">{{comment.authorName}} Comento</a>
+          </div>
+          <div class="text">
+            <p ng-bind-html="comment.content | to_trusted"></p>
+          </div>
+          <div class="bottom" ng-show="mv.user.id == comment.authorId">
+            <div  class="delete-trash" ng-click="mpic.deleteComment(comment.id);" >delete</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<br>
-<div class="form-post">
-  <form action="">
 
-    <div class="content">
-      <label for="">Añade tu comentario</label>
-      <br>
-      <br>
-      <textarea class="area" ng-model="mpic.content" ></textarea>
-    </div>
-    <br>
-    <div class="bottom">
-      <input type="button" class="custom-bottom-input" ng-click="mpic.addComment(mpic.content); mpic.content='' " value ="Añadir"></input>
-    </div>
-  </form>
-</div>
-<br>
-</div>
 
+<!--
+
+<div class="view-timeline">
+  <div class="content-time view-timeline" data-ng-hide="hide" ng-animate="{enter: 'animate-enter', hide: 'animate-hide'}">
+    <div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index"  class="repeated-item">
+      <div class="item-box">
+        <div class="info-user">
+          <span></span>
+          <p>{{post.authorName}}</p>
+        </div>
+        <div class="wraper-img">
+          <a href="#/post-info/{{post.id}}">
+            <img ng-src="{{post.urlFeaturedImage}}"></img>
+          </a>
+        </div>
+
+        <div class="info-post">
+          <div class="favorites">
+            <span class="icon-stars"></span>
+            <p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">GUARDAR EN FAVORITOS</p>
+            <p ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)">REMOVER DE FAVORITOS</p>
+          </div>
+          <div class="count-comments">
+            <p>{{post.comments.length}}</p>
+            <span class="balloon"></span>
+          </div>
+          <div class="count-favorites">
+            <p>{{post.countFavorites}} </p>
+            <sapn class="stars-pink"></sapn>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p ng-show="!numberPostFilter.length">{{mv.messageData}}</p>
+</div>
+ -->

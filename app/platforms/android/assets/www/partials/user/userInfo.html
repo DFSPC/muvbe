@@ -2,11 +2,12 @@
 	<div class="wrapper-user" ng-init="filterPosts = {'author': mv.user.id };">
 		<!-- <h1 class="info">{{mv.user.userName}}</h1> -->
 		<!-- <img ng-src="{{ mv.user.avatar }}" alt="avatar"></img> -->
-		<div class="menu-post">
-			<div class="link-post" ng-click = "filterPosts = {'author': mv.user.id };">posts</div>
-			<div class="link-post" ng-click = "filterPosts = {isFavorite:true};">favoritos</div>
-		</div>
-
+		<menu-user>
+			<div class="menu-post">
+					<div class="link-post active" ng-click = "filterPosts = {'author': mv.user.id };">posts</div>
+					<div class="link-post" ng-click = "filterPosts = {isFavorite:true};">favoritos</div>
+			</div>
+		</menu-user>
 		<div class="content-time">
 			<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index">
 				<a href="#/post-info/{{post.id}}">
@@ -17,5 +18,3 @@
 		<p ng-show="!numberPostFilter.length">No se encontraron Posts</p>
 	</div>
 </div>
-s
-

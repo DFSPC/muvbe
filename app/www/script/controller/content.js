@@ -37,6 +37,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
           commentInfo.id = data.id;
           commentInfo.authorId = data.author;
           commentInfo.authorName = data.author_name;
+          commentInfo.authorAvatar = $scope.mv.user.avatar;
           var dateComment = new Date(data.date);
           commentInfo.date = dateComment.getDate() + " de " + monthNames[dateComment.getMonth()] + " del " + dateComment.getFullYear();
           commentInfo.content = data.content.rendered;

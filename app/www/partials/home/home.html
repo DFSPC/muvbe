@@ -3,8 +3,10 @@
 		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index"  class="repeated-item">
 			<div class="item-box">
 				<div class="info-user">
+				<div class="avatar-user">
 					<img ng-src="{{post.authorAvatar}}"></img>
-					<p>{{post.authorName}}</p>
+				</div>
+				<p>{{post.authorName}}</p>
 				</div>
 				<div class="wraper-img">
 					<a href="#/post-info/{{post.id}}">
@@ -14,7 +16,7 @@
 				<div class="info-post">
 					<div class="favorites">
 						<span class="icon-stars"></span>
-						<p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">GUARDAR EN FAVORITOS</p>
+						<p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">FAVORITOS</p>
 						<p ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)">REMOVER DE FAVORITOS</p>
 					</div>
 					<div class="count-comments">

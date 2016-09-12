@@ -65,7 +65,7 @@ gulp.task('watch', function() {
   gulp.watch('sass/*.scss', ['default']);
 
   // Create LiveReload server
-  livereload.listen();
+  // livereload.listen();
 
   // Watch any files in dist/, reload on change
   gulp.watch(['css/**']).on('change', livereload.changed);

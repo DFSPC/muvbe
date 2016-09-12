@@ -699,16 +699,15 @@ input.textbox {
     position: relative;
     display: table;
     width: 100%; }
-    .view-timeline .content-time .item-box .info-user span {
-      display: block;
+    .view-timeline .content-time .item-box .info-user .avatar-user {
       float: left;
-      background: url("../img/icons/user-inactive.svg");
-      background-repeat: no-repeat;
+      height: 100%;
       width: 40px;
       height: 40px;
       -webkit-border-radius: 50%;
               border-radius: 50%;
-      margin: 5px 5px 0 8px; }
+      margin: 5px 5px 0 8px;
+      overflow: hidden; }
     .view-timeline .content-time .item-box .info-user p {
       color: #da0080;
       font-size: 14px;
@@ -851,6 +850,16 @@ input.textbox {
   margin-left: 14px;
   float: left; }
 
+.view-timeline .content-time .item-box .info-user .avatar-user {
+  float: left;
+  height: 100%;
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  margin: 5px 5px 0 8px;
+  overflow: hidden; }
+
 .view-timeline .content-time .item-box .info-user p {
   float: left;
   width: 143px; }
@@ -939,6 +948,15 @@ input.textbox {
   border-top: 1px solid #d7d8d9;
   clear: both;
   position: relative; }
+  .view-timeline .content-time .item-box .cometarios .avatar-user {
+    float: left;
+    height: 100%;
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    margin: 5px 5px 0 8px;
+    overflow: hidden; }
   .view-timeline .content-time .item-box .cometarios .title a {
     font-size: 14px;
     font-weight: bold;

@@ -1,14 +1,38 @@
-<div class="header">
+<div class="header expand">
 	<div class="logo-app">
 		<a ng-href="#/home" ng-click="mv.getAllData()"><span>logo</span></a>
-	</div>
-	<div class="menu-main" >
-		<a ng-href="#/exit">menu</a>
-	</div>
-	<div class="avatar-user">
-		<a ng-href="#/user"><img ng-src="{{ mv.user.avatar }}" alt="avatar"></img></a>
 	</div>
 	<div class="name-user">
 		<a ng-href="#/user">{{mv.user.userName}}</a>
 	</div>
+	<div class="avatar-user">
+		<a ng-href="#/user"><img ng-src="{{ mv.user.avatar }}" alt="avatar"></img></a>
+	</div>
+	<menu-main>
+		<div class="menu-main"></div>
+		<div class="wraper-menu ">
+			<div class="transparent-back"></div>
+			<div class="closed-menu"><p>x</p></div>
+			<div class="logo"><span></span></div>
+			<div class="list-link">
+				<ul >
+					<li class="item">
+						<a href="">Mi perfil</a>
+					</li>
+					<li class="item">
+						<a href="">Ayuda</a>
+					</li>
+					<li class="item">
+						<a href="">Términos y Condiciones</a>
+					</li>
+					<li class="item">
+						<a ng-href="#/exit">Cerrar Sesión</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</menu-main>
+
+
 </div>
+

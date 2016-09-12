@@ -6,7 +6,7 @@
       <div class="item-box">
         <div class="info-user">
           <a class="back" href="#/home">atras</a>
-          <span></span>
+          <img ng-src="{{post.authorAvatar}}"</img>
           <p>{{post.authorName}}</p>
           <sub-menu>
             <div class="sub-menu" ng-show="mv.user.id == post.author">
@@ -31,7 +31,7 @@
         </sub-menu>
         <!-- Imagene del post -->
         <div class="wraper-img">
-          <img ng-src="{{post.urlFeaturedImage}}"</img>
+          <img ng-src="{{post.urlFeaturedImage}}"></img>
           <div class="back"></div>
           <p>{{post.plainContent}}</p>
         </div>
@@ -91,6 +91,7 @@
         <!-- Los comentarios  -->
         <div  class="cometarios" ng-repeat="comment in post.comments track by $index">
           <!-- <p>El dia {{comment.date}}  -->
+          <img ng-src="{{comment.authorAvatar}}"></img>
           <div class="title">
             <a href="#/author/{{post.author}}">{{comment.authorName}} Comento</a>
           </div>

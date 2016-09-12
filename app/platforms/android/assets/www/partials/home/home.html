@@ -1,9 +1,9 @@
 <div class="view-timeline">
-	<div class="content-time view-timeline">
-		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index">
+	<div class="content-time view-timeline" data-ng-hide="hide" ng-animate="{enter: 'animate-enter', hide: 'animate-hide'}">
+		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index"  class="repeated-item">
 			<div class="item-box">
 				<div class="info-user">
-					<span></span>
+					<img ng-src="{{post.authorAvatar}}"></img>
 					<p>{{post.authorName}}</p>
 				</div>
 				<div class="wraper-img">
@@ -23,7 +23,7 @@
 					</div>
 					<div class="count-favorites">
 	        	<p>{{post.countFavorites}} </p>
-	        	<sapn class="stars-pink"></sapn>
+	        	<span class="stars-pink"></span>
 					</div>
 				</div>
 			</div>

@@ -1,18 +1,20 @@
 <!-- Footer nav-aux -->
-<div id='footer' class="nav-aux">
-	<div class="item item-1">
-		<a  href="#/home">Home</a>
+<my-footer>
+	<div id='footer' class="nav-aux expand">
+		<div class="item item-1" >
+			<a class="active" href="#/home" ng-click="gotoNext()" >Home</a>
+		</div>
+		<div class="item item-2">
+			<a  href="#/categories" ng-click="gotoNext()">Categorias</a>
+		</div>
+		<div class="item item-3">
+			<a  href="#/post">Crea tu post</a>
+		</div>
+		<div class="item item-4">
+			<a  ng-href="#/ubications/">Ubic</a>
+		</div>
+		<div class="item item-5">
+			<a  ng-href="#/user/">User</a>
+		</div>
 	</div>
-	<div class="item item-2">
-		<a  href="#/categories">Categorias</a>
-	</div>
-	<div class="item item-3">
-		<a  href="#/post">Crea tu post</a>
-	</div>
-	<div class="item item-4">
-		<a  ng-href="#/ubications/">Ubic</a>
-	</div>
-	<div class="item item-5">
-		<a  ng-href="#/user/">User</a>
-	</div>
-</div>
+</my-footer>

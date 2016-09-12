@@ -37,6 +37,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
           commentInfo.id = data.id;
           commentInfo.authorId = data.author;
           commentInfo.authorName = data.author_name;
+          commentInfo.authorAvatar = $scope.mv.user.avatar;
           var dateComment = new Date(data.date);
           commentInfo.date = dateComment.getDate() + " de " + monthNames[dateComment.getMonth()] + " del " + dateComment.getFullYear();
           commentInfo.content = data.content.rendered;
@@ -196,6 +197,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
 
   //Create Post
   scope.createPost = function(title, content, file, category, ubication){
+    scope.user = JSON.parse(localStorage.getItem("userSession"));
     var fd = new FormData();
     imageBase = getBase64Image(document.getElementById("myImage"))
     var blob = dataURItoBlob(imageBase);
@@ -238,6 +240,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
           post.plainContent = $(dataPost.content.rendered).text();
           post.author = dataPost.author;
           post.authorName = $scope.mv.getAuthorName(dataPost.author);
+          post.authorAvatar = scope.user.avatar;
           var datePost = new Date(dataPost.date);
           post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
           post.categoryId = dataPost.categories[0];
@@ -246,6 +249,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
           post.ubicationName = $scope.mv.getUbicationName(dataPost.ubications[0]);
           post.mediaId = dataPost.featured_media;
           post.urlFeaturedImage = dataMedia.source_url;
+          post.countFavorites = "0";
+          post.comments = Array();
           posts.unshift(post);
           $scope.mv.posts = posts;
           localStorage.setItem("posts", JSON.stringify($scope.mv.posts));

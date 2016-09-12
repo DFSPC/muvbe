@@ -1,11 +1,13 @@
-<div class="wrapper">
+<div class="wiew-category">
   <h1 class="info">Ubicaciones</h1>
   <div ng-repeat="post in mv.posts | filter:{ ubicationId: '!!'} | unique:'ubicationName' track by post.ubicationId">
-    <div class="wrapper">
-      <a href="#/ubications/{{ post.ubicationId }}" class="link link-ubication">
-        <div class="name-ubication" > {{ post.ubicationName }} </div>
+    <div class="wrapper-category">
+      <a href="#/ubications/{{ post.ubicationId }}" class="link link-category">
+        <div class="name-category" > {{ post.ubicationName }} </div>
         <img ng-src= "{{post.urlFeaturedImage}}"></img>
       </a>
     </div>
   </div>
 </div>
+
+

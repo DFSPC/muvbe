@@ -21,11 +21,11 @@
 	<!--checkbox -->
 	<form action="#/signup" method="post">
 		<div class="wraper-checkbox">
-			<input type="checkbox" name="condiciones" />
+			<input type="checkbox" name="condiciones" ng-model="checked" />
 	   	<label for="condiciones">He leído y acepto los Términos y Condiciones</label>
 		</div>
    	<div class="buttom">
-  		<input type="submit" value="Continuar" />
+  		<input type="submit" value="Continuar" class="sample-show-hide" ng-show="checked" />
   	</div>
 	</form>
 </div>

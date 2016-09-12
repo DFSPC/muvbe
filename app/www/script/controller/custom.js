@@ -102,6 +102,7 @@ muvbe.directive('scrollEfect', function ( $location) {
       $body = angular.element('body');
 
     cerrar();
+    bottomBack();
     // funciones
     function cerrar() {
       var xIni;
@@ -131,7 +132,7 @@ muvbe.directive('scrollEfect', function ( $location) {
             }
           });
           // swipe izquierda
-          if((touch.pageX>xIni+20) && (touch.pageY> yIni-5) && (touch.pageY<yIni+5)){
+          if((touch.pageX>xIni+10) && (touch.pageY> yIni-5) && (touch.pageY<yIni+5)){
             var
               urlnow = $location.path(),
               posicion = urls.indexOf(urlnow);
@@ -145,7 +146,7 @@ muvbe.directive('scrollEfect', function ( $location) {
             }
           }
           // swipe derecha
-          if((touch.pageX<xIni-20) && (touch.pageY> yIni-5) && (touch.pageY<yIni+5)){
+          if((touch.pageX<xIni-10) && (touch.pageY> yIni-5) && (touch.pageY<yIni+5)){
             var
               urlnow = $location.path(),
               posicion = urls.indexOf(urlnow);
@@ -159,7 +160,7 @@ muvbe.directive('scrollEfect', function ( $location) {
             }
           }
           // swipe arriba
-          if((touch.pageY < yIni - 20) && (touch.pageX> xIni-5) && (touch.pageX<xIni+5)) {
+          if((touch.pageY < yIni - 5) && (touch.pageX> xIni-5) && (touch.pageX<xIni+5)) {
             $nav_footer.removeClass('expand');
             $header.removeClass('expand');
           }
@@ -170,6 +171,26 @@ muvbe.directive('scrollEfect', function ( $location) {
           }
         }
       }, false);
+    }
+
+    function bottomBack(){
+
+
+      content = angular.element('.content-time');
+      console.log($body);
+      content.click(function(event) {
+        /* Act on the event */
+        console.log('entro');
+        $(window).unload(function() {
+          var scrollPosition = $( this ).scrollTop();
+          localStorage.setItem("scrollPosition", scrollPosition);
+          console.log(scrollPosition);
+        });
+      });
+
+      // if(localStorage.scrollPosition) {
+      //   $("div#element").scrollTop(localStorage.getItem("scrollPosition"));
+      // }
     }
   };
 
@@ -194,6 +215,7 @@ muvbe.directive('subMenu', function () {
         $( this ).find('ul').toggleClass( "highlight" );
       });
     }
+
   };
   // returna el jquery
   return {
@@ -201,7 +223,6 @@ muvbe.directive('subMenu', function () {
       link: toggleSubmenu
   };
 });
-
 
 
 

@@ -223,7 +223,15 @@ input.textbox {
 	overflow: hidden;
 }
 
-
+.avatar-user {
+	float: left;
+	height: 100%;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin: 5px 5px 0 8px;
+	overflow: hidden;
+}
 
 /*
   We're using CSS transitions for when

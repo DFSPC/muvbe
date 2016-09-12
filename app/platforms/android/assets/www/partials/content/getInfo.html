@@ -6,7 +6,9 @@
       <div class="item-box">
         <div class="info-user">
           <a class="back" href="#/home">atras</a>
-          <img ng-src="{{post.authorAvatar}}"</img>
+          <div class="avatar-user">
+            <img ng-src="{{post.authorAvatar}}"</img>
+          </div>
           <p>{{post.authorName}}</p>
           <sub-menu>
             <div class="sub-menu" ng-show="mv.user.id == post.author">
@@ -40,7 +42,7 @@
         <div class="info-post">
           <div class="favorites">
             <span class="icon-stars"></span>
-            <p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">GUARDAR EN FAVORITOS</p>
+            <p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">FAVORITOS</p>
             <p ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)">REMOVER DE FAVORITOS</p>
           </div>
           <div class="count-comments">
@@ -91,7 +93,9 @@
         <!-- Los comentarios  -->
         <div  class="cometarios" ng-repeat="comment in post.comments track by $index">
           <!-- <p>El dia {{comment.date}}  -->
-          <img ng-src="{{comment.authorAvatar}}"></img>
+          <div class="avatar-user">
+            <img ng-src="{{comment.authorAvatar}}"></img>
+          </div>
           <div class="title">
             <a href="#/author/{{post.author}}">{{comment.authorName}} Comento</a>
           </div>

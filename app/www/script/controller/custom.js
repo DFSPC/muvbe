@@ -15,21 +15,28 @@ muvbe.directive('myFooter', function () {
 	  //     });
 	  // };
 
-	  active = function() {
-      $(this).parent('.nav-aux').find('a').removeClass('active');
-	    $(this).find('a').addClass('active');
-
-      console.log( $(this).find('a').addClass('active').parent('.nav-aux').find('a')
-        .removeClass('active') );
-	  }
-
-    // animateRight = function() {
+     // animateRight = function() {
     //     $(this).animate({
     //         left: '+=50'
     //     });
     // };
 
-    $menu.find('.item').on('click', active);
+	  // active = function() {
+   //    $(this).parent('.nav-aux').find('a').removeClass('active');
+	  //   $(this).find('a').addClass('active');
+
+   //    console.log( $(this).find('a').addClass('active').parent('.nav-aux').find('a')
+   //      .removeClass('active') );
+	  // }
+    // $menu.find('.item').on('click', active);
+
+    $menu.find('.item').click(function(event) {
+      /* Act on the event */
+      $(this).parent('.nav-aux').find('a').removeClass('active');
+      $(this).find('a').addClass('active');
+
+    });
+
     // $(pageTwo).on('click', animateRight);
   };
   return {
@@ -105,8 +112,10 @@ muvbe.directive('scrollEfect', function ( $location) {
     var
       $body = angular.element('body');
 
+    // llamados
     cerrar();
     // funciones
+
     function cerrar() {
       var xIni;
       var yIni;
@@ -162,6 +171,26 @@ muvbe.directive('scrollEfect', function ( $location) {
               $body.find('#footer .item-' + ( newUrl + 1) ).find('a').addClass('active');
             }
           }
+
+          // active = function() {
+          //   console.log('ssssss')
+          //   var
+          //   urls = ["/home", "/categories", "/post", "/ubications", "/user"],
+          //   urlnow = $location.path(),
+          //   posicion = urls.indexOf(urlnow),
+          //   newUrl = posicion;
+
+          //     $body.find('.nav-aux').find('a').addClass('class_name');
+          //     $body.find('#footer .item-' + ( newUrl + 1) ).find('a').addClass('active');
+          // }
+          // $body.find('.nav-aux').find('a').on('click', active);
+          // console.log($body.find('.nav-aux').find('a').on('click', active));
+
+          // active = function() {
+          // }
+
+          // $body.find('.nav-aux').find('a').on('click', active);
+
           // swipe arriba
           // if((touch.pageY < yIni - 5) && (touch.pageX> xIni-5) && (touch.pageX<xIni+5)) {
           //   $nav_footer.removeClass('expand');

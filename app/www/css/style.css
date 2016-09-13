@@ -533,7 +533,13 @@ input.textbox {
       display: block;
       height: 35px;
       overflow: hidden;
-      margin: 12px auto; }
+      margin: 12px auto;
+      fill: transparent;
+      stroke: transparent;
+      stroke-opacity: 0.1;
+      -webkit-transition: background 1s;
+      /* Safari */
+      transition: background 1s; }
     .nav-aux .item.item-1 a {
       background: url("../img/icons/eye-inactive.svg"); }
       .nav-aux .item.item-1 a.active {
@@ -989,7 +995,7 @@ input.textbox {
     font-weight: bold;
     color: #da0080;
     font-family: "helvetica-neue-bold";
-    margin-bottom: 3px;
+    margin-bottom: 16px;
     margin-top: 8px;
     width: 90%; }
   .view-timeline .content-time .item-box .cometarios .text p {

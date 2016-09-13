@@ -7,35 +7,23 @@ muvbe.directive('myFooter', function () {
   menuActive = function(scope, element, attrs) {
     // var animateDown, animateRight, pageOne, pageTwo;
     $menu = element.find('.nav-aux');
-    // pageTwo = angular.element(element.children()[1]);
-
-	  // animateDown = function() {
-	  //     $(this).animate({
-	  //         top: '+=50'
-	  //     });
-	  // };
-
-     // animateRight = function() {
-    //     $(this).animate({
-    //         left: '+=50'
-    //     });
-    // };
-
-	  // active = function() {
-   //    $(this).parent('.nav-aux').find('a').removeClass('active');
-	  //   $(this).find('a').addClass('active');
-
-   //    console.log( $(this).find('a').addClass('active').parent('.nav-aux').find('a')
-   //      .removeClass('active') );
-	  // }
-    // $menu.find('.item').on('click', active);
-
     $menu.find('.item').click(function(event) {
       /* Act on the event */
       $(this).parent('.nav-aux').find('a').removeClass('active');
       $(this).find('a').addClass('active');
 
+
     });
+
+    var allStates = $("svg.us > *");
+
+    allStates.on("click", function() {
+      console.log('ss');
+      allStates.removeClass("on");
+      $(this).addClass("on");
+    });
+
+
 
     // $(pageTwo).on('click', animateRight);
   };

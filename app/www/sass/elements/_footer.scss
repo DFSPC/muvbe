@@ -28,8 +28,11 @@
 			height: 35px;
 			overflow: hidden;
 			margin: 12px auto;
-			// -webkit-transition: background 1s; /* Safari */
-   //  	transition: background 1s;
+			fill: transparent;
+    	stroke: transparent;
+    	stroke-opacity:0.1;
+			-webkit-transition: background 1s; /* Safari */
+    	transition: background 1s;
 	  }
 	  &.item-1 {
 	  	a {

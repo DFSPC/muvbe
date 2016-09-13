@@ -47,7 +47,8 @@ a {
   font-size: 15px;
   font-weight: bold;
   color: #727277;
-  display: block; }
+  display: block;
+  line-height: 0; }
 
 p {
   font-family: "Myanmar-Sangam-MN";
@@ -119,7 +120,7 @@ select {
 
 textarea {
   height: 100px;
-  width: 293px;
+  width: 100%;
   margin: 0 auto;
   display: block;
   margin-top: 8px;
@@ -128,8 +129,7 @@ textarea {
   margin-bottom: 15px;
   font-size: 15px;
   color: #727277;
-  border: none;
-  padding-left: 5px; }
+  border: none; }
   textarea:focus, textarea:active {
     border: none;
     outline: 0;
@@ -227,6 +227,16 @@ input.textbox {
   display: none; }
 
 .overflow {
+  overflow: hidden; }
+
+.avatar-user {
+  float: left;
+  height: 100%;
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  margin: 5px 5px 0 8px;
   overflow: hidden; }
 
 /*
@@ -498,7 +508,7 @@ input.textbox {
 
 .nav-aux {
   position: fixed;
-  bottom: -60px;
+  bottom: 0;
   width: 100%;
   background: #f8f8ff;
   height: 57px;
@@ -509,8 +519,7 @@ input.textbox {
   .nav-aux.expand {
     -webkit-transition: bottom .2s;
     /* Safari */
-    transition: bottom .2s;
-    bottom: 0; }
+    transition: bottom .2s; }
   .nav-aux .item {
     width: 20%;
     display: block;
@@ -524,10 +533,7 @@ input.textbox {
       display: block;
       height: 35px;
       overflow: hidden;
-      margin: 12px auto;
-      -webkit-transition: background 1s;
-      /* Safari */
-      transition: background 1s; }
+      margin: 12px auto; }
     .nav-aux .item.item-1 a {
       background: url("../img/icons/eye-inactive.svg"); }
       .nav-aux .item.item-1 a.active {
@@ -554,7 +560,7 @@ input.textbox {
   background-color: white;
   height: 89px;
   position: fixed;
-  top: -91px;
+  top: 0;
   width: 100%;
   z-index: 3;
   -webkit-transition: top .2s;
@@ -692,7 +698,8 @@ input.textbox {
             color: #FFFFFF; }
 
 .view-timeline {
-  margin-top: 90px; }
+  margin-top: 90px;
+  margin-bottom: 60px; }
   .view-timeline .content-time .item-box .info-user {
     height: 46px;
     background-color: #fdfbff;
@@ -706,13 +713,13 @@ input.textbox {
       height: 40px;
       -webkit-border-radius: 50%;
               border-radius: 50%;
-      margin: 5px 5px 0 8px;
+      margin: 5px 10px 0 8px;
       overflow: hidden; }
     .view-timeline .content-time .item-box .info-user p {
       color: #da0080;
       font-size: 14px;
       font-weight: bold;
-      margin-top: 16px;
+      margin-top: 19px;
       font-family: "helvetica-neue-bold";
       text-transform: capitalize; }
   .view-timeline .content-time .item-box .wraper-img {
@@ -772,6 +779,7 @@ input.textbox {
 .view-getpost {
   background-color: #bfbfbf;
   margin-top: 89px;
+  margin-bottom: 50px;
   display: table;
   width: 100%; }
   .view-getpost .title-header {
@@ -930,7 +938,20 @@ input.textbox {
   position: relative; }
   .view-timeline .content-time .item-box .form-detail .content textarea {
     margin-bottom: 0px;
-    font-size: 14px; }
+    font-size: 14px;
+    height: 100px;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 8px;
+    -webkit-border-radius: 8px;
+            border-radius: 8px;
+    margin-bottom: 15px;
+    color: #727277;
+    padding-left: 5px;
+    margin-right: 20%;
+    margin-left: 18px;
+    border: none; }
   .view-timeline .content-time .item-box .form-detail .bottom .add-airplane {
     background: url("../img/icons/comment-icon.svg");
     background-repeat: no-repeat;
@@ -942,12 +963,18 @@ input.textbox {
     top: 7px;
     right: 5px; }
 
+.view-timeline .content-time .item-box .content-cometary {
+  display: table;
+  width: 100%; }
+
 .view-timeline .content-time .item-box .cometarios {
   background-color: #f3f3f3;
   padding: 10px 10px;
   border-top: 1px solid #d7d8d9;
   clear: both;
-  position: relative; }
+  position: relative;
+  float: left;
+  width: 100%; }
   .view-timeline .content-time .item-box .cometarios .avatar-user {
     float: left;
     height: 100%;
@@ -961,13 +988,12 @@ input.textbox {
     font-size: 14px;
     font-weight: bold;
     color: #da0080;
-    float: left;
     font-family: "helvetica-neue-bold";
-    margin-bottom: 10px; }
-  .view-timeline .content-time .item-box .cometarios .text {
-    clear: both; }
-    .view-timeline .content-time .item-box .cometarios .text p {
-      word-break: break-word; }
+    margin-bottom: 3px;
+    margin-top: 8px;
+    width: 90%; }
+  .view-timeline .content-time .item-box .cometarios .text p {
+    word-break: break-word; }
   .view-timeline .content-time .item-box .cometarios .bottom {
     height: 46px; }
     .view-timeline .content-time .item-box .cometarios .bottom .delete-trash {
@@ -1002,7 +1028,8 @@ input.textbox {
     display: block;
     width: 78%;
     font-size: 23px;
-    text-align: center; }
+    text-align: center;
+    line-height: 25px; }
   .wiew-category img {
     opacity: .5; }
 

@@ -31,14 +31,16 @@
 			fill: transparent;
     	stroke: transparent;
     	stroke-opacity:0.1;
-			-webkit-transition: background 1s; /* Safari */
-    	transition: background 1s;
+
 	  }
 	  &.item-1 {
 	  	a {
 				background: url("../img/icons/eye-inactive.svg");
 				&.active {
 					background: url("../img/icons/eye-active.svg");
+					fill: transparent;
+		    	stroke: transparent;
+		    	stroke-opacity:0.1
 				}
 	  	}
     }
@@ -47,6 +49,9 @@
 				background: url("../img/icons/glass-inactive.svg");
 				&.active {
 					background: url("../img/icons/glass-active.svg");
+					fill: transparent;
+		    	stroke: transparent;
+		    	stroke-opacity:0.1;
 				}
     	}
     }
@@ -55,6 +60,9 @@
 				background: url("../img/icons/camera-inactive.svg");
 				&.active {
 					background: url("../img/icons/camera-active.svg");
+					fill: transparent;
+		    	stroke: transparent;
+		    	stroke-opacity:0.1;
 				}
     	}
     }
@@ -63,6 +71,9 @@
 				background: url("../img/icons/pointer-inactive.svg");
 				&.active {
 					background: url("../img/icons/pointer-active.svg");
+					fill: transparent;
+		    	stroke: transparent;
+		    	stroke-opacity:0.1;
 				}
     	}
     }
@@ -71,8 +82,10 @@
 				background: url("../img/icons/user-inactive.svg");
 				&.active {
 					background: url("../img/icons/user-active.svg");
+					fill: transparent;
+		    	stroke: transparent;
+		    	stroke-opacity:0.1;
 				}
-
     	}
     }
 	}

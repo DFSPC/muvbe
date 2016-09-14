@@ -1,5 +1,10 @@
 <div class="wiew-category">
-  <h1 class="info">Categorias</h1>
+	<div class="title-header">
+		<div class="wraper-header">
+		  <div class="icon-category"></div>
+			<p>CATEGORIAS</p>
+		</div>
+	</div>
   <div ng-repeat="post in mv.posts | filter:{ categoryId: '!!'} | unique:'categoryName' track by post.categoryId">
     <div class="wrapper-category">
       <a href="#/categories/{{ post.categoryId }}" class="link link-category">

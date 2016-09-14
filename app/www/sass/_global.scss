@@ -235,6 +235,44 @@ input.textbox {
 .active-favorite{
 
 }
+.title-header {
+    background: #3f3f3f;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    display: inherit;
+    width: 100%;
+    .wraper-header {
+	    width: 152px;
+	    display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    margin: 0 auto;
+	    p {
+		    font-size: 15px;
+		    font-weight: bold;
+		    text-transform: uppercase;
+		    color: #FFFFFF;
+		    margin: 7px;
+		}
+	}
+}
+
+
+[type=submit],
+[type=reset],
+button,
+html [type=button] {
+	-webkit-appearance: none;
+}
+
+
+
+
+
+
+
 /*
   We're using CSS transitions for when
   the enter and move events are triggered

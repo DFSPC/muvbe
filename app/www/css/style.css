@@ -312,18 +312,23 @@ html [type=button] {
   background: url("../img/back-login.png");
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 600px;
   height: 100%; }
   .view-login a, .view-login p {
     color: #FFFFFF; }
   .view-login .wraper-content {
-    padding-top: 30%; }
+    min-height: 600px;
+    float: left;
+    width: 100%;
+    height: 100%; }
     .view-login .wraper-content .logo {
       background: url("../img/logo-login.png");
       background-repeat: no-repeat;
       width: 85px;
       height: 52px;
       margin: 0 auto;
-      margin-bottom: 42px; }
+      margin-bottom: 42px;
+      margin-top: 40%; }
     .view-login .wraper-content .wraper .message .text-remeber p {
       margin-right: 6px; }
     .view-login .wraper-content .social-media {
@@ -345,15 +350,14 @@ html [type=button] {
     background: #c53082;
     text-align: center;
     width: 100%;
-    bottom: 0;
-    position: absolute;
-    height: 52px; }
+    height: 52px;
+    clear: both; }
     .view-login .footer-login .wraper {
       display: block;
       width: 240px;
       margin: 0 auto;
       height: 20px;
-      margin: 17px auto; }
+      padding-top: 18px; }
       .view-login .footer-login .wraper p {
         margin-right: 6px;
         font-weight: 400;

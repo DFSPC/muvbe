@@ -15,13 +15,14 @@ muvbe.directive('myFooter', function () {
 
     });
 
-    var allStates = $("svg.us > *");
 
-    allStates.on("click", function() {
-      console.log('ss');
-      allStates.removeClass("on");
-      $(this).addClass("on");
-    });
+    // var allStates = $("svg.us > *");
+
+    // allStates.on("click", function() {
+    //   console.log('ss');
+    //   allStates.removeClass("on");
+    //   $(this).addClass("on");
+    // });
 
 
 
@@ -100,17 +101,45 @@ muvbe.directive('scrollEfect', function ( $location) {
     var
       $body = angular.element('body');
 
-    // llamados
-    cerrar();
-    // funciones
 
-    function cerrar() {
+
+    // llamados
+    scroollEvent();
+    activeRecharge();
+
+
+    // funciones
+    function activeRecharge(){
+      var
+        urls = ["/home", "/categories", "/post", "/ubications", "/user"],
+        urlnow = $location.path(),
+        posicion = urls.indexOf(urlnow),
+        newUrl = posicion - 1 ;
+
+        // if (!urlnow ) {
+        //   $nav_footer = angular.element('.nav-aux');
+        //   // console.log(  $nav_footer);
+
+        // }
+        // if (posicion > 0){
+        //   console.log($body.find('.nav-aux'));
+        //   $body.find('.nav-aux').find('a').removeClass('active');
+        //   $body.find('#footer .item-' + posicion ).find('a').addClass('active');
+        // }
+
+
+      console.log(urlnow );
+
+
+    }
+    function scroollEvent() {
       var xIni;
       var yIni;
       window.addEventListener('touchstart', function(e){
 
         if (e.targetTouches.length == 1) {
-          var touch = e.targetTouches[0];
+          var
+            touch = e.targetTouches[0];
             xIni = touch.pageX;
             yIni = touch.pageY;
         }
@@ -124,13 +153,16 @@ muvbe.directive('scrollEfect', function ( $location) {
             $header = angular.element('.header'),
             urls = ["/home", "/categories", "/post", "/ubications", "/user"];
 
-          $( window ).scroll(function() {
-            scrOfY = window.pageYOffset;
-            if (scrOfY < 60) {
-              $nav_footer.addClass('expand');
-              $header.addClass('expand');
-            }
-          });
+            console.log(  $nav_footer);
+
+
+          // $( window ).scroll(function() {
+          //   scrOfY = window.pageYOffset;
+          //   if (scrOfY < 60) {
+          //     $nav_footer.addClass('expand');
+          //     $header.addClass('expand');
+          //   }
+          // });
           // swipe izquierda
           if((touch.pageX>xIni+20) && (touch.pageY> yIni-5) && (touch.pageY<yIni+5)){
             var

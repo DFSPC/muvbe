@@ -128,7 +128,7 @@ muvbe.directive('scrollEfect', function ( $location) {
         // }
 
 
-      console.log(urlnow );
+      // console.log(urlnow );
 
 
     }
@@ -153,7 +153,7 @@ muvbe.directive('scrollEfect', function ( $location) {
             $header = angular.element('.header'),
             urls = ["/home", "/categories", "/post", "/ubications", "/user"];
 
-            console.log(  $nav_footer);
+            // console.log(  $nav_footer);
 
 
           // $( window ).scroll(function() {

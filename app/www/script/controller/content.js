@@ -49,34 +49,34 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
     });
   }
 
-  scope.deleteComment = function(id){
+  // scope.deleteComment = function(id){
 
-    $http({
-      method: 'DELETE',
-      url: urlAppServer + '/comments/' + id,
-      headers: {
-        'authorization': 'Basic ' + userHashAdmin,
-        'content-type': 'application/json',
-      },
-    }).success(function (data) {
-      console.log('fdfdf');
+  //   $http({
+  //     method: 'DELETE',
+  //     url: urlAppServer + '/comments/' + id,
+  //     headers: {
+  //       'authorization': 'Basic ' + userHashAdmin,
+  //       'content-type': 'application/json',
+  //     },
+  //   }).success(function (data) {
+  //     console.log('fdfdf');
 
-      posts = $scope.mv.posts;
-      posts.forEach(function(value) {
-        if (value.id == scope.postId){
-          newCommmets = Array();
-          value.comments.forEach(function(valueComment) {
-            if (valueComment.id != id){
-              newCommmets.push(valueComment);
-            }
-          });
-          value.comments = newCommmets;
-        }
-      });
-      $scope.mv.posts = posts;
-      localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
-    });
-  }
+  //     posts = $scope.mv.posts;
+  //     posts.forEach(function(value) {
+  //       if (value.id == scope.postId){
+  //         newCommmets = Array();
+  //         value.comments.forEach(function(valueComment) {
+  //           if (valueComment.id != id){
+  //             newCommmets.push(valueComment);
+  //           }
+  //         });
+  //         value.comments = newCommmets;
+  //       }
+  //     });
+  //     $scope.mv.posts = posts;
+  //     localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+  //   });
+  // }
 
   // scope.deletePost = function(id){
   //   $http({

@@ -50,7 +50,6 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   }
 
   scope.deleteComment = function(id){
-      console.log('fdfdf');
 
     $http({
       method: 'DELETE',
@@ -60,6 +59,8 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
         'content-type': 'application/json',
       },
     }).success(function (data) {
+      console.log('fdfdf');
+
       posts = $scope.mv.posts;
       posts.forEach(function(value) {
         if (value.id == scope.postId){
@@ -74,31 +75,30 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       });
       $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
-      console.log('fdfdf');
     });
   }
 
-  scope.deletePost = function(id){
-    $http({
-      method: 'DELETE',
-      url: urlAppServer + '/posts/' + id,
-      headers: {
-        'authorization': 'Basic ' + userHash,
-        'content-type': 'application/json',
-      },
-    }).success(function (data) {
-      posts = $scope.mv.posts;
-      newPosts = Array();
-      posts.forEach(function(value) {
-        if (value.id != scope.postId){
-          newPosts.push(value);
-        }
-      });
-      $scope.mv.posts = newPosts;
-      localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
-      window.location = "#/home";
-    });
-  }
+  // scope.deletePost = function(id){
+  //   $http({
+  //     method: 'DELETE',
+  //     url: urlAppServer + '/posts/' + id,
+  //     headers: {
+  //       'authorization': 'Basic ' + userHash,
+  //       'content-type': 'application/json',
+  //     },
+  //   }).success(function (data) {
+  //     posts = $scope.mv.posts;
+  //     newPosts = Array();
+  //     posts.forEach(function(value) {
+  //       if (value.id != scope.postId){
+  //         newPosts.push(value);
+  //       }
+  //     });
+  //     $scope.mv.posts = newPosts;
+  //     localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+  //     window.location = "#/home";
+  //   });
+  // }
 });
 
 /* Metodo Post

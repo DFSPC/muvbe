@@ -63,11 +63,17 @@ muvbe.directive('menuMain', function () {
     // var
     var
       $ico_menu    =  element.find('.menu-main'),
-      $ico_closed = element.find('.closed-menu');
+      $ico_closed  =  element.find('.closed-menu'),
+      $body        =  angular.element('body'),
+      $item        =  element.find('.list-link .item a');
+
+      console.log($item  );
 
     // eventos
     $ico_closed.on('click', cerrar);
     $ico_menu.on('click', open);
+    $item.on('click', remove);
+
 
     // funciones
     function cerrar() {
@@ -77,11 +83,13 @@ muvbe.directive('menuMain', function () {
     }
 
     function open() {
-      $body = angular.element('body');
       $body.addClass('overflow');
       $(this).siblings('.wraper-menu').addClass('expand')
             .find('.transparent-back').addClass('expand');
-
+    }
+    function remove() {
+      console.log('ddd');
+      $body.removeClass('overflow');
     }
   };
 

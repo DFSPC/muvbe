@@ -108,13 +108,32 @@ muvbe.directive('scrollEfect', function ( $location) {
   var navActiveUser;
   efectScroll = function(scope, element, attrs) {
     var
-      $body = angular.element('body');
+      $body = angular.element('body'),
+      $trahs = element.find('content-cometary');
+
+      console.log($body );
+      console.log($trahs );
+
+      console.log(element);
+
 
 
 
     // llamados
     scroollEvent();
     activeRecharge();
+    clicktrash();
+
+    function clicktrash(){
+
+
+
+
+      $body.find('.content-cometary').click(function(event) {
+         $body.addClass('overflow')
+      });
+
+    }
 
 
     // funciones

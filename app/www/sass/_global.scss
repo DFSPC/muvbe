@@ -222,7 +222,9 @@ input.textbox {
 .overflow {
 	overflow: hidden;
 }
-
+.overflow_auto {
+	overflow: auto;
+}
 .avatar-user {
 	float: left;
 	height: 100%;
@@ -266,7 +268,13 @@ button,
 html [type=button] {
 	-webkit-appearance: none;
 }
+.hidden {
+  display: none;
+}
 
+.show {
+  display: block;
+}
 
 
 

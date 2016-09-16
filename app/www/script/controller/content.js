@@ -11,6 +11,12 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   ];
 
   scope.postId = $routeParams.postId;
+  $scope.show_confirm = false;
+  $scope.confirm_class = "hidden";
+  $scope.disabled_class = "show";
+  $scope.overflow_class = "overflow_auto";
+
+
 
   scope.addComment = function(content){
     var data = JSON.stringify({
@@ -48,57 +54,73 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
     });
   }
+  /*
+  * Confirma  eliminar comentario
+  ***********************************************/
 
-  // scope.deleteComment = function(id){
+  scope.confirmShow = function(element) {
+    $scope.show_confirm = !$scope.show_confirm;
+      if($scope.show_confirm) {
+        $scope.disabled_class = "hidden";
+        $scope.confirm_class = "show";
+        $scope.overflow_class = "overflow";
+      } else {
+        $scope.confirm_class = "hidden";
+        $scope.disabled_class = "show";
+        $scope.overflow_class = "overflow_auto";
+    }
+  }
 
-  //   $http({
-  //     method: 'DELETE',
-  //     url: urlAppServer + '/comments/' + id,
-  //     headers: {
-  //       'authorization': 'Basic ' + userHashAdmin,
-  //       'content-type': 'application/json',
-  //     },
-  //   }).success(function (data) {
-  //     console.log('fdfdf');
+  scope.deleteComment = function(id, value){
+    $http({
+      method: 'DELETE',
+      url: urlAppServer + '/comments/' + id,
+      headers: {
+        'authorization': 'Basic ' + userHashAdmin,
+        'content-type': 'application/json',
+      },
+    }).success(function (data) {
+      posts = $scope.mv.posts;
+      posts.forEach(function(value) {
+        if (value.id == scope.postId){
+          newCommmets = Array();
+          value.comments.forEach(function(valueComment) {
+            if (valueComment.id != id){
+              newCommmets.push(valueComment);
+            }
+          });
+          value.comments = newCommmets;
+        }
+      });
+      $scope.mv.posts = posts;
+      localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+      $scope.show_confirm = false;
+      $scope.confirm_class = "hidden";
+      // $scope.overflow_class = "overflow_auto";
+    });
+  }
 
-  //     posts = $scope.mv.posts;
-  //     posts.forEach(function(value) {
-  //       if (value.id == scope.postId){
-  //         newCommmets = Array();
-  //         value.comments.forEach(function(valueComment) {
-  //           if (valueComment.id != id){
-  //             newCommmets.push(valueComment);
-  //           }
-  //         });
-  //         value.comments = newCommmets;
-  //       }
-  //     });
-  //     $scope.mv.posts = posts;
-  //     localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
-  //   });
-  // }
-
-  // scope.deletePost = function(id){
-  //   $http({
-  //     method: 'DELETE',
-  //     url: urlAppServer + '/posts/' + id,
-  //     headers: {
-  //       'authorization': 'Basic ' + userHash,
-  //       'content-type': 'application/json',
-  //     },
-  //   }).success(function (data) {
-  //     posts = $scope.mv.posts;
-  //     newPosts = Array();
-  //     posts.forEach(function(value) {
-  //       if (value.id != scope.postId){
-  //         newPosts.push(value);
-  //       }
-  //     });
-  //     $scope.mv.posts = newPosts;
-  //     localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
-  //     window.location = "#/home";
-  //   });
-  // }
+  scope.deletePost = function(id){
+    $http({
+      method: 'DELETE',
+      url: urlAppServer + '/posts/' + id,
+      headers: {
+        'authorization': 'Basic ' + userHash,
+        'content-type': 'application/json',
+      },
+    }).success(function (data) {
+      posts = $scope.mv.posts;
+      newPosts = Array();
+      posts.forEach(function(value) {
+        if (value.id != scope.postId){
+          newPosts.push(value);
+        }
+      });
+      $scope.mv.posts = newPosts;
+      localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+      window.location = "#/home";
+    });
+  }
 });
 
 /* Metodo Post

@@ -23,6 +23,7 @@ a{
 	font-weight: bold;
 	color: $text-gray;
 	display: block;
+	line-height: 0;
 }
 p {
 	font-family: $Myanmar-Sangam-MN;
@@ -99,7 +100,7 @@ select {
 }
 textarea{
 	height: 100px;
-	width: 293px;
+	width: 100%;
 	margin: 0 auto;
 	display: block;
 	margin-top: 8px;
@@ -108,7 +109,6 @@ textarea{
 	font-size: 15px;
 	color: $text-gray;
 	border: none;
-	padding-left: 5px;
 	&:focus,
 	&:active {
 		// border: 2px solid $gray;
@@ -232,6 +232,46 @@ input.textbox {
 	margin: 5px 5px 0 8px;
 	overflow: hidden;
 }
+.active-favorite{
+
+}
+.title-header {
+    background: #3f3f3f;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    display: inherit;
+    width: 100%;
+    .wraper-header {
+	    width: 152px;
+	    display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    margin: 0 auto;
+	    p {
+		    font-size: 15px;
+		    font-weight: bold;
+		    text-transform: uppercase;
+		    color: #FFFFFF;
+		    margin: 7px;
+		}
+	}
+}
+
+
+[type=submit],
+[type=reset],
+button,
+html [type=button] {
+	-webkit-appearance: none;
+}
+
+
+
+
+
+
 
 /*
   We're using CSS transitions for when

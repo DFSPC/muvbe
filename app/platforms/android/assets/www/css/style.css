@@ -47,7 +47,8 @@ a {
   font-size: 15px;
   font-weight: bold;
   color: #727277;
-  display: block; }
+  display: block;
+  line-height: 0; }
 
 p {
   font-family: "Myanmar-Sangam-MN";
@@ -119,7 +120,7 @@ select {
 
 textarea {
   height: 100px;
-  width: 293px;
+  width: 100%;
   margin: 0 auto;
   display: block;
   margin-top: 8px;
@@ -128,8 +129,7 @@ textarea {
   margin-bottom: 15px;
   font-size: 15px;
   color: #727277;
-  border: none;
-  padding-left: 5px; }
+  border: none; }
   textarea:focus, textarea:active {
     border: none;
     outline: 0;
@@ -229,6 +229,43 @@ input.textbox {
 .overflow {
   overflow: hidden; }
 
+.avatar-user {
+  float: left;
+  height: 100%;
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  margin: 5px 5px 0 8px;
+  overflow: hidden; }
+
+.title-header {
+  background: #3f3f3f;
+  text-align: center;
+  padding: 15px 0;
+  position: relative;
+  display: inherit;
+  width: 100%; }
+  .title-header .wraper-header {
+    width: 152px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto; }
+    .title-header .wraper-header p {
+      font-size: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin: 7px; }
+
+[type=submit],
+[type=reset],
+button,
+html [type=button] {
+  -webkit-appearance: none; }
+
 /*
   We're using CSS transitions for when
   the enter and move events are triggered
@@ -275,18 +312,23 @@ input.textbox {
   background: url("../img/back-login.png");
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 600px;
   height: 100%; }
   .view-login a, .view-login p {
     color: #FFFFFF; }
   .view-login .wraper-content {
-    padding-top: 30%; }
+    min-height: 600px;
+    float: left;
+    width: 100%;
+    height: 100%; }
     .view-login .wraper-content .logo {
       background: url("../img/logo-login.png");
       background-repeat: no-repeat;
       width: 85px;
       height: 52px;
       margin: 0 auto;
-      margin-bottom: 42px; }
+      margin-bottom: 42px;
+      margin-top: 40%; }
     .view-login .wraper-content .wraper .message .text-remeber p {
       margin-right: 6px; }
     .view-login .wraper-content .social-media {
@@ -308,22 +350,22 @@ input.textbox {
     background: #c53082;
     text-align: center;
     width: 100%;
-    bottom: 0;
-    position: absolute;
-    height: 52px; }
+    height: 52px;
+    clear: both; }
     .view-login .footer-login .wraper {
       display: block;
       width: 240px;
       margin: 0 auto;
       height: 20px;
-      margin: 17px auto; }
+      padding-top: 18px; }
       .view-login .footer-login .wraper p {
         margin-right: 6px;
         font-weight: 400;
         font-size: 15px;
         float: left; }
       .view-login .footer-login .wraper a {
-        float: left; }
+        float: left;
+        line-height: 17px; }
 
 @media only screen and (orientation: landscape) {
   .view-login {
@@ -498,7 +540,7 @@ input.textbox {
 
 .nav-aux {
   position: fixed;
-  bottom: -60px;
+  bottom: 0;
   width: 100%;
   background: #f8f8ff;
   height: 57px;
@@ -509,8 +551,7 @@ input.textbox {
   .nav-aux.expand {
     -webkit-transition: bottom .2s;
     /* Safari */
-    transition: bottom .2s;
-    bottom: 0; }
+    transition: bottom .2s; }
   .nav-aux .item {
     width: 20%;
     display: block;
@@ -525,36 +566,51 @@ input.textbox {
       height: 35px;
       overflow: hidden;
       margin: 12px auto;
-      -webkit-transition: background 1s;
-      /* Safari */
-      transition: background 1s; }
+      fill: transparent;
+      stroke: transparent;
+      stroke-opacity: 0.1; }
     .nav-aux .item.item-1 a {
       background: url("../img/icons/eye-inactive.svg"); }
       .nav-aux .item.item-1 a.active {
-        background: url("../img/icons/eye-active.svg"); }
+        background: url("../img/icons/eye-active.svg");
+        fill: transparent;
+        stroke: transparent;
+        stroke-opacity: 0.1; }
     .nav-aux .item.item-2 a {
       background: url("../img/icons/glass-inactive.svg"); }
       .nav-aux .item.item-2 a.active {
-        background: url("../img/icons/glass-active.svg"); }
+        background: url("../img/icons/glass-active.svg");
+        fill: transparent;
+        stroke: transparent;
+        stroke-opacity: 0.1; }
     .nav-aux .item.item-3 a {
       background: url("../img/icons/camera-inactive.svg"); }
       .nav-aux .item.item-3 a.active {
-        background: url("../img/icons/camera-active.svg"); }
+        background: url("../img/icons/camera-active.svg");
+        fill: transparent;
+        stroke: transparent;
+        stroke-opacity: 0.1; }
     .nav-aux .item.item-4 a {
       background: url("../img/icons/pointer-inactive.svg"); }
       .nav-aux .item.item-4 a.active {
-        background: url("../img/icons/pointer-active.svg"); }
+        background: url("../img/icons/pointer-active.svg");
+        fill: transparent;
+        stroke: transparent;
+        stroke-opacity: 0.1; }
     .nav-aux .item.item-5 a {
       background: url("../img/icons/user-inactive.svg"); }
       .nav-aux .item.item-5 a.active {
-        background: url("../img/icons/user-active.svg"); }
+        background: url("../img/icons/user-active.svg");
+        fill: transparent;
+        stroke: transparent;
+        stroke-opacity: 0.1; }
 
 .header {
   background: url("../img/back-header.png");
   background-color: white;
   height: 89px;
   position: fixed;
-  top: -91px;
+  top: 0;
   width: 100%;
   z-index: 3;
   -webkit-transition: top .2s;
@@ -692,7 +748,8 @@ input.textbox {
             color: #FFFFFF; }
 
 .view-timeline {
-  margin-top: 90px; }
+  margin-top: 90px;
+  margin-bottom: 60px; }
   .view-timeline .content-time .item-box .info-user {
     height: 46px;
     background-color: #fdfbff;
@@ -706,13 +763,13 @@ input.textbox {
       height: 40px;
       -webkit-border-radius: 50%;
               border-radius: 50%;
-      margin: 5px 5px 0 8px;
+      margin: 5px 10px 0 8px;
       overflow: hidden; }
     .view-timeline .content-time .item-box .info-user p {
       color: #da0080;
       font-size: 14px;
       font-weight: bold;
-      margin-top: 16px;
+      margin-top: 19px;
       font-family: "helvetica-neue-bold";
       text-transform: capitalize; }
   .view-timeline .content-time .item-box .wraper-img {
@@ -772,6 +829,7 @@ input.textbox {
 .view-getpost {
   background-color: #bfbfbf;
   margin-top: 89px;
+  margin-bottom: 50px;
   display: table;
   width: 100%; }
   .view-getpost .title-header {
@@ -930,7 +988,20 @@ input.textbox {
   position: relative; }
   .view-timeline .content-time .item-box .form-detail .content textarea {
     margin-bottom: 0px;
-    font-size: 14px; }
+    font-size: 14px;
+    height: 100px;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 8px;
+    -webkit-border-radius: 8px;
+            border-radius: 8px;
+    margin-bottom: 15px;
+    color: #727277;
+    padding-left: 5px;
+    margin-right: 20%;
+    margin-left: 18px;
+    border: none; }
   .view-timeline .content-time .item-box .form-detail .bottom .add-airplane {
     background: url("../img/icons/comment-icon.svg");
     background-repeat: no-repeat;
@@ -942,12 +1013,18 @@ input.textbox {
     top: 7px;
     right: 5px; }
 
+.view-timeline .content-time .item-box .content-cometary {
+  display: table;
+  width: 100%; }
+
 .view-timeline .content-time .item-box .cometarios {
   background-color: #f3f3f3;
   padding: 10px 10px;
   border-top: 1px solid #d7d8d9;
   clear: both;
-  position: relative; }
+  position: relative;
+  float: left;
+  width: 100%; }
   .view-timeline .content-time .item-box .cometarios .avatar-user {
     float: left;
     height: 100%;
@@ -961,13 +1038,12 @@ input.textbox {
     font-size: 14px;
     font-weight: bold;
     color: #da0080;
-    float: left;
     font-family: "helvetica-neue-bold";
-    margin-bottom: 10px; }
-  .view-timeline .content-time .item-box .cometarios .text {
-    clear: both; }
-    .view-timeline .content-time .item-box .cometarios .text p {
-      word-break: break-word; }
+    margin-bottom: 16px;
+    margin-top: 8px;
+    width: 90%; }
+  .view-timeline .content-time .item-box .cometarios .text p {
+    word-break: break-word; }
   .view-timeline .content-time .item-box .cometarios .bottom {
     height: 46px; }
     .view-timeline .content-time .item-box .cometarios .bottom .delete-trash {
@@ -981,8 +1057,13 @@ input.textbox {
       right: 8px; }
 
 .wiew-category {
-  margin-top: 79px;
+  margin-top: 89px;
   display: table; }
+  .wiew-category .icon-category {
+    background: url("../img/icons/glass-active.svg");
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px; }
   .wiew-category .link-category {
     width: 48%;
     float: left;
@@ -1002,7 +1083,8 @@ input.textbox {
     display: block;
     width: 78%;
     font-size: 23px;
-    text-align: center; }
+    text-align: center;
+    line-height: 25px; }
   .wiew-category img {
     opacity: .5; }
 
@@ -1032,3 +1114,9 @@ input.textbox {
   .view-user .wrapper-user .content-time a {
     float: left;
     width: 33%; }
+
+.ubication .icon-ubication {
+  background: url("../img/icons/pointer-active.svg");
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px; }

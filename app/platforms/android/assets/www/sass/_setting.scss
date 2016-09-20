@@ -36,7 +36,12 @@ $black: #000000;
 	margin: 0 auto;
 }
 
-
+@mixin container() {
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 600px;
+    height: 100%;
+}
 
 
 /*

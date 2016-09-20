@@ -50,6 +50,8 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   }
 
   scope.deleteComment = function(id){
+      console.log('fdfdf');
+
     $http({
       method: 'DELETE',
       url: urlAppServer + '/comments/' + id,
@@ -72,6 +74,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       });
       $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+      console.log('fdfdf');
     });
   }
 

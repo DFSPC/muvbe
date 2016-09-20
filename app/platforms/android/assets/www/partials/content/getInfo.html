@@ -91,19 +91,21 @@
         </div>
 
         <!-- Los comentarios  -->
-        <div  class="cometarios" ng-repeat="comment in post.comments track by $index">
-          <!-- <p>El dia {{comment.date}}  -->
-          <div class="avatar-user">
-            <img ng-src="{{comment.authorAvatar}}"></img>
-          </div>
-          <div class="title">
-            <a href="#/author/{{post.author}}">{{comment.authorName}} Comento</a>
-          </div>
-          <div class="text">
-            <p ng-bind-html="comment.content | to_trusted"></p>
-          </div>
-          <div class="bottom" ng-show="mv.user.id == comment.authorId">
-            <div  class="delete-trash" ng-click="mpic.deleteComment(comment.id);" >delete</div>
+        <div class="content-cometary">
+          <div  class="cometarios" ng-repeat="comment in post.comments track by $index">
+            <!-- <p>El dia {{comment.date}}  -->
+            <div class="avatar-user">
+              <img ng-src="{{comment.authorAvatar}}"></img>
+            </div>
+            <div class="title">
+              <a href="#/author/{{post.author}}">{{comment.authorName}} Comento</a>
+            </div>
+            <div class="text">
+              <p ng-bind-html="comment.content | to_trusted"></p>
+            </div>
+            <div class="bottom" ng-show="mv.user.id == comment.authorId">
+              <div  class="delete-trash" ng-click="mpic.deleteComment(comment.id);" >delete</div>
+            </div>
           </div>
         </div>
       </div>

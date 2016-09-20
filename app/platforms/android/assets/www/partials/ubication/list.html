@@ -1,5 +1,10 @@
-<div class="wiew-category">
-  <h1 class="info">Ubicaciones</h1>
+<div class="wiew-category ubication">
+	<div class="title-header">
+		<div class="wraper-header">
+		  <div class="icon-ubication"></div>
+			<p>UBICACIONES</p>
+		</div>
+	</div>
   <div ng-repeat="post in mv.posts | filter:{ ubicationId: '!!'} | unique:'ubicationName' track by post.ubicationId">
     <div class="wrapper-category">
       <a href="#/ubications/{{ post.ubicationId }}" class="link link-category">

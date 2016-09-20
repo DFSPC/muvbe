@@ -23,11 +23,13 @@ var userHashAdmin = 'YWRtaW46YWRtaW4=';
 
   function load() {
     var myEl = angular.element('body');
+    myEl.addClass('overflow')
     myEl.append('<div class="load"><div/>');
 
   }
   function finishedLoad(){
     var myEl = angular.element('body');
+    myEl.removeClass('overflow');
     myEl.find('.load').remove();
   }
 
@@ -133,11 +135,10 @@ muvbe.controller('muvbeController', function ($scope, $http){
   }
 
   scope.getAllData = function(){
-    scope.messageData = "Cargassssndo... Categorias";
+    scope.messageData = "Cargando... Categorias";
+    load();
     scope.posts = new Array();
     $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
-      load();
-
       scope.categories = data;
       localStorage.setItem("categories", JSON.stringify(scope.categories));
       scope.messageData = "Cargando... Ubicaciones";
@@ -162,13 +163,13 @@ muvbe.controller('muvbeController', function ($scope, $http){
                 localStorage.setItem("favorites", JSON.stringify(scope.favorites));
                 scope.messageData = "Cargando... Posts";
                 scope.getPosts();
+                finishedLoad();
               });
             });
           });
         });
       });
     });
-    finishedLoad();
   }
 
   scope.getImageUrlByPost = function(post, mediaId){

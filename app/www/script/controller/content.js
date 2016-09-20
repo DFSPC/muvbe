@@ -12,13 +12,12 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
 
   scope.postId = $routeParams.postId;
   $scope.show_confirm = false;
-  $scope.confirm_class = "hidden";
+  $scope.pop_up = "hidden";
   $scope.disabled_class = "show";
-  $scope.overflow_class = "overflow_auto";
-
-
+  // $scope.overflow_class = "overflow_auto";
 
   scope.addComment = function(content){
+    load();
     var data = JSON.stringify({
       "content" : content,
       "post" : scope.postId,
@@ -52,26 +51,35 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       });
       $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+      finishedLoad()
     });
   }
+
+
   /*
   * Confirma  eliminar comentario
   ***********************************************/
 
   scope.confirmShow = function(element) {
     $scope.show_confirm = !$scope.show_confirm;
+
+     var
+      $body   =  angular.element('body');
+      console.log(element);
       if($scope.show_confirm) {
-        $scope.disabled_class = "hidden";
-        $scope.confirm_class = "show";
-        $scope.overflow_class = "overflow";
+        element.disabled_class = "hidden";
+        element.pop_up = "show";
+         $body.addClass('overflow');
       } else {
-        $scope.confirm_class = "hidden";
-        $scope.disabled_class = "show";
-        $scope.overflow_class = "overflow_auto";
+        element.disabled_class = "show";
+        element.pop_up = "hidden";
+        $body.removeClass('overflow');
+
     }
   }
 
   scope.deleteComment = function(id, value){
+    load();
     $http({
       method: 'DELETE',
       url: urlAppServer + '/comments/' + id,
@@ -95,8 +103,8 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
       $scope.show_confirm = false;
-      $scope.confirm_class = "hidden";
-      // $scope.overflow_class = "overflow_auto";
+      // element.pop_up = "hidden";
+      finishedLoad();
     });
   }
 

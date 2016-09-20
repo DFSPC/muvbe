@@ -1,4 +1,3 @@
-// =======
 /*
 **  Active de nav de footer
 **********************************************/
@@ -74,7 +73,6 @@ muvbe.directive('menuMain', function () {
     $ico_menu.on('click', open);
     $item.on('click', remove);
 
-    console.log();
 
     // funciones
     function cerrar() {
@@ -108,33 +106,11 @@ muvbe.directive('scrollEfect', function ( $location) {
   var navActiveUser;
   efectScroll = function(scope, element, attrs) {
     var
-      $body = angular.element('body'),
-      $trahs = element.find('content-cometary');
-
-      console.log($body );
-      console.log($trahs );
-
-      console.log(element);
-
-
-
+      $body = angular.element('body');
 
     // llamados
     scroollEvent();
     activeRecharge();
-    clicktrash();
-
-    function clicktrash(){
-
-
-
-
-      $body.find('.content-cometary').click(function(event) {
-         $body.addClass('overflow')
-      });
-
-    }
-
 
     // funciones
     function activeRecharge(){
@@ -267,7 +243,8 @@ muvbe.directive('scrollEfect', function ( $location) {
 **********************************************/
 muvbe.directive('subMenu', function () {
   toggleSubmenu = function(scope, element, attrs) {
-    var $elem = element.find('.sub-menu');
+    var
+      $elem = element.find('.sub-menu');
     toggleSub();
     // funciones
     function toggleSub() {
@@ -283,10 +260,41 @@ muvbe.directive('subMenu', function () {
   };
 });
 
+/*
+**  Active de nav de post favorites
+**********************************************/
+muvbe.directive('postComments', function () {
+  trahsClick = function(scope, element, attrs) {
+    var
+      $trash  =  element.find('.delete-trash'),
+      $body   =  angular.element('body'),
+      $cancel =  element.find('.cancel');
+
+    // Funciones
+    // overflow();
+
+    // function overflow() {
+    //   $trash.click(function(event) {
+    //     console.log('sucess');
+    //     $body.addClass('overflow');
+    //   });
+    //   $cancel.click(function(event) {
+    //     console.log('after sucess');
+    //     $body.removeClass('overflow');
+    //   });
+
+    // }
+  };
+
+  return {
+    restrict: 'E',
+    link: trahsClick
+  };
+});
 
 
 
 
 
 
-// >>>>>>> fdf3e29e4f0e837c017afc8cf004c339547712d7
+

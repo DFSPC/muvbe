@@ -53,7 +53,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
       finishedLoad()
     }).error(function(response){
-      alert("Espera un momeno para volver a comentar");
+      alert("Espera un momento para volver a comentar");
     });
   }
 

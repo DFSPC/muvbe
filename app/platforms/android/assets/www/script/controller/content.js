@@ -11,8 +11,13 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   ];
 
   scope.postId = $routeParams.postId;
+  $scope.show_confirm = false;
+  $scope.pop_up = "hidden";
+  $scope.disabled_class = "show";
+  // $scope.overflow_class = "overflow_auto";
 
   scope.addComment = function(content){
+    load();
     var data = JSON.stringify({
       "content" : content,
       "post" : scope.postId,
@@ -46,12 +51,37 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       });
       $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+      finishedLoad()
+    }).error(function(response){
+      alert("Espera un momento para volver a comentar");
     });
   }
 
-  scope.deleteComment = function(id){
-      console.log('fdfdf');
 
+  /*
+  * Confirma  eliminar comentario
+  ***********************************************/
+
+  scope.confirmShow = function(element) {
+    $scope.show_confirm = !$scope.show_confirm;
+
+     var
+      $body   =  angular.element('body');
+      console.log(element);
+      if($scope.show_confirm) {
+        element.disabled_class = "hidden";
+        element.pop_up = "show";
+         $body.addClass('overflow');
+      } else {
+        element.disabled_class = "show";
+        element.pop_up = "hidden";
+        $body.removeClass('overflow');
+
+    }
+  }
+
+  scope.deleteComment = function(id, value){
+    load();
     $http({
       method: 'DELETE',
       url: urlAppServer + '/comments/' + id,
@@ -74,7 +104,9 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       });
       $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
-      console.log('fdfdf');
+      $scope.show_confirm = false;
+      // element.pop_up = "hidden";
+      finishedLoad();
     });
   }
 

@@ -17,6 +17,23 @@ var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2';
 var urlAppServer2 = 'http://londonojp.com/muvbe/web/api';
 var userHashAdmin = 'YWRtaW46YWRtaW4=';
 
+/*
+* svg Carga
+***********************************************/
+
+  function load() {
+    var myEl = angular.element('body');
+    myEl.addClass('overflow')
+    myEl.append('<div class="load"><div/>');
+
+  }
+  function finishedLoad(){
+    var myEl = angular.element('body');
+    myEl.removeClass('overflow');
+    myEl.find('.load').remove();
+  }
+
+
 //App controller
 muvbe.controller('muvbeController', function ($scope, $http){
   var scope = this;
@@ -119,6 +136,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
 
   scope.getAllData = function(){
     scope.messageData = "Cargando... Categorias";
+    load();
     scope.posts = new Array();
     $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
       scope.categories = data;
@@ -145,6 +163,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
                 localStorage.setItem("favorites", JSON.stringify(scope.favorites));
                 scope.messageData = "Cargando... Posts";
                 scope.getPosts();
+                finishedLoad();
               });
             });
           });

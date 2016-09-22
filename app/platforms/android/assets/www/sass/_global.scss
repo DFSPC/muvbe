@@ -148,6 +148,15 @@ label {
 		margin-left: 6px;
 	}
 }
+.message-load{
+	color: $pink-text;
+	font-size: 18px;
+	margin: 0 auto;
+	width: 300px;
+	text-align: center;
+	margin-top: 149px;
+	font-weight: bold;
+}
 .buttom {
 	text-align: center;
 	input,
@@ -222,7 +231,9 @@ input.textbox {
 .overflow {
 	overflow: hidden;
 }
-
+.overflow_auto {
+	overflow: auto;
+}
 .avatar-user {
 	float: left;
 	height: 100%;
@@ -266,13 +277,26 @@ button,
 html [type=button] {
 	-webkit-appearance: none;
 }
+.hidden {
+  display: none;
+}
 
-
-
-
-
-
-
+.show {
+  display: block;
+}
+.load{
+	background: url("../img/load.svg") no-repeat 0 0;
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    display: block;
+    top: 36%;
+    z-index: 999;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
 /*
   We're using CSS transitions for when
   the enter and move events are triggered

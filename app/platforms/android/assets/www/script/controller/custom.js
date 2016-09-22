@@ -1,4 +1,3 @@
-// =======
 /*
 **  Active de nav de footer
 **********************************************/
@@ -63,11 +62,17 @@ muvbe.directive('menuMain', function () {
     // var
     var
       $ico_menu    =  element.find('.menu-main'),
-      $ico_closed = element.find('.closed-menu');
+      $ico_closed  =  element.find('.closed-menu'),
+      $body        =  angular.element('body'),
+      $item        =  element.find('.list-link .item a'),
+      $wraper      =  $ico_menu.siblings('wraper-menu')
+
 
     // eventos
     $ico_closed.on('click', cerrar);
     $ico_menu.on('click', open);
+    $item.on('click', remove);
+
 
     // funciones
     function cerrar() {
@@ -77,11 +82,13 @@ muvbe.directive('menuMain', function () {
     }
 
     function open() {
-      $body = angular.element('body');
       $body.addClass('overflow');
       $(this).siblings('.wraper-menu').addClass('expand')
             .find('.transparent-back').addClass('expand');
-
+    }
+    function remove() {
+      $body.removeClass('overflow');
+       $ico_closed.trigger('click', cerrar);
     }
   };
 
@@ -101,12 +108,9 @@ muvbe.directive('scrollEfect', function ( $location) {
     var
       $body = angular.element('body');
 
-
-
     // llamados
     scroollEvent();
     activeRecharge();
-
 
     // funciones
     function activeRecharge(){
@@ -239,7 +243,8 @@ muvbe.directive('scrollEfect', function ( $location) {
 **********************************************/
 muvbe.directive('subMenu', function () {
   toggleSubmenu = function(scope, element, attrs) {
-    var $elem = element.find('.sub-menu');
+    var
+      $elem = element.find('.sub-menu');
     toggleSub();
     // funciones
     function toggleSub() {
@@ -255,10 +260,41 @@ muvbe.directive('subMenu', function () {
   };
 });
 
+/*
+**  Active de nav de post favorites
+**********************************************/
+muvbe.directive('postComments', function () {
+  trahsClick = function(scope, element, attrs) {
+    var
+      $trash  =  element.find('.delete-trash'),
+      $body   =  angular.element('body'),
+      $cancel =  element.find('.cancel');
+
+    // Funciones
+    // overflow();
+
+    // function overflow() {
+    //   $trash.click(function(event) {
+    //     console.log('sucess');
+    //     $body.addClass('overflow');
+    //   });
+    //   $cancel.click(function(event) {
+    //     console.log('after sucess');
+    //     $body.removeClass('overflow');
+    //   });
+
+    // }
+  };
+
+  return {
+    restrict: 'E',
+    link: trahsClick
+  };
+});
 
 
 
 
 
 
-// >>>>>>> fdf3e29e4f0e837c017afc8cf004c339547712d7
+

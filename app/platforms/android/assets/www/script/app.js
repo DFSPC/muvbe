@@ -15,22 +15,23 @@ var muvbe = angular.module('muvbe', [
 //Variables
 var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2';
 var urlAppServer2 = 'http://londonojp.com/muvbe/web/api';
-var userHashAdmin = 'YWRtaW46YWRtaW4=';
+var userHashAdmin = 'YWRtaW46YWRtaW4='
+var $body = angular.element('body');
+
 
 /*
+
 * svg Carga
 ***********************************************/
 
   function load() {
-    var myEl = angular.element('body');
-    myEl.addClass('overflow')
-    myEl.append('<div class="load"><div/>');
+    $body.addClass('overflow')
+    $body.append('<div class="load"><div/>');
 
   }
   function finishedLoad(){
-    var myEl = angular.element('body');
-    myEl.removeClass('overflow');
-    myEl.find('.load').remove();
+    $body.removeClass('overflow');
+    $body.find('.load').remove();
   }
 
 
@@ -427,6 +428,10 @@ muvbe.config(['$routeProvider', '$locationProvider' ,
     .when("/user", {
       templateUrl: "partials/user/userInfo.html",
       controller: "muvbeUserInfoController as muic"
+    })
+    .when("/info-user", {
+      templateUrl: "partials/user/user.html",
+      controller: "muvbeUserEditController as muec"
     })
     //default url
     .otherwise({redirectTo: "/" });

@@ -1,0 +1,35 @@
+<div class="user-info">
+	<div class="title-header">
+		<div class="wraper-header">
+		  <div class="icon-user"></div>
+			<p>TU INFOrmacion</p>
+		</div>
+	</div>
+	<div class="views-signup">
+
+  <!-- formulario de signup -->
+  <form name="formSignUp">
+    <input class="textbox" type="text"  required ng-model="muec.userName"></input>
+
+    <input  class="textbox" type="text" ng-model="muec.userEmail" required placeholder="Email"></input>
+    <input  class="textbox" type="password" ng-model="muec.userPassword" required placeholder="Contraseña"></input>
+    <!-- forma de subir -->
+    <div class="menu-upphote">
+      <div class="take-phote" type="button" ng-click="muec.takephotoURL()">
+        <div class="icon-camera"></div>
+        <p>Tomar foto</p>
+      </div>
+      <div  class="up-phote" type="button" ng-click="muec.choosePhoto()">
+        <div class="icon-phote" ></div>
+        <p>Subir Archivo</p>
+      </div>
+      <img id="myImageAvatar" ng-model="muec.file" ng-src="{{ mv.user.avatar }}">
+      <p id="text2"></p>
+    </div>
+    <!-- button -->
+    <input type="button" class="button-pink" ng-click="muec.updateUser(muec.userName, muec.userEmail, muec.userPassword, muec.file);" value="Actualizar Datos"></input>
+  </form>
+</div>
+
+</div>
+

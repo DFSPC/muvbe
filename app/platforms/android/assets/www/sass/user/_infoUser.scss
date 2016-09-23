@@ -1,0 +1,21 @@
+.user-info {
+	margin-top: 90px;
+	margin-bottom: 54px;
+	.wraper-header {
+		width: 162px;
+		.icon-user {
+			background: url("../img/icons/user-active.svg");
+			background-repeat: no-repeat;
+			width: 28px;
+			height: 28px;
+		}
+	}
+	img {
+		margin: 0 auto;
+		width: 150px;
+		display: block;
+	}
+	form .button-pink {
+	 	margin-bottom: 26px;
+	}
+}

@@ -14,6 +14,8 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   $scope.show_confirm = false;
   $scope.pop_up = "hidden";
   $scope.disabled_class = "show";
+
+  // popup =  angular.element('.pop-pu');
   // $scope.overflow_class = "overflow_auto";
 
   scope.addComment = function(content){
@@ -51,9 +53,11 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       });
       $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
-      finishedLoad()
+      finishedLoad();
     }).error(function(response){
-      alert("Espera un momento para volver a comentar");
+      // alert("Espera un momento para volver a comentar");
+       scope.messageData = "Error... vuelve intertarlo";
+      finishedLoad();
     });
   }
 
@@ -63,20 +67,16 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   ***********************************************/
 
   scope.confirmShow = function(element) {
-    $scope.show_confirm = !$scope.show_confirm;
-
-     var
-      $body   =  angular.element('body');
-      console.log(element);
-      if($scope.show_confirm) {
-        element.disabled_class = "hidden";
-        element.pop_up = "show";
-         $body.addClass('overflow');
-      } else {
-        element.disabled_class = "show";
-        element.pop_up = "hidden";
-        $body.removeClass('overflow');
-
+    console.log(element.pop_up);
+    if(element.pop_up != "show") {
+      console.log('if2');
+      element.disabled_class = "hidden";
+      element.pop_up = "show";
+      $body.removeClass('overflow');
+    }else{
+      element.disabled_class = "show";
+      element.pop_up = "hidden";
+      $body.addClass('overflow');
     }
   }
 
@@ -104,8 +104,6 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       });
       $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
-      $scope.show_confirm = false;
-      // element.pop_up = "hidden";
       finishedLoad();
     });
   }

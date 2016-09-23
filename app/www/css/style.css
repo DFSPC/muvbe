@@ -146,6 +146,13 @@ label {
 /*
 *    Clases Globales
 ****************************************/
+.aux {
+  position: absolute;
+  top: 30%;
+  background: red;
+  width: 100%;
+  height: 50px; }
+
 .content {
   height: 100%; }
 
@@ -522,7 +529,8 @@ html [type=button] {
     .views-terms .text-term a.link-conditions {
       font-size: 12px;
       color: #da0080;
-      float: left; }
+      float: left;
+      line-height: 12px; }
       .views-terms .text-term a.link-conditions.link-2 {
         margin-right: 5px; }
   .views-terms form {
@@ -1115,6 +1123,50 @@ html [type=button] {
       position: absolute;
       right: 8px; }
 
+.view-user {
+  margin-top: 91px;
+  display: table;
+  width: 100%; }
+  .view-user .wrapper-user .menu-post {
+    width: 100%; }
+    .view-user .wrapper-user .menu-post .link-post {
+      width: 50%;
+      float: left;
+      border-bottom: 1px solid #ad0b74;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: uppercase;
+      padding: 10px 0;
+      background: #cccdcd;
+      color: #ad0b74;
+      -webkit-transition: background 1s;
+      /* Safari */
+      transition: background 1s; }
+      .view-user .wrapper-user .menu-post .link-post.active {
+        background: #ad0b74;
+        color: #FFFFFF; }
+  .view-user .wrapper-user .content-time a {
+    float: left;
+    width: 33%; }
+
+.user-info {
+  margin-top: 90px;
+  margin-bottom: 54px; }
+  .user-info .wraper-header {
+    width: 162px; }
+    .user-info .wraper-header .icon-user {
+      background: url("../img/icons/user-active.svg");
+      background-repeat: no-repeat;
+      width: 28px;
+      height: 28px; }
+  .user-info img {
+    margin: 0 auto;
+    width: 150px;
+    display: block; }
+  .user-info form .button-pink {
+    margin-bottom: 26px; }
+
 .wiew-category {
   margin-top: 89px;
   display: table; }
@@ -1146,33 +1198,6 @@ html [type=button] {
     line-height: 25px; }
   .wiew-category img {
     opacity: .5; }
-
-.view-user {
-  margin-top: 91px;
-  display: table;
-  width: 100%; }
-  .view-user .wrapper-user .menu-post {
-    width: 100%; }
-    .view-user .wrapper-user .menu-post .link-post {
-      width: 50%;
-      float: left;
-      border-bottom: 1px solid #ad0b74;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 400;
-      text-transform: uppercase;
-      padding: 10px 0;
-      background: #cccdcd;
-      color: #ad0b74;
-      -webkit-transition: background 1s;
-      /* Safari */
-      transition: background 1s; }
-      .view-user .wrapper-user .menu-post .link-post.active {
-        background: #ad0b74;
-        color: #FFFFFF; }
-  .view-user .wrapper-user .content-time a {
-    float: left;
-    width: 33%; }
 
 .ubication .icon-ubication {
   background: url("../img/icons/pointer-active.svg");

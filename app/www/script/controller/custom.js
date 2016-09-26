@@ -20,21 +20,15 @@ muvbe.directive('myFooter', function ($location) {
         urls      =  ["#/home", "#/categories", "#/post", "#/ubications", "#/user"],
         there     =  $location.path(),
         posThere  =  urls.indexOf('#' + there),
-        // newUrl = posicion - 1 ;
         here      =  $(this).attr('href'),
         posHere   =  urls.indexOf(here),
         href      =  $this.attr('href'),
         $content  =  $('#content');
 
-
-      // console.log(here);
-
       $this.removeAttr('href');
-
       box =  $('#content').children().eq(0);
       if (posHere > posThere) {
         slideLeft(box)
-        // console.log($('#content').children().eq(0));
       }
       if(posHere < posThere) {
         slideRigth(box);
@@ -43,17 +37,18 @@ muvbe.directive('myFooter', function ($location) {
         $this.attr('href', href);
         window.location.href = href;
       }
+
       function slideLeft($box){
         $($box).addClass('sliderLeft');
         var box =$('.sliderLeft');
         box.css("margin-left", "0");
         box.animate({
           "margin-left": "-100%"
-        }, 250);
-        $content.css('opacity', '0.1');
+        }, 800);
+        $content.css('opacity', '1');
         $content.animate({
-          opacity :  "1"
-        }, 250);
+          opacity :  "0"
+        }, 800);
         timeAnimate();
       }
 
@@ -63,43 +58,25 @@ muvbe.directive('myFooter', function ($location) {
         box.css("margin-left", "0");
         box.animate({
           "margin-left": "100%"
-        }, 250);
-        $content.css('opacity', '0.1');
+        }, 800);
+        $content.css('opacity', '1');
         $content.animate({
-          opacity :  "1"
-        }, 250);
-
+          opacity :  "0"
+        }, 800);
         timeAnimate();
-
       }
 
       function timeAnimate() {
-       setTimeout(function(){
-
-
+        setTimeout(function(){
           $this.attr('href', href);
           window.location.href = href;
-
-
-
           var $newContent  =  $('#content');
-
-          console.log($newContent)
           $newContent.css('opacity', '0');
           $newContent.animate({
             opacity :  "1"
-          }, 300)
-
-        ;
-        }, 300);
-
-
+          }, 600);
+        }, 600);
       }
-
-
-
-
-
     }
   };
   return {

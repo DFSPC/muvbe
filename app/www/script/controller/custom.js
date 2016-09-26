@@ -1,7 +1,7 @@
 /*
 **  Active de nav de footer
 **********************************************/
-muvbe.directive('myFooter', function () {
+muvbe.directive('myFooter', function ($location) {
   var menuActive;
   menuActive = function(scope, element, attrs) {
     // var animateDown, animateRight, pageOne, pageTwo;
@@ -10,28 +10,121 @@ muvbe.directive('myFooter', function () {
       /* Act on the event */
       $(this).parent('.nav-aux').find('a').removeClass('active');
       $(this).find('a').addClass('active');
-
-
     });
 
+    $menu.find('.item a').on('click', efecto)
 
-    // var allStates = $("svg.us > *");
+    function efecto() {
+      var
+        $this     =  $(this),
+        urls      =  ["#/home", "#/categories", "#/post", "#/ubications", "#/user"],
+        there     =  $location.path(),
+        posThere  =  urls.indexOf('#' + there),
+        // newUrl = posicion - 1 ;
+        here      =  $(this).attr('href'),
+        posHere   =  urls.indexOf(here),
+        href      =  $this.attr('href'),
+        $content  =  $('#content');
 
-    // allStates.on("click", function() {
-    //   console.log('ss');
-    //   allStates.removeClass("on");
-    //   $(this).addClass("on");
-    // });
+
+      // console.log(here);
+
+      $this.removeAttr('href');
+
+      box =  $('#content').children().eq(0);
+      if (posHere > posThere) {
+        slideLeft(box)
+        // console.log($('#content').children().eq(0));
+      }
+      if(posHere < posThere) {
+        slideRigth(box);
+      }
+      if(posHere == posThere){
+        $this.attr('href', href);
+        window.location.href = href;
+      }
+      function slideLeft($box){
+        $($box).addClass('sliderLeft');
+        var box =$('.sliderLeft');
+        box.css("margin-left", "0");
+        box.animate({
+          "margin-left": "-100%"
+        }, 250);
+        $content.css('opacity', '0.1');
+        $content.animate({
+          opacity :  "1"
+        }, 250);
+        timeAnimate();
+      }
+
+      function slideRigth($box){
+        $($box).addClass('sliderRigth');
+        var box =$('.sliderRigth');
+        box.css("margin-left", "0");
+        box.animate({
+          "margin-left": "100%"
+        }, 250);
+        $content.css('opacity', '0.1');
+        $content.animate({
+          opacity :  "1"
+        }, 250);
+
+        timeAnimate();
+
+      }
+
+      function timeAnimate() {
+       setTimeout(function(){
+
+
+          $this.attr('href', href);
+          window.location.href = href;
 
 
 
-    // $(pageTwo).on('click', animateRight);
+          var $newContent  =  $('#content');
+
+          console.log($newContent)
+          $newContent.css('opacity', '0');
+          $newContent.animate({
+            opacity :  "1"
+          }, 300)
+
+        ;
+        }, 300);
+
+
+      }
+
+
+
+
+
+    }
   };
   return {
       restrict: 'E',
       link: menuActive
   };
 });
+
+
+
+// /*
+// **  Active de nav de footer
+// **********************************************/
+// muvbe.directive('myFooter', function () {
+//   var menuActive;
+//   menuActive = function(scope, element, attrs) {
+//   var box = $(".view-timeline");
+//       box.css("margin-left");
+//       box.animate({
+//         "margin-left": 0
+//       }, 700);
+
+//   };
+// });
+
 
 /*
 **  Active de nav de post favorites
@@ -136,6 +229,7 @@ muvbe.directive('scrollEfect', function ( $location) {
 
 
     }
+
     function scroollEvent() {
       var xIni;
       var yIni;

@@ -1,6 +1,9 @@
 .wiew-category {
 	margin-top: 89px;
 	display: table;
+	width: 100%;
+	// -webkit-transition: all .2s; /* Safari */
+ //  transition: all .2s;
 	.icon-category{
 		background: url("../img/icons/glass-active.svg");
 		background-repeat: no-repeat;

@@ -230,6 +230,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
 
   //Create Post
   scope.createPost = function(title, content, file, category, ubication){
+    load();
     scope.user = JSON.parse(localStorage.getItem("userSession"));
     var fd = new FormData();
     imageBase = getBase64Image(document.getElementById("myImage"))
@@ -291,6 +292,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
         });
       }
     });
+    finishedLoad();
   }
 });
 

@@ -92,7 +92,7 @@ select {
 	&:focus,
 	&:active {
 		// border: 2px solid $gray;
-		border: none;
+		// border: none;
 		outline: 0;
     outline-style: none;
     outline-width: 0;
@@ -100,7 +100,7 @@ select {
 }
 textarea{
 	height: 100px;
-	width: 100%;
+	width: 271px;
 	margin: 0 auto;
 	display: block;
 	margin-top: 8px;
@@ -109,6 +109,7 @@ textarea{
 	font-size: 15px;
 	color: $text-gray;
 	border: none;
+	padding: 9px 13px;
 	&:focus,
 	&:active {
 		// border: 2px solid $gray;

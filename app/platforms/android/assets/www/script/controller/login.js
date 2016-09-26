@@ -142,6 +142,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
   }
 
   scope.createUser = function(userName, userEmail, userPassword){
+    load();
     data = JSON.stringify({
       "username" : userName,
       "name" : userName,
@@ -190,6 +191,8 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
         });
       });
     });
+    finishedLoad();
+    window.location = "#/";
   }
 });
 

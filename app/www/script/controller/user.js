@@ -156,10 +156,11 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
             localStorage.setItem("userSession", JSON.stringify(scope.user));
           });
         });
+      load();
       });
     });
+    finishedLoad()
   }
-
 });
 
 

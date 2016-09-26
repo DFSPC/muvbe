@@ -44,11 +44,11 @@ muvbe.directive('myFooter', function ($location) {
         box.css("margin-left", "0");
         box.animate({
           "margin-left": "-100%"
-        }, 800);
+        }, 700);
         $content.css('opacity', '1');
         $content.animate({
           opacity :  "0"
-        }, 800);
+        }, 700);
         timeAnimate();
       }
 
@@ -58,11 +58,11 @@ muvbe.directive('myFooter', function ($location) {
         box.css("margin-left", "0");
         box.animate({
           "margin-left": "100%"
-        }, 800);
+        }, 700);
         $content.css('opacity', '1');
         $content.animate({
           opacity :  "0"
-        }, 800);
+        }, 700);
         timeAnimate();
       }
 
@@ -74,8 +74,8 @@ muvbe.directive('myFooter', function ($location) {
           $newContent.css('opacity', '0');
           $newContent.animate({
             opacity :  "1"
-          }, 600);
-        }, 600);
+          }, 450);
+        }, 450);
       }
     }
   };

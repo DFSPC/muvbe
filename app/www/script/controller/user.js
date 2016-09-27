@@ -12,19 +12,14 @@ muvbe.controller('muvbeUserInfoController', function ($scope, $http, $routeParam
 
 muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParams ){
 
-  console.log($scope.mv.user);
+
   var scope = this;
 
-
   scope.userName      = $scope.mv.user.userName;
+  scope.userEmail     = $scope.mv.user.email;
   scope.userAvatar    = $scope.mv.user.avatar;
   scope.userPassword  = $scope.mv.user.userPassword;
   scope.userId        = $scope.mv.user.id;
-
-
-
-
-
 
   //Take FILE_URL
   scope.takephotoURL = function(){

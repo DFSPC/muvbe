@@ -25,16 +25,17 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
     $http.defaults.headers.common.Authorization = 'Basic ' + userHash;
     $http.get(urlAppServer + '/users/me?_envelope').success(function(data){
       if (data.body.id){
-        $http.get(urlAppServer2 + '/user/get_userinfo/?user_id=' + data.body.id + '&insecure=cool').success(function(dataAvatar){
-          $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + userName + "&password=" + userPassword).success(function(dataCookie){
-            var cookie = dataCookie.cookie;
+        $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + userName + "&password=" + userPassword).success(function(dataCookie){
+          var cookie = dataCookie.cookie;
+          $http.get(urlAppServer2 + "/user/get_currentuserinfo/?insecure=cool&cookie=" + cookie).success(function(dataAvatar){
             $http.get(urlAppServer2 + "/wpfp/lists/?insecure=cool&cookie=" + cookie).success(function(dataFavorites){
               scope.user.successLogin = true;
               scope.user.id = data.body.id;
               scope.user.userName = userName;
               scope.user.userPassword = userPassword;
-              scope.user.avatar = dataAvatar.avatar;
+              scope.user.avatar = dataAvatar.user.avatar;
               scope.user.favorites = dataFavorites.lists;
+              scope.user.email = dataAvatar.user.email;
               $scope.mv.user = scope.user;
               localStorage.setItem("userSession", JSON.stringify(scope.user));
               scope.messageLogin = 'Gracias por Ingresar';

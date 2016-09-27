@@ -32,6 +32,7 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
               scope.user.successLogin = true;
               scope.user.id = data.body.id;
               scope.user.userName = userName;
+              scope.user.name = data.body.name;
               scope.user.userPassword = userPassword;
               scope.user.avatar = dataAvatar.user.avatar;
               scope.user.favorites = dataFavorites.lists;
@@ -182,6 +183,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
             scope.user.id = data.id;
             scope.user.successLogin = true;
             scope.user.userName = userName;
+            scope.user.name = data.name;
             scope.user.userPassword = userPassword;
             scope.user.userEmail = userEmail;
             $scope.mv.user = scope.user;

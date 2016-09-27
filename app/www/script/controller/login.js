@@ -192,7 +192,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
       });
     });
     finishedLoad();
-    window.location = "#/";
+    // window.location = "#/";
   }
 });
 

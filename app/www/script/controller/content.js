@@ -13,6 +13,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   scope.postId = $routeParams.postId;
   $scope.show_confirm = false;
   $scope.pop_up = "hidden";
+  $scope.pop_delete = "hidden";
   $scope.disabled_class = "show";
 
   // popup =  angular.element('.pop-pu');
@@ -67,9 +68,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   ***********************************************/
 
   scope.confirmShow = function(element) {
-    console.log(element.pop_up);
     if(element.pop_up != "show") {
-      console.log('if2');
       element.disabled_class = "hidden";
       element.pop_up = "show";
       $body.removeClass('overflow');
@@ -108,7 +107,23 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
     });
   }
 
+  scope.confirmPostDelete = function(element){
+
+    console.log(element);
+    if(element.pop_delete != "show") {
+      element.pop_delete = "show";
+      $body.removeClass('overflow');
+    }else{
+      console.log('else');
+      element.pop_delete = "hidden";
+      $body.addClass('overflow');
+    }
+
+
+  }
+
   scope.deletePost = function(id){
+    load();
     $http({
       method: 'DELETE',
       url: urlAppServer + '/posts/' + id,
@@ -128,6 +143,8 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
       window.location = "#/home";
     });
+    finishedLoad();
+
   }
 });
 
@@ -230,7 +247,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
 
   //Create Post
   scope.createPost = function(title, content, file, category, ubication){
-    load();
     scope.user = JSON.parse(localStorage.getItem("userSession"));
     var fd = new FormData();
     imageBase = getBase64Image(document.getElementById("myImage"))
@@ -245,6 +261,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
         "content-disposition": "attachment; filename=image.png",
       }
     }).success(function (dataMedia) {
+      load();
       var imagePost = dataMedia.id;
       var status =  "publish";
       if (imagePost){
@@ -288,11 +305,11 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
           posts.unshift(post);
           $scope.mv.posts = posts;
           localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+          finishedLoad();
           window.location = "#/home";
         });
       }
     });
-    finishedLoad();
   }
 });
 

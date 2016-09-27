@@ -77,7 +77,6 @@ input {
   color: #f8f8ff;
   background-color: #7e0146; }
   input:focus, input:active {
-    border: none;
     outline: 0;
     outline-style: none;
     outline-width: 0; }
@@ -292,17 +291,64 @@ html [type=button] {
   display: block; }
 
 .load {
-  background: url("../img/load.svg") no-repeat 0 0;
   position: fixed;
-  width: 100px;
-  height: 100px;
-  display: block;
-  top: 36%;
-  z-index: 999;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  float: left;
   margin-left: auto;
   margin-right: auto;
   left: 0;
-  right: 0; }
+  right: 0;
+  background: rgba(34, 34, 34, 0.55);
+  -webkit-box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  z-index: 4; }
+  .load .wraper {
+    background: url("../img/load.svg") no-repeat 0 0;
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 60%; }
+
+.pop-pu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  float: left;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background: rgba(34, 34, 34, 0.55);
+  -webkit-box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  z-index: 4; }
+  .pop-pu .wraper {
+    width: 241px;
+    margin: 0 auto;
+    margin-top: 64%;
+    background: #ffffff;
+    display: table;
+    padding: 20px; }
+  .pop-pu .title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #c3007a;
+    text-align: center; }
+  .pop-pu p {
+    float: left !important;
+    width: 49% !important;
+    text-align: center;
+    margin-top: 20px !important;
+    margin-top: 20px !important;
+    color: #818185 !important; }
 
 /*
   We're using CSS transitions for when
@@ -913,7 +959,7 @@ html [type=button] {
         width: 49%;
         float: left; }
       .view-getpost form .menu-upphote .take-phote p {
-        width: 53px; }
+        width: 55px; }
       .view-getpost form .menu-upphote .icon-phote,
       .view-getpost form .menu-upphote .icon-camera {
         background: url("../img/icons/camera-icon.svg");
@@ -933,40 +979,12 @@ html [type=button] {
         font-size: 11px; }
     .view-getpost form .button-pink {
       margin-bottom: 40px;
-      font-weight: bold; }
+      font-weight: bold;
+      border: 2px solid; }
 
 @media only screen and (orientation: landscape) {
   .views-signup {
     height: auto; } }
-
-.view-timeline .pop-pu {
-  position: fixed;
-  top: 40%;
-  background: #f8f8ff;
-  width: 280px;
-  float: left;
-  margin-left: -10px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  -webkit-box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
-  -webkit-transition: all .2s;
-  /* Safari */
-  transition: all .2s;
-  z-index: 4; }
-  .view-timeline .pop-pu .title {
-    font-size: 15px;
-    font-weight: bold;
-    color: #c3007a;
-    text-align: center; }
-  .view-timeline .pop-pu p {
-    float: left;
-    width: 49%;
-    text-align: center;
-    margin-top: 20px; }
 
 .view-timeline .content-time .item-box .info-user .back {
   background: url("../img/icons/back-icon.svg");
@@ -1060,7 +1078,7 @@ html [type=button] {
     margin-bottom: 0px;
     font-size: 14px;
     height: 100px;
-    width: 80%;
+    width: 248px;
     margin: 0 auto;
     display: block;
     margin-top: 8px;
@@ -1069,8 +1087,6 @@ html [type=button] {
     margin-bottom: 15px;
     color: #727277;
     padding-left: 5px;
-    margin-right: 20%;
-    margin-left: 18px;
     border: none; }
   .view-timeline .content-time .item-box .form-detail .bottom .add-airplane {
     background: url("../img/icons/comment-icon.svg");

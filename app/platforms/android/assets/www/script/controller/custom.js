@@ -53,6 +53,8 @@ muvbe.directive('myFooter', function ($location) {
       }
 
       function slideRigth($box){
+        $body =  element.find('body');
+        $body.addClass('overflow')
         $($box).addClass('sliderRigth');
         var box =$('.sliderRigth');
         box.css("margin-left", "0");
@@ -64,6 +66,7 @@ muvbe.directive('myFooter', function ($location) {
           opacity :  "0"
         }, 700);
         timeAnimate();
+        $body.removeClass('overflow');
       }
 
       function timeAnimate() {

@@ -25,9 +25,18 @@
                   <div type="button" class="custom-bottom-input" ng-click="mpic.deletePost(mpic.postId);" value ="Eliminar Post"></div>
                 </div>
    -->          <li>
-                  <a  class="item-2" ng-click="mpic.deletePost(mpic.postId);" value ="Eliminar Post">Eliminar Post</a>
+                  <a  class="item-2" ng-click="mpic.confirmPostDelete(this)" value ="Eliminar Post">Eliminar Post</a>
                 </li>
               </ul>
+            </div>
+            <div class="pop-pu {{pop_delete}}">
+              <div class="wraper">
+                <div class="title">seguro quiere eliminar el comentario:</div>
+                <div class="opciones">
+                  <p class="delete" ng-click="mpic.deletePost(mpic.postId);" >Eliminar</p>
+                  <p class="cancel" ng-click="mpic.confirmPostDelete(this)">Cancelar</p>
+                </div>
+              </div>
             </div>
           </div>
         </sub-menu>
@@ -108,10 +117,12 @@
                   <div  class="delete-trash {{disabled_class}}"   ng-click="mpic.confirmShow(this)" >delete</div>
                 </div>
                 <div class="pop-pu {{pop_up}}">
-                  <div class="title">seguro quiere eliminar el comentario:</div>
-                  <div class="opciones">
-                    <p class="delete" ng-click="mpic.deleteComment(comment.id);" >Eliminar</p>
-                    <p class="cancel" ng-click=" mpic.confirmShow(this)">Cancelar</p>
+                  <div class="wraper">
+                    <div class="title">seguro quiere eliminar el comentario:</div>
+                    <div class="opciones">
+                      <p class="delete" ng-click="mpic.deleteComment(comment.id);" >Eliminar</p>
+                      <p class="cancel" ng-click=" mpic.confirmShow(this)">Cancelar</p>
+                    </div>
                   </div>
                 </div>
               </post-comments>

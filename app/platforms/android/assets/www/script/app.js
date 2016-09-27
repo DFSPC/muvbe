@@ -26,7 +26,7 @@ var $body = angular.element('body');
 
   function load() {
     $body.addClass('overflow')
-    $body.append('<div class="load"><div/>');
+    $body.append('<div class="load"><div class="wraper"></div><div/>');
 
   }
   function finishedLoad(){

@@ -153,6 +153,7 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
 muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
   // variables
   var scope = this;
+  scope.changeImage = false;
   if (!$scope.mv.user){
     window.location = "#/";
   }
@@ -241,15 +242,16 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
     // guess the original format, but be aware the using "image/jpg"
     // will re-encode the image.
     var dataURL = canvas.toDataURL("image/png");
-
+    scope.changeImage = true;
     return dataURL;
-     console.log(dataURL)
+
   }
 
   //Create Post
   scope.createPost = function(title, content, file, category, ubication){
     if(title == undefined ||
         content == undefined ||
+        scope.changeImage == false ||
         file == undefined ||
         category == undefined ||
         ubication == undefined ){
@@ -265,10 +267,9 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
       if(title == undefined ){
         scope.messageData = "¡ Titulo esta Vacio !";
       }
-      // if(file == undefined ){
-      //   console.log(file);
-      //   scope.messageData = "¡ No hay foto!";
-      // }
+      if(scope.changeImage == false  ){
+        scope.messageData = "¡ No hay foto!";
+      }
     }else{
       load();
       scope.user = JSON.parse(localStorage.getItem("userSession"));

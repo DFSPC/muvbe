@@ -730,7 +730,8 @@ html [type=button] {
     float: left;
     height: 100%;
     position: absolute;
-    right: 90px; }
+    right: 95px;
+    margin-top: 8px; }
     .header .name-user a {
       font-size: 18px;
       margin: 34px 12px 0 0;
@@ -1002,7 +1003,8 @@ html [type=button] {
   display: block;
   font-size: 0;
   margin-left: 14px;
-  float: left; }
+  float: left;
+  margin: 7px 0px 0px 13px; }
 
 .view-timeline .content-time .item-box .info-user .avatar-user {
   float: left;

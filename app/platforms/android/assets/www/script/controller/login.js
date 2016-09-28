@@ -196,7 +196,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
               scope.user.id = data.id;
               scope.user.successLogin = true;
               scope.user.userName = userName;
-              scope.user.name = data.name;
+              scope.user.name = userName;
               scope.user.userPassword = userPassword;
               scope.user.email = userEmail;
               scope.user.avatar = dataMedia.source_url;

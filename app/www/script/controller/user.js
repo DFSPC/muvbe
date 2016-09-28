@@ -135,7 +135,7 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
             "content-disposition": "attachment; filename=image.png",
           }
         }).success(function (dataMedia) {
-          $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + userName + "&password=" + userPassword).success(function(dataCookie){
+          $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + $scope.mv.user.userName + "&password=" + userPassword).success(function(dataCookie){
             var cookie = dataCookie.cookie;
             $http.get(urlAppServer2 + "/user/update_user_meta_vars/?insecure=cool&cookie=" + cookie + "&wp_user_avatar=" + dataMedia.id).success(function(dataAvatar){
               $scope.mv.user.avatar = dataMedia.source_url;

@@ -107,7 +107,45 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
 
   scope.updateUser = function(name, userEmail, userPassword){
     if (scope.changeImage){
-
+      $http({
+        method: 'POST',
+        url: urlAppServer + '/users/' + scope.userId +
+          '?name=' + name +
+          '&email=' + userEmail +
+          '&password=' + userPassword
+        ,
+        crossDomain: true,
+        headers: {
+          'authorization': 'Basic ' + userHashAdmin,
+          'content-type': 'application/json',
+        },
+      }).success(function (data) {
+        var fd = new FormData();
+        imageBase = getBase64Image(document.getElementById("myImageAvatar"))
+        var blob = dataURItoBlob(imageBase);
+        var fd = new FormData();
+        fd.append("file", blob, "image.png");
+        $http.post(urlAppServer + '/media', fd, {
+          transformRequest: angular.identity,
+          headers: {
+            "authorization": 'Basic ' + userHashAdmin,
+            'content-type': undefined,
+            "content-disposition": "attachment; filename=image.png",
+          }
+        }).success(function (dataMedia) {
+          $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + userName + "&password=" + userPassword).success(function(dataCookie){
+            var cookie = dataCookie.cookie;
+            $http.get(urlAppServer2 + "/user/update_user_meta_vars/?insecure=cool&cookie=" + cookie + "&wp_user_avatar=" + dataMedia.id).success(function(dataAvatar){
+              $scope.mv.user.avatar = dataMedia.source_url;
+              $scope.mv.user.name = data.name;
+              $scope.mv.user.userPassword = userPassword;
+              $scope.mv.user.email = data.email;
+              localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
+              window.location = "#/home";
+            });
+          });
+        });
+      });
     }else{
       $http({
         method: 'POST',

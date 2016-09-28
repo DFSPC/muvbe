@@ -243,6 +243,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
     var dataURL = canvas.toDataURL("image/png");
 
     return dataURL;
+     console.log(dataURL)
   }
 
   //Create Post
@@ -264,10 +265,10 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
       if(title == undefined ){
         scope.messageData = "¡ Titulo esta Vacio !";
       }
-      if(file == undefined ){
-        console.log(file);
-        scope.messageData = "¡ No hay foto!";
-      }
+      // if(file == undefined ){
+      //   console.log(file);
+      //   scope.messageData = "¡ No hay foto!";
+      // }
     }else{
       load();
       scope.user = JSON.parse(localStorage.getItem("userSession"));

@@ -265,6 +265,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
         scope.messageData = "¡ Titulo esta Vacio !";
       }
       if(file == undefined ){
+        console.log(file);
         scope.messageData = "¡ No hay foto!";
       }
     }else{

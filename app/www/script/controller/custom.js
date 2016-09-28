@@ -44,11 +44,11 @@ muvbe.directive('myFooter', function ($location) {
         box.css("margin-left", "0");
         box.animate({
           "margin-left": "-100%"
-        }, 700);
+        }, 500);
         $content.css('opacity', '1');
         $content.animate({
           opacity :  "0"
-        }, 700);
+        }, 500);
         timeAnimate();
       }
 
@@ -60,11 +60,11 @@ muvbe.directive('myFooter', function ($location) {
         box.css("margin-left", "0");
         box.animate({
           "margin-left": "100%"
-        }, 700);
+        }, 500);
         $content.css('opacity', '1');
         $content.animate({
           opacity :  "0"
-        }, 700);
+        }, 500);
         timeAnimate();
         $body.removeClass('overflow');
       }
@@ -77,8 +77,8 @@ muvbe.directive('myFooter', function ($location) {
           $newContent.css('opacity', '0');
           $newContent.animate({
             opacity :  "1"
-          }, 450);
-        }, 450);
+          }, 250);
+        }, 250);
       }
     }
   };
@@ -337,32 +337,17 @@ muvbe.directive('subMenu', function () {
 /*
 **  Active de nav de post favorites
 **********************************************/
-muvbe.directive('postComments', function () {
-  trahsClick = function(scope, element, attrs) {
+muvbe.directive('validatePost', function () {
+  validate = function(scope, element, attrs) {
     var
-      $trash  =  element.find('.delete-trash'),
+      // $trash  =  element.find('.delete-trash'),
       $body   =  angular.element('body'),
-      $cancel =  element.find('.cancel');
-
-    // Funciones
-    // overflow();
-
-    // function overflow() {
-    //   $trash.click(function(event) {
-    //     console.log('sucess');
-    //     $body.addClass('overflow');
-    //   });
-    //   $cancel.click(function(event) {
-    //     console.log('after sucess');
-    //     $body.removeClass('overflow');
-    //   });
-
-    // }
+      $enviar =  element.find('.botton-take'),
+      input   =  element.find('input');
   };
-
   return {
     restrict: 'E',
-    link: trahsClick
+    link: validate
   };
 });
 

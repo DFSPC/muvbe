@@ -247,69 +247,91 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
 
   //Create Post
   scope.createPost = function(title, content, file, category, ubication){
-    load();
-    scope.user = JSON.parse(localStorage.getItem("userSession"));
-    var fd = new FormData();
-    imageBase = getBase64Image(document.getElementById("myImage"))
-    var blob = dataURItoBlob(imageBase);
-    var fd = new FormData();
-    fd.append("file", blob, "image.png");
-    $http.post(urlAppServer + '/media', fd, {
-      transformRequest: angular.identity,
-      headers: {
-        "authorization": 'Basic ' + userHash,
-        'content-type': undefined,
-        "content-disposition": "attachment; filename=image.png",
+    if(title == undefined ||
+        content == undefined ||
+        file == undefined ||
+        category == undefined ||
+        ubication == undefined ){
+      if(ubication == undefined ){
+        scope.messageData = "¡ Ubicacion esta Vacio !";
       }
-    }).success(function (dataMedia) {
-      var imagePost = dataMedia.id;
-      var status =  "publish";
-      if (imagePost){
-        data = JSON.stringify({
-          "title" : title,
-          "content" : content,
-          "featured_media" : imagePost,
-          "categories" : [category],
-          "ubications" : [ubication],
-          "status" : status
-        });
+      if(category == undefined ){
+        scope.messageData = "¡ Categoria esta Vacio !";
+      }
+      if(content == undefined ){
+        scope.messageData = "¡ Descripción esta Vacio !";
+      }
+      if(title == undefined ){
+        scope.messageData = "¡ Titulo esta Vacio !";
+      }
+      if(file == undefined ){
+        scope.messageData = "¡ No hay foto!";
+      }
+    }else{
+      load();
+      scope.user = JSON.parse(localStorage.getItem("userSession"));
+      var fd = new FormData();
+      imageBase = getBase64Image(document.getElementById("myImage"))
+      var blob = dataURItoBlob(imageBase);
+      var fd = new FormData();
+      fd.append("file", blob, "image.png");
+      $http.post(urlAppServer + '/media', fd, {
+        transformRequest: angular.identity,
+        headers: {
+          "authorization": 'Basic ' + userHash,
+          'content-type': undefined,
+          "content-disposition": "attachment; filename=image.png",
+        }
+      }).success(function (dataMedia) {
+        var imagePost = dataMedia.id;
+        var status =  "publish";
+        if (imagePost){
+          data = JSON.stringify({
+            "title" : title,
+            "content" : content,
+            "featured_media" : imagePost,
+            "categories" : [category],
+            "ubications" : [ubication],
+            "status" : status
+          });
 
-        $http({
-          method: 'POST',
-          url: urlAppServer + '/posts',
-          headers: {
-            'authorization': 'Basic ' + userHash,
-            'content-type': 'application/json',
-          },
-          data: data,
-        }).success(function (dataPost) {
-          posts = $scope.mv.posts;
-          var post = new Object();
-          post.id = dataPost.id;
-          post.title = dataPost.title.rendered;
-          post.content = dataPost.content.rendered;
-          post.plainContent = $(dataPost.content.rendered).text();
-          post.author = dataPost.author;
-          post.authorName = $scope.mv.getAuthorName(dataPost.author);
-          post.authorAvatar = scope.user.avatar;
-          var datePost = new Date(dataPost.date);
-          post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
-          post.categoryId = dataPost.categories[0];
-          post.categoryName = $scope.mv.getCategoryName(dataPost.categories[0]);
-          post.ubicationId = dataPost.ubications[0];
-          post.ubicationName = $scope.mv.getUbicationName(dataPost.ubications[0]);
-          post.mediaId = dataPost.featured_media;
-          post.urlFeaturedImage = dataMedia.source_url;
-          post.countFavorites = "0";
-          post.comments = Array();
-          posts.unshift(post);
-          $scope.mv.posts = posts;
-          localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
-          finishedLoad();
-          window.location = "#/home";
-        });
-      }
-    });
+          $http({
+            method: 'POST',
+            url: urlAppServer + '/posts',
+            headers: {
+              'authorization': 'Basic ' + userHash,
+              'content-type': 'application/json',
+            },
+            data: data,
+          }).success(function (dataPost) {
+            posts = $scope.mv.posts;
+            var post = new Object();
+            post.id = dataPost.id;
+            post.title = dataPost.title.rendered;
+            post.content = dataPost.content.rendered;
+            post.plainContent = $(dataPost.content.rendered).text();
+            post.author = dataPost.author;
+            post.authorName = $scope.mv.getAuthorName(dataPost.author);
+            post.authorAvatar = scope.user.avatar;
+            var datePost = new Date(dataPost.date);
+            post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
+            post.categoryId = dataPost.categories[0];
+            post.categoryName = $scope.mv.getCategoryName(dataPost.categories[0]);
+            post.ubicationId = dataPost.ubications[0];
+            post.ubicationName = $scope.mv.getUbicationName(dataPost.ubications[0]);
+            post.mediaId = dataPost.featured_media;
+            post.urlFeaturedImage = dataMedia.source_url;
+            post.countFavorites = "0";
+            post.comments = Array();
+            posts.unshift(post);
+            $scope.mv.posts = posts;
+            localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+            finishedLoad();
+            window.location = "#/home";
+          });
+        }
+      });
+    }
   }
 });
 
@@ -348,6 +370,9 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
 
   //Create Post
   scope.editPost = function(postId, title, content, category, ubication){
+
+
+
     load();
     var status =  "publish";
     data = JSON.stringify({
@@ -380,8 +405,8 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
       });
       $scope.mv.posts = posts;
       localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+      finishedLoad();
       window.location = "#/home";
     });
-    finishedLoad();
   };
 });

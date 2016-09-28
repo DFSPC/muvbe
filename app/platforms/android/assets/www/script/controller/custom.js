@@ -343,7 +343,15 @@ muvbe.directive('validatePost', function () {
       // $trash  =  element.find('.delete-trash'),
       $body   =  angular.element('body'),
       $enviar =  element.find('.botton-take'),
-      input   =  element.find('input');
+      $img    =  element.find('.menu-upphote img'),
+      input   =  element.find('#myImage');
+
+
+       $enviar.click(function(event) {
+        console.log($img.attr('src') ==  undefined);
+
+
+       });
   };
   return {
     restrict: 'E',

@@ -119,6 +119,7 @@ select {
 textarea {
   height: 100px;
   width: 271px;
+  min-width: 271px;
   margin: 0 auto;
   display: block;
   margin-top: 8px;
@@ -542,7 +543,7 @@ html [type=button] {
         font-weight: bold;
         font-size: 11px; }
     .views-signup form .button-pink {
-      margin-bottom: 0;
+      margin-bottom: 40px;
       font-weight: bold; }
 
 @media only screen and (orientation: landscape) {

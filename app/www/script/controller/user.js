@@ -34,6 +34,7 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
   }
   function onURLSuccess(imageURI) {
     scope.changeImage = true;
+    $('#oldImageAvatar').remove();
     var image = document.getElementById('myImageAvatar');
     image.src = imageURI;
   }
@@ -58,6 +59,7 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
   }
   function onlibSuccess(imageURI) {
     scope.changeImage = true;
+    $('#oldImageAvatar').remove();
     var image = document.getElementById('myImageAvatar');
     image.src = imageURI;
   }

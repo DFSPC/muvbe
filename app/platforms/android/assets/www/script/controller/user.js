@@ -12,7 +12,7 @@ muvbe.controller('muvbeUserInfoController', function ($scope, $http, $routeParam
 
 muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParams ){
   var scope = this;
-
+  scope.changeImage = false;
   scope.userName      = $scope.mv.user.name;
   scope.userEmail     = $scope.mv.user.email;
   scope.userAvatar    = $scope.mv.user.avatar;
@@ -33,6 +33,7 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
     );
   }
   function onURLSuccess(imageURI) {
+    scope.changeImage = true;
     var image = document.getElementById('myImageAvatar');
     image.src = imageURI;
   }
@@ -56,6 +57,7 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
     );
   }
   function onlibSuccess(imageURI) {
+    scope.changeImage = true;
     var image = document.getElementById('myImageAvatar');
     image.src = imageURI;
   }
@@ -104,25 +106,29 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
   }
 
   scope.updateUser = function(name, userEmail, userPassword){
-    $http({
-      method: 'POST',
-      url: urlAppServer + '/users/' + scope.userId +
-        '?name=' + name +
-        '&email=' + userEmail +
-        '&password=' + userPassword
-      ,
-      crossDomain: true,
-      headers: {
-        'authorization': 'Basic ' + userHashAdmin,
-        'content-type': 'application/json',
-      },
-    }).success(function (data) {
-      $scope.mv.user.name = data.name;
-      $scope.mv.user.userPassword = userPassword;
-      $scope.mv.user.email = data.email;
-      localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
-      window.location = "#/home";
-    });
+    if (scope.changeImage){
+
+    }else{
+      $http({
+        method: 'POST',
+        url: urlAppServer + '/users/' + scope.userId +
+          '?name=' + name +
+          '&email=' + userEmail +
+          '&password=' + userPassword
+        ,
+        crossDomain: true,
+        headers: {
+          'authorization': 'Basic ' + userHashAdmin,
+          'content-type': 'application/json',
+        },
+      }).success(function (data) {
+        $scope.mv.user.name = data.name;
+        $scope.mv.user.userPassword = userPassword;
+        $scope.mv.user.email = data.email;
+        localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
+        window.location = "#/home";
+      });
+    }
   }
 });
 

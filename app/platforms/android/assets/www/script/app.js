@@ -136,33 +136,33 @@ muvbe.controller('muvbeController', function ($scope, $http){
   }
 
   scope.getAllData = function(){
-    scope.messageData = "Cargando... Categorias";
+    scope.messageData = "¡ CARGANDO !";
     load();
     scope.posts = new Array();
     $http.get(urlAppServer + "/categories?per_page=100").success(function(data){
       scope.categories = data;
       localStorage.setItem("categories", JSON.stringify(scope.categories));
-      scope.messageData = "Cargando... Ubicaciones";
+      // scope.messageData = "Cargando... Ubicaciones";
       $http.get(urlAppServer + "/ubications?per_page=100").success(function(data){
         scope.ubications = data;
         localStorage.setItem("ubications", JSON.stringify(scope.ubications));
-        scope.messageData = "Cargando... Usuarios";
+        // scope.messageData = "Cargando... Usuarios";
         $http.get(urlAppServer + "/users?per_page=100").success(function(dataUsers){
           scope.users = dataUsers;
           localStorage.setItem("users", JSON.stringify(scope.users));
-          scope.messageData = "Cargando... Comentarios";
+          // scope.messageData = "Cargando... Comentarios";
           $http.get(urlAppServer + "/comments?per_page=100").success(function(dataComments){
             scope.comments = dataComments;
             localStorage.setItem("comments", JSON.stringify(scope.comments));
-            scope.messageData = "Cargando... Media";
+            // scope.messageData = "Cargando... Media";
             $http.get(urlAppServer + "/media?per_page=100").success(function(dataMedia){
               scope.media = dataMedia;
               localStorage.setItem("media", JSON.stringify(scope.media));
-              scope.messageData = "Cargando... Favoritos";
+              // scope.messageData = "Cargando... Favoritos";
               $http.get(urlAppServer2 + "/get_posts/?count=100").success(function(dataFavorites){
                 scope.favorites = dataFavorites.posts;
                 localStorage.setItem("favorites", JSON.stringify(scope.favorites));
-                scope.messageData = "Cargando... Posts";
+                // scope.messageData = "Cargando... Posts";
                 scope.getPosts();
                 finishedLoad();
               });

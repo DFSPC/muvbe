@@ -128,7 +128,8 @@ textarea {
   font-size: 15px;
   color: #727277;
   border: none;
-  padding: 9px 13px; }
+  padding: 9px 13px;
+  resize: none; }
   textarea:focus, textarea:active {
     border: none;
     outline: 0;
@@ -256,6 +257,12 @@ input.textbox {
           border-radius: 50%;
   margin: 5px 5px 0 8px;
   overflow: hidden; }
+
+.message-error {
+  margin-bottom: 15px;
+  text-align: center;
+  color: red;
+  letter-spacing: 2px; }
 
 .title-header {
   background: #3f3f3f;
@@ -824,7 +831,8 @@ html [type=button] {
         margin-top: 111px;
         list-style: none; }
         .header .wraper-menu .list-link ul li {
-          margin-bottom: 26px; }
+          margin-bottom: 33px;
+          display: block; }
           .header .wraper-menu .list-link ul li a {
             display: block;
             margin: 0 auto;
@@ -1003,7 +1011,7 @@ html [type=button] {
   height: 40px;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  margin: 5px 5px 0 8px;
+  margin: 10px 10px 10px 10px;
   overflow: hidden; }
 
 .view-timeline .content-time .item-box .info-user p {
@@ -1185,6 +1193,15 @@ html [type=button] {
   .user-info form .button-pink {
     margin-bottom: 26px; }
 
+.view-timeline .view-timeline {
+  margin-top: 0; }
+
+.view-timeline .icon-category {
+  background: url("../img/icons/glass-active.svg");
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px; }
+
 .wiew-category {
   margin-top: 89px;
   display: table;
@@ -1217,6 +1234,12 @@ html [type=button] {
     line-height: 25px; }
   .wiew-category img {
     opacity: .5; }
+
+.view-timeline .icon-ubication {
+  background: url("../img/icons/pointer-active.svg");
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px; }
 
 .ubication .icon-ubication {
   background: url("../img/icons/pointer-active.svg");

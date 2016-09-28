@@ -110,6 +110,7 @@ textarea{
 	color: $text-gray;
 	border: none;
 	padding: 9px 13px;
+	resize:none;
 	&:focus,
 	&:active {
 		// border: 2px solid $gray;
@@ -253,6 +254,12 @@ input.textbox {
 }
 .active-favorite{
 
+}
+.message-error {
+	margin-bottom: 15px;
+    text-align: center;
+    color: red;
+    letter-spacing: 2px;
 }
 .title-header {
     background: #3f3f3f;

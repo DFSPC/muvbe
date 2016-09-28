@@ -27,6 +27,8 @@
       <p id="text2"></p>
     </div>
     <!-- button -->
+    <p class="message-error" ng-show="!numberPostFilter.length">{{mcpc.messageData}}</p>
+
     <input type="button" class="button-pink" ng-click="muec.updateUser(muec.userName, muec.userEmail, muec.userPassword, muec.file);" value="Actualizar Datos"></input>
   </form>
 </div>

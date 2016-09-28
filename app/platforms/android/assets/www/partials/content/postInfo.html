@@ -8,20 +8,19 @@
 	<!--Formulario para insertar nuevos Todo-->
 	<form >
 		<!-- forma de subir -->
-    <div class="menu-upphote">
-      <div class="take-phote" type="button" ng-click="mcpc.takephotoURL()">
-          <div class="icon-camera"></div>
-          <p>Tomar foto</p>
-      </div>
-      <div  class="up-phote" type="button" ng-click="mcpc.choosePhoto()">
-        <div class="icon-phote" ></div>
-        <p>Subir Archivo</p>
-      </div>
-      <!-- <img id="myImageAvatar" ng-model="mcpc.file"> -->
-	      <img id="myImage" ng-model="mcpc.file">
-
-      <p id="text2"></p>
-    </div>
+    	<div class="menu-upphote">
+		    <div class="take-phote" type="button" ng-click="mcpc.takephotoURL()">
+				<div class="icon-camera"></div>
+				<p>Tomar foto</p>
+		    </div>
+		    <div  class="up-phote" type="button" ng-click="mcpc.choosePhoto()">
+		        <div class="icon-phote" ></div>
+		        <p>Subir Archivo</p>
+		    </div>
+		    <!-- <img id="myImageAvatar" ng-model="mcpc.file"> -->
+			<img id="myImage" ng-model="mcpc.file">
+		    <p id="text2"></p>
+	    </div>
 		<div class="title">
 			<div class="wraper">
 				<label for="">Nombre de Toma</label>
@@ -30,8 +29,8 @@
 		</div>
 		<div class="content">
 			<div class="wraper">
-					<label for="">Descripción</label>
-					<textarea class="area" ng-model="mcpc.content" ></textarea>
+				<label for="">Descripción</label>
+				<textarea class="area" ng-model="mcpc.content" ></textarea>
 			</div>
 		</div>
 		<div class="category">
@@ -66,11 +65,13 @@
 
  -->
 
+		<p class="message-error" ng-show="!numberPostFilter.length">{{mcpc.messageData}}</p>
 
 
 		<div class="botton-take">
 			<input type="button" class="button-pink" ng-click="mcpc.createPost(mcpc.title, mcpc.content, mcpc.file, mcpc.category, mcpc.ubication)" value ="Añadir"></input>
 		</div>
+
 	</form>
 	<!-- <a href="#/exit">Salir</a> -->
 </div>

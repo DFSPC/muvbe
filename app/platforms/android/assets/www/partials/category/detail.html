@@ -1,4 +1,10 @@
 <div class="view-timeline">
+	<div class="title-header">
+		<div class="wraper-header">
+		  <div class="icon-category"></div>
+			<p>CATEGORIAS</p>
+		</div>
+	</div>
 	<div class="content-time view-timeline">
 		<div ng-repeat="post in mv.posts | filter:{ categoryId:mdc.categoryId} track by $index">
 			<div class="item-box">

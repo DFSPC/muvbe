@@ -192,11 +192,11 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
         }).success(function (dataMedia) {
           $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + userName + "&password=" + userPassword).success(function(dataCookie){
             var cookie = dataCookie.cookie;
-            $http.get(urlAppServer2 + "/user/update_user_meta_vars/?insecure=cool&cookie=" + cookie + "&wp_user_avatar=" + dataMedia.id).success(function(data){
+            $http.get(urlAppServer2 + "/user/update_user_meta_vars/?insecure=cool&cookie=" + cookie + "&wp_user_avatar=" + dataMedia.id).success(function(dataAvatar){
               scope.user.id = data.id;
               scope.user.successLogin = true;
               scope.user.userName = userName;
-              scope.user.name = data.name;
+              scope.user.name = userName;
               scope.user.userPassword = userPassword;
               scope.user.email = userEmail;
               scope.user.avatar = dataMedia.source_url;

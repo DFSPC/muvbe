@@ -351,7 +351,7 @@ muvbe.directive('validatePost', function () {
         if( $img.attr('src') ==  undefined) {
           console.log('errr');
         }else {
-          $compile($('.botton-take')($scope);
+          $compile($('.botton-take')($scope));
         }
 
 

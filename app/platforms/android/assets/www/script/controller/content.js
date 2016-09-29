@@ -199,6 +199,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
     );
   }
   function onlibSuccess(imageURI) {
+    scope.changeImage = true;
     var image = document.getElementById('myImage');
     image.src = imageURI;
   }
@@ -242,7 +243,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
     // guess the original format, but be aware the using "image/jpg"
     // will re-encode the image.
     var dataURL = canvas.toDataURL("image/png");
-    scope.changeImage = true;
     return dataURL;
 
   }

@@ -345,19 +345,6 @@ muvbe.directive('validatePost', function () {
       $enviar =  element.find('.botton-take'),
       $img    =  element.find('.menu-upphote img'),
       input   =  element.find('#myImage');
-
-
-       $enviar.click(function(event) {
-        if( $img.attr('src') ==  undefined) {
-          console.log('errr');
-        }else {
-          $compile($('.botton-take')($scope);
-        }
-
-
-
-
-       });
   };
   return {
     restrict: 'E',

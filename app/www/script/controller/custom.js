@@ -345,6 +345,7 @@ muvbe.directive('validatePost', function () {
       $enviar =  element.find('.botton-take'),
       $img    =  element.find('.menu-upphote img'),
       input   =  element.find('#myImage');
+
   };
   return {
     restrict: 'E',

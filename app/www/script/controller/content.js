@@ -252,7 +252,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
     if(title == undefined ||
         content == undefined ||
         scope.changeImage == false ||
-        file == undefined ||
         category == undefined ||
         ubication == undefined ){
       if(ubication == undefined ){

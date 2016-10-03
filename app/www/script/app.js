@@ -24,15 +24,25 @@ var $body = angular.element('body');
 * svg Carga
 ***********************************************/
 
-  function load() {
-    $body.addClass('overflow')
-    $body.append('<div class="load"><div class="wraper"></div><div/>');
+function load() {
+  $body.addClass('overflow')
+  $body.append('<div class="load"><div class="wraper"></div><div/>');
 
-  }
-  function finishedLoad(){
-    $body.removeClass('overflow');
-    $body.find('.load').remove();
-  }
+}
+function finishedLoad(){
+  $body.removeClass('overflow');
+  $body.find('.load').remove();
+}
+
+function loadComent() {
+  $body.addClass('overflow')
+  $body.find('.favorites').append('<div class="loadComent"><div class="wraper"></div><div/>');
+
+}
+function finishedLoadComent(){
+  $body.removeClass('overflow');
+  $body.find('.loadComent').remove();
+}
 
 
 //App controller
@@ -292,6 +302,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
   }
 
   scope.addFavorite = function(postId){
+    loadComent();
     $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + scope.user.userName + "&password=" + scope.user.userPassword).success(function(dataCookie){
       var cookie = dataCookie.cookie;
       $http.get(urlAppServer2 + "/wpfp/add/?postid=" + postId + "&insecure=cool&cookie=" + cookie).success(function(dataFavorites){
@@ -306,11 +317,15 @@ muvbe.controller('muvbeController', function ($scope, $http){
         scope.posts = posts;
         localStorage.setItem("posts", JSON.stringify(scope.posts));
         localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
+        finishedLoadComent();
       });
+
     });
+
   }
 
   scope.removeFavorite = function(postId){
+    loadComent();
     $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + scope.user.userName + "&password=" + scope.user.userPassword).success(function(dataCookie){
       var cookie = dataCookie.cookie;
       $http.get(urlAppServer2 + "/wpfp/remove/?postid=" + postId + "&insecure=cool&cookie=" + cookie).success(function(dataFavorites){
@@ -328,6 +343,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
         scope.posts = posts;
         localStorage.setItem("posts", JSON.stringify(scope.posts));
         localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
+        finishedLoadComent();
       });
     });
   }

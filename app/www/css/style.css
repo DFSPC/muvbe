@@ -877,9 +877,31 @@ html [type=button] {
     .view-timeline .content-time .item-box .info-post .favorites {
       width: 66%;
       height: 50px;
-      float: left; }
+      float: left;
+      position: relative; }
+      .view-timeline .content-time .item-box .info-post .favorites .loadComent {
+        background: url("../img/icons/favorites-gif.svg");
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 46px;
+        display: block;
+        float: left;
+        margin-left: 10px;
+        margin-top: 3px;
+        position: absolute;
+        background-color: #FFFFFF;
+        background-position-y: 6px; }
       .view-timeline .content-time .item-box .info-post .favorites .icon-stars {
-        background: url("../img/icon-stars.png");
+        background: url("../img/icons/favstar.svg");
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+        display: block;
+        float: left;
+        margin-left: 16px;
+        margin-top: 18px; }
+      .view-timeline .content-time .item-box .info-post .favorites .icon-stars-active {
+        background: url("../img/icons/favstar-inactive.svg");
         background-repeat: no-repeat;
         width: 16px;
         height: 16px;
@@ -889,7 +911,7 @@ html [type=button] {
         margin-top: 18px; }
       .view-timeline .content-time .item-box .info-post .favorites p {
         margin-left: 16px;
-        margin-top: 18px;
+        margin-top: 21px;
         display: block;
         float: left;
         font-size: 12px;
@@ -915,6 +937,13 @@ html [type=button] {
         height: 16px;
         display: block;
         float: left; }
+        .view-timeline .content-time .item-box .info-post .count-comments .balloon.active-coment,
+        .view-timeline .content-time .item-box .info-post .count-favorites .balloon.active-coment {
+          background: url("../img/icons/comments.svg");
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 20px;
+          margin-top: -3px; }
     .view-timeline .content-time .item-box .info-post .count-favorites .stars-pink {
       background: url("../img/icon-stars-pink.png");
       background-repeat: no-repeat;

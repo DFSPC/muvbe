@@ -42,8 +42,22 @@
 					width: 66%;
 					height: 50px;
 					float: left;
+					position: relative;
+					.loadComent{
+						background: url("../img/icons/favorites-gif.svg");
+						background-repeat: no-repeat;
+						width: 100%;
+						height: 46px;
+						display: block;
+						float: left;
+						margin-left: 10px;
+						margin-top: 3px;
+						position: absolute;
+						background-color: #FFFFFF;
+						background-position-y: 6px;
+					}
 					.icon-stars {
-						background: url("../img/icon-stars.png");
+						background: url("../img/icons/favstar.svg");
 				    background-repeat: no-repeat;
 				    width: 16px;
 				    height: 16px;
@@ -52,9 +66,19 @@
 						margin-left: 16px;
 						margin-top: 18px;
 					}
+					.icon-stars-active {
+						  background: url("../img/icons/favstar-inactive.svg");
+					    background-repeat: no-repeat;
+					    width: 16px;
+					    height: 16px;
+					    display: block;
+					    float: left;
+							margin-left: 16px;
+							margin-top: 18px;
+					}
 					p {
 						margin-left: 16px;
-						margin-top: 18px;
+						margin-top: 21px;
 						display: block;
 	    			float: left;
 	    			font-size: 12px;
@@ -81,6 +105,13 @@
 				    height: 16px;
 				    display: block;
 				    float: left;
+				    &.active-coment {
+							background: url("../img/icons/comments.svg");
+							background-repeat: no-repeat;
+							width: 20px;
+							height: 20px;
+							margin-top: -3px;
+				    }
 					}
 				}
 				.count-favorites {

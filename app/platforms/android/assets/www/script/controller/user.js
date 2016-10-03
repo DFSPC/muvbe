@@ -11,6 +11,7 @@ muvbe.controller('muvbeUserInfoController', function ($scope, $http, $routeParam
 });
 
 muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParams ){
+
   var scope = this;
   scope.changeImage = false;
   scope.userName      = $scope.mv.user.name;
@@ -109,6 +110,7 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
 
   scope.updateUser = function(name, userEmail, userPassword){
     if (scope.changeImage){
+      load();
       $http({
         method: 'POST',
         url: urlAppServer + '/users/' + scope.userId +
@@ -143,12 +145,15 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
               $scope.mv.user.userPassword = userPassword;
               $scope.mv.user.email = data.email;
               localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
+              finishedLoad();
               window.location = "#/home";
             });
           });
         });
       });
+
     }else{
+      load();
       $http({
         method: 'POST',
         url: urlAppServer + '/users/' + scope.userId +
@@ -166,8 +171,11 @@ muvbe.controller('muvbeUserEditController', function ($scope, $http, $routeParam
         $scope.mv.user.userPassword = userPassword;
         $scope.mv.user.email = data.email;
         localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
+        finishedLoad();
         window.location = "#/home";
+
       });
+
     }
   }
 });

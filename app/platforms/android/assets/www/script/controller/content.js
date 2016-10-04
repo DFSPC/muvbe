@@ -174,6 +174,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
       targetHeight: 640,
       saveToPhotoAlbum: true }
     );
+    scope.changeImage = true;
   }
   function onURLSuccess(imageURI) {
     var image = document.getElementById('myImage');

@@ -316,11 +316,21 @@ html [type=button] {
   z-index: 4; }
   .load .wraper {
     background: url("../img/load.svg") no-repeat 0 0;
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 125px;
     display: block;
     margin: 0 auto;
-    margin-top: 60%; }
+    margin-top: 60%;
+    background-position-y: 25px;
+    background-position-x: center; }
+    .load .wraper p {
+      font-size: 23px;
+      font-weight: bold;
+      color: #e6007e;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      margin: 0 auto;
+      text-align: center; }
 
 .pop-pu {
   position: fixed;

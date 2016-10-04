@@ -25,12 +25,12 @@ var $body = angular.element('body');
 ***********************************************/
 
 function load() {
-  $body.addClass('overflow')
+  // $body.addClass('overflow');
   $body.append('<div class="load"><div class="wraper"><p>Cargando...</p></div><div/>');
 
 }
 function finishedLoad(){
-  $body.removeClass('overflow');
+  // $body.removeClass('overflow');
   $body.find('.load').remove();
 }
 

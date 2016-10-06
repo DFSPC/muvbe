@@ -318,12 +318,22 @@ html [type=button] {
     z-index: 4;
     .wraper {
     	background: url("../img/load.svg") no-repeat 0 0;
-    	// background: red;
-    	width: 100px;
-    	height: 100px;
+    	width: 130px;
+    	height: 125px;
     	display: block;
     	margin: 0 auto;
-    	margin-top: 60%
+    	margin-top: 60%;
+    	background-position-y: 25px;
+    	background-position-x: center;
+    	p{
+    		font-size: 23px;
+    		font-weight: bold;
+    		color: $pink-text;
+    		margin-bottom: 20px;
+    		letter-spacing: 1px;
+    		margin: 0 auto;
+    		text-align: center;
+    	}
 
     }
 }

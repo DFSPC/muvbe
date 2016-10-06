@@ -25,12 +25,12 @@ var $body = angular.element('body');
 ***********************************************/
 
 function load() {
-  $body.addClass('overflow')
-  $body.append('<div class="load"><div class="wraper"></div><div/>');
+  // $body.addClass('overflow');
+  $body.append('<div class="load"><div class="wraper"><p>Cargando...</p></div><div/>');
 
 }
 function finishedLoad(){
-  $body.removeClass('overflow');
+  // $body.removeClass('overflow');
   $body.find('.load').remove();
 }
 
@@ -146,7 +146,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
   }
 
   scope.getAllData = function(){
-    scope.messageData = "¡ CARGANDO !";
+    // scope.messageData = "Cargando...";
     load();
     scope.posts = new Array();
     $http.get(urlAppServer + "/categories?per_page=100").success(function(data){

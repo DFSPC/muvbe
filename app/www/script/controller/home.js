@@ -29,3 +29,29 @@ muvbe.controller('muvbeHomeController', function ($scope, $http){
     $scope.mv.getAllData();
   }
 });
+
+muvbe.controller('swipeHome', function ($scope, $http){
+
+
+  console.log('dsdd')
+  var scope = this;
+  if((touch.pageY > yIni + 5) && (touch.pageX> xIni-5) && (touch.pageX<xIni+5)   ){
+    // $nav_footer.addClass('expand');
+    // $header.addClass('expand');
+    console.log(touch.pageY + '......' + e.targetTouches.length);
+    $content  =  $('#content');
+
+    $content.animate({
+      "marginTop": "200px",
+      "opacity":   "0"
+    }, 800);
+    $content.animate({
+      "marginTop": "0",
+      "opacity":   "1"
+    }, 400);
+    // getAllData();
+    $scope.mv.getAllData();
+    // $content.trigger('.logo-app a');
+    // .trigger( "click", [ ".logo-app a"] );
+  }
+});

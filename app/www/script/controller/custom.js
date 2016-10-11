@@ -220,15 +220,15 @@ muvbe.directive('scrollEfect', function ($location) {
             touch = e.targetTouches[0];
             xIni = touch.pageX;
             yIni = touch.pageY;
-            // count =  0;
+            count =  0;
 
 
 
-         if((touch.pageY > yIni  && (touch.pageX > xIni-5) && (touch.pageX<xIni+5) )  ){
+         if((touch.pageY > yIni - 20  && (touch.pageX > xIni-5) && (touch.pageX<xIni+5)  && (count == 0    ) ) ){
 
-            // count +=  1;
+            count =  1;
 
-            // console.log(count);
+            console.log(count);
 
             // console.log('reee');
             $content  =  $('#content');

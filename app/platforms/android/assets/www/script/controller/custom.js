@@ -6,10 +6,10 @@ muvbe.directive('myFooter', function ($location) {
   menuActive = function(scope, element, attrs) {
     // var animateDown, animateRight, pageOne, pageTwo;
     $menu = element.find('.nav-aux');
-    $menu.find('.item').click(function(event) {
+    $menu.find('.item a').click(function(event) {
       /* Act on the event */
-      $(this).parent('.nav-aux').find('a').removeClass('active');
-      $(this).find('a').addClass('active');
+      $menu.find('a').removeClass('active');
+      $(this).addClass('active');
     });
 
     $menu.find('.item a').on('click', efecto)
@@ -175,7 +175,7 @@ muvbe.directive('menuMain', function () {
 /*
 **  Efectos del scroll
 **********************************************/
-muvbe.directive('scrollEfect', function ( $location) {
+muvbe.directive('scrollEfect', function ($location) {
   var navActiveUser;
   efectScroll = function(scope, element, attrs) {
     var
@@ -220,6 +220,34 @@ muvbe.directive('scrollEfect', function ( $location) {
             touch = e.targetTouches[0];
             xIni = touch.pageX;
             yIni = touch.pageY;
+            // count =  0;
+
+
+
+         if((touch.pageY > yIni  && (touch.pageX > xIni-5) && (touch.pageX<xIni+5) )  ){
+
+            // count +=  1;
+
+            // console.log(count);
+
+            // console.log('reee');
+            $content  =  $('#content');
+            $content.animate({
+              "marginTop": "300px",
+              "opacity":   "0"
+            }, 300);
+            setTimeout(function(){
+              $content.animate({
+              "marginTop": "0",
+              "opacity":   "1"
+              }, 300);
+            },300);
+
+            setTimeout(function(){
+              scope.mv.getAllData();
+            }, 600);
+
+         }
         }
       }, false);
 
@@ -232,7 +260,6 @@ muvbe.directive('scrollEfect', function ( $location) {
             urls = ["/home", "/categories", "/post", "/ubications", "/user"];
 
             // console.log(  $nav_footer);
-
 
           // $( window ).scroll(function() {
           //   scrOfY = window.pageYOffset;
@@ -291,14 +318,22 @@ muvbe.directive('scrollEfect', function ( $location) {
 
           // swipe arriba
           // if((touch.pageY < yIni - 5) && (touch.pageX> xIni-5) && (touch.pageX<xIni+5)) {
-          //   $nav_footer.removeClass('expand');
-          //   $header.removeClass('expand');
+          //   // $nav_footer.removeClass('expand');
+          //   // $header.removeClass('expand');
           // }
-          // // swipe abajo
-          // if((touch.pageY > yIni + 5) && (touch.pageX> xIni-5) && (touch.pageX<xIni+5)   ){
-          //   $nav_footer.addClass('expand');
-          //   $header.addClass('expand');
-          // }
+          // swipe abajo
+          if((touch.pageY > yIni - 20 && (touch.pageX> xIni-5) && (touch.pageX<xIni+5) )  ){
+
+            // $nav_footer.addClass('expand');
+            // $header.addClass('expand');
+                        // $header.addClass('expand');
+
+
+
+
+
+
+          }
         }
       }, false);
     }
@@ -345,6 +380,9 @@ muvbe.directive('validatePost', function () {
       $enviar =  element.find('.botton-take'),
       $img    =  element.find('.menu-upphote img'),
       input   =  element.find('#myImage');
+
+
+
 
   };
   return {

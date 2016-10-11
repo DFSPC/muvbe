@@ -20,46 +20,56 @@ muvbe.controller('muvbePostInfoController', function ($scope, $http, $routeParam
   // $scope.overflow_class = "overflow_auto";
 
   scope.addComment = function(content){
+    // var textleagth =  0;
+    // textleagth = content.length;
     load();
-    var data = JSON.stringify({
-      "content" : content,
-      "post" : scope.postId,
-    });
+    if(content == undefined){
+      console.log('no haya nada');
+      alert('No tomaste una foto!');
+      finishedLoad();
 
-    $http({
-      method: 'POST',
-      url: urlAppServer + '/comments',
-      headers: {
-        'authorization': 'Basic ' + userHash,
-        'content-type': 'application/json',
-      },
-      data: data,
-    }).success(function (data) {
-      posts = $scope.mv.posts;
-      posts.forEach(function(value) {
-        if (value.id == scope.postId){
-          if (!value.comments){
-            value.comments = new Array();
-          }
-          var commentInfo = new Object();
-          commentInfo.id = data.id;
-          commentInfo.authorId = data.author;
-          commentInfo.authorName = data.author_name;
-          commentInfo.authorAvatar = $scope.mv.user.avatar;
-          var dateComment = new Date(data.date);
-          commentInfo.date = dateComment.getDate() + " de " + monthNames[dateComment.getMonth()] + " del " + dateComment.getFullYear();
-          commentInfo.content = data.content.rendered;
-          value.comments.push(commentInfo);
-        }
+    }else{
+      var data = JSON.stringify({
+        "content" : content,
+        "post" : scope.postId,
       });
-      $scope.mv.posts = posts;
-      localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
-      finishedLoad();
-    }).error(function(response){
-      // alert("Espera un momento para volver a comentar");
-       scope.messageData = "Error... vuelve intertarlo";
-      finishedLoad();
-    });
+
+      $http({
+        method: 'POST',
+        url: urlAppServer + '/comments',
+        headers: {
+          'authorization': 'Basic ' + userHash,
+          'content-type': 'application/json',
+        },
+        data: data,
+      }).success(function (data) {
+        posts = $scope.mv.posts;
+        posts.forEach(function(value) {
+          if (value.id == scope.postId){
+            if (!value.comments){
+              value.comments = new Array();
+            }
+            var commentInfo = new Object();
+            commentInfo.id = data.id;
+            commentInfo.authorId = data.author;
+            commentInfo.authorName = data.author_name;
+            commentInfo.authorAvatar = $scope.mv.user.avatar;
+            var dateComment = new Date(data.date);
+            commentInfo.date = dateComment.getDate() + " de " + monthNames[dateComment.getMonth()] + " del " + dateComment.getFullYear();
+            commentInfo.content = data.content.rendered;
+            value.comments.push(commentInfo);
+          }
+        });
+        $scope.mv.posts = posts;
+        localStorage.setItem("posts", JSON.stringify($scope.mv.posts));
+        finishedLoad();
+      }).error(function(response){
+
+          alert("Espera un momento para volver a comentar");
+         scope.messageData = "Error... vuelve intertarlo";
+        finishedLoad();
+      });
+    }
   }
 
 
@@ -373,9 +383,6 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
 
   //Create Post
   scope.editPost = function(postId, title, content, category, ubication){
-
-
-
     load();
     var status =  "publish";
     data = JSON.stringify({

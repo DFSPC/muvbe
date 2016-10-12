@@ -220,32 +220,32 @@ muvbe.directive('scrollEfect', function ($location) {
             touch = e.targetTouches[0];
             xIni = touch.pageX;
             yIni = touch.pageY;
-            // count =  0;
+            count =  0;
 
 
 
-         if((touch.pageY > yIni  && (touch.pageX > xIni-5) && (touch.pageX<xIni+5) )  ){
+         if((touch.pageY > yIni - 20  && (touch.pageX > xIni-5) && (touch.pageX<xIni+5)  && (count == 0    ) ) ){
 
-            // count +=  1;
+            // count =  1;
 
             // console.log(count);
 
-            // console.log('reee');
-            $content  =  $('#content');
-            $content.animate({
-              "marginTop": "300px",
-              "opacity":   "0"
-            }, 300);
-            setTimeout(function(){
-              $content.animate({
-              "marginTop": "0",
-              "opacity":   "1"
-              }, 300);
-            },300);
+            // // console.log('reee');
+            // $content  =  $('#content');
+            // $content.animate({
+            //   "marginTop": "300px",
+            //   "opacity":   "0"
+            // }, 300);
+            // setTimeout(function(){
+            //   $content.animate({
+            //   "marginTop": "0",
+            //   "opacity":   "1"
+            //   }, 300);
+            // },300);
 
-            setTimeout(function(){
-              scope.mv.getAllData();
-            }, 600);
+            // setTimeout(function(){
+            //   scope.mv.getAllData();
+            // }, 600);
 
          }
         }

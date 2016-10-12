@@ -203,6 +203,8 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
                 scope.user.avatar = dataAvatarImage.user.avatar;
                 scope.user.favorites = new Array();
                 $scope.mv.user = scope.user;
+      finishedLoad();
+
                 scope.messageLogin = 'Gracias por Ingresar';
                 localStorage.setItem("userSession", JSON.stringify(scope.user));
                 window.location = "#/home";
@@ -211,7 +213,6 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
           });
         });
       });
-      finishedLoad();
       // window.location = "#/";
     }
   }

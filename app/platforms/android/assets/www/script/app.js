@@ -13,9 +13,12 @@ var muvbe = angular.module('muvbe', [
 ]);
 
 //Variables
-var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2';
-var urlAppServer2 = 'http://londonojp.com/muvbe/web/api';
-var userHashAdmin = 'YWRtaW46YWRtaW4='
+var urlAppServer = 'https://muvbe.co/wp-json/wp/v2';
+var urlAppServer2 = 'https://muvbe.co/api';
+// var userHashAdmin = 'YWRtaW46YWRtaW4='
+var userHashAdmin = 'ZGV2ZWxvcGVyOiV3TkFuZlg4dTBvKkduTEZHZXlXWDRmYg==';
+
+
 var $body = angular.element('body');
 
 
@@ -317,6 +320,7 @@ muvbe.controller('muvbeController', function ($scope, $http){
         scope.posts = posts;
         localStorage.setItem("posts", JSON.stringify(scope.posts));
         localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
+        console.log('ffff')
         finishedLoadComent();
       });
 

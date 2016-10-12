@@ -1,5 +1,4 @@
 .header {
-	background: url("../img/back-header.png");
 	background-color: white;
 	height: 89px;
 	position: fixed;
@@ -19,11 +18,14 @@
 		height: 100%;
 		span {
 			background: url("../img/logo-header2.png");
+			background-size: 90px;
 			background-repeat: no-repeat;
 			height: 89px;
 			width: 162px;
 			font-size: 0;
 			display: block;
+			margin-top: 18px;
+    	margin-left: 13px;
 	  }
 	}
 	.name-user {

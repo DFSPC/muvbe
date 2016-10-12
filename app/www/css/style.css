@@ -613,7 +613,8 @@ html [type=button] {
       width: 14px;
       height: auto;
       float: left;
-      margin: 0; }
+      margin: 0;
+      margin-top: -2px; }
     .views-terms form .buttom {
       margin-top: 22px;
       width: 100%;
@@ -709,7 +710,6 @@ html [type=button] {
         stroke-opacity: 0.1; }
 
 .header {
-  background: url("../img/back-header.png");
   background-color: white;
   height: 89px;
   position: fixed;
@@ -729,11 +729,14 @@ html [type=button] {
     height: 100%; }
     .header .logo-app span {
       background: url("../img/logo-header2.png");
+      background-size: 90px;
       background-repeat: no-repeat;
       height: 89px;
       width: 162px;
       font-size: 0;
-      display: block; }
+      display: block;
+      margin-top: 18px;
+      margin-left: 13px; }
   .header .name-user {
     width: auto;
     text-align: right;
@@ -1100,9 +1103,9 @@ html [type=button] {
   margin: 0; }
   .view-timeline .content-time .item-box .wraper-img .back {
     position: absolute;
-    bottom: 8px;
+    bottom: 5px;
     width: 100%;
-    padding-bottom: 15px;
+    padding-bottom: 55px;
     /* FF3.6-15 */
     background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.65) 100%);
     /* Chrome10-25,Safari5.1-6 */
@@ -1194,7 +1197,8 @@ html [type=button] {
 .view-user {
   margin-top: 91px;
   display: table;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 56px; }
   .view-user .wrapper-user .menu-post {
     width: 100%; }
     .view-user .wrapper-user .menu-post .link-post {

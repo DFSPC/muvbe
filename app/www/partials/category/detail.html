@@ -2,7 +2,7 @@
 	<div class="title-header">
 		<div class="wraper-header">
 		  <div class="icon-category"></div>
-			<p>CATEGORIAS</p>
+			<p>{{ post.categoryName }}</p>
 		</div>
 	</div>
 	<div class="content-time view-timeline">
@@ -23,11 +23,13 @@
 				<div class="info-post">
 					<div class="favorites">
 						<span class="icon-stars"></span>
-						<p>GUARDAR EN FAVORITOS</p>
+						<p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">FAVORITOS</p>
+            			<p ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)">REMOVER DE FAVORITOS</p>
 					</div>
 					<div class="count-comments">
 						<p>{{post.comments.length}}</p>
-						<span class="balloon"></span>
+						<span ng-if='post.comments.length == 0' class='balloon'></span>
+            			<span ng-if='post.comments.length >= 1' class='active-coment balloon'></span>
 					</div>
 					<div class="count-favorites">
 			        	<p>{{post.countFavorites}} </p>

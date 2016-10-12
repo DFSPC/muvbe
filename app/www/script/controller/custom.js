@@ -220,34 +220,6 @@ muvbe.directive('scrollEfect', function ($location) {
             touch = e.targetTouches[0];
             xIni = touch.pageX;
             yIni = touch.pageY;
-            count =  0;
-
-
-
-         if((touch.pageY > yIni - 20  && (touch.pageX > xIni-5) && (touch.pageX<xIni+5)  && (count == 0    ) ) ){
-
-            // count =  1;
-
-            // console.log(count);
-
-            // // console.log('reee');
-            // $content  =  $('#content');
-            // $content.animate({
-            //   "marginTop": "300px",
-            //   "opacity":   "0"
-            // }, 300);
-            // setTimeout(function(){
-            //   $content.animate({
-            //   "marginTop": "0",
-            //   "opacity":   "1"
-            //   }, 300);
-            // },300);
-
-            // setTimeout(function(){
-            //   scope.mv.getAllData();
-            // }, 600);
-
-         }
         }
       }, false);
 
@@ -295,6 +267,29 @@ muvbe.directive('scrollEfect', function ($location) {
               $body.find('.nav-aux').find('a').removeClass('active');
               $body.find('#footer .item-' + ( newUrl + 1) ).find('a').addClass('active');
             }
+          }
+          // swipe arriba
+          console.log( (yIni - 40)  + '/////' + touch.pageY );
+
+
+          if((touch.pageY > yIni - 40 && (touch.pageX > xIni-5) && (touch.pageX<xIni+5)  ) ){
+
+            console.log('reee');
+            $content  =  $('#content');
+            $content.animate({
+              "marginTop": "300px",
+              "opacity":   "0"
+            }, 300);
+            setTimeout(function(){
+              $content.animate({
+              "marginTop": "0",
+              "opacity":   "1"
+              }, 300);
+            },300);
+
+            setTimeout(function(){
+              scope.mv.getAllData();
+            }, 600);
           }
 
           // active = function() {

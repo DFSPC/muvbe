@@ -38,12 +38,12 @@ function finishedLoad(){
 }
 
 function loadComent() {
-  $body.addClass('overflow')
+  // $body.addClass('overflow')
   $body.find('.favorites').append('<div class="loadComent"><div class="wraper"></div><div/>');
 
 }
 function finishedLoadComent(){
-  $body.removeClass('overflow');
+  // $body.removeClass('overflow');
   $body.find('.loadComent').remove();
 }
 
@@ -320,7 +320,6 @@ muvbe.controller('muvbeController', function ($scope, $http){
         scope.posts = posts;
         localStorage.setItem("posts", JSON.stringify(scope.posts));
         localStorage.setItem("userSession", JSON.stringify($scope.mv.user));
-        console.log('ffff')
         finishedLoadComent();
       });
 

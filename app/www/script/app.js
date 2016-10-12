@@ -13,8 +13,8 @@ var muvbe = angular.module('muvbe', [
 ]);
 
 //Variables
-var urlAppServer = 'http://londonojp.com/muvbe/web/wp-json/wp/v2';
-var urlAppServer2 = 'http://londonojp.com/muvbe/web/api';
+var urlAppServer = 'https://muvbe.co/wp-json/wp/v2';
+var urlAppServer2 = 'https://muvbe.co/api';
 var userHashAdmin = 'YWRtaW46YWRtaW4='
 var $body = angular.element('body');
 

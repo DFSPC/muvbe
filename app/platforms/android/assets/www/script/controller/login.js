@@ -58,19 +58,24 @@ muvbe.controller('muvbeLoginController', function ($scope, $http){
 muvbe.controller('muvbeSignUpController', function ($scope, $http){
   var scope = this;
 
+  $scope.changeImage = false;
+
 
   //Take FILE_URL
   scope.takephotoURL = function(){
     navigator.camera.getPicture(onURLSuccess, onURLFail,
-    { quality : 100,
-      destinationType : Camera.DestinationType.FILE_URI,
-      sourceType : Camera.PictureSourceType.CAMERA,
-      allowEdit : true,
-      encodingType: Camera.EncodingType.PNG,
-      targetWidth: 640,
-      targetHeight: 640,
-      saveToPhotoAlbum: true }
+      { quality : 100,
+        destinationType : Camera.DestinationType.FILE_URI,
+        sourceType : Camera.PictureSourceType.CAMERA,
+        allowEdit : true,
+        encodingType: Camera.EncodingType.PNG,
+        targetWidth: 640,
+        targetHeight: 640,
+        saveToPhotoAlbum: true
+      }
     );
+    $scope.changeImage = true;
+
   }
   function onURLSuccess(imageURI) {
     var image = document.getElementById('myImageAvatar');
@@ -96,6 +101,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
     );
   }
   function onlibSuccess(imageURI) {
+    $scope.changeImage = true;
     var image = document.getElementById('myImageAvatar');
     image.src = imageURI;
   }
@@ -147,6 +153,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
 
     if( userName == undefined ||
         userEmail == undefined ||
+        $scope.changeImage == false ||
         userPassword == undefined){
       if(userPassword == undefined ){
         scope.messageData = "¡ password esta Vacio !";
@@ -156,6 +163,9 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
       }
       if(userName == undefined ){
         scope.messageData = "¡ Nombre esta Vacio !";
+      }
+      if($scope.changeImage == false  ){
+        scope.messageData = "¡ No hay foto!";
       }
     }else{
       load();
@@ -178,7 +188,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
         data: data,
       }).success(function (data) {
         var fd = new FormData();
-        imageBase = getBase64Image(document.getElementById("myImageAvatar"))
+        imageBase = getBase64Image(document.getElementById("myImageAvatar"));
         var blob = dataURItoBlob(imageBase);
         var fd = new FormData();
         fd.append("file", blob, "image.png");
@@ -203,8 +213,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
                 scope.user.avatar = dataAvatarImage.user.avatar;
                 scope.user.favorites = new Array();
                 $scope.mv.user = scope.user;
-      finishedLoad();
-
+                finishedLoad();
                 scope.messageLogin = 'Gracias por Ingresar';
                 localStorage.setItem("userSession", JSON.stringify(scope.user));
                 window.location = "#/home";

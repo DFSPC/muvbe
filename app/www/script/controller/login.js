@@ -153,7 +153,7 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
 
     if( userName == undefined ||
         userEmail == undefined ||
-        // $scope.changeImage == false ||
+        $scope.changeImage == false ||
         userPassword == undefined){
       if(userPassword == undefined ){
         scope.messageData = "¡ password esta Vacio !";
@@ -164,9 +164,9 @@ muvbe.controller('muvbeSignUpController', function ($scope, $http){
       if(userName == undefined ){
         scope.messageData = "¡ Nombre esta Vacio !";
       }
-      // if($scope.changeImage == false  ){
-      //   scope.messageData = "¡ No hay foto!";
-      // }
+      if($scope.changeImage == false  ){
+        scope.messageData = "¡ No hay foto!";
+      }
     }else{
       load();
       data = JSON.stringify({

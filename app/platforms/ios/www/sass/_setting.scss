@@ -1,0 +1,94 @@
+/*******************************
+*     Ajustes estilos  MUVBE   *
+********************************/
+
+/*
+*   Colors palette
+********************************/
+
+$white:  #FFFFFF;
+$white2: #f8f8ff;
+$gray:   #d7d8d9;
+$gray-back: #c6c6c7;
+$gray-line: #cecfd1;
+$pink:   #da0080;
+$pink-text: #e6007e;
+$pink-bottum: #a90b71;
+$text-gray: #727277;
+$black: #000000;
+
+/*
+*   Media Query Ranges
+********************************/
+
+@mixin center-text($width) {
+	display: block;
+	width: $width;
+	margin: 0 auto;
+}
+
+
+@mixin back-img($img) {
+	background: url("../img/"+ $img);
+	background-repeat: no-repeat;
+	width: 85px;
+	height: 52px;
+	margin: 0 auto;
+}
+
+@mixin container() {
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 600px;
+    height: 100%;
+}
+
+
+/*
+*   fonts
+********************************/
+
+@font-face {
+    font-family: 'Myanmar-Sangam-MN';
+    // src: url('../../fonts/olivier_demo-webfont.woff2') format('woff2'),
+    src: url('../fonts/Myanmar-Sangam-MN.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'helvetica-neue-bold';
+    // src: url('../../fonts/olivier_demo-webfont.woff2') format('woff2'),
+    src: url('../fonts/helvetica-neue-bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+$Myanmar-Sangam-MN:   'Myanmar-Sangam-MN';
+$helvetica:   'helvetica-neue-bold';
+
+
+
+
+
+
+
+
+/*
+*   Media Query Ranges
+********************************/
+
+
+$screen: "only screen";
+
+$landscape: "#{$screen} and (orientation: landscape)";
+$portrait: "#{$screen} and (orientation: portrait)";
+
+$table:  "#{$screen} and (min-width: 550px)";
+$desktop: "#{$screen} and (min-width: 900px)";
+
+$wide:  "#{$screen} and (min-width: 1400px)";

@@ -1,0 +1,32 @@
+<!-- <h1>Museo Urbano Virtual Bogotá Efimera</h1>
+<p>Ingresa tus datos para registrarte ó <a href="#/">vuelve</a> al Inicio</p> -->
+
+<div class="views-terms">
+	<!-- logo -->
+	<div class="logo-terms"><span></span></div>
+	<!-- texto term -->
+	<div class="text-term">
+		<div class="wraper">
+			<p class="text-before">Con tu registro, aceptas las</p>
+			<a class="link-conditions" href="#">Condiciones Legales </a>
+			<a class="link-conditions link-2" href="">de MUV[BE]</a>
+			<p class="text-after"> y confirmas que comprendes nues-tras Políticas de privacidad.</p>
+		</div>
+
+		<p>Es posible que recibas notificaciones por SMS de Visaje, las cuales puedes desactivar en cualquier momento.</p>
+
+		<p class="last">Las opiniones e   incurrencias  legales  que  posean las publicaciones serán responsabilidad directa del usuario.</p>
+
+	</div>
+	<!--checkbox -->
+	<form action="#/signup" method="post">
+		<div class="wraper-checkbox">
+			<input type="checkbox" name="condiciones" ng-model="checked" />
+	   	<label for="condiciones">He leído y acepto los Términos y Condiciones</label>
+		</div>
+   	<div class="buttom">
+  		<input type="submit" value="Continuar" class="sample-show-hide" ng-show="checked" />
+  	</div>
+	</form>
+</div>
+

@@ -1,0 +1,423 @@
+/*******************************
+*    Estilos Globales MUVBE    *
+********************************/
+
+
+/*
+*    Etiquetas
+********************************/
+body,
+html {
+	font-family: $Myanmar-Sangam-MN;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+img{
+  height: auto;
+  max-width: 100%;
+}
+a{
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: bold;
+	color: $text-gray;
+	display: block;
+	line-height: 0;
+}
+p {
+	font-family: $Myanmar-Sangam-MN;
+	color: $text-gray;
+	font-size: 15px;
+	font-weight: 400;
+	margin: 0 0;
+}
+form {
+	background: transparent;
+	width: 100%;
+	font-size: 20px;
+	// padding: 20px 0
+}
+input{
+	width: 300px;
+	height: 50px;
+	border: 2px solid #640137;
+	border-radius:  8px;
+	display: block;
+  margin: 0 auto;
+	margin-bottom: 15px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: 400;
+	color: $white2;
+	background-color: #7e0146;
+	&:focus,
+	&:active {
+		// border: 2px solid $gray;
+		// border: none;
+		outline: 0;
+    outline-style: none;
+    outline-width: 0;
+	}
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: $white2;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: $white2;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+	  color: $white2;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	  color: $white2;
+	}
+}
+select {
+	background-color: $white;
+	border: 1px solid $gray-line;
+	width: 300px;
+	height: 50px;
+	border-radius: 8px;
+	display: block;
+	margin: 8px auto;
+	margin-bottom: 18px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: 400;
+	color: $text-gray;
+	-webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-left: 5px;
+	&:focus,
+	&:active {
+		// border: 2px solid $gray;
+		// border: none;
+		outline: 0;
+    outline-style: none;
+    outline-width: 0;
+	}
+}
+textarea{
+	height: 100px;
+	width: 271px;
+	min-width: 271px;
+	margin: 0 auto;
+	display: block;
+	margin-top: 8px;
+	border-radius: 8px;
+	margin-bottom: 15px;
+	font-size: 15px;
+	color: $text-gray;
+	border: none;
+	padding: 9px 13px;
+	resize:none;
+	&:focus,
+	&:active {
+		// border: 2px solid $gray;
+		border: none;
+		outline: 0;
+    outline-style: none;
+    outline-width: 0;
+	}
+}
+
+label {
+	font-family: $Myanmar-Sangam-MN;
+	color: $text-gray;
+	width: 100%;
+	font-weight: 600;
+	font-size: 15px;
+
+}
+
+
+/*
+*    Clases Globales
+****************************************/
+.aux {
+	position: absolute;
+    top: 30%;
+    width: 100%;
+    height: 50px;
+}
+#content{
+	// margin-top: 89px;
+	height: 100%;
+	width: 100%;
+
+}
+.message {
+	margin-bottom: 15px;
+	text-align: center;
+	p,a {
+		font-size: 12px;
+		display: inline;
+	}
+	a{
+		margin-left: 6px;
+	}
+}
+.message-load{
+	color: $pink-text;
+	font-size: 18px;
+	margin: 0 auto;
+	width: 300px;
+	text-align: center;
+	margin-top: 149px;
+	font-weight: bold;
+}
+.buttom {
+	text-align: center;
+	input,
+	a{
+		text-align: center;
+		background: $white;
+		border: 2px solid $white;
+		color: $pink-bottum;
+		height: 35px;
+		border-radius: 11px;
+	}
+}
+.error {
+	color: red;
+	font-size: 15px;
+}
+.custom-file-input,
+.custom-bottom-input{
+	width: 90%;
+	display: block;
+	position: relative;
+	background: rgba(171, 39, 97, 0.56);
+	margin: 0 auto;
+	height: 64px;
+}
+.button-pink{
+	width: 300px;
+	background-color: transparent;
+	border: 2px solid $pink;
+	color: $pink;
+	height: 36px
+}
+input.textbox {
+	background-color: $white;
+	border: 1px solid $gray-line;
+	margin-top: 8px;
+	color: $text-gray;
+	text-align: left;
+	padding-left: 5px;
+	width: 292px;
+
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: $text-gray;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: $text-gray;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+	  color: $text-gray;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	  color: $text-gray;
+	}
+}
+
+.select {
+	position: relative;
+	&::after {
+		content: " ";
+		display: block;
+		background: url("../img/arrow-down.png") no-repeat 0 0;
+		width: 12px;
+		height: 8px;
+		position: absolute;
+		top: 23px;
+		right: 14px;
+  }
+}
+.none {
+	display: none;
+}
+.overflow {
+	overflow: hidden;
+}
+.overflow_auto {
+	overflow: auto;
+}
+.avatar-user {
+	float: left;
+	height: 100%;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin: 5px 5px 0 8px;
+	overflow: hidden;
+}
+.active-favorite{
+
+}
+.message-error {
+	margin-bottom: 15px;
+    text-align: center;
+    color: red;
+    letter-spacing: 2px;
+}
+.title-header {
+    background: #3f3f3f;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    display: inherit;
+    width: 100%;
+    .wraper-header {
+	    width: 152px;
+	    display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    margin: 0 auto;
+	    p {
+		    font-size: 15px;
+		    font-weight: bold;
+		    text-transform: uppercase;
+		    color: #FFFFFF;
+		    margin: 7px;
+		}
+	}
+}
+
+
+[type=submit],
+[type=reset],
+button,
+html [type=button] {
+	-webkit-appearance: none;
+}
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+.load{
+   	position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    background: rgba(34, 34, 34, 0.55);
+    -webkit-box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    z-index: 4;
+    .wraper {
+    	background: url("../img/load.svg") no-repeat 0 0;
+    	width: 130px;
+    	height: 125px;
+    	display: block;
+    	margin: 0 auto;
+    	margin-top: 60%;
+    	background-position-y: 25px;
+    	background-position-x: center;
+    	p{
+    		font-size: 23px;
+    		font-weight: bold;
+    		color: $pink-text;
+    		margin-bottom: 20px;
+    		letter-spacing: 1px;
+    		margin: 0 auto;
+    		text-align: center;
+    	}
+
+    }
+}
+.pop-pu{
+	position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    background: rgba(34, 34, 34, 0.55);
+    -webkit-box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    z-index: 4;
+  	.wraper {
+	    width: 241px;
+	    margin: 0 auto;
+	    margin-top: 64%;
+	    background: #ffffff;
+	    display: table;
+	    padding: 20px;
+  	}
+    .title {
+		font-size: 15px;
+		font-weight: bold;
+		color: #c3007a;
+		text-align: center;
+    }
+    p {
+		float: left !important;
+		width: 49% !important;
+		text-align: center;
+		margin-top: 20px !important;
+		margin-top: 20px !important;
+		color: #818185 !important;
+	}
+}
+
+
+
+
+
+
+/*
+  We're using CSS transitions for when
+  the enter and move events are triggered
+  for the element that has the .repeated-item
+  class
+*/
+.repeated-item.ng-enter, .repeated-item.ng-move {
+  transition: all 0.5s linear;
+  opacity: 0;
+}
+
+/*
+ The ng-enter-active and ng-move-active
+ are where the transition destination properties
+ are set so that the animation knows what to
+ animate.
+*/
+.repeated-item.ng-enter.ng-enter-active,
+.repeated-item.ng-move.ng-move-active {
+  opacity: 1;
+}
+
+/*
+  We're using CSS keyframe animations for when
+  the leave event is triggered for the element
+  that has the .repeated-item class
+*/
+.repeated-item.ng-leave {
+  animation: 0.5s my_animation;
+}
+
+@keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+
+
+

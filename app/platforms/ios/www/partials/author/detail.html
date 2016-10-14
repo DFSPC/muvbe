@@ -1,0 +1,17 @@
+<div class="wrapper">
+
+	<h1 class="info">{{mda.authorName}}</h1>
+
+
+	<div class="content-time">
+		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:{ 'author' : mda.authorId }: mda.filterAuthorId) track by $index">
+			<div class="item-box">
+				<a href="#/post-info/{{post.id}}">
+					<img ng-src="{{post.urlFeaturedImage}}"></img>
+				</a>
+			</div>
+		</div>
+	</div>
+	<p ng-show="!numberPostFilter.length">No se encontraron Posts</p>
+</div>
+

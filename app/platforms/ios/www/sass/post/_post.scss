@@ -1,0 +1,87 @@
+.view-getpost {
+	background-color: #bfbfbf;
+  margin-top: 89px;
+      margin-bottom: 50px;
+  display: table;
+  width: 100%;
+  .title-header {
+  	background: #3f3f3f;
+  	text-align: center;
+  	padding: 15px 0;
+  	position: relative;
+    display: inherit;
+    width: 100%;
+    .wraper-header {
+    	width: 152px;
+    	display: flex;
+   		margin: 0 auto;
+    	.icon-camera {
+				background: url("../img/icons/camera-active.svg");
+				background-repeat: no-repeat;
+		    width: 28px;
+		    height: 28px;
+	  	}
+	  	p{
+	  		font-size: 15px;
+	  		font-weight: bold;
+	  		text-transform: uppercase;
+	  		color: $white;
+	  		margin: 7px;
+	  	}
+    }
+  }
+  form {
+		// min-height: 418px;
+		margin-top: 26px;
+		.wraper {
+			width: 300px;
+			display: block;
+			margin: 0 auto;
+		}
+		.menu-upphote {
+			margin: 27px auto;
+			width: 260px;
+			display: table;
+			.take-phote,
+			.up-phote {
+				width: 49%;
+				float: left;
+			}
+			.take-phote {
+				p {
+					width: 55px;
+				}
+			}
+			.icon-phote,
+			.icon-camera {
+				background: url("../img/icons/camera-icon.svg");
+				background-repeat: no-repeat;
+				width: 69px;
+				height: 69px;
+				margin: 0 auto;
+				display: block;
+			}
+			.icon-phote {
+				background: url("../img/icons/upload-icon.svg");
+				background-repeat: no-repeat;
+			}
+			p {
+				margin: 11px auto;
+				display: block;
+				width: 67px;
+				font-weight: bold;
+				font-size: 11px;
+			}
+		}
+		.button-pink {
+			margin-bottom: 40px;
+			font-weight: bold;
+			border: 2px solid;
+		}
+	}
+}
+@media #{$landscape} {
+	.views-signup {
+		height: auto;
+	}
+}

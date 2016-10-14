@@ -1,0 +1,52 @@
+<div class="view-getpost">
+	<div class="title-header">
+		<div class="wraper-header">
+		  <div class="icon-camera"></div>
+			<p>Edita tu post </p>
+		</div>
+	</div>
+	<!--Formulario para insertar nuevos Todo-->
+	<form >
+		<div class="title">
+			<div class="wraper">
+				<label for="">Nombre de Toma</label>
+				<input class="textbox" type="text" ng-model="mepc.postEdit.title">
+			</div>
+		</div>
+		<div class="content">
+			<div class="wraper">
+				<label for="">Descripción</label>
+				<textarea class="area" ng-model="mepc.postEdit.plainContent"></textarea>
+			</div>
+		</div>
+		<div class="category">
+			<div class="wraper">
+				<label for="">Categoría</label>
+				<div class="select">
+				<select class="" ng-model="mepc.selectedCategory" ng-options="category as category.name for category in mepc.categories | filter:{ id: '!1'} track by category.id" >
+				</select>
+			</div>
+		</div>
+		<div class="ubication">
+			<div class="wraper">
+				<label for="">Elije la Ubicacion</label>
+				<div class="select">
+					<select class="" ng-model="mepc.selectedUbication" ng-options="ubication as ubication.name for ubication in mepc.ubications track by ubication.id" >
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="image">
+	      	<img id="myImage" ng-src="{{mepc.postEdit.urlFeaturedImage}}">
+	      	<p id="text2"></p>
+	      	<br>
+		</div>
+		<div class="botton-take">
+			<input type="button"  class="button-pink" ng-click="mepc.editPost(mepc.postEdit.id, mepc.postEdit.title, mepc.postEdit.plainContent, mepc.selectedCategory.id, mepc.selectedUbication.id)" value ="Editar"></input>
+		</div>
+	</form>
+<!-- <a href="#/exit">Salir</a> -->
+</div>
+
+
+

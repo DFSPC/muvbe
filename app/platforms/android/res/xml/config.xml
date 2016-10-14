@@ -9,14 +9,6 @@
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
     <allow-intent href="market:*" />
-    <splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png" />
-    <splash density="land-ldpi" src="res/screen/android/splash-land-ldpi.png" />
-    <splash density="land-mdpi" src="res/screen/android/splash-land-mdpi.png" />
-    <splash density="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png" />
-    <splash density="port-hdpi" src="res/screen/android/splash-port-hdpi.png" />
-    <splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png" />
-    <splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png" />
-    <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png" />
     <name>Bogotá Efimera</name>
     <description>
         Museo Urbano Virtual Bogotá Efimera.
@@ -32,6 +24,4 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <icon src="res/icon.png" />
-    <preference name="SplashScreenDelay" value="10000" />
 </widget>

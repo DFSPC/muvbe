@@ -1,0 +1,130 @@
+.view-timeline {
+	margin-top: 90px;
+	margin-bottom: 60px;
+	// margin-left: 100%;
+    /* overflow: hidden; */
+    width: 100%;
+	.content-time {
+		.item-box {
+			.info-user{
+				height: 46px;
+				background-color: #fdfbff;
+				position: relative;
+	    	display: table;
+	    	width: 100%;
+	    	.avatar-user{
+					float: left;
+			    height: 100%;
+			    width: 40px;
+					height: 40px;
+					border-radius: 50%;
+					margin: 5px 10px 0 8px;
+					overflow: hidden;
+				}
+				p{
+					color: $pink;
+					font-size: 14px;
+					font-weight: bold;
+					margin-top: 19px;
+					font-family: $helvetica;
+					text-transform: capitalize;
+				}
+			}
+			.wraper-img {
+				margin: 0 2px;
+
+			}
+			.info-post {
+				height: 50px;
+				border-bottom: 2px solid $gray;
+
+				.favorites {
+					width: 66%;
+					height: 50px;
+					float: left;
+					position: relative;
+					.loadComent{
+						background: url("../img/icons/favorites-gif.svg");
+						background-repeat: no-repeat;
+						width: 100%;
+						height: 46px;
+						display: block;
+						float: left;
+						margin-left: 10px;
+						margin-top: 3px;
+						position: absolute;
+						background-color: #FFFFFF;
+						background-position-y: 6px;
+					}
+					.icon-stars {
+						background: url("../img/icons/favstar.svg");
+				    background-repeat: no-repeat;
+				    width: 16px;
+				    height: 16px;
+				    display: block;
+				    float: left;
+						margin-left: 16px;
+						margin-top: 18px;
+					}
+					.icon-stars-active {
+						  background: url("../img/icons/favstar-inactive.svg");
+					    background-repeat: no-repeat;
+					    width: 16px;
+					    height: 16px;
+					    display: block;
+					    float: left;
+							margin-left: 16px;
+							margin-top: 18px;
+					}
+					p {
+						margin-left: 16px;
+						margin-top: 21px;
+						display: block;
+	    			float: left;
+	    			font-size: 12px;
+	    			font-weight: 400;
+					}
+				}
+				.count-comments,
+				.count-favorites {
+					width: 17%;
+					height: auto;
+					float: left;
+					margin-top: 17px;
+					p {
+						float: left;
+						width: 50%;
+						text-align: right;
+	    			width: 35%;
+	        	padding-right: 5px;
+					}
+					.balloon{
+						background: url("../img/icon-balloon.png");
+				    background-repeat: no-repeat;
+				    width: 20px;
+				    height: 16px;
+				    display: block;
+				    float: left;
+				    &.active-coment {
+							background: url("../img/icons/comments.svg");
+							background-repeat: no-repeat;
+							width: 20px;
+							height: 20px;
+							margin-top: -3px;
+				    }
+					}
+				}
+				.count-favorites {
+					.stars-pink {
+						background: url("../img/icon-stars-pink.png");
+				    background-repeat: no-repeat;
+				    width: 16px;
+				    height: 16px;
+				    display: block;
+				    float: left;
+					}
+				}
+			}
+		}
+	}
+}

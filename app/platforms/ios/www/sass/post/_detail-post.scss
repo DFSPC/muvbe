@@ -1,0 +1,183 @@
+.view-timeline {
+	.content-time {
+		.item-box {
+			.info-user{
+				.back{
+					background: url("../img/icons/back-icon.svg");
+					background-repeat: no-repeat;
+					width: 44px;
+					height: 44px;
+					display: block;
+					font-size: 0;
+					margin-left: 14px;
+					float: left;
+					margin: 7px 0px 0px 13px;
+
+				}
+				.avatar-user {
+					float: left;
+			    height: 100%;
+			    width: 40px;
+					height: 40px;
+					border-radius: 50%;
+			    margin: 10px 10px 10px 10px;
+			    overflow: hidden;
+				}
+				p {
+					float: left;
+    			width: 143px;
+				}
+				.sub-menu {
+					background: url("../img/icon-submenu.png");
+					background-repeat: no-repeat;
+					background-position: center center;
+					width: 52px;
+					height: 30px;
+					font-size: 0;
+    			margin-top: 7px;
+    			float: right;
+					ul{
+						background: #f6f6f6;
+						position: absolute;
+						right: 24px;
+						top: 39px;
+						z-index: 4;
+						width: 72px;
+						padding: 20px;
+						-webkit-box-shadow: 0px -4px 31px -12px  rgba(0,0,0,0.75);
+						-moz-box-shadow: 0px -4px 31px -12px  rgba(0,0,0,0.75);
+						box-shadow: 0px -4px 31px -12px rgba(0, 0, 0, 0.75);
+						opacity: 0;
+						-webkit-transition: opacity .2s; /* Safari */
+  					transition: opacity .2s;
+						&.highlight {
+							opacity: 1;
+							-webkit-transition: opacity .2s; /* Safari */
+  						transition: opacity .2s;
+						}
+						li {
+							a {
+								font-size: 12px;
+								font-weight: 400;
+								font-family: Arial;
+							}
+							.item-1 {
+								margin-bottom: 16px;
+							}
+						}
+					}
+				}
+			}
+			.wraper-img{
+				position: relative;
+				margin: 0;
+				.back {
+					position: absolute;
+			    bottom: 5px;
+			    width: 100%;
+					padding-bottom: 55px;
+					background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+					background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+					background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+
+				}
+				p {
+					text-transform: capitalize;
+					font-family: $helvetica;
+					font-weight: bold;
+					position: absolute;
+					margin-left: 15px;
+					color: $white2;
+					font-size: 15px;
+					bottom: 12px;
+    			letter-spacing: 1px;
+				}
+			}
+			.form-detail {
+				position: relative;
+				.content {
+					textarea {
+						margin-bottom: 0px;
+						font-size: 14px;
+						height: 100px;
+						width: 248px;
+						margin: 0 auto;
+						display: block;
+						margin-top: 8px;
+						border-radius: 8px;
+						margin-bottom: 15px;
+						color: $text-gray;
+						padding-left: 5px;
+						// margin-right: 20%;
+						// margin-left: 18px;
+						border: none;
+					}
+				}
+				.bottom {
+					.add-airplane {
+						background: url("../img/icons/comment-icon.svg");
+				    background-repeat: no-repeat;
+						width: 35px;
+						height: 35px;
+						display: block;
+						font-size: 0;
+						position: absolute;
+						top: 7px;
+						right: 5px;
+					}
+				}
+			}
+			.content-cometary{
+				display: table;
+    		width: 100%;
+			}
+			.cometarios {
+				background-color: #f3f3f3;
+				padding: 10px 5%;
+				border-top: 1px solid #d7d8d9;
+    		clear: both;
+    		position: relative;
+				float: left;
+				width: 90%;
+    		.avatar-user {
+					float: left;
+					height: 100%;
+					width: 40px;
+					height: 40px;
+					border-radius: 50%;
+					margin: 5px 5px 0 8px;
+					overflow: hidden;
+    		}
+				.title {
+					a {
+						font-size: 14px;
+						font-weight: bold;
+						color: $pink;
+						font-family: $helvetica;
+				    margin-bottom: 16px;
+						margin-top: 8px;
+						width: 90%;
+					}
+				}
+				.text {
+					p {
+						word-break: break-word;
+					}
+				}
+				.bottom {
+    			height: 46px;
+					.delete-trash {
+						background: url("../img/icons/delete-icon.svg");
+				    background-repeat: no-repeat;
+				    width: 44px;
+				    height: 44px;
+				    font-size: 0;
+						position: absolute;
+						right: 8px;
+					}
+				}
+			}
+		}
+	}
+}

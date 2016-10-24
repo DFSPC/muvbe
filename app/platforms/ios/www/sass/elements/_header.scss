@@ -36,10 +36,9 @@
 		height: 100%;
 		position: absolute;
 		right: 95px;
-		margin-top: 8px;
 	a {
 			font-size: 18px;
-			margin: 34px 12px 0 0;
+			margin: 38px 12px 0 0;
 			text-transform: capitalize;
 			font-weight: 400;
 			line-height: 17px;
@@ -47,12 +46,13 @@
 	}
 	.avatar-user {
 		float: left;
-		width: 48px;
+		width: 34px;
 		height: 100%;
 		position: absolute;
 		right: 47px;
+		margin: 0;
 		a {
-			margin-top: 19px;
+			margin-top: 29px;
 		img {
 			border-radius: 50%;
 			overflow: hidden;

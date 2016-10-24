@@ -5,14 +5,14 @@
     <!-- formulario de login -->
     <form>
       <div class="input-login">
-        <input type="text" ng-model="mlc.user.userName" required placeholder="Nombre de usuario"></input>
+        <input class="textbox" type="text" ng-model="mlc.user.userName" required placeholder="Nombre de usuario"></input>
       </div>
       <div class="input-login">
-        <input type="password" ng-model="mlc.user.userPassword" required placeholder="Contraseña"></input>
+        <input class="textbox" type="password" ng-model="mlc.user.userPassword" required placeholder="Contraseña"></input>
       </div>
       <!-- buttom de login -->
-      <div class="buttom">
-        <input type="button" ng-click="mlc.showMessage='true'; mlc.validateLogin(mlc.user.userName, mlc.user.userPassword);" value="Iniciar sesión"></input>
+      <div class="">
+        <input class="button-pink" type="button" ng-click="mlc.showMessage='true'; mlc.validateLogin(mlc.user.userName, mlc.user.userPassword);" value="Iniciar sesión"></input>
       </div>
     </form>
      <!-- menseja de error -->

@@ -1,0 +1,12 @@
+{
+  "ios": {
+    "debug": {
+      "codeSignIdentity": "MUVBE",
+      "provisioningProfile": "5CLKR4PA67.com.brandinasty.muvbe"
+    },
+    "release": {
+      "codeSignIdentity": "MUVBE",
+      "provisioningProfile": "5CLKR4PA67.com.brandinasty.muvbe"
+    }
+  }
+}

@@ -68,8 +68,7 @@ input {
   width: 300px;
   height: 50px;
   border: 2px solid #640137;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  border-radius: 8px;
   display: block;
   margin: 0 auto;
   margin-bottom: 15px;
@@ -100,8 +99,7 @@ select {
   border: 1px solid #cecfd1;
   width: 300px;
   height: 50px;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  border-radius: 8px;
   display: block;
   margin: 8px auto;
   margin-bottom: 18px;
@@ -125,8 +123,7 @@ textarea {
   margin: 0 auto;
   display: block;
   margin-top: 8px;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  border-radius: 8px;
   margin-bottom: 15px;
   font-size: 15px;
   color: #727277;
@@ -186,8 +183,7 @@ label {
     border: 2px solid #FFFFFF;
     color: #a90b71;
     height: 35px;
-    -webkit-border-radius: 11px;
-            border-radius: 11px; }
+    border-radius: 11px; }
 
 .error {
   color: red;
@@ -256,8 +252,7 @@ input.textbox {
   height: 100%;
   width: 40px;
   height: 40px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   margin: 5px 5px 0 8px;
   overflow: hidden; }
 
@@ -758,8 +753,7 @@ html [type=button] {
     .header .avatar-user a {
       margin-top: 29px; }
       .header .avatar-user a img {
-        -webkit-border-radius: 50%;
-                border-radius: 50%;
+        border-radius: 50%;
         overflow: hidden; }
   .header .menu-main {
     background: url("../img/icon-menu.png");
@@ -857,6 +851,29 @@ html [type=button] {
   margin-bottom: 60px;
   /* overflow: hidden; */
   width: 100%; }
+  .view-timeline .modal-report {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100;
+    z-index: 2; }
+    .view-timeline .modal-report .modal-content {
+      position: relative;
+      width: 90%;
+      margin: 3% auto;
+      z-index: 3; }
+      .view-timeline .modal-report .modal-content ul {
+        padding: 0; }
+        .view-timeline .modal-report .modal-content ul li {
+          width: 100%;
+          list-style: none;
+          padding: 1em; }
+      .view-timeline .modal-report .modal-content textarea {
+        width: 90%;
+        margin: 1em auto; }
   .view-timeline .content-time .item-box .info-user {
     height: 46px;
     background-color: #fdfbff;
@@ -868,8 +885,7 @@ html [type=button] {
       height: 100%;
       width: 40px;
       height: 40px;
-      -webkit-border-radius: 50%;
-              border-radius: 50%;
+      border-radius: 50%;
       margin: 5px 10px 0 8px;
       overflow: hidden; }
     .view-timeline .content-time .item-box .info-user p {
@@ -879,6 +895,27 @@ html [type=button] {
       margin-top: 19px;
       font-family: "helvetica-neue-bold";
       text-transform: capitalize; }
+    .view-timeline .content-time .item-box .info-user .flag {
+      display: block;
+      position: absolute;
+      top: 17px;
+      right: 10px;
+      color: #da0080;
+      font-weight: 800;
+      width: 85px;
+      padding-left: 40px;
+      cursor: pointer; }
+      .view-timeline .content-time .item-box .info-user .flag::before {
+        content: "";
+        display: block;
+        vertical-align: bottom;
+        background: url("../img/icons/flag.svg");
+        background-size: cover;
+        width: 40px;
+        height: 40px;
+        top: -11px;
+        left: 0;
+        position: absolute; }
   .view-timeline .content-time .item-box .wraper-img {
     margin: 0 2px; }
   .view-timeline .content-time .item-box .info-post {
@@ -1052,8 +1089,7 @@ html [type=button] {
   height: 100%;
   width: 32px;
   height: 32px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   margin: 10px 10px 10px 10px;
   overflow: hidden; }
 
@@ -1134,8 +1170,7 @@ html [type=button] {
       width: 248px;
       margin: 0 auto;
       display: block;
-      -webkit-border-radius: 8px;
-              border-radius: 8px;
+      border-radius: 8px;
       color: #727277;
       padding-left: 5px;
       border: none; }
@@ -1167,8 +1202,7 @@ html [type=button] {
     height: 100%;
     width: 32px;
     height: 32px;
-    -webkit-border-radius: 50%;
-            border-radius: 50%;
+    border-radius: 50%;
     margin: 5px 5px 0 8px;
     overflow: hidden; }
   .view-timeline .content-time .item-box .cometarios .title a {

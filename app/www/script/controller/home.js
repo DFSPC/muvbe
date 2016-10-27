@@ -32,8 +32,6 @@ muvbe.controller('muvbeHomeController', function ($scope, $http){
 
 muvbe.controller('swipeHome', function ($scope, $http){
 
-
-  console.log('dsdd')
   var scope = this;
   if((touch.pageY > yIni + 5) && (touch.pageX> xIni-5) && (touch.pageX<xIni+5)   ){
     // $nav_footer.addClass('expand');

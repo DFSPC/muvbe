@@ -356,10 +356,3 @@ muvbe.directive('validatePost', function () {
     link: validate
   };
 });
-
-
-
-
-
-
-

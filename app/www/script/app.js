@@ -16,7 +16,7 @@ var muvbe = angular.module('muvbe', [
 var urlAppServer = 'https://muvbe.co/wp-json/wp/v2';
 var urlAppServer2 = 'https://muvbe.co/api';
 // var userHashAdmin = 'YWRtaW46YWRtaW4='
-var userHashAdmin = 'ZGV2ZWxvcGVyOiV3TkFuZlg4dTBvKkduTEZHZXlXWDRmYg==';
+var userHashAdmin = 'bWFpbnRlbmFuY2U6UDN5M3JyM2l0b3IwOTE3';
 
 
 var $body = angular.element('body');

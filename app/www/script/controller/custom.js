@@ -364,12 +364,10 @@ muvbe.directive('flagReport', function () {
       $confirm  =  element.find('.confirm'),
       $report   =  element.find('.flag'),
       $cancel   =  element.find('.cancel'),
-      $wraper   =  element.find('.popup-report .wraper');
       $msj      =  element.find('.msj');
 
 
     $report.click(function(event) {
-      console.log('sissi');
       $popup.removeClass('hidden');
     });
     $cancel.click(function(event) {

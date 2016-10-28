@@ -28,7 +28,17 @@
             <img ng-src="{{post.authorAvatar}}"</img>
           </div>
           <p>{{post.authorName}}</p>
-          <span class="flag">Reportar</span>
+          <flag-report>
+            <span class="flag">Reportar</span>
+            <div class="popup-report hidden">
+              <div class="wraper">
+                <p class="title">Quieres reportar como contenido no apropiado para muvbe</p>
+                <div class="confirm">Confirmar</div>
+                <div class="cancel">Cancelar</div>
+              </div>
+            </div>
+            <div class="msj hidden"><p>Gracias por tu reporte</p></div>
+          </flag-report>
           <sub-menu>
             <div class="sub-menu" ng-show="mv.user.id == post.author">
               <ul>

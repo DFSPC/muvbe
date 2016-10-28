@@ -339,10 +339,9 @@ muvbe.directive('validatePost', function () {
     var
       // $trash  =  element.find('.delete-trash'),
       $body   =  angular.element('body'),
-      $enviar =  element.find('.botton-take'),
+      $report =  element.find('.flag'),
       $img    =  element.find('.menu-upphote img'),
       input   =  element.find('#myImage');
-
 
 
 
@@ -350,5 +349,43 @@ muvbe.directive('validatePost', function () {
   return {
     restrict: 'E',
     link: validate
+  };
+});
+
+/*
+**  Generar Reporte contenido Malo
+**********************************************/
+muvbe.directive('flagReport', function () {
+  report = function(scope, element, attrs) {
+    var
+      // $trash  =  element.find('.delete-trash'),
+      $body     =  angular.element('body'),
+      $popup    =  element.find('.popup-report'),
+      $confirm  =  element.find('.confirm'),
+      $report   =  element.find('.flag'),
+      $cancel   =  element.find('.cancel'),
+      $wraper   =  element.find('.popup-report .wraper');
+      $msj      =  element.find('.msj');
+
+
+    $report.click(function(event) {
+      console.log('sissi');
+      $popup.removeClass('hidden');
+    });
+    $cancel.click(function(event) {
+      $popup.addClass('hidden');
+    });
+    $confirm.click(function(event) {
+      $popup.addClass('hidden');
+      $msj.removeClass('hidden');
+      setTimeout(function(){
+        $msj.addClass('hidden');
+      }, 3000);
+    });
+
+  };
+  return {
+    restrict: 'E',
+    link: report
   };
 });

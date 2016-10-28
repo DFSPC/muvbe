@@ -1,6 +1,24 @@
 <div class="view-timeline">
   <div ng-repeat="post in numberPostFilter = mv.posts | filter:{id:mpic.postId} track by $index">
     <!-- <h1>{{post.title}}</h1> -->
+
+    <!-- MODAL REPORTE-->
+    <div class="modal-report">
+      <div class="bg-drop"></div>
+      <div class="modal-content">
+        <h3>¿Deseas Reportar esta imágen?</h3>
+        <ul>
+          <li class="click-bs">Contiene material Gore</li>
+          <li class="click-bs">Contiene material Pornográfico</li>
+          <li class="click-bs">Contiene material Racista / Ofensivo</li>
+        </ul>
+        <form>
+          <label>Otro motivo</label>
+          <textarea></textarea>
+          <input class="button-pink close-modal" type="button" value="Enviar">
+        </form>
+      </div>
+    </div>
     <div class="content-time view-timeline">
       <!-- Cabecera de  info de user  -->
       <div class="item-box">
@@ -10,6 +28,7 @@
             <img ng-src="{{post.authorAvatar}}"</img>
           </div>
           <p>{{post.authorName}}</p>
+          <span class="flag">Reportar</span>
           <sub-menu>
             <div class="sub-menu" ng-show="mv.user.id == post.author">
               <ul>

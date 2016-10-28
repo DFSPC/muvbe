@@ -271,9 +271,6 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
       if(category == undefined ){
         scope.messageData = "¡ Categoria esta Vacio !";
       }
-      if(content == undefined ){
-        scope.messageData = "¡ Descripción esta Vacio !";
-      }
       if(title == undefined ){
         scope.messageData = "¡ Titulo esta Vacio !";
       }

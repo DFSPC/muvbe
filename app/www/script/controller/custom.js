@@ -289,11 +289,7 @@ muvbe.directive('scrollEfect', function ($location) {
             //   scope.mv.getAllData();
             // }, 600);
           }
-          // setTimeout(function(){
-          //   count = 0;
-          //   console.log(count);
 
-          // }, 6000);
           // swipe abajo
           if((touch.pageY > yIni - 20 && (touch.pageX> xIni-5) && (touch.pageX<xIni+5) )  ){
             // $nav_footer.addClass('expand');

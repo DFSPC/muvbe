@@ -3,22 +3,22 @@
 		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index"  class="repeated-item">
 			<div class="item-box">
 				<div class="info-user">
-				<div class="avatar-user">
-					<img ng-src="{{post.authorAvatar}}"></img>
+					<div class="avatar-user">
+						<img ng-src="{{post.authorAvatar}}"></img>
+					</div>
+						<p>{{post.authorName}}</p>
+					<flag-report>
+	            <span class="flag">Reportar</span>
+	            <div class="popup-report hidden">
+	              <div class="wraper">
+	                <p class="title">Quieres reportar como contenido no apropiado para muvbe</p>
+	                <div class="confirm">Confirmar</div>
+	                <div class="cancel">Cancelar</div>
+	              </div>
+	            </div>
+	            <div class="msj hidden"><p>Gracias por tu reporte</p></div>
+	         </flag-report>
 				</div>
-					<p>{{post.authorName}}</p>
-				</div>
-				<flag-report>
-		            <span class="flag">Reportar</span>
-		            <div class="popup-report hidden">
-		              <div class="wraper">
-		                <p class="title">Quieres reportar como contenido no apropiado para muvbe</p>
-		                <div class="confirm">Confirmar</div>
-		                <div class="cancel">Cancelar</div>
-		              </div>
-		            </div>
-		            <div class="msj hidden"><p>Gracias por tu reporte</p></div>
-		         </flag-report>
 				<div class="wraper-img">
 					<a href="#/post-info/{{post.id}}">
 						<img ng-src="{{post.urlFeaturedImage}}"></img>

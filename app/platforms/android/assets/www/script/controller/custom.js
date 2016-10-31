@@ -289,11 +289,7 @@ muvbe.directive('scrollEfect', function ($location) {
             //   scope.mv.getAllData();
             // }, 600);
           }
-          // setTimeout(function(){
-          //   count = 0;
-          //   console.log(count);
 
-          // }, 6000);
           // swipe abajo
           if((touch.pageY > yIni - 20 && (touch.pageX> xIni-5) && (touch.pageX<xIni+5) )  ){
             // $nav_footer.addClass('expand');
@@ -343,10 +339,9 @@ muvbe.directive('validatePost', function () {
     var
       // $trash  =  element.find('.delete-trash'),
       $body   =  angular.element('body'),
-      $enviar =  element.find('.botton-take'),
+      $report =  element.find('.flag'),
       $img    =  element.find('.menu-upphote img'),
       input   =  element.find('#myImage');
-
 
 
 
@@ -357,9 +352,38 @@ muvbe.directive('validatePost', function () {
   };
 });
 
+/*
+**  Generar Reporte contenido Malo
+**********************************************/
+muvbe.directive('flagReport', function () {
+  report = function(scope, element, attrs) {
+    var
+      // $trash  =  element.find('.delete-trash'),
+      $body     =  angular.element('body'),
+      $popup    =  element.find('.popup-report'),
+      $confirm  =  element.find('.confirm'),
+      $report   =  element.find('.flag'),
+      $cancel   =  element.find('.cancel'),
+      $msj      =  element.find('.msj');
 
 
+    $report.click(function(event) {
+      $popup.removeClass('hidden');
+    });
+    $cancel.click(function(event) {
+      $popup.addClass('hidden');
+    });
+    $confirm.click(function(event) {
+      $popup.addClass('hidden');
+      $msj.removeClass('hidden');
+      setTimeout(function(){
+        $msj.addClass('hidden');
+      }, 3000);
+    });
 
-
-
-
+  };
+  return {
+    restrict: 'E',
+    link: report
+  };
+});

@@ -68,8 +68,7 @@ input {
   width: 300px;
   height: 50px;
   border: 2px solid #640137;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  border-radius: 8px;
   display: block;
   margin: 0 auto;
   margin-bottom: 15px;
@@ -100,8 +99,7 @@ select {
   border: 1px solid #cecfd1;
   width: 300px;
   height: 50px;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  border-radius: 8px;
   display: block;
   margin: 8px auto;
   margin-bottom: 18px;
@@ -125,8 +123,7 @@ textarea {
   margin: 0 auto;
   display: block;
   margin-top: 8px;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  border-radius: 8px;
   margin-bottom: 15px;
   font-size: 15px;
   color: #727277;
@@ -186,8 +183,7 @@ label {
     border: 2px solid #FFFFFF;
     color: #a90b71;
     height: 35px;
-    -webkit-border-radius: 11px;
-            border-radius: 11px; }
+    border-radius: 11px; }
 
 .error {
   color: red;
@@ -205,8 +201,8 @@ label {
 .button-pink {
   width: 300px;
   background-color: transparent;
-  border: 2px solid #da0080;
-  color: #da0080;
+  border: 2px solid #ff0e92;
+  color: #ff0e92;
   height: 36px; }
 
 input.textbox {
@@ -256,8 +252,7 @@ input.textbox {
   height: 100%;
   width: 40px;
   height: 40px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   margin: 5px 5px 0 8px;
   overflow: hidden; }
 
@@ -589,7 +584,7 @@ html [type=button] {
       text-align: justify; }
     .views-terms .text-term a.link-conditions {
       font-size: 12px;
-      color: #da0080;
+      color: #ff0e92;
       float: left;
       line-height: 12px; }
       .views-terms .text-term a.link-conditions.link-2 {
@@ -619,8 +614,8 @@ html [type=button] {
       .views-terms form .buttom input {
         width: 100%;
         background-color: transparent;
-        border: 2px solid #da0080;
-        color: #da0080;
+        border: 2px solid #ff0e92;
+        color: #ff0e92;
         margin: 0;
         opacity: 1;
         -webkit-transition: opacity 1s;
@@ -707,7 +702,8 @@ html [type=button] {
         stroke-opacity: 0.1; }
 
 .header {
-  background-color: white;
+  background: white url("../img/pattern-2.png") no-repeat center;
+  background-size: cover;
   height: 89px;
   position: fixed;
   top: 0;
@@ -758,19 +754,19 @@ html [type=button] {
     .header .avatar-user a {
       margin-top: 29px; }
       .header .avatar-user a img {
-        -webkit-border-radius: 50%;
-                border-radius: 50%;
+        border-radius: 50%;
         overflow: hidden; }
   .header .menu-main {
     background: url("../img/icon-menu.png");
     background-repeat: no-repeat;
-    background-position: 13px;
+    background-position: 0;
     display: block;
-    width: 47px;
+    width: 60px;
+    height: 60px;
     float: left;
     height: 90px;
     position: absolute;
-    right: 0; }
+    right: 1em; }
   .header .wraper-menu {
     width: 100%;
     position: absolute;
@@ -891,12 +887,11 @@ html [type=button] {
       height: 100%;
       width: 40px;
       height: 40px;
-      -webkit-border-radius: 50%;
-              border-radius: 50%;
+      border-radius: 50%;
       margin: 5px 10px 0 8px;
       overflow: hidden; }
     .view-timeline .content-time .item-box .info-user p {
-      color: #da0080;
+      color: #ff0e92;
       font-size: 14px;
       font-weight: bold;
       margin-top: 19px;
@@ -1160,8 +1155,7 @@ html [type=button] {
   height: 100%;
   width: 32px;
   height: 32px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   margin: 10px 10px 10px 10px;
   overflow: hidden; }
 
@@ -1242,8 +1236,7 @@ html [type=button] {
       width: 248px;
       margin: 0 auto;
       display: block;
-      -webkit-border-radius: 8px;
-              border-radius: 8px;
+      border-radius: 8px;
       color: #727277;
       padding-left: 5px;
       border: none; }
@@ -1275,14 +1268,13 @@ html [type=button] {
     height: 100%;
     width: 32px;
     height: 32px;
-    -webkit-border-radius: 50%;
-            border-radius: 50%;
+    border-radius: 50%;
     margin: 5px 5px 0 8px;
     overflow: hidden; }
   .view-timeline .content-time .item-box .cometarios .title a {
     font-size: 14px;
     font-weight: bold;
-    color: #da0080;
+    color: #ff0e92;
     font-family: "helvetica-neue-bold";
     margin-bottom: 16px;
     margin-top: 8px;

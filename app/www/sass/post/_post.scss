@@ -1,11 +1,11 @@
 .view-getpost {
-	background-color: #bfbfbf;
+	background-color: transparent;
   margin-top: 89px;
       margin-bottom: 50px;
   display: table;
   width: 100%;
   .title-header {
-  	background: #3f3f3f;
+  	background: $pink;
   	text-align: center;
   	padding: 15px 0;
   	position: relative;
@@ -16,8 +16,9 @@
     	display: flex;
    		margin: 0 auto;
     	.icon-camera {
-				background: url("../img/icons/camera-active.svg");
+				background: url("../img/icons/camera-white.svg");
 				background-repeat: no-repeat;
+				fill: white;
 		    width: 28px;
 		    height: 28px;
 	  	}

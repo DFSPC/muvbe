@@ -33,7 +33,7 @@
 ********************************/
 body,
 html {
-  background: url("../img/icons/bg_app.png");
+  background: url("../img/icons/bg_app.png") no-repeat center;
   background-size: cover;
   font-family: "Myanmar-Sangam-MN";
   width: 100%;
@@ -263,7 +263,7 @@ input.textbox {
   letter-spacing: 2px; }
 
 .title-header {
-  background: #3f3f3f;
+  background: #ff0e92;
   text-align: center;
   padding: 15px 0;
   position: relative;
@@ -766,7 +766,7 @@ html [type=button] {
     float: left;
     height: 90px;
     position: absolute;
-    right: 1em; }
+    right: 0; }
   .header .wraper-menu {
     width: 100%;
     position: absolute;
@@ -982,13 +982,13 @@ html [type=button] {
       float: left; }
 
 .view-getpost {
-  background-color: #bfbfbf;
+  background-color: transparent;
   margin-top: 89px;
   margin-bottom: 50px;
   display: table;
   width: 100%; }
   .view-getpost .title-header {
-    background: #3f3f3f;
+    background: #ff0e92;
     text-align: center;
     padding: 15px 0;
     position: relative;
@@ -1002,8 +1002,9 @@ html [type=button] {
       display: flex;
       margin: 0 auto; }
       .view-getpost .title-header .wraper-header .icon-camera {
-        background: url("../img/icons/camera-active.svg");
+        background: url("../img/icons/camera-white.svg");
         background-repeat: no-repeat;
+        fill: white;
         width: 28px;
         height: 28px; }
       .view-getpost .title-header .wraper-header p {
@@ -1326,7 +1327,7 @@ html [type=button] {
   .user-info .wraper-header {
     width: 162px; }
     .user-info .wraper-header .icon-user {
-      background: url("../img/icons/user-active.svg");
+      background: url("../img/icons/user-white.svg");
       background-repeat: no-repeat;
       width: 28px;
       height: 28px; }
@@ -1351,7 +1352,7 @@ html [type=button] {
   display: table;
   width: 100%; }
   .wiew-category .icon-category {
-    background: url("../img/icons/glass-active.svg");
+    background: url("../img/icons/glass-white.svg");
     background-repeat: no-repeat;
     width: 28px;
     height: 28px; }
@@ -1386,7 +1387,7 @@ html [type=button] {
   height: 28px; }
 
 .ubication .icon-ubication {
-  background: url("../img/icons/pointer-active.svg");
+  background: url("../img/icons/pointer-white.svg");
   background-repeat: no-repeat;
   width: 28px;
   height: 28px; }

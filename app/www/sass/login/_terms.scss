@@ -15,13 +15,24 @@
 		}
 	}
 	.text-term {
-		@include  center-text (240px);
-		p {
+		@include center-text (270px);
+		max-height:300px;
+		overflow:auto;
+		width:300px;
+		padding: 0 10%;
+		p{
 			margin-bottom: 13px;
 			font-size: 12px;
-			word-wrap: break-word;
-			word-break: break-all;
 			text-align: justify;
+		}
+		ul,ol{
+			li{
+				margin-bottom: 13px;
+				font-size: 12px;
+				text-align: justify;
+				font-family: $Myanmar-Sangam-MN;
+				color: $text-gray;
+			}
 		}
 		p.text-before{
 			margin: 0 3px 0 0;

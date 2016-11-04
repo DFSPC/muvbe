@@ -260,8 +260,8 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
 
   //Create Post
   scope.createPost = function(title, content, file, category, ubication){
+    content = "";
     if(title == undefined ||
-        content == undefined ||
         scope.changeImage == false ||
         category == undefined ||
         ubication == undefined ){

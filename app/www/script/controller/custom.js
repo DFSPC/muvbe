@@ -263,9 +263,9 @@ muvbe.directive('scrollEfect', function ($location) {
           }
           // swipe arriba
 
-          console.log( (yIni - 40)  + '/////' + touch.pageY );
+          // console.log( (yIni - 40)  + '/////' + touch.pageY );
 
-          console.log(count);
+          // console.log(count);
 
 
           if((touch.pageY > yIni  && (touch.pageX > xIni-5) && (touch.pageX<xIni+5) && (count == 0) ) ){
@@ -385,5 +385,36 @@ muvbe.directive('flagReport', function () {
   return {
     restrict: 'E',
     link: report
+  };
+});
+
+/*
+**  Doble click favoritos
+**********************************************/
+muvbe.directive('dbClick', function () {
+  dbfavorite = function(scope, element, attrs) {
+    var
+      // $trash  =  element.find('.delete-trash'),
+      $body         =  angular.element('body'),
+      $img          =  element.find('.wraper-img');
+
+
+      $img.dblclick(function(e){
+
+        if (!scope.post.isFavorite){
+          scope.mv.addFavorite(scope.post.id);
+          $("<div class='animate'></div>").insertAfter($img);
+
+        }else{
+          scope.mv.removeFavorite(scope.post.id);
+        }
+      });
+
+
+
+  };
+  return {
+    restrict: 'E',
+    link: dbfavorite
   };
 });

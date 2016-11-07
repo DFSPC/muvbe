@@ -568,14 +568,22 @@ html [type=button] {
       margin: 0 auto; }
   .views-terms .text-term {
     display: block;
-    width: 240px;
-    margin: 0 auto; }
+    width: 270px;
+    margin: 0 auto;
+    max-height: 300px;
+    overflow: auto;
+    width: 300px;
+    padding: 0 10%; }
     .views-terms .text-term p {
       margin-bottom: 13px;
       font-size: 12px;
-      word-wrap: break-word;
-      word-break: break-all;
       text-align: justify; }
+    .views-terms .text-term ul li, .views-terms .text-term ol li {
+      margin-bottom: 13px;
+      font-size: 12px;
+      text-align: justify;
+      font-family: "Myanmar-Sangam-MN";
+      color: #727277; }
     .views-terms .text-term p.text-before {
       margin: 0 3px 0 0;
       float: left; }

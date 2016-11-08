@@ -263,9 +263,9 @@ muvbe.directive('scrollEfect', function ($location) {
           }
           // swipe arriba
 
-          console.log( (yIni - 40)  + '/////' + touch.pageY );
+          // console.log( (yIni - 40)  + '/////' + touch.pageY );
 
-          console.log(count);
+          // console.log(count);
 
 
           if((touch.pageY > yIni  && (touch.pageX > xIni-5) && (touch.pageX<xIni+5) && (count == 0) ) ){
@@ -385,5 +385,45 @@ muvbe.directive('flagReport', function () {
   return {
     restrict: 'E',
     link: report
+  };
+});
+
+/*
+**  Doble click favoritos
+**********************************************/
+muvbe.directive('dbClick', function () {
+  dbfavorite = function(scope, element, attrs) {
+    var
+      $body         =  angular.element('body'),
+      $img          =  element.find('.wraper-img');
+
+
+      // HTML
+      $img.find('img').after("<div class='animate'></div>");
+      $animate      =  $img.find('.animate');
+
+      $animate.addClass('hidden');
+
+      $img.dblclick(function(e){
+        // $animate.remove();
+        if (!scope.post.isFavorite){
+          scope.mv.addFavorite(scope.post.id);
+          $animate.removeClass('hidden');
+        }else{
+          scope.mv.removeFavorite(scope.post.id);
+          $animate.removeClass('hidden');
+        }
+        setTimeout(function(){
+          $animate.addClass('hidden');
+        }, 3000);
+      });
+
+      // 311 468 1641
+      console.log('hghgh');
+
+  };
+  return {
+    restrict: 'E',
+    link: dbfavorite
   };
 });

@@ -7,10 +7,12 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-camera": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.brandinasty.muvbe"
         },
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-camera": {
+            "CAMERA_USAGE_DESCRIPTION": "Necesitamos acceso a tu Camara",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": "Necesitamos acceso a tus Archivos",
             "PACKAGE_NAME": "com.brandinasty.muvbe"
         }
     },

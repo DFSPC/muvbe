@@ -394,23 +394,32 @@ muvbe.directive('flagReport', function () {
 muvbe.directive('dbClick', function () {
   dbfavorite = function(scope, element, attrs) {
     var
-      // $trash  =  element.find('.delete-trash'),
       $body         =  angular.element('body'),
       $img          =  element.find('.wraper-img');
 
 
-      $img.dblclick(function(e){
+      // HTML
+      $img.find('img').after("<div class='animate'></div>");
+      $animate      =  $img.find('.animate');
 
+      $animate.addClass('hidden');
+
+      $img.dblclick(function(e){
+        // $animate.remove();
         if (!scope.post.isFavorite){
           scope.mv.addFavorite(scope.post.id);
-          $("<div class='animate'></div>").insertAfter($img);
-
+          $animate.removeClass('hidden');
         }else{
           scope.mv.removeFavorite(scope.post.id);
+          $animate.removeClass('hidden');
         }
+        setTimeout(function(){
+          $animate.addClass('hidden');
+        }, 3000);
       });
 
-
+      // 311 468 1641
+      console.log('hghgh');
 
   };
   return {

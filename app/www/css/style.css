@@ -369,6 +369,16 @@ html [type=button] {
     margin-top: 20px !important;
     color: #818185 !important; }
 
+.animate {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #000000;
+  top: 0;
+  opacity: .6;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear; }
+
 /*
   We're using CSS transitions for when
   the enter and move events are triggered

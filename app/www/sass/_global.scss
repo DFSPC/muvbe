@@ -379,6 +379,16 @@ html [type=button] {
 	}
 }
 
+.animate{
+	position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #000000;
+    top: 0;
+    opacity: .6;
+  	transition: all 0.5s linear;
+}
+
 /*
   We're using CSS transitions for when
   the enter and move events are triggered

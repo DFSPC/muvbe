@@ -232,6 +232,7 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 5CLKR4PA67;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -332,6 +333,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 5CLKR4PA67;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -343,6 +345,9 @@
 				INFOPLIST_FILE = "Bogotá Efimera/Bogotá Efimera-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = "Bogotá Efimera";
+				PROVISIONING_PROFILE = "076a12d2-f4fb-4dde-8b57-dfef8485f360";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: com.brandinasty.muvbe";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -364,6 +369,9 @@
 				INFOPLIST_FILE = "Bogotá Efimera/Bogotá Efimera-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = "Bogotá Efimera";
+				PROVISIONING_PROFILE = "076a12d2-f4fb-4dde-8b57-dfef8485f360";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: com.brandinasty.muvbe";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -21,9 +21,6 @@
             "id": "cordova-plugin-camera"
         },
         "is_top_level": true,
-        "variables": {
-            "CAMERA_USAGE_DESCRIPTION": "Necesitamos acceso a tu Camara",
-            "PHOTOLIBRARY_USAGE_DESCRIPTION": "Necesitamos acceso a tus Archivos"
-        }
+        "variables": {}
     }
 }

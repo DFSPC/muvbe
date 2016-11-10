@@ -11,8 +11,8 @@
             "PACKAGE_NAME": "com.brandinasty.muvbe"
         },
         "cordova-plugin-camera": {
-            "CAMERA_USAGE_DESCRIPTION": "Necesitamos acceso a tu Camara",
-            "PHOTOLIBRARY_USAGE_DESCRIPTION": "Necesitamos acceso a tus Archivos",
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
             "PACKAGE_NAME": "com.brandinasty.muvbe"
         }
     },

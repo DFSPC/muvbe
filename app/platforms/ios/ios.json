@@ -21,21 +21,29 @@
             },
             "*-Info.plist": {
                 "parents": {
-                    "NSLocationWhenInUseUsageDescription": [
-                        {
-                            "xml": "<string />",
-                            "count": 1
-                        }
-                    ],
                     "NSCameraUsageDescription": [
                         {
                             "xml": "<string> </string>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<string>This app needs camera access</string>",
                             "count": 1
                         }
                     ],
                     "NSPhotoLibraryUsageDescription": [
                         {
                             "xml": "<string> </string>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<string>This app needs photo library access</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSLocationWhenInUseUsageDescription": [
+                        {
+                            "xml": "<string />",
                             "count": 1
                         }
                     ]
@@ -44,15 +52,18 @@
         }
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.brandinasty.muvbe"
-        },
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.brandinasty.muvbe"
         },
         "cordova-plugin-camera": {
             "CAMERA_USAGE_DESCRIPTION": " ",
             "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.brandinasty.muvbe"
+        },
+        "cordova-plugin-ios-camera-permissions": {
+            "PACKAGE_NAME": "com.brandinasty.muvbe"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.brandinasty.muvbe"
         }
     },
@@ -92,8 +103,9 @@
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-whitelist": "1.2.2",
         "cordova-plugin-compat": "1.1.0",
-        "cordova-plugin-camera": "2.3.0"
+        "cordova-plugin-camera": "2.3.0",
+        "cordova-plugin-ios-camera-permissions": "1.0.3",
+        "cordova-plugin-whitelist": "1.2.2"
     }
 }

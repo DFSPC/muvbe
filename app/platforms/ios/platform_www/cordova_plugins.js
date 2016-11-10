@@ -36,9 +36,10 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-compat": "1.1.0",
-    "cordova-plugin-camera": "2.3.0"
+    "cordova-plugin-camera": "2.3.0",
+    "cordova-plugin-ios-camera-permissions": "1.0.3",
+    "cordova-plugin-whitelist": "1.2.2"
 };
 // BOTTOM OF METADATA
 });

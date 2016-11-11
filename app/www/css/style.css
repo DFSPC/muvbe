@@ -65,7 +65,7 @@ form {
 
 input {
   width: 300px;
-  height: 50px;
+  height: 40px;
   border: 2px solid #640137;
   -webkit-border-radius: 8px;
           border-radius: 8px;
@@ -446,7 +446,7 @@ html [type=button] {
       height: 52px;
       margin: 0 auto;
       margin-bottom: 42px;
-      margin-top: 40%; }
+      margin-top: 15%; }
     .view-login .wraper-content .wraper .message .text-remeber p {
       margin-right: 6px; }
     .view-login .wraper-content .social-media {
@@ -501,7 +501,7 @@ html [type=button] {
   width: 100%; }
   .views-signup .header-signup {
     padding-top: 30px;
-    margin-bottom: 46px; }
+    margin-bottom: 25px; }
     .views-signup .header-signup .arrow-back {
       background: url("../img/icons/back-icon.svg");
       background-repeat: no-repeat;
@@ -593,8 +593,7 @@ html [type=button] {
     margin: 0 auto;
     max-height: 300px;
     overflow: auto;
-    width: 300px;
-    padding: 0 10%; }
+    width: 300px; }
     .views-terms .text-term p {
       margin-bottom: 13px;
       font-size: 12px;
@@ -753,8 +752,8 @@ html [type=button] {
       background: url("../img/logo-header2.png");
       background-size: 90px;
       background-repeat: no-repeat;
-      height: 89px;
-      width: 162px;
+      height: 55px;
+      width: 69px;
       font-size: 0;
       display: block;
       margin-top: 18px;

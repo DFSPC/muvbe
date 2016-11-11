@@ -3,10 +3,12 @@
 		<div ng-repeat="post in numberPostFilter = (mv.posts | filter:filterPosts:true) track by $index"  class="repeated-item">
 			<div class="item-box">
 				<div class="info-user">
+					<a href="#/author/{{post.author}}">
 					<div class="avatar-user">
 						<img ng-src="{{post.authorAvatar}}"></img>
 					</div>
 						<p>{{post.authorName}}</p>
+					</a>
 					<flag-report>
 	            <span class="flag">Reportar</span>
 	            <div class="popup-report hidden">

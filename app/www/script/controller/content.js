@@ -321,7 +321,7 @@ muvbe.controller('muvbeCreatePostController', function ($scope, $http ){
             post.content = dataPost.content.rendered;
             post.plainContent = $(dataPost.content.rendered).text();
             post.author = dataPost.author;
-            post.authorName = $scope.mv.getAuthorName(dataPost.author);
+            post.authorName = scope.user.userName;
             post.authorAvatar = scope.user.avatar;
             var datePost = new Date(dataPost.date);
             post.date = datePost.getDate() + " de " + monthNames[datePost.getMonth()] + " del " + datePost.getFullYear();
@@ -380,6 +380,7 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
 
   //Create Post
   scope.editPost = function(postId, title, content, category, ubication){
+    content = "";
     load();
     var status =  "publish";
     data = JSON.stringify({

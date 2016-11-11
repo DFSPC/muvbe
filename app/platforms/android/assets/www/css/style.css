@@ -37,7 +37,6 @@ html {
   background-size: cover;
   font-family: "Myanmar-Sangam-MN";
   width: 100%;
-  height: 100%;
   margin: 0; }
 
 img {
@@ -68,7 +67,8 @@ input {
   width: 300px;
   height: 50px;
   border: 2px solid #640137;
-  border-radius: 8px;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
   display: block;
   margin: 0 auto;
   margin-bottom: 15px;
@@ -99,7 +99,8 @@ select {
   border: 1px solid #cecfd1;
   width: 300px;
   height: 50px;
-  border-radius: 8px;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
   display: block;
   margin: 8px auto;
   margin-bottom: 18px;
@@ -123,7 +124,8 @@ textarea {
   margin: 0 auto;
   display: block;
   margin-top: 8px;
-  border-radius: 8px;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
   margin-bottom: 15px;
   font-size: 15px;
   color: #727277;
@@ -183,7 +185,8 @@ label {
     border: 2px solid #FFFFFF;
     color: #a90b71;
     height: 35px;
-    border-radius: 11px; }
+    -webkit-border-radius: 11px;
+            border-radius: 11px; }
 
 .error {
   color: red;
@@ -252,7 +255,8 @@ input.textbox {
   height: 100%;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   margin: 5px 5px 0 8px;
   overflow: hidden; }
 
@@ -364,6 +368,16 @@ html [type=button] {
     margin-top: 20px !important;
     margin-top: 20px !important;
     color: #818185 !important; }
+
+.animate {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #000000;
+  top: 0;
+  opacity: .6;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear; }
 
 /*
   We're using CSS transitions for when
@@ -762,7 +776,8 @@ html [type=button] {
     .header .avatar-user a {
       margin-top: 29px; }
       .header .avatar-user a img {
-        border-radius: 50%;
+        -webkit-border-radius: 50%;
+                border-radius: 50%;
         overflow: hidden; }
   .header .menu-main {
     background: url("../img/icon-menu.png");
@@ -895,7 +910,8 @@ html [type=button] {
       height: 100%;
       width: 40px;
       height: 40px;
-      border-radius: 50%;
+      -webkit-border-radius: 50%;
+              border-radius: 50%;
       margin: 5px 10px 0 8px;
       overflow: hidden; }
     .view-timeline .content-time .item-box .info-user p {
@@ -1127,7 +1143,7 @@ html [type=button] {
 
 .view-timeline .content-time .msj {
   background: #fff;
-  position: fixed;
+  position: absolute;
   width: 91%;
   z-index: 5;
   margin-left: auto;
@@ -1164,7 +1180,8 @@ html [type=button] {
   height: 100%;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   margin: 10px 10px 10px 10px;
   overflow: hidden; }
 
@@ -1245,7 +1262,8 @@ html [type=button] {
       width: 248px;
       margin: 0 auto;
       display: block;
-      border-radius: 8px;
+      -webkit-border-radius: 8px;
+              border-radius: 8px;
       color: #727277;
       padding-left: 5px;
       border: none; }
@@ -1277,7 +1295,8 @@ html [type=button] {
     height: 100%;
     width: 32px;
     height: 32px;
-    border-radius: 50%;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
     margin: 5px 5px 0 8px;
     overflow: hidden; }
   .view-timeline .content-time .item-box .cometarios .title a {
@@ -1358,7 +1377,8 @@ html [type=button] {
 .wiew-category {
   margin-top: 89px;
   display: table;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 65px; }
   .wiew-category .icon-category {
     background: url("../img/icons/glass-white.svg");
     background-repeat: no-repeat;

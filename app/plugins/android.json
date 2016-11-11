@@ -11,12 +11,15 @@
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova-plugin-camera": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.brandinasty.muvbe"
+        },
+        "cordova-plugin-ios-camera-permissions": {
+            "PACKAGE_NAME": "com.brandinasty.muvbe"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.brandinasty.muvbe"
         }
     }
 }

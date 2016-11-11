@@ -13,6 +13,13 @@
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
+		37C90863A66149B8BD416060 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B056E6EAB2429FB945520A /* AVFoundation.framework */; };
+		6406C8A4A6E84A6AA482F520 /* UIImage+CropScaleOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 64935240F8F54AF8A2F8870F /* UIImage+CropScaleOrientation.m */; };
+		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
+		B4B86CFF24D14DBB93AC8F4F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DEBBEC439B4589B9409998 /* CoreLocation.framework */; };
+		C7F1C9B604194C34AEC4D047 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2044DCD64249DB9A00A153 /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D4A8153B47BB4A6D93EAF159 /* CDVCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E148516F22429CACC7126E /* CDVCamera.m */; };
+		E73566700E714D13AAF06497 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 31330554D1824126A5816004 /* CDVJpegHeaderWriter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		0207DA571B56EA530066E2B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Bogotá Efimera/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		11DC098C537746C1AF67B030 /* UIImage+CropScaleOrientation.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "UIImage+CropScaleOrientation.h"; path = "cordova-plugin-camera/UIImage+CropScaleOrientation.h"; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Bogotá Efimera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bogotá Efimera.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,11 +54,21 @@
 		3047A50F1AB8059700498E2A /* build-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-debug.xcconfig"; path = "cordova/build-debug.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
+		31330554D1824126A5816004 /* CDVJpegHeaderWriter.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVJpegHeaderWriter.m; path = "cordova-plugin-camera/CDVJpegHeaderWriter.m"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Bogotá Efimera-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bogotá Efimera-Prefix.pch"; sourceTree = "<group>"; };
+		493808EC7D4D43BD8627B9BF /* CDVCamera.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVCamera.h; path = "cordova-plugin-camera/CDVCamera.h"; sourceTree = "<group>"; };
+		51E148516F22429CACC7126E /* CDVCamera.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVCamera.m; path = "cordova-plugin-camera/CDVCamera.m"; sourceTree = "<group>"; };
+		64935240F8F54AF8A2F8870F /* UIImage+CropScaleOrientation.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CropScaleOrientation.m"; path = "cordova-plugin-camera/UIImage+CropScaleOrientation.m"; sourceTree = "<group>"; };
+		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = "Bogotá Efimera/CDVLaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
+		85DEBBEC439B4589B9409998 /* CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		89B056E6EAB2429FB945520A /* AVFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Bogotá Efimera-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Bogotá Efimera-Info.plist"; path = "Bogotá Efimera/Bogotá Efimera-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
+		CF50087962C9466FBB89FED9 /* CDVExif.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVExif.h; path = "cordova-plugin-camera/CDVExif.h"; sourceTree = "<group>"; };
+		DB2044DCD64249DB9A00A153 /* ImageIO.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		EDDCB8197F074171941A8CC8 /* CDVJpegHeaderWriter.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVJpegHeaderWriter.h; path = "cordova-plugin-camera/CDVJpegHeaderWriter.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Bogotá Efimera/config.xml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +78,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
+				C7F1C9B604194C34AEC4D047 /* ImageIO.framework in Frameworks */,
+				B4B86CFF24D14DBB93AC8F4F /* CoreLocation.framework in Frameworks */,
+				37C90863A66149B8BD416060 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +142,7 @@
 				0207DA571B56EA530066E2B4 /* Images.xcassets */,
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* Bogotá Efimera-Info.plist */,
+				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
 			);
 			name = Resources;
 			path = "Bogotá Efimera/Resources";
@@ -129,6 +151,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB2044DCD64249DB9A00A153 /* ImageIO.framework */,
+				85DEBBEC439B4589B9409998 /* CoreLocation.framework */,
+				89B056E6EAB2429FB945520A /* AVFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,6 +179,13 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				64935240F8F54AF8A2F8870F /* UIImage+CropScaleOrientation.m */,
+				51E148516F22429CACC7126E /* CDVCamera.m */,
+				31330554D1824126A5816004 /* CDVJpegHeaderWriter.m */,
+				11DC098C537746C1AF67B030 /* UIImage+CropScaleOrientation.h */,
+				493808EC7D4D43BD8627B9BF /* CDVCamera.h */,
+				EDDCB8197F074171941A8CC8 /* CDVJpegHeaderWriter.h */,
+				CF50087962C9466FBB89FED9 /* CDVExif.h */,
 			);
 			name = Plugins;
 			path = "Bogotá Efimera/Plugins";
@@ -196,7 +228,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 5CLKR4PA67;
@@ -243,6 +275,7 @@
 			files = (
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
+				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +307,9 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
+				6406C8A4A6E84A6AA482F520 /* UIImage+CropScaleOrientation.m in Sources */,
+				D4A8153B47BB4A6D93EAF159 /* CDVCamera.m in Sources */,
+				E73566700E714D13AAF06497 /* CDVJpegHeaderWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,11 +343,11 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Bogotá Efimera/Bogotá Efimera-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = "Bogotá Efimera";
-				PROVISIONING_PROFILE = "aa621bab-0c02-4ac5-a1aa-0718bd2b2e16";
-				PROVISIONING_PROFILE_SPECIFIER = "David Hoyos";
+				PROVISIONING_PROFILE = "076a12d2-f4fb-4dde-8b57-dfef8485f360";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: com.brandinasty.muvbe";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -324,7 +360,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 5CLKR4PA67;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -332,10 +367,11 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Bogotá Efimera/Bogotá Efimera-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = "Bogotá Efimera";
-				PROVISIONING_PROFILE = "aa621bab-0c02-4ac5-a1aa-0718bd2b2e16";
-				PROVISIONING_PROFILE_SPECIFIER = "David Hoyos";
+				PROVISIONING_PROFILE = "076a12d2-f4fb-4dde-8b57-dfef8485f360";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: com.brandinasty.muvbe";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

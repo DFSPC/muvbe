@@ -83,8 +83,8 @@
           <div class="favorites">
             <span ng-if='post.isFavorite' class="icon-stars"></span>
             <span ng-if='!post.isFavorite' class="icon-stars-active"></span>
-            <p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">FAVORITOS</p>
-            <p ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)" class="active-favorite">REMOVER DE FAVORITOS</p>
+            <p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id, true)">FAVORITOS</p>
+            <p ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id, true)" class="active-favorite">REMOVER DE FAVORITOS</p>
           </div>
           <div class="count-comments">
             <p>{{post.comments.length}}</p>

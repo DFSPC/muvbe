@@ -373,11 +373,18 @@ html [type=button] {
   position: absolute;
   height: 100%;
   width: 100%;
-  background: #000000;
+  background: url("../img/icons/favorites-gif.svg");
+  background-color: rgba(0, 0, 0, 0.5);
+  background-repeat: no-repeat;
   top: 0;
-  opacity: .6;
   -webkit-transition: all 0.5s linear;
-  transition: all 0.5s linear; }
+  transition: all 0.5s linear;
+  background-size: 36px;
+  background-position: 50% 48%; }
+  .animate::before {
+    width: 30px;
+    height: 30px;
+    position: relative; }
 
 /*
   We're using CSS transitions for when
@@ -945,7 +952,7 @@ html [type=button] {
         background-color: #FFFFFF;
         background-position-y: 6px; }
       .view-timeline .content-time .item-box .info-post .favorites .icon-stars {
-        background: url("../img/icons/favstar.svg");
+        background: url("../img/icons/burn-inactive.svg");
         background-repeat: no-repeat;
         width: 16px;
         height: 16px;
@@ -954,7 +961,7 @@ html [type=button] {
         margin-left: 16px;
         margin-top: 18px; }
       .view-timeline .content-time .item-box .info-post .favorites .icon-stars-active {
-        background: url("../img/icons/favstar-inactive.svg");
+        background: url("../img/icons/burn-active.svg");
         background-repeat: no-repeat;
         width: 16px;
         height: 16px;

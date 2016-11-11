@@ -304,8 +304,11 @@ muvbe.controller('muvbeController', function ($scope, $http){
     });
   }
 
-  scope.addFavorite = function(postId){
-    loadComent();
+  scope.addFavorite = function(postId, animate){
+    console.log(postId)
+    if (animate == true) {
+      loadComent();
+    }
     $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + scope.user.userName + "&password=" + scope.user.userPassword).success(function(dataCookie){
       var cookie = dataCookie.cookie;
       $http.get(urlAppServer2 + "/wpfp/add/?postid=" + postId + "&insecure=cool&cookie=" + cookie).success(function(dataFavorites){
@@ -327,8 +330,10 @@ muvbe.controller('muvbeController', function ($scope, $http){
 
   }
 
-  scope.removeFavorite = function(postId){
-    loadComent();
+  scope.removeFavorite = function(postId, animate){
+    if (animate == true) {
+      loadComent();
+    }
     $http.get(urlAppServer2 + "/user/generate_auth_cookie?insecure=cool&username=" + scope.user.userName + "&password=" + scope.user.userPassword).success(function(dataCookie){
       var cookie = dataCookie.cookie;
       $http.get(urlAppServer2 + "/wpfp/remove/?postid=" + postId + "&insecure=cool&cookie=" + cookie).success(function(dataFavorites){

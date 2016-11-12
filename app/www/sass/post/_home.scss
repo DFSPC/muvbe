@@ -55,7 +55,7 @@
 					color: $pink;
 					font-size: 14px;
 					font-weight: bold;
-					margin-top: 19px;
+					margin-top: 24px;
 					font-family: $helvetica;
 					text-transform: capitalize;
 				}
@@ -71,7 +71,7 @@
 				background: #fdfbff;
 
 				.favorites {
-					width: 66%;
+					width: 32px;
 					height: 50px;
 					float: left;
 					position: relative;
@@ -91,22 +91,22 @@
 					.icon-stars {
 						background: url("../img/icons/burn-inactive.svg");
 				    background-repeat: no-repeat;
-				    width: 16px;
-				    height: 16px;
+				    width: 25px;
+				    height: 25px;
 				    display: block;
 				    float: left;
 						margin-left: 16px;
-						margin-top: 18px;
+						margin-top: 11px;
 					}
 					.icon-stars-active {
-						  background: url("../img/icons/burn-active.svg");
-					    background-repeat: no-repeat;
-					    width: 16px;
-					    height: 16px;
-					    display: block;
-					    float: left;
-							margin-left: 16px;
-							margin-top: 18px;
+					  background: url("../img/icons/burn-active.svg");
+				    background-repeat: no-repeat;
+				    width: 25px;
+				    height: 25px;
+				    display: block;
+				    float: left;
+				    margin-left: 16px;
+				    margin-top: 11px;
 					}
 					p {
 						margin-left: 16px;
@@ -119,7 +119,7 @@
 				}
 				.count-comments,
 				.count-favorites {
-					width: 17%;
+					width: 24%;
 					height: auto;
 					float: left;
 					margin-top: 17px;
@@ -129,6 +129,7 @@
 						text-align: right;
 	    			width: 35%;
 	        	padding-right: 5px;
+	        	margin-top: 2px;
 					}
 					.balloon{
 						background: url("../img/icon-balloon.png");
@@ -147,13 +148,25 @@
 					}
 				}
 				.count-favorites {
-					.stars-pink {
-						background: url("../img/icon-stars-pink.png");
+					.stars-pink-inactive {
+						background: url("../img/icons/favstar-inactive.svg");
 				    background-repeat: no-repeat;
-				    width: 16px;
-				    height: 16px;
+				    width: 18px;
+				    height: 18px;
 				    display: block;
 				    float: left;
+					}
+					.stars-pink-active {
+						background: url("../img/icons/favstar.svg");
+				    background-repeat: no-repeat;
+				    width: 18px;
+				    height: 18px;
+				    display: block;
+				    float: left;
+				    p {
+				    	width: 62px;
+    					margin-left: 20px;
+				    }
 					}
 				}
 			}

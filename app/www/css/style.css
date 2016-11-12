@@ -924,7 +924,7 @@ html [type=button] {
       color: #ff0e92;
       font-size: 14px;
       font-weight: bold;
-      margin-top: 19px;
+      margin-top: 24px;
       font-family: "helvetica-neue-bold";
       text-transform: capitalize; }
   .view-timeline .content-time .item-box .wraper-img {
@@ -934,7 +934,7 @@ html [type=button] {
     border-bottom: 2px solid #d7d8d9;
     background: #fdfbff; }
     .view-timeline .content-time .item-box .info-post .favorites {
-      width: 66%;
+      width: 32px;
       height: 50px;
       float: left;
       position: relative; }
@@ -953,21 +953,21 @@ html [type=button] {
       .view-timeline .content-time .item-box .info-post .favorites .icon-stars {
         background: url("../img/icons/burn-inactive.svg");
         background-repeat: no-repeat;
-        width: 16px;
-        height: 16px;
+        width: 25px;
+        height: 25px;
         display: block;
         float: left;
         margin-left: 16px;
-        margin-top: 18px; }
+        margin-top: 11px; }
       .view-timeline .content-time .item-box .info-post .favorites .icon-stars-active {
         background: url("../img/icons/burn-active.svg");
         background-repeat: no-repeat;
-        width: 16px;
-        height: 16px;
+        width: 25px;
+        height: 25px;
         display: block;
         float: left;
         margin-left: 16px;
-        margin-top: 18px; }
+        margin-top: 11px; }
       .view-timeline .content-time .item-box .info-post .favorites p {
         margin-left: 16px;
         margin-top: 21px;
@@ -977,7 +977,7 @@ html [type=button] {
         font-weight: 400; }
     .view-timeline .content-time .item-box .info-post .count-comments,
     .view-timeline .content-time .item-box .info-post .count-favorites {
-      width: 17%;
+      width: 24%;
       height: auto;
       float: left;
       margin-top: 17px; }
@@ -987,7 +987,8 @@ html [type=button] {
         width: 50%;
         text-align: right;
         width: 35%;
-        padding-right: 5px; }
+        padding-right: 5px;
+        margin-top: 2px; }
       .view-timeline .content-time .item-box .info-post .count-comments .balloon,
       .view-timeline .content-time .item-box .info-post .count-favorites .balloon {
         background: url("../img/icon-balloon.png");
@@ -1003,13 +1004,23 @@ html [type=button] {
           width: 20px;
           height: 20px;
           margin-top: -3px; }
-    .view-timeline .content-time .item-box .info-post .count-favorites .stars-pink {
-      background: url("../img/icon-stars-pink.png");
+    .view-timeline .content-time .item-box .info-post .count-favorites .stars-pink-inactive {
+      background: url("../img/icons/favstar-inactive.svg");
       background-repeat: no-repeat;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       display: block;
       float: left; }
+    .view-timeline .content-time .item-box .info-post .count-favorites .stars-pink-active {
+      background: url("../img/icons/favstar.svg");
+      background-repeat: no-repeat;
+      width: 18px;
+      height: 18px;
+      display: block;
+      float: left; }
+      .view-timeline .content-time .item-box .info-post .count-favorites .stars-pink-active p {
+        width: 62px;
+        margin-left: 20px; }
 
 .view-getpost {
   background-color: transparent;

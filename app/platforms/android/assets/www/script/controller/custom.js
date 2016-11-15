@@ -407,10 +407,10 @@ muvbe.directive('dbClick', function () {
       $img.dblclick(function(e){
         // $animate.remove();
         if (!scope.post.isFavorite){
-          scope.mv.addFavorite(scope.post.id);
+          scope.mv.addFavorite(scope.post.id, false);
           $animate.removeClass('hidden');
         }else{
-          scope.mv.removeFavorite(scope.post.id);
+          scope.mv.removeFavorite(scope.post.id, false);
           $animate.removeClass('hidden');
         }
         setTimeout(function(){
@@ -419,7 +419,6 @@ muvbe.directive('dbClick', function () {
       });
 
       // 311 468 1641
-      console.log('hghgh');
 
   };
   return {

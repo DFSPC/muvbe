@@ -380,6 +380,7 @@ muvbe.controller('muvbeEditPostController', function ($scope, $http, $routeParam
 
   //Create Post
   scope.editPost = function(postId, title, content, category, ubication){
+    content = "";
     load();
     var status =  "publish";
     data = JSON.stringify({

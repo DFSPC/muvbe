@@ -25,10 +25,12 @@
       <div class="item-box">
         <div class="info-user">
           <a class="back" href="javascript:history.back(1)">atras</a>
+          <a href="#/author/{{post.author}}">
           <div class="avatar-user">
             <img ng-src="{{post.authorAvatar}}"</img>
           </div>
           <p>{{post.authorName}}</p>
+          </a>
           <flag-report>
             <span class="flag">Reportar</span>
             <div class="popup-report hidden">
@@ -81,19 +83,24 @@
         <!-- Barra de informacion de  favoritos y comentarios  -->
         <div class="info-post">
           <div class="favorites">
-            <span ng-if='post.isFavorite' class="icon-stars"></span>
-            <span ng-if='!post.isFavorite' class="icon-stars-active"></span>
-            <p ng-if='!post.isFavorite' ng-click="mv.addFavorite(post.id)">FAVORITOS</p>
-            <p ng-if='post.isFavorite' ng-click="mv.removeFavorite(post.id)" class="active-favorite">REMOVER DE FAVORITOS</p>
+            <span ng-if='post.isFavorite' class="icon-stars-active" ng-click="mv.removeFavorite(post.id, true)"></span>
+            <span ng-if='!post.isFavorite' class="icon-stars" ng-click="mv.addFavorite(post.id, true)"></span>
+            <!-- <p ng-if='!post.isFavorite' ></p>
+            <p ng-if='post.isFavorite' class="active-favorite"></p> -->
+          </div>
+          <div class="count-favorites">
+                <p>{{post.countFavorites}} </p>
+                <span ng-if='post.countFavorites == 0'>
+              <p>Favorito</p>
+                </span>
+            <span ng-if='post.countFavorites >= 1'>
+              <p>Favorito</p>
+            </span>
           </div>
           <div class="count-comments">
             <p>{{post.comments.length}}</p>
             <span ng-if='post.comments.length == 0' class='balloon'></span>
             <span ng-if='post.comments.length >= 1' class='active-coment balloon'></span>
-          </div>
-          <div class="count-favorites">
-            <p>{{post.countFavorites}} </p>
-            <sapn class="stars-pink"></sapn>
           </div>
         </div>
 

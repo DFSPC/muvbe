@@ -13,17 +13,11 @@
 				<input class="textbox" type="text" ng-model="mepc.postEdit.title">
 			</div>
 		</div>
-		<div class="content">
-			<div class="wraper">
-				<label for="">Descripción</label>
-				<textarea class="area" ng-model="mepc.postEdit.plainContent"></textarea>
-			</div>
-		</div>
 		<div class="category">
 			<div class="wraper">
 				<label for="">Categoría</label>
 				<div class="select">
-				<select class="" ng-model="mepc.selectedCategory" ng-options="category as category.name for category in mepc.categories | filter:{ id: '!1'} track by category.id" >
+				<select class="" ng-model="mepc.selectedCategory" ng-options="category.id as category.name for category in mv.categories track by category.id" >
 				</select>
 			</div>
 		</div>

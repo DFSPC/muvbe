@@ -65,7 +65,7 @@ form {
 
 input {
   width: 300px;
-  height: 50px;
+  height: 40px;
   border: 2px solid #640137;
   -webkit-border-radius: 8px;
           border-radius: 8px;
@@ -373,11 +373,18 @@ html [type=button] {
   position: absolute;
   height: 100%;
   width: 100%;
-  background: #000000;
+  background: url("../img/icons/favorites-gif.svg");
+  background-color: rgba(0, 0, 0, 0.5);
+  background-repeat: no-repeat;
   top: 0;
-  opacity: .6;
   -webkit-transition: all 0.5s linear;
-  transition: all 0.5s linear; }
+  transition: all 0.5s linear;
+  background-size: 36px;
+  background-position: 50% 48%; }
+  .animate::before {
+    width: 30px;
+    height: 30px;
+    position: relative; }
 
 /*
   We're using CSS transitions for when
@@ -439,7 +446,7 @@ html [type=button] {
       height: 52px;
       margin: 0 auto;
       margin-bottom: 42px;
-      margin-top: 40%; }
+      margin-top: 15%; }
     .view-login .wraper-content .wraper .message .text-remeber p {
       margin-right: 6px; }
     .view-login .wraper-content .social-media {
@@ -494,7 +501,7 @@ html [type=button] {
   width: 100%; }
   .views-signup .header-signup {
     padding-top: 30px;
-    margin-bottom: 46px; }
+    margin-bottom: 25px; }
     .views-signup .header-signup .arrow-back {
       background: url("../img/icons/back-icon.svg");
       background-repeat: no-repeat;
@@ -586,8 +593,7 @@ html [type=button] {
     margin: 0 auto;
     max-height: 300px;
     overflow: auto;
-    width: 300px;
-    padding: 0 10%; }
+    width: 300px; }
     .views-terms .text-term p {
       margin-bottom: 13px;
       font-size: 12px;
@@ -746,8 +752,8 @@ html [type=button] {
       background: url("../img/logo-header2.png");
       background-size: 90px;
       background-repeat: no-repeat;
-      height: 89px;
-      width: 162px;
+      height: 55px;
+      width: 69px;
       font-size: 0;
       display: block;
       margin-top: 18px;
@@ -918,7 +924,7 @@ html [type=button] {
       color: #ff0e92;
       font-size: 14px;
       font-weight: bold;
-      margin-top: 19px;
+      margin-top: 24px;
       font-family: "helvetica-neue-bold";
       text-transform: capitalize; }
   .view-timeline .content-time .item-box .wraper-img {
@@ -928,7 +934,7 @@ html [type=button] {
     border-bottom: 2px solid #d7d8d9;
     background: #fdfbff; }
     .view-timeline .content-time .item-box .info-post .favorites {
-      width: 66%;
+      width: 32px;
       height: 50px;
       float: left;
       position: relative; }
@@ -945,23 +951,23 @@ html [type=button] {
         background-color: #FFFFFF;
         background-position-y: 6px; }
       .view-timeline .content-time .item-box .info-post .favorites .icon-stars {
-        background: url("../img/icons/favstar.svg");
+        background: url("../img/icons/burn-inactive.svg");
         background-repeat: no-repeat;
-        width: 16px;
-        height: 16px;
+        width: 25px;
+        height: 25px;
         display: block;
         float: left;
         margin-left: 16px;
-        margin-top: 18px; }
+        margin-top: 11px; }
       .view-timeline .content-time .item-box .info-post .favorites .icon-stars-active {
-        background: url("../img/icons/favstar-inactive.svg");
+        background: url("../img/icons/burn-active.svg");
         background-repeat: no-repeat;
-        width: 16px;
-        height: 16px;
+        width: 25px;
+        height: 25px;
         display: block;
         float: left;
         margin-left: 16px;
-        margin-top: 18px; }
+        margin-top: 11px; }
       .view-timeline .content-time .item-box .info-post .favorites p {
         margin-left: 16px;
         margin-top: 21px;
@@ -971,7 +977,7 @@ html [type=button] {
         font-weight: 400; }
     .view-timeline .content-time .item-box .info-post .count-comments,
     .view-timeline .content-time .item-box .info-post .count-favorites {
-      width: 17%;
+      width: 24%;
       height: auto;
       float: left;
       margin-top: 17px; }
@@ -981,7 +987,8 @@ html [type=button] {
         width: 50%;
         text-align: right;
         width: 35%;
-        padding-right: 5px; }
+        padding-right: 5px;
+        margin-top: 2px; }
       .view-timeline .content-time .item-box .info-post .count-comments .balloon,
       .view-timeline .content-time .item-box .info-post .count-favorites .balloon {
         background: url("../img/icon-balloon.png");
@@ -997,13 +1004,23 @@ html [type=button] {
           width: 20px;
           height: 20px;
           margin-top: -3px; }
-    .view-timeline .content-time .item-box .info-post .count-favorites .stars-pink {
-      background: url("../img/icon-stars-pink.png");
+    .view-timeline .content-time .item-box .info-post .count-favorites .stars-pink-inactive {
+      background: url("../img/icons/favstar-inactive.svg");
       background-repeat: no-repeat;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       display: block;
       float: left; }
+    .view-timeline .content-time .item-box .info-post .count-favorites .stars-pink-active {
+      background: url("../img/icons/favstar.svg");
+      background-repeat: no-repeat;
+      width: 18px;
+      height: 18px;
+      display: block;
+      float: left; }
+      .view-timeline .content-time .item-box .info-post .count-favorites .stars-pink-active p {
+        width: 62px;
+        margin-left: 20px; }
 
 .view-getpost {
   background-color: transparent;
